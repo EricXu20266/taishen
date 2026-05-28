@@ -15,12 +15,14 @@
 - Dev 模式与 WASM 资源加载恢复
 - 构建流水线恢复
 
-### 安装
-- **泰深 Setup 0.2.2-rc1.exe** — Windows 安装包
-- **泰深免安装.zip** — 解压即用免安装版
+## 安装
+- **taishenSetup 1.0.0.exe** — Windows 安装包
+- **taishen免安装.zip** — 解压即用免安装版
 
-### 文件校验（SHA256）
+> 📌 **仅支持 Windows 系统**
+
+## 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| 泰深 Setup 0.2.2-rc1.exe | `48C733738DDDE14E62484D784C22ED30DE2921FE42F9EFFF25C701F0D472B76D` |
-| 泰深免安装.zip | `13BF4C5DB497BB32826507D8274DC3A7B8B435D3127B50F5293E7FA0E2C681ED` |
+| taishenSetup 1.0.0.exe | `97C832090B8FBDCC41C5815EEADCE6D5DBC2F11100C0EC14719D8FB325D4F9E4` |
+| taishen免安装.zip | `70B0DB19548B50CDC861B8C30BC2B30B9057E4B675AB446F7FA5D7CFEF984B8D` |
