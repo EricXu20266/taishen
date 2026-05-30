@@ -21,7 +21,7 @@
 - **任务追踪** — Plan→Todo→Execute→Done 五阶段工作流，右侧面板实时可见
 
 ### 🔌 深度扩展
-- **MCP 协议支持** — 接入 Firecrawl 网页抓取、Playwright 浏览器自动化、arXiv/Semantic Scholar 学术搜索等 MCP 服务
+- **MCP 协议支持** — 支持三源接入 MCP 
 - **插件扩展系统** — 支持自定义功能插件
 - **工具自主创建** — AI 可根据需求自行编写新工具（TypeScript）
 
