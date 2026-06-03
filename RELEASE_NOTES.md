@@ -13,8 +13,8 @@
 - 会话记忆与知识图谱
 
 ### 安装
-- **taishen_setup_1.0.3.exe** — Windows 安装包
-- **taishen1.0.3免安装包.zip** — 解压即用免安装版
+- **taishen_setup_1.0.6.exe** — Windows 安装包
+- **taishen1.0.6免安装包.zip** — 解压即用免安装版
 
 ---
 
@@ -22,7 +22,7 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.0.5.exe | `7E5C9FABDF78D00A4E6574B9D4A6DFB0FC062B755467353998318C5B35B761EA` |
-| taishen_1.0.5免安装版本.zip | `38C5A7D206117876E9504B69213A4F264B9B5BC907CC1344BB3C1494F1219875` |
+| taishen_setup_1.0.6.exe | `DA507B11672FC98C25A3D1B5C379C844E29D83CA17AB40B376C6EC5B0109717B` |
+| taishen_1.0.6免安装.zip | `066E35CF777120FE9ED9D3679C430FBE325AF4C95E5EFA1036EE6D1674325883` |
 
 ---
