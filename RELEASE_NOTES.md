@@ -1,4 +1,4 @@
-## 🚀 泰深 v1.0.6 正式发布
+## 🚀 泰深 v1.0.7 正式发布
 
 专为 DeepSeek 打造的 AI 智能助手桌面客户端，首个正式稳定版本。
 
@@ -13,16 +13,11 @@
 - 会话记忆与知识图谱
 
 ### 安装
-- **taishen_setup_1.0.6.exe** — Windows 安装包
-- **taishen1.0.6免安装包.zip** — 解压即用免安装版
+- **taishen_setup_1.0.7.exe** — Windows 安装包
+- **taishen1.0.7免安装.zip** — 解压即用免安装版
 
----
-
-## 文件校验（SHA256）
-
+### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.0.6.exe | `DA507B11672FC98C25A3D1B5C379C844E29D83CA17AB40B376C6EC5B0109717B` |
-| taishen_1.0.6免安装.zip | `066E35CF777120FE9ED9D3679C430FBE325AF4C95E5EFA1036EE6D1674325883` |
-
----
+| taishen_setup_1.0.7.exe | `E659FC778B3B438FA2FE3881B3B66A1D1D9AE4D116F44CCE83D71CB4ACFF0637` |
+| taishen1.0.7免安装.zip | `F8AADE7999E0A34BDAC88B398C633790FDF08E5769AF6FBB8EDDB091BC820D4D` |
