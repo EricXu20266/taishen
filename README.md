@@ -1,4 +1,4 @@
-# 泰深 Taishen
+# 泰深 taishen
 
 **二班的Eric · Vibe Coding 作品** | v1.0.9 | 2026
 
