@@ -1,23 +1,26 @@
-## 🚀 泰深 v1.1.2 正式发布
+## 🚀 泰深 v1.2.1 正式发布
 
- 最友好的中文社区 AI 智能助手桌面客户端。
-
-> 📌 **仅支持 Windows 系统**
+首个正式候选发布版本，专为 DeepSeek 打造的 AI 智能助手桌面客户端。
 
 ### 核心功能
+- DeepSeek 全模型支持（V3/R1/V4-Pro）
 - Skill 自定义安装与扩展
 - MCP 服务接入
 - 插件扩展系统
-- 三级沙箱权限控制（默认关闭 / 自动审查 / 完全控制）
-- 会话记忆与知识图谱
-- 针对deepseek进行过特殊调整（用了你就知道了）
+
+### 本版本修复
+- 修复全新安装无 API Key 时白屏问题
+- V8 字节码优化，降低 CPU 占用
+- 修复双窗口、托盘退出等桌面交互问题
+- Dev 模式与 WASM 资源加载恢复
+- 构建流水线恢复
 
 ### 安装
-- **taishen_setup_1.1.2.exe** — Windows 安装包
-- **taishen1.1.2免安装版.zip** — 解压即用免安装版
+- **taishen_setup_1.2.1.exe** — Windows 安装包
+- **taishen1.2.1免安装版.zip** — 解压即用免安装版
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.1.2.exe | `B12B58F5CD34E6C3C9F74057CE5AB7492DAAA61D68065A10FCA329C7525F0906` |
-| taishen1.1.2免安装版.zip | `CF82B291DCDAB74B5A9BF2452F6CD67E62FF1C830A95EF09C4F46690566DDD32` |
+| taishen_setup_1.2.1.exe | `966F8D758312769B022BF12D5E8A189797B0E7875B42BD09FA400416BC99426C` |
+| taishen1.2.1免安装版.zip | `DF743E1109D8FF74AD6A8664FA384D319DB843807F4CCEAABC6A5C4FA59050CA` |
