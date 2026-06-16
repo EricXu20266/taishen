@@ -1,6 +1,6 @@
 # 泰深 taishen
 
-**二班的Eric · Vibe Coding 作品** | v1.2.1 | 2026
+**二班的Eric · Vibe Coding 作品** | v1.2.2 | 2026
 
 ---
 
@@ -47,8 +47,8 @@
 ## 快速开始
 
 ### 安装
-- **taishen_setup_1.2.1.exe** — Windows 安装包（推荐）
-- **taishen1.2.1免安装版.zip** — 解压即用免安装版
+- **taishen_setup_1.2.2.exe** — Windows 安装包（推荐）
+- **taishen1.2.2免安装版.zip** — 解压即用免安装版
 
 ### 配置
 1. 启动泰深，在设置页填入 DeepSeek API Key
@@ -81,8 +81,8 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.2.1.exe | `966F8D758312769B022BF12D5E8A189797B0E7875B42BD09FA400416BC99426C` |
-| taishen1.2.1免安装版.zip | `DF743E1109D8FF74AD6A8664FA384D319DB843807F4CCEAABC6A5C4FA59050CA` |
+| taishen_setup_1.2.2.exe | `1C22847FD81B0077C48F773C2DBA847842F9EE106A92709171A68D4430CF3E57` |
+| taishen1.2.2免安装版.zip | `C58DBD083EBEED69550BF9EC7F0477C4E640F3E2FA5598B570936357FFE85D64` |
 
 ---
 
