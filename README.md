@@ -1,6 +1,6 @@
 # 泰深 taishen
 
-**二班的Eric · Vibe Coding 作品** | v1.2.2 | 2026
+**二班的Eric · Vibe Coding 作品** | v1.2.3 | 2026
 
 ---
 
@@ -10,6 +10,25 @@
 
 > ⚠️ **仅支持 Windows 系统。** 客户端可连接其他大模型，但未经过实机测试，不保证效果。
 
+---
+
+## 快速开始
+
+### 安装
+- **taishen_setup_1.2.3.exe** — Windows 安装包（推荐）
+- **taishen1.2.3免安装版.zip** — 解压即用免安装版
+
+> 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载所需文件。
+
+### 配置
+1. 启动泰深，在设置页填入 DeepSeek API Key
+2. （可选）在工具&插件页启用需要的 MCP 服务
+3. （可选）在技能管理页启用专业 Skill
+4. 开始对话——拖入文件、直接描述需求即可
+
+### 推荐模型
+- **DeepSeek V4 Pro**（默认）— 全功能，适合深度研究、论文写作
+- **DeepSeek V4 Flash** — 快速响应，适合日常问答、代码辅助
 
 ---
 
@@ -44,24 +63,6 @@
 
 ---
 
-## 快速开始
-
-### 安装
-- **taishen_setup_1.2.2.exe** — Windows 安装包（推荐）
-- **taishen1.2.2免安装版.zip** — 解压即用免安装版
-
-### 配置
-1. 启动泰深，在设置页填入 DeepSeek API Key
-2. （可选）在工具&插件页启用需要的 MCP 服务
-3. （可选）在技能管理页启用专业 Skill
-4. 开始对话——拖入文件、直接描述需求即可
-
-### 推荐模型
-- **DeepSeek V4 Pro**（默认）— 全功能，适合深度研究、论文写作
-- **DeepSeek V4 Flash** — 快速响应，适合日常问答、代码辅助
-
----
-
 ## Skill 系统
 
 泰深兼容 [agentskills.io](https://agentskills.io) 开放标准——这是由 Anthropic 发起、已被 **35+ 工具**（Claude Code、Cursor、GitHub Copilot、VS Code 等）采用的 Skill 规范。
@@ -81,8 +82,8 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.2.2.exe | `1C22847FD81B0077C48F773C2DBA847842F9EE106A92709171A68D4430CF3E57` |
-| taishen1.2.2免安装版.zip | `C58DBD083EBEED69550BF9EC7F0477C4E640F3E2FA5598B570936357FFE85D64` |
+| taishen_setup_1.2.3.exe | `BD6AE9539EBE83E62D0DCF37FD0D04DE26CF98BE72DEF9CCE1F41F6B84135729` |
+| taishen1.2.3免安装版.zip | `0956EA2BED5AC9ACB09410B953D038EB945AD7768694F966467843136281E5F5` |
 
 ---
 
