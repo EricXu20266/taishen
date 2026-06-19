@@ -21,7 +21,8 @@
 - tool_creator 创建的工具现在默认启用，新会话即可使用，无需再手动开启和重启。
 - 修复了弹窗多选结果被错误显示为「[object Object]」的问题。
 - 移除了 API Key / Secret 输入框旁无效的显示/隐藏切换按钮，所以API key默认加密。
-- 在system prompt中针对deepseek访问Github的仓库的逻辑进行了引导，应优先用 webFetch 浏览仓库页面，禁止直接 git clone 避免磁盘残留。
+- 针对访问Github的仓库的逻辑进行了调整，现在优先用 webFetch 浏览仓库页面，禁止直接 git clone 避免磁盘残留。
+- 子代理（SubAgents）token 消耗现在会出现在会话预算面板，并且累积到会话预算中，费用统计更完整。
 
 ### 安装
 - **taishen_setup_1.2.3.exe** — Windows 安装包
