@@ -1,36 +1,30 @@
-## 🚀 泰深 v1.2.3 正式发布
+## 🚀 泰深 v1.2.4 正式发布
 
-首个正式候选发布版本，专为 DeepSeek 打造的 AI 智能助手桌面客户端。
+专为 DeepSeek 深度调优的 AI 智能助手桌面客户端，千万级 token 长会话每轮仅 2 分钱。
 
 ### 核心功能
-- DeepSeek 全模型支持（V3/R1/V4-Pro）
-- Skill 自定义安装与扩展
-- MCP 服务接入
-- 插件扩展系统
+- DeepSeek V4 全模型支持（V4-Pro / V4-Flash）
+- Skill 自定义安装与扩展（兼容 agentskills.io 开放标准）
+- MCP 服务接入（多源连接，支持 Streamable HTTP / SSE / stdio）
+- 插件扩展系统 + 工具自主创建
+- IM 远程接入（飞书 / QQ / 微信）
+- SubAgent 子代理并行调度
+- 定时任务调度器 + 全局会话搜索
 
-### 本版本修复
-- Hook 引擎升级：支持按工具名匹配筛选、Function Hook 正式化、新增 Stop 事后校验事件、session 级自动清理、IPC 活动广播便于诊断。
-- Target 模式增强：新增达标验证机制，AI 声明完成后，二次验算是否真正完成（验证失败时默认放行不阻塞）；新增 update_goal 工具，AI 可主动暂停或完成目标；达标后自动清除。
-- 再次强化了泰深的行为引导，现在面对新项目或是需要记忆检索场景，它会更聪明了。
-- Skill 隐式调用加固：Skill 描述不再截断，完整展示触发条件，AI自主匹配更准确。
-- MCP 配置中将 SSE 传输协议拆分出来，现在可以兼容更多第三方 MCP 服务。
-- 引导模式选择器视觉强化：选中态蓝色高亮 + 勾选图标，一眼可辨。
-- 修复了 Target 模式两个 Bug：跨会话状态污染导致其他会话误触发 Target 面板、费用计算遍历全量会话而非当前会话导致数值不准。
-- 修复了 spawn_agent 被 Hook 层默认 30 秒超时截断的问题，子代理长时间任务不再被误杀。
-- 修复了 PathGuard 安全拦截后无友好提示的问题，现在会明确告知命令被拦截及原因。
-- tool_creator 创建的工具现在默认启用，新会话即可使用，无需再手动开启和重启。
-- 修复了弹窗多选结果被错误显示为「[object Object]」的问题。
-- 移除了 API Key / Secret 输入框旁无效的显示/隐藏切换按钮，所以API key默认加密。
-- 针对访问Github的仓库的逻辑进行了调整，现在优先用 webFetch 浏览仓库页面，禁止直接 git clone 避免磁盘残留。
-- 子代理（SubAgents）token 消耗现在会出现在会话预算面板，并且累积到会话预算中，费用统计更完整。
+### v1.2.4 更新亮点
+- 命令执行不再卡死，超时自动终结 + 管道继承兜底保护
+- Token 效率深度优化：上下文稳态机制将活跃上下文锁定在十万级，千万 token 长会话每轮约 2 分钱
+- MCP 安装后自动生效，SSE 重连修复，兼容更多 Streamable HTTP 服务
+- 跨会话全量搜索强化 + 会话入口快速定位
+- Windows 安装器权限提权 + 进程检测
+- 对话成本 Agent 自追溯，实时 cache 命中率 / Token 消耗 / 费用
 
 ### 安装
-- **taishen_setup_1.2.3.exe** — Windows 安装包
-- **taishen1.2.3免安装版.zip** — 解压即用免安装版
+- **taishen_setup_1.2.4.exe** — Windows 安装包（推荐）
+- **taishen1.2.4免安装版.zip** — 解压即用免安装版
 
 ### 文件校验（SHA256）
-
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.2.3.exe | `BD6AE9539EBE83E62D0DCF37FD0D04DE26CF98BE72DEF9CCE1F41F6B84135729` |
-| taishen1.2.3免安装版.zip | `0956EA2BED5AC9ACB09410B953D038EB945AD7768694F966467843136281E5F5` |
+| taishen_setup_1.2.4.exe | `A52BED7845726CA57D4C306D057D4AADFC4997ED851A0E70812C6475CC897937` |
+| taishen1.2.4免安装版.zip | `E5646FD59D1288CE7C4FBA94676D0F0867277CB48D7753C409570CCA020543FE` |
