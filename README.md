@@ -1,6 +1,6 @@
 # 泰深 taishen
 
-**二班的Eric · Vibe Coding 作品** | v1.2.5 | 2026
+**二班的Eric · Vibe Coding 作品** | v1.2.6 | 2026
 
 ---
 
@@ -15,8 +15,8 @@
 ## 快速开始
 
 ### 安装
-- **taishen_setup_1.2.5.exe** — Windows 安装包（推荐）
-- **taishen1.2.5免安装版.zip** — 解压即用免安装版
+- **taishen_setup_1.2.6.exe** — Windows 安装包（推荐）
+- **taishen1.2.6免安装版.zip** — 解压即用免安装版
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载所需文件。
 
@@ -82,8 +82,8 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.2.5.exe | `386E1F6D6F6A1376EB597E5C26BCC780F31379C2B86B16E1C712A62A692CF243` |
-| taishen1.2.5免安装版.zip | `7B95FEA944DFCECEA0447FE91CD8DBD15713130DD757E774326DBC259DFDA406` |
+| taishen_setup_1.2.6.exe | `B53EA79CD78F8E74489D287ADA8FCDA5E02FCAC9EF5E67A1D39CECE959F533E2` |
+| taishen1.2.6免安装版.zip | `7BB50BA02B9B8F5E6E1E39EFC79E26720FAEE096B6C90DBE7157264B83AE1649` |
 
 ---
 
@@ -120,6 +120,4 @@
 
 ## 许可证
 
-MIT License
-
-Copyright (c) 2026 二班的Eric
+Copyright (c) 2026 二班的Eric. All Rights Reserved.
