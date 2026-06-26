@@ -1,6 +1,6 @@
 # 泰深 taishen
 
-**二班的Eric · Vibe Coding 作品** | v1.2.6 | 2026
+**二班的Eric · Vibe Coding 作品** | v1.2.7 | 2026
 
 ---
 
@@ -8,15 +8,16 @@
 
 核心理念：**从信息到成果**——将你的资料和想法直接转化为可交付的结构化产出（代码、报告、论文、PPT、数据分析），而非仅仅聊天。
 
-> ⚠️ **仅支持 Windows 系统。** 客户端可连接其他大模型，但未经过实机测试，不保证效果。
+> ⚠️ 客户端可连接其他大模型，但仅 DeepSeek 经过完整测试，其他模型不保证效果。
 
 ---
 
 ## 快速开始
 
 ### 安装
-- **taishen_setup_1.2.6.exe** — Windows 安装包（推荐）
-- **taishen1.2.6免安装版.zip** — 解压即用免安装版
+- **taishen_setup_1.2.7.exe** — Windows 安装包（推荐）
+- **taishen1.2.7免安装版.zip** — Windows 解压即用免安装版
+- **泰深-1.2.7.dmg** — macOS 安装包
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载所需文件。
 
@@ -82,8 +83,9 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.2.6.exe | `71919444FC1D146BF3736C0753EB96216FE4BE2FE965FB95DD22168639704D4A` |
-| taishen1.2.6免安装版.zip | `8A4B709812254A1B22C52215DE7E9B0CAE32E81C739755D180C576F5365342EC` |
+| taishen_setup_1.2.7.exe | `2E1F27E45A0270EE8DC2D71912FE169A3B06A93AD2E5C709FF88759B69964D59` |
+| taishen1.2.7免安装版.zip | `F0C4FA7E99F3209022672BA52FAA412CB054EBC7D6C2CA0746956150A1C28810` |
+| 泰深-1.2.7.dmg | `06D85C5CB39D14E016C5B1A631393D41A1DC7F743E563FA38DCFDA0C5784E919` |
 
 ---
 
@@ -91,7 +93,7 @@
 
 | 项目 | 最低配置 |
 |------|---------|
-| 操作系统 | Windows 10+ |
+| 操作系统 | Windows 10+ / macOS 12+ |
 | 内存 | 8 GB |
 | 磁盘空间 | 500 MB |
 | 网络 | 需连接 DeepSeek API |
@@ -114,7 +116,7 @@
 - **MCP** = AI 的外部工具（"用什么"）——给 AI 接入网页搜索、浏览器、学术数据库等能力
 
 **Q: 有 Mac 版本吗？**
-暂无。当前仅支持 Windows。
+支持。从 v1.2.7 起提供 macOS 安装包（.dmg）。Windows 用户可将 `.taishen` 数据文件夹拷贝到 macOS 用户目录实现无痛迁移，注意 API Key 需重新配置（两平台加密方式不同）。
 
 ---
 
