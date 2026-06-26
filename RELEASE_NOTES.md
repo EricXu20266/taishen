@@ -1,6 +1,6 @@
-## 🚀 泰深 v1.2.6 正式发布
+﻿## 🚀 泰深 v1.2.7 正式发布
 
-专为 DeepSeek 深度调优的 AI 智能助手桌面客户端，全新 Commander 形态，上下文管理引擎重构，多供应商自由切换，千万级 token 长会话每轮仅 2 分钱。
+专为 DeepSeek 深度调优的 AI 智能助手桌面客户端。macOS 平台正式适配，多供应商配置精细化管理，稳定性和体验全面提升。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash）
@@ -18,22 +18,27 @@
 - SubAgent 子代理并行调度
 - 定时任务调度器 + 全局会话搜索
 
-### v1.2.6 更新亮点
-- 全新上下文管理体系上线，长会话信息密度大幅提升，对话连贯性质的飞跃
-- Commander 形态能力全景重构 — 现在的泰深真的很不一样，即使你已经熟悉它
-- IM 渠道图片发送全面打通 — 手机/电脑上通过微信、QQ、飞书可直接给泰深发图
-  （需为 Myeyes 子代理配置一个支持多模态的 LLM）
-- 回收站系统正式上线 — 误删的会话、Skill、子代理全可捞回，永不过期
-- MCP SSE 重连死循环终于被摁住，Unity MCP 等可以正常连接使用了
-- 定时任务调度器（Scheduler）已修复，一句话即可设置定时任务
-- 修复了思维块异常展开、文件路径多余括号等细节问题
+### v1.2.7 更新亮点
+- 重大更新：macOS 适配全面完成！泰深可以运行在 macOS 上了
+  - Windows 用户目录下的 .taishen 文件夹可直接拷贝到 macOS 用户目录，无痛迁移数据
+  - 因 API Key 加密方法不同（DPAPI vs Keychain），需为 macOS 准备新的 API Key
+- 多 Provider 配置选项重大升级：推理配置、百万上下文从全局下沉到 per-model 级别，不同 Provider、不同模型各自微调推理强度
+- 修复了切换/删除 Provider 带来的一系列 bug
+- UI 优化：添加了新的视觉元素和动效
+- 修复了主页和项目首页无法直接 Ctrl+V 贴图的问题
+- 修复了 write_pdf 遇到中文时无法生成 PDF 的问题
+- 修复了 v1.2.6 中新上下文管理可能带来的冷启动思考块暴涨的 bug
+- 修复了 L1 权限审批死锁问题，Agent 感知补齐，审批流程不打结
+- 修复了 customModels 对象泄漏导致 React 渲染崩溃、MCP 编辑表单错位、粘贴图片路径异常等多个小问题
 
 ### 安装
-- **taishen_setup_1.2.6.exe** — Windows 安装包（推荐）
-- **taishen1.2.6免安装版.zip** — 解压即用免安装版
+- **taishen_setup_1.2.7.exe** — Windows 安装包（推荐）
+- **taishen1.2.7免安装版.zip** — 解压即用免安装版
+- **泰深-1.2.7.dmg** — macOS 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.2.6.exe | `71919444FC1D146BF3736C0753EB96216FE4BE2FE965FB95DD22168639704D4A` |
-| taishen1.2.6免安装版.zip | `8A4B709812254A1B22C52215DE7E9B0CAE32E81C739755D180C576F5365342EC` |
+| taishen_setup_1.2.7.exe | `2E1F27E45A0270EE8DC2D71912FE169A3B06A93AD2E5C709FF88759B69964D59` |
+| taishen1.2.7免安装版.zip | `F0C4FA7E99F3209022672BA52FAA412CB054EBC7D6C2CA0746956150A1C28810` |
+| taishen-1.2.7.dmg | `06D85C5CB39D14E016C5B1A631393D41A1DC7F743E563FA38DCFDA0C5784E919` |
