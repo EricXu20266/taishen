@@ -111,10 +111,7 @@
 - **DeepSeek V4 Pro**（默认）— 全功能，适合深度研究、论文写作、代码开发
 - **DeepSeek V4 Flash** — 快速响应，适合日常问答、轻量任务
 
----
-
-## 文件校验（SHA256）
-
+### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
 | taishen_setup_1.2.8.exe | `DF083F45EB61307713D6F11ECA9EA83537D72D4CDEE6EAD73EF809759ED6F104` |
@@ -122,7 +119,6 @@
 | taishen_1.2.8_macOS_arm64.dmg | `F7D0F5D16888E0215784F0F3343067300ECB69183432CF6118DC144DF3F3790E` |
 | taishen_1.2.8_macOS_x64.dmg | `39262B56098A7D4FAA449D55F2A21AA1017A09C729DAEB56123D0D63FAE10590` |
 
----
 
 ## 系统要求
 
