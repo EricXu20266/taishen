@@ -1,6 +1,6 @@
-﻿# 泰深 taishen
+# 泰深 taishen
 
-**二班的Eric · Vibe Coding 作品** | v1.2.8 | 2026
+**二班的Eric · Vibe Coding 作品** | v1.2.9 | 2026
 
 ---
 
@@ -92,10 +92,9 @@
 
 ### 安装
 
-- **taishen_setup_1.2.8.exe** — Windows 安装包（推荐）
-- **taishen1.2.8免安装版.zip** — Windows 解压即用免安装版
-- **taishen_1.2.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
-- **taishen_1.2.8_macOS_x64.dmg** — macOS Intel 安装包
+- **taishen_setup_1.2.9.exe** — Windows 安装包（推荐）
+- **taishen_1.2.9免安装.zip** — Windows 解压即用免安装版
+- **taishen_1.2.9_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载。
 
@@ -111,14 +110,19 @@
 - **DeepSeek V4 Pro**（默认）— 全功能，适合深度研究、论文写作、代码开发
 - **DeepSeek V4 Flash** — 快速响应，适合日常问答、轻量任务
 
-### 文件校验（SHA256）
+---
+
+## 文件校验（SHA256）
+
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.2.8.exe | `DF083F45EB61307713D6F11ECA9EA83537D72D4CDEE6EAD73EF809759ED6F104` |
-| taishen1.2.8免安装版.zip | `EE1C0153F36E5CD4D8F9C381D1996E212D2890C3B5FA2AB5BCA310115EB2051D` |
-| taishen_1.2.8_macOS_arm64.dmg | `F7D0F5D16888E0215784F0F3343067300ECB69183432CF6118DC144DF3F3790E` |
-| taishen_1.2.8_macOS_x64.dmg | `39262B56098A7D4FAA449D55F2A21AA1017A09C729DAEB56123D0D63FAE10590` |
+| 文件 | SHA256 |
+|------|--------|
+| taishen_setup_1.2.9.exe | `AB186742548AE36F55E236900E8942358EB3C4A4167C9547299CA9B76B6BFD9D` |
+| taishen_1.2.9免安装.zip | `B79DF86A6A4872712FF17C43ACE505092662463B3514EF8858C25170FCD8028B` |
+| taishen_1.2.9_macOS_arm64.dmg | `180699458FB34730F07B8D785C1AE9FD1FA515BE280DB516C8ECB9AD8070B87E` |
 
+---
 
 ## 系统要求
 
