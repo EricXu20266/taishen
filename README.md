@@ -1,6 +1,6 @@
 ﻿# 泰深 taishen
 
-**二班的Eric · Vibe Coding 作品** | v1.3.1 | 2026
+**二班的Eric · Vibe Coding 作品** | v1.3.2 | 2026
 
 ---
 
@@ -92,9 +92,8 @@
 
 ### 安装
 
-- **taishen_setup_1.3.1.exe** — Windows 安装包（推荐）
-- **taishen_1.3.1免安装.zip** — Windows 解压即用免安装版
-- **taishen_1.3.1_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包（即将发布）
+- **taishen_setup_1.3.2.exe** — Windows 安装包（推荐）
+- **taishen_1.3.2免安装.zip** — Windows 解压即用免安装版
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载。
 
@@ -116,9 +115,8 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.3.1.exe | `DE2AB57A7D8E13F3BA3C3EA0757C72C618FEB7A422D838D97492698DF92AB54D` |
-| taishen_1.3.1免安装.zip | `9423410640C2239682ACBA4B19CA2AB5DB02424593DF9BF38566A7950996E0A9` |
-| taishen_1.3.1_macOS_arm64.dmg | 待 CI 发布 |
+| taishen_setup_1.3.2.exe | `97903D43EFB547F7FAFB69A1954026CF91158EB56017FF61B916442751ADA29F` |
+| taishen_1.3.2免安装.zip | `57B278490525355B7969F5567755C89410B20BE760714F9E985E720EB2FE1303` |
 
 ---
 
