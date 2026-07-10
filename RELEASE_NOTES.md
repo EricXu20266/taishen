@@ -36,6 +36,7 @@
 
 ### 安装
 - **taishen_setup_1.3.3-plus.exe** — Windows 安装包（推荐）
+- **taishen_1.3.3-plus_macOS_arm64.dmg** — macOS 安装包
 - **taishen_1.3.3-plus免安装.zip** — 解压即用免安装版
 
 ### 文件校验（SHA256）
@@ -43,3 +44,5 @@
 |------|--------|
 | taishen_setup_1.3.3-plus.exe | `15A1926346A5482A4F9B3BBA0206DC3D7EA20680F565E5D67562E6A62461C79F` |
 | taishen_1.3.3-plus免安装.zip | `C3CA3FBFC8202C24F46B98E1A3557AB54E3A4DB6404879100755E9B83759FC8A` |
+| taishen_1.3.3-plus_macOS_arm64.dmg | `E4113ED8AB3D9C69BF6B3463A7A52F9BBF1B35A44C97486C894738EB9879464B` |
+
