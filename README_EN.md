@@ -1,4 +1,6 @@
-﻿﻿# Taishen
+﻿# Taishen
+
+[中文](README.md) | English
 
 **Eric Xu · Vibe Coding** | v1.3.4 | 2026
 
