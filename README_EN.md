@@ -119,8 +119,10 @@ Equip Taishen with a professional team — dispatch sub-agents to work in parall
 |------|--------|
 | taishen_setup_1.3.4.exe | `61485F7AD4BA68734A9A1FCE5BE66999A5FBF3EDB16BAC9F0125D999B4BD544D` |
 | taishen_1.3.4免安装.zip | `8AC2A55E45D90CA96F6AA2CC6465390185025B4A137AC2A986059F7D0D64CE68` |
+| taishen_1.3.4_macOS_arm64.dmg | `DE725E3D78FA893391B46ED85B2C8DDA346C04FF3820D2B214208113D9693A70` |
 
 ---
+
 
 ## System Requirements
 
