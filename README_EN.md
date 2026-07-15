@@ -2,7 +2,7 @@
 
 [中文](README.md) | English
 
-**Eric Xu · Vibe Coding** | v1.3.4 | 2026
+**Eric Xu · Vibe Coding** | v1.3.5 | 2026
 
 ---
 
@@ -94,8 +94,9 @@ Equip Taishen with a professional team — dispatch sub-agents to work in parall
 
 ### Installation
 
-- **taishen_setup_1.3.4.exe** — Windows installer (recommended)
-- **taishen_1.3.4免安装.zip** — Windows portable, extract and run
+- **taishen_setup_1.3.5.exe** — Windows installer (recommended)
+- **taishen_1.3.5免安装.zip** — Windows portable, extract and run
+- **taishen_1.3.5_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
 
 > 📥 **Download:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — Go to the latest version and download from "Assets".
 
@@ -117,12 +118,11 @@ Equip Taishen with a professional team — dispatch sub-agents to work in parall
 
 | File | SHA256 |
 |------|--------|
-| taishen_setup_1.3.4.exe | `61485F7AD4BA68734A9A1FCE5BE66999A5FBF3EDB16BAC9F0125D999B4BD544D` |
-| taishen_1.3.4免安装.zip | `8AC2A55E45D90CA96F6AA2CC6465390185025B4A137AC2A986059F7D0D64CE68` |
-| taishen_1.3.4_macOS_arm64.dmg | `DE725E3D78FA893391B46ED85B2C8DDA346C04FF3820D2B214208113D9693A70` |
+| taishen_setup_1.3.5.exe | `97D7A6698F2D7782A3BB12DC68E4233E9BB11FECA6A6342A040BE8109DBECCDE` |
+| taishen_1.3.5免安装.zip | `CF7A8EB7FE78CF50244DE01FBB31034E98829EB212D15396DA03063368B09D02` |
+| taishen_1.3.5_macOS_arm64.dmg | `A41A69070F41F01C385C75F386FDE444300CFEDFB3430FD3AAFC332E9F9EC583` |
 
 ---
-
 
 ## System Requirements
 
