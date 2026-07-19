@@ -1,8 +1,8 @@
-﻿# 泰深 taishen
+# 泰深 taishen
 
 [English](README_EN.md) | 中文
 
-**二班的Eric · Vibe Coding 作品** | v1.3.5 | 2026
+**二班的Eric · Vibe Coding 作品** | v1.3.6 | 2026
 
 ---
 
@@ -94,9 +94,9 @@
 
 ### 安装
 
-- **taishen_setup_1.3.5.exe** — Windows 安装包（推荐）
-- **taishen_1.3.5免安装.zip** — Windows 解压即用免安装版
-- **taishen_1.3.5_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.3.6.exe** — Windows 安装包（推荐）
+- **taishen_1.3.6免安装.zip** — Windows 解压即用免安装版
+- **taishen_1.3.6_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载。
 
@@ -118,9 +118,9 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.3.5.exe | `97D7A6698F2D7782A3BB12DC68E4233E9BB11FECA6A6342A040BE8109DBECCDE` |
-| taishen_1.3.5免安装.zip | `CF7A8EB7FE78CF50244DE01FBB31034E98829EB212D15396DA03063368B09D02` |
-| taishen_1.3.5_macOS_arm64.dmg | `A41A69070F41F01C385C75F386FDE444300CFEDFB3430FD3AAFC332E9F9EC583` |
+| taishen_setup_1.3.6.exe | `3CFD79151BBD9A72FDC68FC26C23FE39B4BE8AF4F7B251C3A01589641240A7A0` |
+| taishen_1.3.6免安装.zip | `B6122C72E1D2438FF96974D2C811DAFA8DE8CD1955BF1E7280F53D4329D913CA` |
+| taishen_1.3.6_macOS_arm64.dmg | `A27C37417DCD0F83FDCB1E3BE3FB604E1C8EE13CAE96CBD0B9AA2CC77414A5CF` |
 
 ---
 
