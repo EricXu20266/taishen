@@ -2,11 +2,13 @@
 
 [中文](README.md) | English
 
-**Eric Xu · Vibe Coding** | v1.3.6 | 2026
+**Eric Xu · Vibe Coding** | v1.3.7 | 2026
 
 ---
 
-An AI agent desktop client for everyone. From Information to Results — turn your materials and ideas directly into deliverable structured output, not just chat.
+An AI agent desktop client for everyone. Born for DeepSeek — turn your materials and ideas directly into deliverable structured output, not just chat.
+
+> 📖 For a deep dive into Taishen's design philosophy and technical architecture, read the [Whitepaper](WHITEPAPER_EN.md).
 
 > ⚠️ Taishen can connect to other LLMs, but only DeepSeek has been fully tested. Other models are not guaranteed to work as expected.
 
@@ -23,6 +25,39 @@ Taishen is not a "Q&A bot" — it's a Commander-mode agent that autonomously pla
 **Root-Cause Diagnosis** — Diagnose first, prescribe second. Distinguishes symptom fixes from root-cause fixes. No workarounds passed off as solutions.
 
 **Closed-Loop Accountability** — From planning to delivery, the complete chain. The AI proactively questions fuzzy requirements, states assumptions when uncertain, and self-verifies upon completion.
+
+### 🎨 Tai An Canvas System
+
+Taishen's built-in streaming content workspace — AI writes in real time as you watch.
+
+Six canvas types for every scenario:
+
+| Canvas | Capability |
+|------|------|
+| Writing | Character-by-character streaming output |
+| Code | Syntax highlighting + embedded terminal |
+| HTML | WYSIWYG preview, click-to-annotate elements |
+| Terminal | Fully visible command execution, stop anytime |
+| Data | Tables + four chart types, drag CSV to visualize |
+| Image | Display + annotation + comparison |
+
+All canvases are **bidirectional** — AI writes, you edit directly. Version history tracks every change for instant rollback. When AI's work process shifts from black box to visible, you don't need to "trust AI will get it right" — you watch it happen.
+
+### 🧩 Parallel Agents
+
+Traditional AI does one thing at a time. Taishen dispatches multiple independent tasks to parallel workers — searching financial reports while reading industry analysis while crunching data, all simultaneously. Each worker can use a different model: DeepSeek for deep reasoning, GPT-4o for visual tasks. Just say "analyze these reports" — Taishen distributes the work automatically.
+
+### 🧬 Experience Encoder
+
+Taishen doesn't just use tools — it **creates** them.
+
+**skillCreator** — Package a successful workflow into a Skill (Markdown template, agentskills.io open standard), effective immediately.
+
+**skillPatcher** — Skills evolve. AI appends or replaces content as it discovers optimizations during use. Skills get more precise with every use.
+
+**tool_creator** — When Skills aren't enough, AI writes real TypeScript tools. Compile, register, effective next session.
+
+Your Taishen learns your workflow and develops a unique capability profile over time.
 
 ### 📱 IM Remote Access
 
@@ -68,13 +103,21 @@ Equip Taishen with a professional team — dispatch sub-agents to work in parall
 - AI analyzes and generates Word reports, PPT presentations, Excel spreadsheets, PDF documents in one click
 - HTML Advanced Previewer: preview AI-written web pages directly inside Taishen, select elements to annotate revision suggestions — WYSIWYG
 
-### 🛡️ Security & Control
+### 🛡️ Four-Layer Security
 
-- **Three-Tier Sandbox** — L1 approval required → L2 autonomous review → L3 full trust, globally applied
-- **Workspace Isolation** — AI can only access folders you designate; all operations are auditable
-- **Command Risk Rating** — Shell commands labeled with 🔴🟡🟢 three-level risk before execution
-- **Auto-Backup on Edit** — Every file modification is automatically snapshotted locally; restore anytime
-- **Recycle Bin** — Accidentally deleted conversations, Skills, and SubAgents go to the recycle bin, never expire, waiting for you to permanently clear
+**Path Access Control** — AI only accesses workspaces you designate. System directories, disk roots, and home directories are auto-blocked. Short filename bypass and symlink escape recognized and blocked.
+
+**Command Execution Control** — Three-tier sandbox: L1 step-by-step approval → L2 AI autonomous review → L3 full trust. Fatal commands blocked outright (`rm -rf /`, `shutdown`, etc.). Command injection and script inline execution blocked at sandbox layer.
+
+**Network Boundary Control** — DeepSeek API, GitHub, and common domains open by default. Other domains require whitelist approval. Internal addresses (127.x, 192.168.x, 10.x) auto-blocked to prevent SSRF attacks.
+
+**Gate Rejection Tracker** — Same operation rejected twice → system auto-blocks. AI won't pester you after a clear rejection.
+
+Every file modification auto-backed up locally. Recycle bin keeps accidentally deleted sessions, Skills, and SubAgents forever. **It's precisely these four layers that let you confidently delegate more authority to AI.**
+
+### 🩺 AI Self-Diagnosis
+
+Taishen has a built-in structured logging system (6 levels × 9 categories). The AI queries its own runtime logs: tool failure → auto-locate root cause; session anomaly → trace full call chain; performance drop → find bottleneck. From "user helps AI debug" to "AI debugs itself" — no technical knowledge needed, no log diving required.
 
 ### 🎨 Experience Highlights
 
@@ -82,7 +125,9 @@ Equip Taishen with a professional team — dispatch sub-agents to work in parall
 - **AI Completion Sound** — Plays a chime when the AI finishes responding; toggleable (on by default)
 - **Context-Aware Memory** — Remembers your preferences, work style, and frequently used tools across sessions
 - **1M Token Context** — Full DeepSeek V4 window support; long papers and large projects without pressure
-- **Prefix Cache Optimization** — Prompt structure designed for DeepSeek's cache-hit mechanism, targeting >98% hit rate. Measured at ~99% cache hit rate even in 200M+ token sessions, with constant per-round cost
+- **Proactive Pop-Up Guidance** — Can't write prompts? Just say one sentence. Vague requirements? AI pops up to confirm — clicking is 100× faster than guessing wrong and redoing
+- **99% Prefix Cache Hit Rate** — Prompt structure deeply optimized for DeepSeek's cache mechanism. Per-round cost constant even in 200M+ token sessions
+- **Built-in Screenshot Tool** — Taishen screenshots itself. With Myeyes, fully automated image recognition, annotation, and editing
 - **Conversation Search** — Natural-language cross-session full-text search; the AI can also proactively reference past discussions
 - **Scheduled Tasks** — Five modes: Interval / Daily / Weekly / Cron / One-shot. AI can create and manage tasks autonomously
 - **Clickable File Paths** — Project-relative paths and backtick-wrapped paths are automatically rendered as clickable links
@@ -94,9 +139,9 @@ Equip Taishen with a professional team — dispatch sub-agents to work in parall
 
 ### Installation
 
-- **taishen_setup_1.3.6.exe** — Windows installer (recommended)
-- **taishen_1.3.6免安装.zip** — Windows portable, extract and run
-- **taishen_1.3.6_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
+- **taishen_setup_1.3.7.exe** — Windows installer (recommended)
+- **taishen_1.3.7免安装.zip** — Windows portable, extract and run
+- **taishen_1.3.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
 
 > 📥 **Download:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — Go to the latest version and download from "Assets".
 
@@ -118,9 +163,9 @@ Equip Taishen with a professional team — dispatch sub-agents to work in parall
 
 | File | SHA256 |
 |------|--------|
-| taishen_setup_1.3.6.exe | `3CFD79151BBD9A72FDC68FC26C23FE39B4BE8AF4F7B251C3A01589641240A7A0` |
-| taishen_1.3.6免安装.zip | `B6122C72E1D2438FF96974D2C811DAFA8DE8CD1955BF1E7280F53D4329D913CA` |
-| taishen_1.3.6_macOS_arm64.dmg | `A27C37417DCD0F83FDCB1E3BE3FB604E1C8EE13CAE96CBD0B9AA2CC77414A5CF` |
+| taishen_setup_1.3.7.exe | `CDB977AFEE0AAEB6F54374681DFA16A2C1AB10CBD2DAAFD449350F68AB93F3A4` |
+| taishen_1.3.7免安装.zip | `6A5763858D1C5781323CC9A7B88426157602AEA06DB933E9BB8DADCF03583BAA` |
+| taishen_1.3.7_macOS_arm64.dmg | `C5AB35E7E1EE4BA131802C208CF30A5255F5C6ED0060A79DECB159AE9F2BFE8A` |
 
 ---
 
