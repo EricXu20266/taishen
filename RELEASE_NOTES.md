@@ -35,7 +35,7 @@
 - 重大更新，Headless CLI 模式上线。`泰深.exe --headless -p "你的问题"` 纯命令行运行，不弹 GUI 窗口，适合脚本集成和服务器场景。
 - 新增 Anthropic Messages API 协议支持，Claude 系列模型现在可以接入泰深了。
 - 为泰深添加了一个Monitor 监控工具，事件驱动监控，支持持久化（重启恢复）+ 智能告警（自定义关键词触发 Agent 分析）+ 速率熔断。
-- 内置浏览器新增 Chrome 扩展安装和广告域名拦截。扩展工具栏 UI 就位，你常用的效率插件可以搬进泰深浏览器了。
+- 内置浏览器补充了浏览器扩展插件的安装与管理按钮。
 - spawn_agent 子代理增强：支持 `skill_ids` 和 `mcp_ids` 参数，技能和 MCP 工具直接注入子代理，主身不用激活，上下文保持干净。
 - FlexDog 灵活狗更灵活了：在你配置了多个provider和多个model时，你可以指定任意具体的model来使用。
 - 修复了 UI 按钮 hover 效果不统一的问题，现在所有聊天按钮的 hover/active 动画整齐划一。
