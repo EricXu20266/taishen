@@ -1,6 +1,6 @@
-## 🚀 泰深 v1.3.7 正式发布
+## 🚀 泰深 v1.3.8 正式发布
 
-效率工具持续打磨：截图自检、浏览器扩展、批处理加速。同步发布[白皮书](WHITEPAPER.md)——《为 DeepSeek 而生的桌面 AI 工作台》。
+语音交互、消息归档与 Headless CLI 三大更新。同步发布[白皮书](WHITEPAPER.md)——《为 DeepSeek 而生的桌面 AI 工作台》。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash），前缀缓存命中率 ~99%，长会话成本恒定
@@ -22,29 +22,36 @@
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
 
-### v1.3.7
+### v1.3.8
 
-- 添加了一个内置截图工具，现在泰深可以自我截图，如果你配置了myeyes，基本可以实现全自动识图、标注、修改流程。
-- 内置浏览器现在支持安装 Chrome 扩展了，你常用的效率工具可以搬进泰深浏览器里用。
-- 画布工具栏新增「打开文件夹」按钮，点一下直接打开画布绑定的文件所在目录，不用再去文件面板里翻找了。
-- 批处理执行策略上线，对抗一步一停的工作流。
-- 修复了 HTML 画布加载大文件时主进程假死的问题，现在打开再大的页面也不会卡住整个窗口。
-- 修复了泰案追加模式下内容被覆盖的 Bug。
-- 修复了峰谷计费开关Bug。
-- 修复了批注文本框退格键冒泡拦截导致其他快捷键失效，以及 HTML 画布刷新按钮不灵光的问题。
-- 修复了弹窗卡片不跟随消息流滚动、泰案按钮在无会话时点击无反应等几个小毛病。
+- 重大更新，语音交互系统全面上线！现在泰深能听会说——语音输入（STT）转文字，语音输出（TTS）朗读回复，三种模式自由切换（关/手动/自动/AI决定）。
+  - 语音输入（STT）转文字，使用Google云端API接口或是本地whisper模型。
+    - 使用Google云端接口需要配置Google的api key。
+    - 使用本地Whisper模型，在首次使用的时候需要下载模型，工作模式是自建一个whisper http 服务使用。
+    - Whisper配置4种模型下载选择，越大精度越高但是识别速度会越慢。推荐使用Small或是base模型。
+    - Whisper推理引擎也有两种，CPU或是GPU，推荐使用GPU，配置GPU推理引擎需要CUDA环境，初次使用会下载安装，如果你已经有了CUDA，只需下载Whisper本体。
+  - 语音输出（TTS）朗读回复，配置了Windows系统的TTS（macOS不支持），以及云端免费的Edge TTS。
+- 重大更新，消息归档系统就位。泰深会自动把过期会话（默认60天，推荐30天）迁移到archive文件夹内的JSONL，前台设置页可以自己调归档阈值天数，WAL checkpoint + VACUUM 双管齐下回收磁盘空间。
+- 重大更新，Headless CLI 模式上线。`泰深.exe --headless -p "你的问题"` 纯命令行运行，不弹 GUI 窗口，适合脚本集成和服务器场景。
+- 新增 Anthropic Messages API 协议支持，Claude 系列模型现在可以接入泰深了。
+- 为泰深添加了一个Monitor 监控工具，事件驱动监控，支持持久化（重启恢复）+ 智能告警（自定义关键词触发 Agent 分析）+ 速率熔断。
+- 内置浏览器新增 Chrome 扩展安装和广告域名拦截。扩展工具栏 UI 就位，你常用的效率插件可以搬进泰深浏览器了。
+- spawn_agent 子代理增强：支持 `skill_ids` 和 `mcp_ids` 参数，技能和 MCP 工具直接注入子代理，主身不用激活，上下文保持干净。
+- FlexDog 灵活狗更灵活了：在你配置了多个provider和多个model时，你可以指定任意具体的model来使用。
+- 修复了 UI 按钮 hover 效果不统一的问题，现在所有聊天按钮的 hover/active 动画整齐划一。
+- 一堆零零散散的小修复。旧的不去新的不来，代码如是，bug 亦如是。
 
 ### 安装
-- **taishen_setup_1.3.7.exe** — Windows 安装包（推荐）
-- **taishen_1.3.7免安装.zip** — 解压即用免安装版
-- **taishen_1.3.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.3.8.exe** — Windows 安装包（推荐）
+- **taishen_1.3.8免安装.zip** — 解压即用免安装版
+- **taishen_1.3.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.3.7.exe | `CDB977AFEE0AAEB6F54374681DFA16A2C1AB10CBD2DAAFD449350F68AB93F3A4` |
-| taishen_1.3.7免安装.zip | `6A5763858D1C5781323CC9A7B88426157602AEA06DB933E9BB8DADCF03583BAA` |
-| taishen_1.3.7_macOS_arm64.dmg | `C5AB35E7E1EE4BA131802C208CF30A5255F5C6ED0060A79DECB159AE9F2BFE8A` |
+| taishen_setup_1.3.8.exe | `522D4DF7CC29F8CD8CD62C043D967CF72ECF1B3B237E551F55D033EB8F2F4D7D` |
+| taishen_1.3.8免安装.zip | `E8FD77721E539D488581F01B58227AF7AA6901489CAE3A0A7FA42F70F772533E` |
+| taishen_1.3.8_macOS_arm64.dmg | `974AC6C2BD940B1A040652021A4F97210CAB9CB1C9F82875EB1C5DB7826F5C36` |
 
 ---
 
