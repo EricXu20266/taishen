@@ -38,7 +38,7 @@ Every line of code backing this whitepaper began with those three digits and a s
 
 ## II. The Present: An AI Delivery Platform
 
-taishen current version v1.3.6 is a full desktop application (Windows / macOS), deeply optimized for the DeepSeek V4 model family.
+taishen current version v1.3.8 is a full desktop application (Windows / macOS), deeply optimized for the DeepSeek V4 model family.
 
 Among the 23 tools officially listed on awesome-deepseek-agent, 15 are terminal CLI tools, 3 are VS Code extensions. The vast majority target developers — typing commands, writing code, calling APIs. taishen is one of only two GUI desktop applications on that list. But its positioning differs fundamentally from the other GUI app (Cherry Studio): Cherry Studio is a "multi-model chat client"; taishen is an "Agent workbench." Chat is the means; delivery is the end.
 
@@ -262,4 +262,4 @@ This is a reasonable choice for commercial software — much like Photoshop isn'
 
 ---
 
-*This whitepaper was updated during a taishen v1.3.6 session. taishen now features the Tai An canvas system — six streaming canvases, bidirectional editing, version history tracking — plus a standalone browser window. From "delivering results" to "encapsulating experience" to "visualizing process" — three steps, complete.*
+*This whitepaper was updated during a taishen v1.3.8 session. taishen now features the Tai An canvas system — six streaming canvases, bidirectional editing, version history tracking, voice interaction, standalone browser window, and Headless CLI. From "delivering results" to "encapsulating experience" to "visualizing process" — three steps, complete.*
