@@ -1,4 +1,4 @@
-## 🚀 泰深 v1.3.8 正式发布
+## 🚀 泰深 v1.3.9 正式发布
 
 语音交互、消息归档与 Headless CLI 三大更新。同步发布[白皮书](WHITEPAPER.md)——《为 DeepSeek 而生的桌面 AI 工作台》。
 
@@ -22,7 +22,7 @@
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
 
-### v1.3.8
+### v1.3.9
 
 - 重大更新，语音交互系统全面上线！现在泰深能听会说——语音输入（STT）转文字，语音输出（TTS）朗读回复，三种模式自由切换（关/手动/自动/AI决定）。
   - 语音输入（STT）转文字，使用Google云端API接口或是本地whisper模型。
@@ -42,16 +42,16 @@
 - 一堆零零散散的小修复。旧的不去新的不来，代码如是，bug 亦如是。
 
 ### 安装
-- **taishen_setup_1.3.8.exe** — Windows 安装包（推荐）
-- **taishen_1.3.8免安装.zip** — 解压即用免安装版
-- **taishen_1.3.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.3.9.exe** — Windows 安装包（推荐）
+- **taishen_1.3.9免安装.zip** — 解压即用免安装版
+
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.3.8.exe | `522D4DF7CC29F8CD8CD62C043D967CF72ECF1B3B237E551F55D033EB8F2F4D7D` |
-| taishen_1.3.8免安装.zip | `E8FD77721E539D488581F01B58227AF7AA6901489CAE3A0A7FA42F70F772533E` |
-| taishen_1.3.8_macOS_arm64.dmg | `974AC6C2BD940B1A040652021A4F97210CAB9CB1C9F82875EB1C5DB7826F5C36` |
+| taishen_setup_1.3.9.exe | `8D9EA05C005222C9648503DF804420D01760351CCF2897B27E90FE69A0631C15` |
+| taishen_1.3.9免安装.zip | `C42C652D61D6AB9E870E684062BFC7D35FF43F3206A39B4F5527E0620456EF6B` |
+
 
 ---
 
