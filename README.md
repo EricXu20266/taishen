@@ -2,7 +2,7 @@
 
 [English](README_EN.md) | 中文
 
-**二班的Eric · Vibe Coding 作品** | v1.4.1 | 2026
+**二班的Eric · Vibe Coding 作品** | v1.4.2 | 2026
 
 ---
 
@@ -139,8 +139,8 @@
 
 ### 安装
 
-- **taishen_setup_1.4.1.exe** — Windows 安装包（推荐）
-- **taishen_1.4.1免安装.zip** — Windows 解压即用免安装版
+- **taishen_setup_1.4.2.exe** — Windows 安装包（推荐）
+- **taishen_1.4.2.zip** — Windows 解压即用免安装版
 - **taishen_1.4.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包（v1.4.0）
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载。
@@ -163,8 +163,8 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.1.exe | `6BDE0509D73303C4C32E6B3E46F082506B687F7F6A05303E12E18B54E0F372F4` |
-| taishen_1.4.1免安装.zip | `78DDC24382BB70DC46FE2A71B7D2AFF6CC346A6E525128265A4BAC6CF30ECE46` |
+| taishen_setup_1.4.2.exe | `79E4C19D3B1FCD13C6F90F3CAA75BCC866E4D5DC3D215BA26E50FABEC736DAEB` |
+| taishen_1.4.2.zip | `6593774A2C6F6DA13BE115663D1327D3F7F7270899CF91C0AB4C4DFCDF30F4EE` |
 | taishen_1.4.0_macOS_arm64.dmg | `9C88BC7FDABB4F7FE6A5FB953E74264781477FA21BE0A95B2E07F3EA636967A7` |
 
 ---
