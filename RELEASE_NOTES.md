@@ -1,6 +1,6 @@
-## 🚀 泰深 v1.4.1 正式发布
+## 🚀 泰深 v1.4.2 正式发布
 
-修复闪退与浏览器崩溃，画布体验优化。
+引导页新增中英文切换，国际化体验升级。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash），前缀缓存命中率 ~99%，长会话成本恒定
@@ -21,6 +21,12 @@
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+### v1.4.2
+
+- 为初始化引导页添加了中英文切换按钮，国际用户首次体验更友好。
+
+> 🇬🇧 Added a language toggle button (Chinese/English) to the onboarding guide — making the first-run experience welcoming for international users.
 
 ### v1.4.1
 
@@ -47,15 +53,15 @@
 - 修复了会话文件卡片错误加载文件夹目录的 bug。
 
 ### 安装
-- **taishen_setup_1.4.1.exe** — Windows 安装包（推荐）
-- **taishen_1.4.1免安装.zip** — 解压即用免安装版
+- **taishen_setup_1.4.2.exe** — Windows 安装包（推荐）
+- **taishen_1.4.2.zip** — 解压即用免安装版
 - **taishen_1.4.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包（v1.4.0）
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.1.exe | `6BDE0509D73303C4C32E6B3E46F082506B687F7F6A05303E12E18B54E0F372F4` |
-| taishen_1.4.1免安装.zip | `78DDC24382BB70DC46FE2A71B7D2AFF6CC346A6E525128265A4BAC6CF30ECE46` |
+| taishen_setup_1.4.2.exe | `79E4C19D3B1FCD13C6F90F3CAA75BCC866E4D5DC3D215BA26E50FABEC736DAEB` |
+| taishen_1.4.2.zip | `6593774A2C6F6DA13BE115663D1327D3F7F7270899CF91C0AB4C4DFCDF30F4EE` |
 | taishen_1.4.0_macOS_arm64.dmg | `9C88BC7FDABB4F7FE6A5FB953E74264781477FA21BE0A95B2E07F3EA636967A7` |
 
 ---
