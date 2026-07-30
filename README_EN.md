@@ -1,167 +1,167 @@
-# 泰深 taishen
+# Taishen
 
-[English](README_EN.md) | 中文
+[中文](README.md) | English
 
-**二班的Eric · Vibe Coding 作品** | v1.4.2 | 2026
-
----
-
-面向普通人的 AI 智能体桌面客户端。为 DeepSeek 而生——将你的资料和想法直接转化为可交付的结构化产出，而非仅仅聊天。
-
-> 📖 深入了解泰深的设计哲学与技术架构，请阅读[白皮书](WHITEPAPER.md)。
-
-> ⚠️ 客户端可连接其他大模型，但仅 DeepSeek 经过完整测试，其他模型不保证效果。
+**Eric Xu · Vibe Coding** | v1.4.2 | 2026
 
 ---
 
-## 核心能力
+An AI agent desktop client for everyone. Born for DeepSeek — turn your materials and ideas directly into deliverable structured output, not just chat.
 
-### 🤖 Commander 智能体引擎
+> 📖 For a deep dive into Taishen's design philosophy and technical architecture, read the [Whitepaper](WHITEPAPER_EN.md).
 
-泰深不是"问答机器人"，是能自主规划、调度工具、验证结果的 Commander 形态智能体。
+> ⚠️ Taishen can connect to other LLMs, but only DeepSeek has been fully tested. Other models are not guaranteed to work as expected.
 
-**五阶段工作流** — Plan → Todo → Execute → Verify → Done，右侧面板实时可见每一步进展。AI 自主拆解复杂任务、调度工具链、验证产出质量，你只需要确认关键决策。
+---
 
-**追根溯源诊断** — 面对问题先诊断后开方。区分症状修复和根因修复，不拿 workaround 糊弄你。
+## Core Capabilities
 
-**制度性闭环** — 从计划到交付的完整链条，AI 会主动追问模糊需求、在不确定时说明假设、完成时自我验证。
+### 🤖 Commander Agent Engine
 
-### 🎨 泰案画布系统
+Taishen is not a "Q&A bot" — it's a Commander-mode agent that autonomously plans, orchestrates tools, and verifies results.
 
-泰深内置的流式内容工作空间——AI 在上面边写边呈现，你实时看到内容成型。
+**Five-Stage Workflow** — Plan → Todo → Execute → Verify → Done. Every step is visible in real-time on the right panel. The AI independently breaks down complex tasks, orchestrates the toolchain, and verifies output quality — you only need to confirm key decisions.
 
-六种画布覆盖全场景：
+**Root-Cause Diagnosis** — Diagnose first, prescribe second. Distinguishes symptom fixes from root-cause fixes. No workarounds passed off as solutions.
 
-| 画布 | 能力 |
+**Closed-Loop Accountability** — From planning to delivery, the complete chain. The AI proactively questions fuzzy requirements, states assumptions when uncertain, and self-verifies upon completion.
+
+### 🎨 Tai An Canvas System
+
+Taishen's built-in streaming content workspace — AI writes in real time as you watch.
+
+Six canvas types for every scenario:
+
+| Canvas | Capability |
 |------|------|
-| 写作 | 逐字流式输出，边写边看边调整 |
-| 代码 | 语法高亮 + 内嵌终端，写完直接跑测试 |
-| HTML | 所见即所得预览，框选元素即标注 |
-| 终端 | 命令执行全程可见，随时叫停 |
-| 数据分析 | 表格 + 四种图表，拖入 CSV 直接出图 |
-| 图片 | 展示 + 标注 + 对比 |
+| Writing | Character-by-character streaming output |
+| Code | Syntax highlighting + embedded terminal |
+| HTML | WYSIWYG preview, click-to-annotate elements |
+| Terminal | Fully visible command execution, stop anytime |
+| Data | Tables + four chart types, drag CSV to visualize |
+| Image | Display + annotation + comparison |
 
-所有画布**双向编辑**——AI 可以写，你也可以直接改。历史版本追踪精确记录每一次变更，随时回退。AI 的工作过程从黑箱变成可见——你不需要"相信 AI 会做对"，你看着它做。
+All canvases are **bidirectional** — AI writes, you edit directly. Version history tracks every change for instant rollback. When AI's work process shifts from black box to visible, you don't need to "trust AI will get it right" — you watch it happen.
 
-### 🧩 分身并行
+### 🧩 Parallel Agents
 
-传统 AI 一次只做一件事。泰深可以把多个独立任务同时分派给多个工作线程——查财报的同时读行业报告、跑数据对比，各自完成后再汇总。每个分身可以调用不同的模型：DeepSeek 做主引擎深度推理，视觉任务自动走 GPT-4o 识图。你只需要说「帮我分析这几份报告」，泰深自动把任务拆给最合适的分身。
+Traditional AI does one thing at a time. Taishen dispatches multiple independent tasks to parallel workers — searching financial reports while reading industry analysis while crunching data, all simultaneously. Each worker can use a different model: DeepSeek for deep reasoning, GPT-4o for visual tasks. Just say "analyze these reports" — Taishen distributes the work automatically.
 
-### 🧬 经验封装
+### 🧬 Experience Encoder
 
-泰深不仅使用工具，更能**创造工具**。
+Taishen doesn't just use tools — it **creates** them.
 
-**skillCreator** — 将一套成功的操作流程封装为 Skill（Markdown 工作流模板，兼容 agentskills.io 开放标准），创建后即时生效。
+**skillCreator** — Package a successful workflow into a Skill (Markdown template, agentskills.io open standard), effective immediately.
 
-**skillPatcher** — Skill 不是一次性的。AI 在使用中发现优化点，自动追加或替换内容。Skills 越用越精准。
+**skillPatcher** — Skills evolve. AI appends or replaces content as it discovers optimizations during use. Skills get more precise with every use.
 
-**tool_creator** — 当 Skill 不够用时，AI 编写真正的 TypeScript 工具。编译、注册、下次会话生效。
+**tool_creator** — When Skills aren't enough, AI writes real TypeScript tools. Compile, register, effective next session.
 
-你的泰深会越用越懂你的工作流，逐渐长出独一无二的能力形态。
+Your Taishen learns your workflow and develops a unique capability profile over time.
 
-### 📱 IM 远程接入
+### 📱 IM Remote Access
 
-出门在外、没开电脑？手机上的飞书、QQ、微信就是你的泰深终端。
+Out and about without your computer? Feishu, QQ, and WeChat on your phone become your Taishen terminal.
 
-| 平台 | 接入方式 | 能力 |
+| Platform | Connection | Capabilities |
 |------|---------|------|
-| 飞书 | 企业自建应用 | 私聊 + 群聊 @ 机器人，支持文件发送 |
-| QQ | QQ 开放平台 Bot | 私聊 + 群聊 + QQ 频道，私聊支持文件发送 |
-| 微信 | iLink ClawBot | 私聊，支持文件发送 |
+| Feishu | Enterprise self-built app | DM + group chat @bot, file sending |
+| QQ | QQ Open Platform Bot | DM + group chat + QQ Channel, file sending in DM |
+| WeChat | iLink ClawBot | DM, file sending |
 
-三个 IM 通道全部打通流式回复、文件传输、审批弹窗远程推送。AI 生成的文档、表格、PPT 可直接推送到你手机。
+All three IM channels support streaming replies, file transfer, and remote approval popups. AI-generated documents, spreadsheets, and presentations can be pushed directly to your phone.
 
-配置入口：泰深设置 → IM 接入面板，填入 AppId/AppSecret 即可启动 Gateway。
+Configuration: Taishen Settings → IM Access panel, enter AppId/AppSecret to launch the Gateway.
 
-### 🧩 SubAgent 子代理体系
+### 🧩 SubAgent System
 
-给泰深配一支专业团队——派子代理并行干活，各司其职。
+Equip Taishen with a professional team — dispatch sub-agents to work in parallel, each with their own specialty.
 
-**内置子代理（10 种）**：
-- general-purpose（通用任务）、explorer（代码探索）、planner（任务规划）
-- software-architect（架构设计）、infrastructure-maintainer（基础设施运维）
-- ai-engineer（AI 工程）、developer-advocate（开发者布道）
-- content-creator（内容创作）、myeyes（视觉识别）、flexdog（动态模型调度）
+**Built-in SubAgents (10 types)**:
+- general-purpose (general tasks), explorer (code exploration), planner (task planning)
+- software-architect (architecture design), infrastructure-maintainer (infrastructure ops)
+- ai-engineer (AI engineering), developer-advocate (developer advocacy)
+- content-creator (content creation), myeyes (visual recognition), flexdog (dynamic model routing)
 
-**v3.1 架构升级** — 子代理现在拥有与主代理对等的完整能力：Skill 系统、Memory 记忆、MCP 外部服务、Hooks 拦截，还有专属颜色标识和独立文件输出。派出去的小弟能独当一面。
+**v3.1 Architecture Upgrade** — SubAgents now have full capability parity with the main agent: Skill system, Memory, MCP external services, Hooks, plus dedicated color identifiers and independent file output. The agents you dispatch can truly hold their own.
 
-**跨模型协作** — 配置了多个 AI 供应商后，Myeyes 可在后台调用视觉模型识图，FlexDog 可切换到其他模型执行任务，同一段对话内多 AI 共同作业。
+**Cross-Model Collaboration** — With multiple AI providers configured, Myeyes can call vision models in the background for image recognition, and FlexDog can switch to other models for task execution — multiple AIs working together within a single conversation.
 
-### 🔌 多供应商 & 扩展体系
+### 🔌 Multi-Provider & Extension Ecosystem
 
-**多 AI 供应商** — 支持 DeepSeek、OpenAI、Mimo 等多家供应商自由切换。推理强度、上下文窗口等参数下沉到 per-model 级别，不同模型各自微调。
+**Multi AI Provider** — Freely switch between DeepSeek, OpenAI, Mimo, and more. Reasoning intensity and context window parameters are per-model, allowing fine-tuning for each model individually.
 
-**Skill 技能系统** — 兼容 [agentskills.io](https://agentskills.io) 开放标准（Claude Code、Cursor、GitHub Copilot 等 35+ 工具通用）。自建 Skill、从 GitHub/Gitee 搜索安装社区 Skill、AI 自主创建新 Skill。支持 group/subgroup 二级分组管理。
+**Skill System** — Compatible with the [agentskills.io](https://agentskills.io) open standard (used by Claude Code, Cursor, GitHub Copilot, and 35+ other tools). Create custom Skills, search and install community Skills from GitHub/Gitee, or let AI autonomously create new Skills. Supports group/subgroup two-level organization.
 
-**MCP 协议** — 支持 Streamable HTTP / SSE / stdio 三源接入，给 AI 接入网页搜索、浏览器、学术数据库等外部能力。
+**MCP Protocol** — Supports Streamable HTTP / SSE / stdio transport. Connect external capabilities like web search, browsers, and academic databases to the AI.
 
-**插件 + 工具自主创建** — 插件丢入即加载；AI 可根据需求自行编写新工具（TypeScript），无需你动手。
+**Plugins + Self-Creating Tools** — Drop plugins in to load instantly; AI can write new tools (TypeScript) on demand — no manual coding required.
 
-### 📄 文档全流程
+### 📄 Full Document Workflow
 
-- 直接拖入 Word (.docx)、PPT (.pptx)、PDF、Excel (.xlsx) 文件解析
-- AI 分析后一键生成 Word 报告、PPT 演示、Excel 表格、PDF 文档
-- HTML 高级预览器：AI 写的网页在泰深内直接预览，选中元素即可标注修改意见，所见即所得
+- Drag and drop Word (.docx), PPT (.pptx), PDF, Excel (.xlsx) files for parsing
+- AI analyzes and generates Word reports, PPT presentations, Excel spreadsheets, PDF documents in one click
+- HTML Advanced Previewer: preview AI-written web pages directly inside Taishen, select elements to annotate revision suggestions — WYSIWYG
 
-### 🛡️ 四层安全防线
+### 🛡️ Four-Layer Security
 
-**路径访问控制** — AI 只能访问你指定的工作区。系统目录、磁盘根目录、用户主目录自动拦截，短文件名绕过和符号链接逃逸也能识别。
+**Path Access Control** — AI only accesses workspaces you designate. System directories, disk roots, and home directories are auto-blocked. Short filename bypass and symlink escape recognized and blocked.
 
-**命令执行控制** — 三级沙箱：L1 每步审批 → L2 AI 自主审查 → L3 完全信任。致命命令直接拦截（`rm -rf /`、`shutdown` 等），命令注入和脚本内联执行在沙箱层阻断。
+**Command Execution Control** — Three-tier sandbox: L1 step-by-step approval → L2 AI autonomous review → L3 full trust. Fatal commands blocked outright (`rm -rf /`, `shutdown`, etc.). Command injection and script inline execution blocked at sandbox layer.
 
-**网络边界控制** — 默认开放 DeepSeek API、GitHub 等常用域名，其他域名需申请白名单。内网地址（127.x、192.168.x、10.x）自动拦截，防 SSRF 攻击。
+**Network Boundary Control** — DeepSeek API, GitHub, and common domains open by default. Other domains require whitelist approval. Internal addresses (127.x, 192.168.x, 10.x) auto-blocked to prevent SSRF attacks.
 
-**门控防重试** — 同一操作被拒绝 2 次后系统自动阻止，AI 不反复纠缠。
+**Gate Rejection Tracker** — Same operation rejected twice → system auto-blocks. AI won't pester you after a clear rejection.
 
-每次文件修改自动本地备份，随时恢复。回收站系统让误删的会话、Skill、子代理永不过期。**正因为有这四层防线，你才敢把更多权限交给 AI。**
+Every file modification auto-backed up locally. Recycle bin keeps accidentally deleted sessions, Skills, and SubAgents forever. **It's precisely these four layers that let you confidently delegate more authority to AI.**
 
-### 🩺 AI 自诊断
+### 🩺 AI Self-Diagnosis
 
-泰深内置 6 级 × 9 分类的结构化日志系统。AI 可直接查询自己的运行日志：工具调用失败 → 自动定位根因；会话异常 → 追踪完整调用链；性能下降 → 找到耗时瓶颈。从「用户帮 AI 排错」到「AI 自己排错」——你不需要懂技术、不需要翻日志。
+Taishen has a built-in structured logging system (6 levels × 9 categories). The AI queries its own runtime logs: tool failure → auto-locate root cause; session anomaly → trace full call chain; performance drop → find bottleneck. From "user helps AI debug" to "AI debugs itself" — no technical knowledge needed, no log diving required.
 
-### 🎨 体验亮点
+### 🎨 Experience Highlights
 
-- **6 套主题** — 深海琥珀（默认）/ 极简黑白 / 柔光护眼 / 跟随系统
-- **AI 完成提示音** — 回复完毕播放提示音，可开关（默认开）
-- **上下文感知记忆** — 跨会话记住你的偏好、工作风格和常用工具
-- **1M Token 上下文** — DeepSeek V4 全窗口支持，长论文、大项目无压力
-- **主动弹窗引导** — 不会写 Prompt？说一句话就行。需求模糊？AI 弹窗确认，点一下比猜错重做快一百倍
-- **前缀缓存 99% 命中率** — 针对 DeepSeek 缓存命中机制深度优化的 Prompt 结构，两亿 token 级会话每轮成本恒定，不随会话增长
-- **内置截图工具** — 泰深可自我截图，配合 Myeyes 实现全自动识图、标注、修改流程
-- **会话搜索** — 自然语言跨会话全文搜索，AI 也能主动回溯历史讨论
-- **定时任务** — 间隔/每日/每周/Cron/一次性五种模式，AI 可自行创建和管理
-- **文件路径可点击** — 项目相对路径和反引号内路径自动渲染为可点击链接
-- **会话右键菜单** — 重命名、删除、回收站捞回，右键搞定
-
----
-
-## 快速开始
-
-### 安装
-
-- **taishen_setup_1.4.2.exe** — Windows 安装包（推荐）
-- **taishen_1.4.2.zip** — Windows 解压即用免安装版
-- **taishen_1.4.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包（v1.4.0）
-
-> 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载。
-
-### 配置
-
-1. 启动泰深，在设置页填入 DeepSeek API Key
-2. （可选）在工具&插件页启用需要的 MCP 服务
-3. （可选）在技能管理页启用专业 Skill
-4. 直接开始对话——描述需求、拖入文件即可
-
-### 推荐模型
-
-- **DeepSeek V4 Pro**（默认）— 全功能，适合深度研究、论文写作、代码开发
-- **DeepSeek V4 Flash** — 快速响应，适合日常问答、轻量任务
+- **6 Themes** — Deep Ocean Amber (default) / Minimalist B&W / Soft Eye-Care / Follow System
+- **AI Completion Sound** — Plays a chime when the AI finishes responding; toggleable (on by default)
+- **Context-Aware Memory** — Remembers your preferences, work style, and frequently used tools across sessions
+- **1M Token Context** — Full DeepSeek V4 window support; long papers and large projects without pressure
+- **Proactive Pop-Up Guidance** — Can't write prompts? Just say one sentence. Vague requirements? AI pops up to confirm — clicking is 100× faster than guessing wrong and redoing
+- **99% Prefix Cache Hit Rate** — Prompt structure deeply optimized for DeepSeek's cache mechanism. Per-round cost constant even in 200M+ token sessions
+- **Built-in Screenshot Tool** — Taishen screenshots itself. With Myeyes, fully automated image recognition, annotation, and editing
+- **Conversation Search** — Natural-language cross-session full-text search; the AI can also proactively reference past discussions
+- **Scheduled Tasks** — Five modes: Interval / Daily / Weekly / Cron / One-shot. AI can create and manage tasks autonomously
+- **Clickable File Paths** — Project-relative paths and backtick-wrapped paths are automatically rendered as clickable links
+- **Right-Click Context Menu** — Rename, delete, recover from recycle bin — all with a right-click
 
 ---
 
-## 文件校验（SHA256）
+## Quick Start
 
-| 文件 | SHA256 |
+### Installation
+
+- **taishen_setup_1.4.2.exe** — Windows installer (recommended)
+- **taishen_1.4.2.zip** — Windows portable, extract and run
+- **taishen_1.4.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer (v1.4.0)
+
+> 📥 **Download:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — Go to the latest version and download from "Assets".
+
+### Configuration
+
+1. Launch Taishen, enter your DeepSeek API Key in Settings
+2. (Optional) Enable desired MCP services in the Tools & Plugins page
+3. (Optional) Enable professional Skills in the Skill Management page
+4. Start a conversation — describe your needs, drag in files, and you're set
+
+### Recommended Models
+
+- **DeepSeek V4 Pro** (default) — Full-featured, ideal for deep research, paper writing, and code development
+- **DeepSeek V4 Flash** — Fast response, suitable for daily Q&A and lightweight tasks
+
+---
+
+## File Verification (SHA256)
+
+| File | SHA256 |
 |------|--------|
 | taishen_setup_1.4.2.exe | `79E4C19D3B1FCD13C6F90F3CAA75BCC866E4D5DC3D215BA26E50FABEC736DAEB` |
 | taishen_1.4.2.zip | `6593774A2C6F6DA13BE115663D1327D3F7F7270899CF91C0AB4C4DFCDF30F4EE` |
@@ -169,43 +169,42 @@
 
 ---
 
-## 系统要求
+## System Requirements
 
-| 项目 | 最低配置 |
+| Item | Minimum |
 |------|---------|
-| 操作系统 | Windows 10+ / macOS 12+ |
-| 内存 | 8 GB |
-| 磁盘空间 | 500 MB |
-| 网络 | 需连接 DeepSeek API |
+| OS | Windows 10+ / macOS 12+ |
+| RAM | 8 GB |
+| Disk | 500 MB |
+| Network | DeepSeek API access required |
 
 ---
 
-## 常见问题
+## FAQ
 
-**Q: 需要自己部署模型吗？**
-不需要。泰深通过 API 连接 DeepSeek 云端模型，你只需要一个 API Key。
+**Q: Do I need to deploy my own model?**
+No. Taishen connects to DeepSeek's cloud models via API. You only need an API Key.
 
-**Q: 支持其他模型吗？**
-客户端支持配置 OpenAI 兼容接口，但仅 DeepSeek 经过完整测试。可通过 FlexDog 子代理在同一会话内对比不同模型效果。
+**Q: Are other models supported?**
+The client supports configuring OpenAI-compatible endpoints, but only DeepSeek has been fully tested. You can compare different models within the same conversation via the FlexDog SubAgent.
 
-**Q: 数据安全吗？**
-所有数据存储在本地（对话记录、用户画像、文件备份），不上传至泰深服务器。API Key 使用系统级加密存储（Windows DPAPI / macOS Keychain）。
+**Q: Is my data secure?**
+All data is stored locally (conversation history, user profile, file backups) and is never uploaded to Taishen servers. API Keys are stored using system-level encryption (Windows DPAPI / macOS Keychain).
 
-**Q: 手机能用吗？**
-可以。通过飞书、QQ、微信任一 IM 接入后，手机就是你的泰深终端——流式回复、文件传输、审批弹窗全部打通。
+**Q: Can I use it on my phone?**
+Yes. Connect through Feishu, QQ, or WeChat IM, and your phone becomes your Taishen terminal — streaming replies, file transfers, and approval popups all work seamlessly.
 
-**Q: Skill 和 MCP 有什么区别？**
-Skill = AI 的工作模式（"怎么想"），一份 Markdown 文件激活后改变 AI 的行为风格。MCP = AI 的外部工具（"用什么"），给 AI 接入网页搜索、浏览器等能力。
+**Q: What's the difference between Skill and MCP?**
+Skill = AI's working mode ("how to think") — a Markdown file that changes AI's behavior style when activated. MCP = AI's external tools ("what to use") — connecting web search, browsers, and other capabilities to the AI.
 
-**Q: Windows 数据能迁移到 Mac 吗？**
-可以。将 Windows 用户目录下的 `.taishen` 文件夹拷贝到 macOS 用户目录（`~/.taishen`）即可。注意 API Key 需重新配置（两平台加密方式不同）。
+**Q: Can I migrate data from Windows to Mac?**
+Yes. Copy the `.taishen` folder from your Windows user directory to your macOS user directory (`~/.taishen`). Note that API Keys need to be re-configured (different encryption methods per platform).
 
-**Q: 子代理消耗 Token 吗？**
-会。子代理的 Token 消耗会累积到会话预算中，费用统计完整透明。
+**Q: Do SubAgents consume tokens?**
+Yes. SubAgent token consumption is accumulated in the session budget, with complete and transparent cost tracking.
 
 ---
 
-## 许可证
+## License
 
-Copyright (c) 2026 二班的Eric. All Rights Reserved.
-
+Copyright (c) 2026 Eric Xu. All Rights Reserved.
