@@ -1,4 +1,4 @@
-# taishen — A Desktop AI Workbench Born for DeepSeek
+﻿# taishen — A Desktop AI Workbench Born for DeepSeek
 
 [中文](https://github.com/EricXu20266/taishen/blob/main/WHITEPAPER.md) | English
 
@@ -38,7 +38,7 @@ Every line of code backing this whitepaper began with those three digits and a s
 
 ## II. The Present: An AI Delivery Platform
 
-taishen current version v1.3.8 is a full desktop application (Windows / macOS), deeply optimized for the DeepSeek V4 model family.
+taishen current version v1.4.3 is a full desktop application (Windows / macOS), deeply optimized for the DeepSeek V4 model family.
 
 Among the 23 tools officially listed on awesome-deepseek-agent, 15 are terminal CLI tools, 3 are VS Code extensions. The vast majority target developers — typing commands, writing code, calling APIs. taishen is one of only two GUI desktop applications on that list. But its positioning differs fundamentally from the other GUI app (Cherry Studio): Cherry Studio is a "multi-model chat client"; taishen is an "Agent workbench." Chat is the means; delivery is the end.
 
@@ -78,7 +78,7 @@ What's the result? In coding sessions at the tens-of-millions token level, **cac
 
 **Desktop**: Full GUI workbench, multi-session parallelism, drag-and-drop document parsing, one-click Word / PPT / PDF / Excel generation.
 
-**Mobile**: Connect through Feishu, WeChat, or QQ IM. Streaming replies, file transfers, and approval pop-ups all work seamlessly. Send a request from your phone while out — the desktop taishen keeps producing for you.
+**Mobile**: Connect through Feishu, WeChat, QQ, or Slack IM. Streaming replies, file transfers, and approval pop-ups all work seamlessly. Send a request from your phone while out — the desktop taishen keeps producing for you.
 
 This is the only desktop application on the awesome-deepseek-agent list that supports IM remote access. The implication: AI shouldn't only live in the terminal. It should be at every touchpoint in your workflow.
 
@@ -128,7 +128,7 @@ Everything up to this point has been about how AI interacts, stays secure, and h
 
 Traditional AI conversations are a black box — you send a request, AI returns a result. What happens in between, you don't know. Tai An (泰案) changes that. It's taishen's built-in streaming content workspace — a canvas shared between AI and you. The AI writes on it in real time as you watch — not waiting for a final deliverable, but watching it being crafted.
 
-Six canvas types cover the full spectrum:
+Seven canvas types cover the full spectrum:
 
 **Writing Canvas**: AI writes character by character; you read character by character. Perfect for long-form content, reports, copywriting — any creative scenario where you want to course-correct as it forms. Not "AI finishes, then you edit" — it's "you can intervene while AI writes."
 
@@ -141,6 +141,8 @@ Six canvas types cover the full spectrum:
 **Data Canvas**: Tables + four chart types. Drag in a CSV and get charts instantly. AI helps clean data and choose visualizations.
 
 **Image Canvas**: Display AI-generated images and screenshots, with annotation and comparison support.
+
+**Flow Canvas**: New in v1.4.0, the latest addition to the Tai An family. A structured thinking visualization tool — AI no longer just writes text; it helps you clarify relationships, compare options, derive and validate, restructure, brainstorm, and review outcomes — all on a canvas. Supports six node types (code blocks, Mermaid diagrams, images, tables, file cards, and ECharts charts — 9 chart types from scatter to gauge), multiple node shapes (circle, diamond, hexagon, capsule, parallelogram, rounded rectangle), and three edge modes (straight, stepped, loopback with Bézier curves and tri-color arrows). Three interaction primitives — drag to arrange, anchor to connect, right-click to annotate — you are the director; AI weaves the tangled threads in your mind into silk. Three layout engines (tree, timeline, matrix) + entrance animations + Ctrl+E one-click PNG export.
 
 The key design decision: all canvases are **bidirectional** — AI can write on them, and you can edit directly. Version history tracking precisely records every change, allowing rollback to any point. You never lose content because "AI changed a version I didn't like."
 
@@ -262,4 +264,4 @@ This is a reasonable choice for commercial software — much like Photoshop isn'
 
 ---
 
-*This whitepaper was updated during a taishen v1.3.8 session. taishen now features the Tai An canvas system — six streaming canvases, bidirectional editing, version history tracking, voice interaction, standalone browser window, and Headless CLI. From "delivering results" to "encapsulating experience" to "visualizing process" — three steps, complete.*
+*This whitepaper was updated during a taishen v1.4.3 session. taishen now features the Tai An canvas system — seven streaming canvases (including the all-new Flow canvas in v1.4.0), bidirectional editing, version history tracking, voice interaction, standalone browser window, and Headless CLI. From "delivering results" to "encapsulating experience" to "visualizing process" — three steps, complete.*

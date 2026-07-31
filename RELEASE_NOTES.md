@@ -1,6 +1,6 @@
-## 🚀 泰深 v1.4.2 正式发布
+﻿## 🚀 泰深 v1.4.3 正式发布
 
-引导页新增中英文切换，国际化体验升级。
+Slack IM 接入 + 模型级提示词模式开关，IM 远程控制新增第四种渠道。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash），前缀缓存命中率 ~99%，长会话成本恒定
@@ -21,6 +21,14 @@
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+### v1.4.3
+
+- 新增 Slack IM 接入，支持私聊与群聊 @ 机器人、图片下载、富文本解析、@here/@channel 提及检测，IM 远程控制新增第四种渠道。
+- 新增模型级提示词模式开关（promptMode: auto/full/compact），不同模型可各自微调提示词完整度。
+- 模型配置「系统提示词完整度」选项添加 hover 解释并中文化，UI 更直观。
+
+> 🇬🇧 Added Slack IM integration — the fourth remote IM channel. Added model-level prompt mode switch (promptMode: auto/full/compact) for per-model tuning of prompt verbosity with localized hover explanations.
 
 ### v1.4.2
 
@@ -53,16 +61,16 @@
 - 修复了会话文件卡片错误加载文件夹目录的 bug。
 
 ### 安装
-- **taishen_setup_1.4.2.exe** — Windows 安装包（推荐）
-- **taishen_1.4.2.zip** — 解压即用免安装版
-- **taishen_1.4.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包（v1.4.0）
+- **taishen_setup_1.4.3.exe** — Windows 安装包（推荐）
+- **taishen_1.4.3.zip** — 解压即用免安装版
+- **taishen_1.4.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.2.exe | `79E4C19D3B1FCD13C6F90F3CAA75BCC866E4D5DC3D215BA26E50FABEC736DAEB` |
-| taishen_1.4.2.zip | `6593774A2C6F6DA13BE115663D1327D3F7F7270899CF91C0AB4C4DFCDF30F4EE` |
-| taishen_1.4.0_macOS_arm64.dmg | `9C88BC7FDABB4F7FE6A5FB953E74264781477FA21BE0A95B2E07F3EA636967A7` |
+| taishen_setup_1.4.3.exe | `32F015411BC75E888572B6F15BCD5D576D5174000EA4B69BB6991441B0E764AE` |
+| taishen_1.4.3.zip | `41903225F97736E1F7F15B3A5B3222EEDA40AC4B55BBFA6069C0D7430EE5B5F2` |
+| taishen_1.4.3_macOS_arm64.dmg | `568F4BD6B48F9E37357375D393D39C9F174D90A59DD894391737386BDD6961AD` |
 
 ---
 
