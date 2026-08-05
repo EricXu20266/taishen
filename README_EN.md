@@ -1,8 +1,8 @@
-﻿# Taishen
+# Taishen
 
 [中文](README.md) | English
 
-**Eric Xu · Vibe Coding** | v1.4.3 | 2026
+**Eric Xu · Vibe Coding** | v1.4.4 | 2026
 
 ---
 
@@ -139,9 +139,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 ### Installation
 
-- **taishen_setup_1.4.3.exe** — Windows installer (recommended)
-- **taishen_1.4.3.zip** — Windows portable, extract and run
-- **taishen_1.4.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
+- **taishen_setup_1.4.4.exe** — Windows installer (recommended)
+- **taishen_1.4.4.zip** — Windows portable, extract and run
+- **taishen_1.4.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
 
 > 📥 **Download:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — Go to the latest version and download from "Assets".
 
@@ -163,9 +163,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 | File | SHA256 |
 |------|--------|
-| taishen_setup_1.4.3.exe | `32F015411BC75E888572B6F15BCD5D576D5174000EA4B69BB6991441B0E764AE` |
-| taishen_1.4.3.zip | `41903225F97736E1F7F15B3A5B3222EEDA40AC4B55BBFA6069C0D7430EE5B5F2` |
-| taishen_1.4.3_macOS_arm64.dmg | `568F4BD6B48F9E37357375D393D39C9F174D90A59DD894391737386BDD6961AD` |
+| taishen_setup_1.4.4.exe | `B14B4506D857ABCCB99A07480F5712FC84AE39B058F855D12388D8C8958CC83D` |
+| taishen_1.4.4.zip | `73D285C88275201746AD5ED5DFB2F6CF0905F48A27BBCDB74D85D8D0B013BB33` |
+| taishen_1.4.4_macOS_arm64.dmg | `FCF1C52CA0042B83D0C8FB4465EDF2E5B9CEB3EFEB760E15C69566B5CABDAEA3` |
 
 ---
 
