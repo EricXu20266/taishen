@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.4.3 正式发布
+## 🚀 泰深 v1.4.4 正式发布
 
-Slack IM 接入 + 模型级提示词模式开关，IM 远程控制新增第四种渠道。
+MCP 自带 Node 运行时，连接开箱即用。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash），前缀缓存命中率 ~99%，长会话成本恒定
@@ -22,13 +22,30 @@ Slack IM 接入 + 模型级提示词模式开关，IM 远程控制新增第四�
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
 
+###v1.4.4
+
+- 针对MCP更新，泰深现在内置了node，以后mcp的调用会优先使用内置node，确保mcp调用稳定。
+- 内置浏览器换上了标准 Chrome UA，现在是一个真实的浏览器。
+- 修复了上下文压缩的一个隐蔽 Bug：虚拟截断后 token 水位统计没对齐，导致连续触发压缩。
+- 数据库搜索索引旧定义自愈重建。
+- 做了些程序稳定的加固，并且现在程序崩溃后会进行完整性校验。
+
+- MCP updates — Taishen now ships with a built-in Node.js runtime. MCP calls will prioritize the bundled Node, ensuring stable MCP connections.
+- The built-in browser now uses the standard Chrome UA — it's now a real browser.
+- Fixed a subtle context compaction bug: token watermark stats were misaligned after virtual truncation, causing repeated compaction.
+- Database search index now self-heals and rebuilds stale definitions automatically.
+- General stability hardening across the app — and integrity verification now runs automatically after a crash.
+
+
 ### v1.4.3
 
 - 新增 Slack IM 接入，支持私聊与群聊 @ 机器人、图片下载、富文本解析、@here/@channel 提及检测，IM 远程控制新增第四种渠道。
 - 新增模型级提示词模式开关（promptMode: auto/full/compact），不同模型可各自微调提示词完整度。
 - 模型配置「系统提示词完整度」选项添加 hover 解释并中文化，UI 更直观。
 
-> 🇬🇧 Added Slack IM integration — the fourth remote IM channel. Added model-level prompt mode switch (promptMode: auto/full/compact) for per-model tuning of prompt verbosity with localized hover explanations.
+- Added Slack IM integration — the fourth remote IM channel, supporting private chats, group @-mentions, image downloads, rich-text parsing, and @here/@channel mention detection. 
+- Added a model-level prompt mode switch (promptMode: auto/full/compact) for per-model tuning of prompt verbosity. 
+- The "System Prompt Completeness" option in model config now shows hover explanations with localized labels.
 
 ### v1.4.2
 
@@ -36,41 +53,19 @@ Slack IM 接入 + 模型级提示词模式开关，IM 远程控制新增第四�
 
 > 🇬🇧 Added a language toggle button (Chinese/English) to the onboarding guide — making the first-run experience welcoming for international users.
 
-### v1.4.1
 
-- 修复了内置浏览器崩溃的 bug。
-- 修了泰案 HTML 画布偶尔白屏、无法在文件夹内打开的 bug。
-- 泰案 HTML 画布新增预览/批注双按钮切换，操作更直观。
-- 紧急修复：旧版本升级到 1.4.0 后启动闪退的恶性 bug。问题出在记忆维护模块启动时找不到新表直接原地爆炸。
-
-### v1.4.0
-
-- 重大更新，「流」(Flow) 画布正式上线！这是泰案家族的新成员——一个结构化思维可视化工具。AI 不再只是跟你聊天，它可以在画布上帮你理清关系、对比方案、推导验证、重组结构、头脑风暴、审视成果。
-  - 支持六种节点类型：代码块、Mermaid 图表、图片、表格、文件卡片，还有 ECharts 图表节点（散点/折线/面积/雷达/热力/箱线/漏斗/仪表盘/柱状 9 种图表，数据可视化一步到位）。
-  - 节点形状可玩性拉满：圆形、菱形、六边形、胶囊形、平行四边形、圆角矩形，想怎么排列就怎么排列。
-  - 连线三模式：直线、阶梯、回环，贝塞尔曲率 + 三色箭头 + hover 发光，关系一目了然。
-  - 三大交互原语：拖拽布阵、锚点连线、右键批注——你就是导演，AI 负责把脑子里的乱麻织成锦缎。
-  - 三种布局引擎：树状、时间线、矩阵，外加入场动画和 Ctrl+E 一键导出 PNG。
-- 泰案终端画布全面升级：从 spawn pipe 切换到 node-pty (ConPTY)，SSH 等交互程序现在可以检测到真 TTY 了。新增 tail/wait 捕获模式、终端控制信号注入（Ctrl+C/D/L/Z/\\ 全支持）、粘贴支持。最常用场景，泰深可以利用终端画布实现 SSH 远程连接各类服务器执行任意工作。
-- 调整了泰案画布的拖拽加载文件行为，拖文件进画布时不再直接开搞，先弹窗问你是否让 AI 分析，确认了才动手——手滑党的福音。
-- 项目编辑弹窗多了个 X 关闭按钮，未保存变更会弹确认，不会默默丢数据。
-- Shell 引导新增 bash-PowerShell 命令速查表。
-- 添加了一个全局异常崩溃捕获就位。是的，1.3.8 版本的锅我接了。
-- 修复了 Provider HTTP 错误（比如 403）被 SDK 吞掉导致 UI 假死的问题。
-- 修复了一个可能会引起输入框卡顿的 bug。
-- 修复了会话文件卡片错误加载文件夹目录的 bug。
 
 ### 安装
-- **taishen_setup_1.4.3.exe** — Windows 安装包（推荐）
-- **taishen_1.4.3.zip** — 解压即用免安装版
-- **taishen_1.4.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.4.4.exe** — Windows 安装包（推荐）
+- **taishen_1.4.4.zip** — 解压即用免安装版
+- **taishen_1.4.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.3.exe | `32F015411BC75E888572B6F15BCD5D576D5174000EA4B69BB6991441B0E764AE` |
-| taishen_1.4.3.zip | `41903225F97736E1F7F15B3A5B3222EEDA40AC4B55BBFA6069C0D7430EE5B5F2` |
-| taishen_1.4.3_macOS_arm64.dmg | `568F4BD6B48F9E37357375D393D39C9F174D90A59DD894391737386BDD6961AD` |
+| taishen_setup_1.4.4.exe | `B14B4506D857ABCCB99A07480F5712FC84AE39B058F855D12388D8C8958CC83D` |
+| taishen_1.4.4.zip | `73D285C88275201746AD5ED5DFB2F6CF0905F48A27BBCDB74D85D8D0B013BB33` |
+| taishen_1.4.4_macOS_arm64.dmg | `FCF1C52CA0042B83D0C8FB4465EDF2E5B9CEB3EFEB760E15C69566B5CABDAEA3` |
 
 ---
 
