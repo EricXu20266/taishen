@@ -1,6 +1,6 @@
-## 🚀 泰深 v1.4.4 正式发布
+## 🚀 泰深 v1.4.5 正式发布
 
-MCP 自带 Node 运行时，连接开箱即用。
+A-Stocks 股票画布全面上线，内置 MCP 开箱即用。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash），前缀缓存命中率 ~99%，长会话成本恒定
@@ -21,6 +21,52 @@ MCP 自带 Node 运行时，连接开箱即用。
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.4.5
+
+- 重大更新，泰案-A-Stocks 股票画布全面上线：
+  - 内置行情数据管线，一键获取市场全景、自选股票分时\K线\5档买卖、涨停版等基础行情信息。
+  - L1使用腾讯财经、百度、东财等免费源；
+  - L2使用用户配置的TDX、东财、富途、同花顺等收费MCP接口（需要用户批准使用）；
+  - L3为自定义混合使用，泰深会根据用户需求自主编写模板来获取数据，无需借助外部代码语言环境，内置Node.js直接使用。
+  - 鉴于股(jiu)民(cai)们都会有看盘软件，所以股票画布更侧重于股票策略系统的构建。
+    - 你现在可以将你的经验或是策略，直接告诉泰深，agent将会在画布上，根据你的自然语言形成条件式策略。
+    - 内置条件引擎 + 策略执行器 + 决策时间轴，策略触发自动唤醒 AI 深度分析，整体形成了智能盯盘体系。
+    - 可以配置多套策略，泰深会默认会执行混合策略模式，并会结合验证信息，可以将任意成功的策略固化。
+    - 总体而言，整套策略系统是泰深经验封装体系在股票画布的呈现，将你的经验以自然语言告诉泰深，形成公式化条件化的可执行策略。
+  - AI画线功能：在单股深度页面，泰深可以根据K线/分时图进行五种线型标注（趋势线、水平线、箱体等）。
+- 重大更新：现在泰深配置了几个超级好用的内置 MCP 开箱即用。
+  - anysearch、firecrawl两大搜索类MCP，其中anysearch支持匿名模式，firecrawl需要你输入 api key。
+  - 通达信mcp，经典股票API接口，此MCP需要收费api key，如果需使用需要在通达信注册，并购买额度。
+  - codegraph，代码explore mcp，这个我就不多介绍了。
+  - chrome-devtools，配合playwright CLI，可以让agent控制浏览器。
+  - 以上内置MCP不会挤占用户级别的配置，如果用户自己配置了相同的MCP，以用户侧配置为准。
+- 为定时任务添加了会话绑定选项，现在定时任务可以绑定已有会话执行，泰深可以在你指定的会话里定时工作。
+- 修复了主页聊天框右键菜单误弹时钟菜单的 bug。
+- 做了些小的安全加固。
+
+**Major update — Taishen A-Stocks canvas is now fully live:**
+- Built-in market data pipeline — one-click access to market panorama, watchlist intraday/K-line charts, 5-level order book, limit-up board, and other basic market data.
+- L1 uses free sources: Tencent Finance, Baidu, Eastmoney, etc.
+- L2 uses user-configured paid MCP interfaces (TDX, Eastmoney, Futu, Tonghuashun, etc.) — requires user approval.
+- L3 is custom hybrid mode — Taishen autonomously writes data-fetching templates based on your needs, powered by the built-in Node.js runtime, no external code environment required.
+- Since every investor already has their own charting software, the stock canvas focuses on **strategy construction**.
+  - Tell Taishen your experience or strategies in plain language, and the agent will turn them into conditional strategies right on the canvas.
+  - Built-in condition engine + strategy executor + decision timeline — when a strategy triggers, the AI is auto-woken for deep analysis, forming an intelligent monitoring system.
+  - Configure multiple strategies; Taishen runs a mixed-strategy mode by default and, combined with verification results, can solidify any successful strategy.
+  - In short, the whole system is Taishen's experience-encapsulation framework shown on the stock canvas — your experience in natural language becomes formulaic, conditional, executable strategies.
+- AI chart drawing: on the single-stock deep-dive page, Taishen can annotate K-line/intraday charts with five line styles (trendline, horizontal line, box, etc.).
+
+**Major update — Several super-useful built-in MCPs, ready out of the box:**
+- anysearch & firecrawl — two search-class MCPs. anysearch supports anonymous mode; firecrawl requires an API key.
+- TDX (Tongdaxin) MCP — the classic stock API. This one requires a paid API key; register on Tongdaxin and purchase quota to use it.
+- codegraph — code exploration MCP, you know the drill.
+- chrome-devtools — pairs with Playwright CLI to let the agent control a browser.
+- The built-in MCPs never conflict with user-level configuration — if you configure the same MCP yourself, your side takes precedence.
+
+- Scheduled tasks now support session binding — tasks can execute in an existing session, so Taishen can work on a schedule in the session you specify.
+- Fixed a bug where the right-click context menu on the home page chat input mistakenly popped up the clock menu.
+- Minor security hardening.
 
 ###v1.4.4
 
@@ -56,16 +102,16 @@ MCP 自带 Node 运行时，连接开箱即用。
 
 
 ### 安装
-- **taishen_setup_1.4.4.exe** — Windows 安装包（推荐）
-- **taishen_1.4.4.zip** — 解压即用免安装版
-- **taishen_1.4.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.4.5.exe** — Windows 安装包（推荐）
+- **taishen_1.4.5.zip** — 解压即用免安装版
+- **taishen_1.4.5_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.4.exe | `B14B4506D857ABCCB99A07480F5712FC84AE39B058F855D12388D8C8958CC83D` |
-| taishen_1.4.4.zip | `73D285C88275201746AD5ED5DFB2F6CF0905F48A27BBCDB74D85D8D0B013BB33` |
-| taishen_1.4.4_macOS_arm64.dmg | `FCF1C52CA0042B83D0C8FB4465EDF2E5B9CEB3EFEB760E15C69566B5CABDAEA3` |
+| taishen_setup_1.4.5.exe | `886BF9254251BCA5A8DBD07DE6B4D64035B99E2C13B896819E32DDA2169DB13E` |
+| taishen_1.4.5.zip | `1F1BDD2F21D46548DB8A822D590448B24EB554F4705DEDAE8869D75BE1A10719` |
+| taishen_1.4.5_macOS_arm64.dmg | `CE4BB3B2B2FCFBF90A6017C2EA5B28325874EBA7AFE7F1AEDD26F3E5AF94EB0B` |
 
 ---
 
