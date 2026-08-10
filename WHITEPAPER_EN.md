@@ -1,4 +1,4 @@
-﻿# taishen — A Desktop AI Workbench Born for DeepSeek
+# taishen — A Desktop AI Workbench Born for DeepSeek
 
 [中文](https://github.com/EricXu20266/taishen/blob/main/WHITEPAPER.md) | English
 
@@ -38,7 +38,7 @@ Every line of code backing this whitepaper began with those three digits and a s
 
 ## II. The Present: An AI Delivery Platform
 
-taishen current version v1.4.3 is a full desktop application (Windows / macOS), deeply optimized for the DeepSeek V4 model family.
+taishen current version v1.4.5 is a full desktop application (Windows / macOS), deeply optimized for the DeepSeek V4 model family.
 
 Among the 23 tools officially listed on awesome-deepseek-agent, 15 are terminal CLI tools, 3 are VS Code extensions. The vast majority target developers — typing commands, writing code, calling APIs. taishen is one of only two GUI desktop applications on that list. But its positioning differs fundamentally from the other GUI app (Cherry Studio): Cherry Studio is a "multi-model chat client"; taishen is an "Agent workbench." Chat is the means; delivery is the end.
 
@@ -128,7 +128,7 @@ Everything up to this point has been about how AI interacts, stays secure, and h
 
 Traditional AI conversations are a black box — you send a request, AI returns a result. What happens in between, you don't know. Tai An (泰案) changes that. It's taishen's built-in streaming content workspace — a canvas shared between AI and you. The AI writes on it in real time as you watch — not waiting for a final deliverable, but watching it being crafted.
 
-Seven canvas types cover the full spectrum:
+Eight canvas types cover the full spectrum:
 
 **Writing Canvas**: AI writes character by character; you read character by character. Perfect for long-form content, reports, copywriting — any creative scenario where you want to course-correct as it forms. Not "AI finishes, then you edit" — it's "you can intervene while AI writes."
 
@@ -141,6 +141,8 @@ Seven canvas types cover the full spectrum:
 **Data Canvas**: Tables + four chart types. Drag in a CSV and get charts instantly. AI helps clean data and choose visualizations.
 
 **Image Canvas**: Display AI-generated images and screenshots, with annotation and comparison support.
+
+**A-Stocks Canvas**: New in v1.4.5, the eighth member of the Tai An family. A strategy-system workbench for stock investors — a built-in market data pipeline delivers one-click access to market panorama, watchlist intraday/K-line charts, 5-level order book, and limit-up board data. More crucially, it focuses on **strategy construction**: tell Taishen your experience or strategies in plain language, and the AI turns them into conditional strategies right on the canvas. A built-in condition engine + strategy executor + decision timeline wakes the AI for deep analysis when a strategy triggers, forming an intelligent monitoring system. Multiple strategies can run in mixed mode, and any successful strategy can be solidified — Taishen's experience-encapsulation framework applied to finance. The data layer has three tiers: L1 free sources (Tencent Finance, Baidu, Eastmoney), L2 paid MCP interfaces (TDX, Eastmoney, Futu, Tonghuashun, etc. — requires user approval), and L3 custom hybrid (Taishen autonomously writes data-fetching templates running on the built-in Node.js runtime). AI chart drawing lets Taishen annotate K-line/intraday charts with five line styles (trendline, horizontal line, box, etc.).
 
 **Flow Canvas**: New in v1.4.0, the latest addition to the Tai An family. A structured thinking visualization tool — AI no longer just writes text; it helps you clarify relationships, compare options, derive and validate, restructure, brainstorm, and review outcomes — all on a canvas. Supports six node types (code blocks, Mermaid diagrams, images, tables, file cards, and ECharts charts — 9 chart types from scatter to gauge), multiple node shapes (circle, diamond, hexagon, capsule, parallelogram, rounded rectangle), and three edge modes (straight, stepped, loopback with Bézier curves and tri-color arrows). Three interaction primitives — drag to arrange, anchor to connect, right-click to annotate — you are the director; AI weaves the tangled threads in your mind into silk. Three layout engines (tree, timeline, matrix) + entrance animations + Ctrl+E one-click PNG export.
 
@@ -155,6 +157,8 @@ Independent of the canvas system, v1.3.6's built-in browser has also been upgrad
 taishen's capabilities are not a closed set. It natively supports the MCP (Model Context Protocol) open standard — a universal interface for connecting AI to external tool services. MCP functions like a "USB-C hub" for AI: any third-party service that follows the MCP standard can plug into taishen and become a new tool the AI can call.
 
 Currently connected MCP services include: code graph (symbol-level code indexing for pinpointing functions and call chains in large projects), deep browser control (Chrome DevTools protocol — going beyond screenshots to performance analysis, memory snapshots, and full network request tracing), and deep search with content extraction (structured search across 22 vertical domains, with 1,000 free calls per day). These aren't features taishen built from scratch — they're capabilities that "grew" through the MCP ecosystem.
+
+Since v1.4.5, taishen goes a step further — **built-in MCPs, ready out of the box**: anysearch & firecrawl (two search-class MCPs; anysearch supports anonymous mode, firecrawl requires an API key), TDX market data MCP (the classic stock API — requires a paid key), codegraph, and chrome-devtools — all pre-installed with zero manual configuration. Built-in MCPs never conflict with user-level configuration — if you configure the same MCP yourself, your side takes precedence.
 
 For users, this means taishen's capability boundary isn't determined by the development team — it's determined by the growth of the entire MCP ecosystem. New tools, new data sources, new vertical domains — as long as the ecosystem grows, taishen's capabilities grow with it.
 
@@ -264,4 +268,4 @@ This is a reasonable choice for commercial software — much like Photoshop isn'
 
 ---
 
-*This whitepaper was updated during a taishen v1.4.3 session. taishen now features the Tai An canvas system — seven streaming canvases (including the all-new Flow canvas in v1.4.0), bidirectional editing, version history tracking, voice interaction, standalone browser window, and Headless CLI. From "delivering results" to "encapsulating experience" to "visualizing process" — three steps, complete.*
+*This whitepaper was updated during a taishen v1.4.5 session. taishen now features the Tai An canvas system — eight streaming canvases (including the all-new Flow canvas in v1.4.0 and the A-Stocks canvas in v1.4.5), bidirectional editing, version history tracking, voice interaction, standalone browser window, Headless CLI, and ready-out-of-the-box built-in MCPs. From "delivering results" to "encapsulating experience" to "visualizing process" — three steps, complete.*
