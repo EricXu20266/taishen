@@ -2,7 +2,7 @@
 
 [English](README_EN.md) | 中文
 
-**二班的Eric · Vibe Coding 作品** | v1.4.4 | 2026
+**二班的Eric · 作品** | v1.4.5 | 2026
 
 ---
 
@@ -30,7 +30,7 @@
 
 泰深内置的流式内容工作空间——AI 在上面边写边呈现，你实时看到内容成型。
 
-六种画布覆盖全场景：
+八种画布覆盖全场景：
 
 | 画布 | 能力 |
 |------|------|
@@ -40,6 +40,8 @@
 | 终端 | 命令执行全程可见，随时叫停 |
 | 数据分析 | 表格 + 四种图表，拖入 CSV 直接出图 |
 | 图片 | 展示 + 标注 + 对比 |
+| Flow | 结构化思维可视化，节点连线布局，9 种 ECharts 图表 |
+| 股票 | 行情管线 + 策略系统构建，AI 画线标注，智能盯盘 |
 
 所有画布**双向编辑**——AI 可以写，你也可以直接改。历史版本追踪精确记录每一次变更，随时回退。AI 的工作过程从黑箱变成可见——你不需要"相信 AI 会做对"，你看着它做。
 
@@ -61,15 +63,16 @@
 
 ### 📱 IM 远程接入
 
-出门在外、没开电脑？手机上的飞书、QQ、微信就是你的泰深终端。
+出门在外、没开电脑？手机上的飞书、QQ、微信、Slack 就是你的泰深终端。
 
 | 平台 | 接入方式 | 能力 |
 |------|---------|------|
 | 飞书 | 企业自建应用 | 私聊 + 群聊 @ 机器人，支持文件发送 |
 | QQ | QQ 开放平台 Bot | 私聊 + 群聊 + QQ 频道，私聊支持文件发送 |
 | 微信 | iLink ClawBot | 私聊，支持文件发送 |
+| Slack | Slack API | 私聊 + 群聊 @ 机器人，支持富文本与文件 |
 
-三个 IM 通道全部打通流式回复、文件传输、审批弹窗远程推送。AI 生成的文档、表格、PPT 可直接推送到你手机。
+四个 IM 通道全部打通流式回复、文件传输、审批弹窗远程推送。AI 生成的文档、表格、PPT 可直接推送到你手机。
 
 配置入口：泰深设置 → IM 接入面板，填入 AppId/AppSecret 即可启动 Gateway。
 
@@ -93,7 +96,7 @@
 
 **Skill 技能系统** — 兼容 [agentskills.io](https://agentskills.io) 开放标准（Claude Code、Cursor、GitHub Copilot 等 35+ 工具通用）。自建 Skill、从 GitHub/Gitee 搜索安装社区 Skill、AI 自主创建新 Skill。支持 group/subgroup 二级分组管理。
 
-**MCP 协议** — 支持 Streamable HTTP / SSE / stdio 三源接入，给 AI 接入网页搜索、浏览器、学术数据库等外部能力。
+**MCP 协议** — 支持 Streamable HTTP / SSE / stdio 三源接入，给 AI 接入网页搜索、浏览器、学术数据库等外部能力。v1.4.5 起内置五大 MCP 开箱即用：anysearch（搜索，支持匿名）、firecrawl（深度搜索）、通达信（行情数据）、codegraph（代码图谱）、chrome-devtools（浏览器控制）。内置 MCP 不挤占用户级配置——你自行配置的相同 MCP 优先。
 
 **插件 + 工具自主创建** — 插件丢入即加载；AI 可根据需求自行编写新工具（TypeScript），无需你动手。
 
@@ -128,6 +131,9 @@
 - **主动弹窗引导** — 不会写 Prompt？说一句话就行。需求模糊？AI 弹窗确认，点一下比猜错重做快一百倍
 - **前缀缓存 99% 命中率** — 针对 DeepSeek 缓存命中机制深度优化的 Prompt 结构，两亿 token 级会话每轮成本恒定，不随会话增长
 - **内置截图工具** — 泰深可自我截图，配合 Myeyes 实现全自动识图、标注、修改流程
+- **语音交互** — 语音输入（STT）转文字，语音输出（TTS）朗读回复，三种模式自由切换
+- **Headless CLI** — 纯命令行运行（`--headless`），适合脚本集成与服务器场景
+- **内置 Node 运行时** — MCP 服务调用优先使用内置 Node，连接稳定开箱即用
 - **会话搜索** — 自然语言跨会话全文搜索，AI 也能主动回溯历史讨论
 - **定时任务** — 间隔/每日/每周/Cron/一次性五种模式，AI 可自行创建和管理
 - **文件路径可点击** — 项目相对路径和反引号内路径自动渲染为可点击链接
@@ -139,9 +145,9 @@
 
 ### 安装
 
-- **taishen_setup_1.4.4.exe** — Windows 安装包（推荐）
-- **taishen_1.4.4.zip** — Windows 解压即用免安装版
-- **taishen_1.4.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.4.5.exe** — Windows 安装包（推荐）
+- **taishen_1.4.5.zip** — Windows 解压即用免安装版
+- **taishen_1.4.5_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载。
 
@@ -163,9 +169,9 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.4.exe | `B14B4506D857ABCCB99A07480F5712FC84AE39B058F855D12388D8C8958CC83D` |
-| taishen_1.4.4.zip | `73D285C88275201746AD5ED5DFB2F6CF0905F48A27BBCDB74D85D8D0B013BB33` |
-| taishen_1.4.4_macOS_arm64.dmg | `FCF1C52CA0042B83D0C8FB4465EDF2E5B9CEB3EFEB760E15C69566B5CABDAEA3` |
+| taishen_setup_1.4.5.exe | `886BF9254251BCA5A8DBD07DE6B4D64035B99E2C13B896819E32DDA2169DB13E` |
+| taishen_1.4.5.zip | `1F1BDD2F21D46548DB8A822D590448B24EB554F4705DEDAE8869D75BE1A10719` |
+| taishen_1.4.5_macOS_arm64.dmg | `CE4BB3B2B2FCFBF90A6017C2EA5B28325874EBA7AFE7F1AEDD26F3E5AF94EB0B` |
 
 ---
 
