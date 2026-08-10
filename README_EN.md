@@ -1,8 +1,8 @@
-# Taishen
+# taishen
 
 [中文](README.md) | English
 
-**Eric Xu · Vibe Coding** | v1.4.4 | 2026
+**Eric Xu · Vibe Coding** | v1.4.5 | 2026
 
 ---
 
@@ -30,7 +30,7 @@ Taishen is not a "Q&A bot" — it's a Commander-mode agent that autonomously pla
 
 Taishen's built-in streaming content workspace — AI writes in real time as you watch.
 
-Six canvas types for every scenario:
+Eight canvas types for every scenario:
 
 | Canvas | Capability |
 |------|------|
@@ -40,6 +40,8 @@ Six canvas types for every scenario:
 | Terminal | Fully visible command execution, stop anytime |
 | Data | Tables + four chart types, drag CSV to visualize |
 | Image | Display + annotation + comparison |
+| Flow | Structured thinking visualization, node-edge layouts, 9 ECharts chart types |
+| Stock | Market data pipeline + strategy construction, AI line drawing, smart monitoring |
 
 All canvases are **bidirectional** — AI writes, you edit directly. Version history tracks every change for instant rollback. When AI's work process shifts from black box to visible, you don't need to "trust AI will get it right" — you watch it happen.
 
@@ -61,15 +63,16 @@ Your Taishen learns your workflow and develops a unique capability profile over 
 
 ### 📱 IM Remote Access
 
-Out and about without your computer? Feishu, QQ, and WeChat on your phone become your Taishen terminal.
+Out and about without your computer? Feishu, QQ, WeChat, and Slack on your phone become your Taishen terminal.
 
 | Platform | Connection | Capabilities |
 |------|---------|------|
 | Feishu | Enterprise self-built app | DM + group chat @bot, file sending |
 | QQ | QQ Open Platform Bot | DM + group chat + QQ Channel, file sending in DM |
 | WeChat | iLink ClawBot | DM, file sending |
+| Slack | Slack API | DM + group chat @bot, rich text and file sending |
 
-All three IM channels support streaming replies, file transfer, and remote approval popups. AI-generated documents, spreadsheets, and presentations can be pushed directly to your phone.
+All four IM channels support streaming replies, file transfer, and remote approval popups. AI-generated documents, spreadsheets, and presentations can be pushed directly to your phone.
 
 Configuration: Taishen Settings → IM Access panel, enter AppId/AppSecret to launch the Gateway.
 
@@ -93,7 +96,7 @@ Equip Taishen with a professional team — dispatch sub-agents to work in parall
 
 **Skill System** — Compatible with the [agentskills.io](https://agentskills.io) open standard (used by Claude Code, Cursor, GitHub Copilot, and 35+ other tools). Create custom Skills, search and install community Skills from GitHub/Gitee, or let AI autonomously create new Skills. Supports group/subgroup two-level organization.
 
-**MCP Protocol** — Supports Streamable HTTP / SSE / stdio transport. Connect external capabilities like web search, browsers, and academic databases to the AI.
+**MCP Protocol** — Supports Streamable HTTP / SSE / stdio transport. Connect external capabilities like web search, browsers, and academic databases to the AI. Since v1.4.5, five built-in MCPs come ready out of the box: anysearch (search, anonymous mode supported), firecrawl (deep search), TDX (market data), codegraph (code graph), and chrome-devtools (browser control). Built-in MCPs never conflict with user-level configuration — your own MCP takes precedence.
 
 **Plugins + Self-Creating Tools** — Drop plugins in to load instantly; AI can write new tools (TypeScript) on demand — no manual coding required.
 
@@ -128,6 +131,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 - **Proactive Pop-Up Guidance** — Can't write prompts? Just say one sentence. Vague requirements? AI pops up to confirm — clicking is 100× faster than guessing wrong and redoing
 - **99% Prefix Cache Hit Rate** — Prompt structure deeply optimized for DeepSeek's cache mechanism. Per-round cost constant even in 200M+ token sessions
 - **Built-in Screenshot Tool** — Taishen screenshots itself. With Myeyes, fully automated image recognition, annotation, and editing
+- **Voice Interaction** — Speech-to-text (STT) voice input and text-to-speech (TTS) voice output, three modes freely switchable
+- **Headless CLI** — Run in pure command-line mode (`--headless`) for script integration and server scenarios
+- **Built-in Node Runtime** — MCP calls prioritize the bundled Node.js runtime for stable, out-of-the-box connections
 - **Conversation Search** — Natural-language cross-session full-text search; the AI can also proactively reference past discussions
 - **Scheduled Tasks** — Five modes: Interval / Daily / Weekly / Cron / One-shot. AI can create and manage tasks autonomously
 - **Clickable File Paths** — Project-relative paths and backtick-wrapped paths are automatically rendered as clickable links
@@ -139,9 +145,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 ### Installation
 
-- **taishen_setup_1.4.4.exe** — Windows installer (recommended)
-- **taishen_1.4.4.zip** — Windows portable, extract and run
-- **taishen_1.4.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
+- **taishen_setup_1.4.5.exe** — Windows installer (recommended)
+- **taishen_1.4.5.zip** — Windows portable, extract and run
+- **taishen_1.4.5_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
 
 > 📥 **Download:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — Go to the latest version and download from "Assets".
 
@@ -163,9 +169,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 | File | SHA256 |
 |------|--------|
-| taishen_setup_1.4.4.exe | `B14B4506D857ABCCB99A07480F5712FC84AE39B058F855D12388D8C8958CC83D` |
-| taishen_1.4.4.zip | `73D285C88275201746AD5ED5DFB2F6CF0905F48A27BBCDB74D85D8D0B013BB33` |
-| taishen_1.4.4_macOS_arm64.dmg | `FCF1C52CA0042B83D0C8FB4465EDF2E5B9CEB3EFEB760E15C69566B5CABDAEA3` |
+| taishen_setup_1.4.5.exe | `886BF9254251BCA5A8DBD07DE6B4D64035B99E2C13B896819E32DDA2169DB13E` |
+| taishen_1.4.5.zip | `1F1BDD2F21D46548DB8A822D590448B24EB554F4705DEDAE8869D75BE1A10719` |
+| taishen_1.4.5_macOS_arm64.dmg | `CE4BB3B2B2FCFBF90A6017C2EA5B28325874EBA7AFE7F1AEDD26F3E5AF94EB0B` |
 
 ---
 
