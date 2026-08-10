@@ -2,7 +2,7 @@
 
 [中文](README.md) | English
 
-**Eric Xu · Vibe Coding** | v1.4.5 | 2026
+**Eric Xu ** | v1.4.5 | 2026
 
 ---
 
