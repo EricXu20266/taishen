@@ -1,6 +1,6 @@
-## 🚀 泰深 v1.4.5 正式发布
+## 🚀 泰深 v1.4.6 正式发布
 
-A-Stocks 股票画布全面上线，内置 MCP 开箱即用。
+全局代理与长任务超时修复。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash），前缀缓存命中率 ~99%，长会话成本恒定
@@ -21,6 +21,24 @@ A-Stocks 股票画布全面上线，内置 MCP 开箱即用。
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.4.6
+
+- 现在网络设置面板内代理是全局代理了，覆盖LLM API连接、MCP、内置浏览器、plugin。
+- MCP工具参数现在在系统题词里是结构化传递。
+- 为数据查询工具添加了一些额外参数。
+- Stream 空闲超时配置上限从 10 分钟上调到 60 分钟，长任务更从容。
+- 稍微优化了泰案-A-Stocks 股票画布，打开画布默认加载自选股行情，省去手动推送。
+- 修复了长任务被误杀的隐蔽 bug：模型持续流式输出（一直思考/写正文、不调工具）超过 25 分钟会被墙钟硬超时误杀，现在按输出活动自动续期。
+- 修复了会话继承的摘要歧义的问题
+
+- The proxy in the network settings panel is now a global proxy, covering LLM API connections, MCP, the built-in browser, and plugins.
+- MCP tool parameters are now passed in structured form in the system prompt.
+- Added some extra parameters to the data query tools.
+- The Stream idle timeout cap was raised from 10 minutes to 60 minutes — long tasks now have more breathing room.
+- Slightly optimized the Taishen A-Stocks canvas — it now auto-loads your watchlist quotes on open, no manual push needed.
+- Fixed a hidden bug that killed long tasks: when a model kept streaming output (thinking/writing without calling tools) for over 25 minutes, it was killed by a wall-clock hard timeout. It now auto-renews based on output activity.
+- Fixed an ambiguity issue with inherited session summaries.
 
 ###v1.4.5
 
@@ -102,16 +120,16 @@ A-Stocks 股票画布全面上线，内置 MCP 开箱即用。
 
 
 ### 安装
-- **taishen_setup_1.4.5.exe** — Windows 安装包（推荐）
-- **taishen_1.4.5.zip** — 解压即用免安装版
-- **taishen_1.4.5_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.4.6.exe** — Windows 安装包（推荐）
+- **taishen_1.4.6.zip** — 解压即用免安装版
+- **taishen_1.4.6_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.5.exe | `886BF9254251BCA5A8DBD07DE6B4D64035B99E2C13B896819E32DDA2169DB13E` |
-| taishen_1.4.5.zip | `1F1BDD2F21D46548DB8A822D590448B24EB554F4705DEDAE8869D75BE1A10719` |
-| taishen_1.4.5_macOS_arm64.dmg | `CE4BB3B2B2FCFBF90A6017C2EA5B28325874EBA7AFE7F1AEDD26F3E5AF94EB0B` |
+| taishen_setup_1.4.6.exe | `BCE55C4ED10F7B4FFF634B7201F2632C70FD4B5B15D5A851DFCB0D21781AC423` |
+| taishen_1.4.6.zip | `D06B8623D09FDCDB795CD930FCF8DD85C01E1646D3ADB12448A21BE2B36A3178` |
+| taishen_1.4.6_macOS_arm64.dmg | `2CDC9796DDF1FEB0B6C871A5921FFF1785CD23C93D9CBB5D374C19DE9A33FEB0` |
 
 ---
 
