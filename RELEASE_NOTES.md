@@ -1,6 +1,6 @@
-## 🚀 泰深 v1.4.6 正式发布
+## 🚀 泰深 v1.4.7 正式发布
 
-全局代理与长任务超时修复。
+定时任务全面进化，多项体验修复。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash），前缀缓存命中率 ~99%，长会话成本恒定
@@ -21,6 +21,18 @@
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.4.7
+
+- 定时任务全面进化：任务可以指定 Provider，不同模型各干各的活；支持工作区挂载、会话轮换、自定义命名，执行全程计费/置顶/标题推送，工具调用和进度卡片实时生效——定时任务从"闷头干活"升级成"全程直播"。
+- 修复 Windows 通知中心把泰深显示成 electron.app.Electron。
+- 泰案html画布和内置html预览器新增外部编辑冲突检测：文件在外部被改过不再闷声覆盖，先弹确认再处理，批注锚点也会校验是否还指得准。
+- 修复了命令执行回显无法正常显示的bug。
+
+- Scheduled tasks have fully evolved: tasks can now specify a Provider, letting different models do their own jobs. Supports workspace mounting, session rotation, and custom naming. Full billing / pin-to-top / title notifications throughout execution, with tool calls and progress cards taking effect in real time — scheduled tasks have upgraded from "working silently in the dark" to "live broadcasting."
+- Fixed the issue where Windows Notification Center displayed Taishen as "electron.app.Electron".
+- The Tai An HTML canvas and the built-in HTML previewer now detect external edit conflicts: files modified outside the app are no longer silently overwritten — a confirmation prompt appears first, and annotation anchors are validated to make sure they still point to the right place.
+- Fixed a bug where command execution echo could not display correctly.
 
 ###v1.4.6
 
@@ -120,16 +132,16 @@
 
 
 ### 安装
-- **taishen_setup_1.4.6.exe** — Windows 安装包（推荐）
-- **taishen_1.4.6.zip** — 解压即用免安装版
-- **taishen_1.4.6_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.4.7.exe** — Windows 安装包（推荐）
+- **taishen_1.4.7.zip** — 解压即用免安装版
+- **taishen_1.4.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.6.exe | `BCE55C4ED10F7B4FFF634B7201F2632C70FD4B5B15D5A851DFCB0D21781AC423` |
-| taishen_1.4.6.zip | `D06B8623D09FDCDB795CD930FCF8DD85C01E1646D3ADB12448A21BE2B36A3178` |
-| taishen_1.4.6_macOS_arm64.dmg | `2CDC9796DDF1FEB0B6C871A5921FFF1785CD23C93D9CBB5D374C19DE9A33FEB0` |
+| taishen_setup_1.4.7.exe | `3140CC258FF43A0539D7E7CC5577C88C01659B7F5577845ED30F85EC951E8DC8` |
+| taishen_1.4.7.zip | `91E98BEF2DCB7AA5DED821EDE26777A08D7DDF405DC5BAA84BE4AC98BD41B5F5` |
+| taishen_1.4.7_macOS_arm64.dmg | `73A1CF26BFA10A252B49B6BDE54BD184DA485F62A4B9F9F801E748452375C6E8` |
 
 ---
 
