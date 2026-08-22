@@ -1,9 +1,9 @@
-## 🚀 泰深 v1.4.7 正式发布
+## 🚀 泰深 v1.4.8 正式发布
 
-定时任务全面进化，多项体验修复。
+泰深工具调用进化，多项体验修复。
 
 ### 核心功能
-- DeepSeek V4 全模型支持（V4-Pro / V4-Flash），前缀缓存命中率 ~99%，长会话成本恒定
+- DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-Vision），前缀缓存命中率 ~99%，长会话成本恒定
 - 主动弹窗引导 — 不会写 Prompt 也能用，AI 主动确认需求
 - Commander 形态 — AI 自主规划、调度、验证一条龙
 - 泰案画布系统 — 六种流式画布（写作/代码/HTML/终端/数据/图片），双向编辑，历史版本追踪
@@ -21,6 +21,20 @@
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.4.8
+
+- 泰深工具调用进化。
+- 做了匹配DeepSeek Vision 新模型的系统提示词更新。
+- 修复切换设定页、定时任务时，详细会话页聊天框预输入内容丢失的bug。
+- 修复 QA 问答卡片偶发丢失：流式没写完先存着，冷启动也能回显。
+- 修复 / 命令候选列表混入无关命令的问题。
+
+- Taishen's tool calling has evolved.
+- System prompt updated to match the new DeepSeek Vision model.
+- Fixed a bug where draft input in the detailed session page was lost when switching to the settings or scheduled-task pages.
+- Fixed occasional QA card loss: streaming content is staged until finalized, and cold-start echo now works.
+- Fixed unrelated commands leaking into the "/" command candidate list.
 
 ###v1.4.7
 
@@ -132,16 +146,16 @@
 
 
 ### 安装
-- **taishen_setup_1.4.7.exe** — Windows 安装包（推荐）
-- **taishen_1.4.7.zip** — 解压即用免安装版
-- **taishen_1.4.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.4.8.exe** — Windows 安装包（推荐）
+- **taishen_1.4.8.zip** — 解压即用免安装版
+- **taishen_1.4.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.7.exe | `3140CC258FF43A0539D7E7CC5577C88C01659B7F5577845ED30F85EC951E8DC8` |
-| taishen_1.4.7.zip | `91E98BEF2DCB7AA5DED821EDE26777A08D7DDF405DC5BAA84BE4AC98BD41B5F5` |
-| taishen_1.4.7_macOS_arm64.dmg | `73A1CF26BFA10A252B49B6BDE54BD184DA485F62A4B9F9F801E748452375C6E8` |
+| taishen_setup_1.4.8.exe | `40677996D862E62086DC2BEB17DF7445EDB9A4BD441240A15E4EF48226ACF76E` |
+| taishen_1.4.8.zip | `957A15509860B4C1BCB025319236C1E62B3F36324780E8F8694FBEA538682306` |
+| taishen_1.4.8_macOS_arm64.dmg | `754590F81E6904744D6D3AD77A42FF22CEB35C008FBBBFDF5C2AAC8418E18601` |
 
 ---
 
