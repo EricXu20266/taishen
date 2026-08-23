@@ -1,12 +1,12 @@
-## 🚀 泰深 v1.4.8 正式发布
+## 🚀 泰深 v1.4.9 正式发布
 
-泰深工具调用进化，多项体验修复。
+峰谷定价时钟支持工作日配置，多项体验修复。
 
 ### 核心功能
-- DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-Vision），前缀缓存命中率 ~99%，长会话成本恒定
+- DeepSeek V4 全模型支持（V4-Pro / V4-Flash），前缀缓存命中率 ~99%，长会话成本恒定
 - 主动弹窗引导 — 不会写 Prompt 也能用，AI 主动确认需求
 - Commander 形态 — AI 自主规划、调度、验证一条龙
-- 泰案画布系统 — 六种流式画布（写作/代码/HTML/终端/数据/图片），双向编辑，历史版本追踪
+- 泰案画布系统 — 七种流式画布（写作/代码/HTML/终端/数据/图片/A-Stocks/Flow），双向编辑，历史版本追踪
 - HTML 高级预览器 + 内置浏览器独立窗口 — 所见即所得，多标签、收藏夹、Chrome 扩展
 - 内置截图工具 — 泰深自我截图，配合 Myeyes 全自动识图标注
 - 经验封装系统 — skillCreator / tool_creator / skillPatcher，AI 自主创造工具
@@ -21,6 +21,16 @@
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.4.9
+
+- 峰谷定价时钟支持「周一~周五」生效日，周末全天谷价，匹配deepseek最新价格策略。
+- 修复了起始页，右侧卡片坞错误弹出的bug。
+- 修复了会话文件面板可能会漏收文件的 bug。
+
+- The peak/valley pricing clock now supports "Monday–Friday" effective days, with valley pricing all weekend — aligned with DeepSeek's latest pricing strategy.
+- Fixed a bug where the home page's right-side card dock popped out incorrectly.
+- Fixed a bug where the session file panel could miss some files.
 
 ###v1.4.8
 
@@ -146,16 +156,16 @@
 
 
 ### 安装
-- **taishen_setup_1.4.8.exe** — Windows 安装包（推荐）
-- **taishen_1.4.8.zip** — 解压即用免安装版
-- **taishen_1.4.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.4.9.exe** — Windows 安装包（推荐）
+- **taishen_1.4.9.zip** — 解压即用免安装版
+- **taishen_1.4.9_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.8.exe | `40677996D862E62086DC2BEB17DF7445EDB9A4BD441240A15E4EF48226ACF76E` |
-| taishen_1.4.8.zip | `957A15509860B4C1BCB025319236C1E62B3F36324780E8F8694FBEA538682306` |
-| taishen_1.4.8_macOS_arm64.dmg | `754590F81E6904744D6D3AD77A42FF22CEB35C008FBBBFDF5C2AAC8418E18601` |
+| taishen_setup_1.4.9.exe | `C4941E605172E0CCA5379C802A09ED5CD0884CCDED6652E59C52F13BA6F1844F` |
+| taishen_1.4.9.zip | `B715EF6B01712575D20682B74816DD97671C2C03F447BD431B01C0D1BAE77B6F` |
+| taishen_1.4.9_macOS_arm64.dmg | `33AE9AA0B6C9289BF464DB783BDB5DF017F557D40A710DEBB1C9FB74ED7D93FB` |
 
 ---
 
