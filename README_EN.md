@@ -2,7 +2,7 @@
 
 [中文](README.md) | English
 
-**Eric Xu** | v1.4.9 | 2026
+**Eric Xu** | v1.6.0 | 2026
 
 ---
 
@@ -59,6 +59,8 @@ Taishen doesn't just use tools — it **creates** them.
 
 **tool_creator** — When Skills aren't enough, AI writes real TypeScript tools. Compile, register, effective next session.
 
+**Ability Transfer (DSH Plugin Migration)** — Capabilities accumulated in other tools can be moved into Taishen as-is: simple plugins become user-level tools automatically; complex plugins register as bundles (tools + skill + scripts) — no rewriting needed.
+
 Your Taishen learns your workflow and develops a unique capability profile over time.
 
 ### 📱 IM Remote Access
@@ -90,13 +92,21 @@ Equip Taishen with a professional team — dispatch sub-agents to work in parall
 
 **Cross-Model Collaboration** — With multiple AI providers configured, Myeyes can call vision models in the background for image recognition, and FlexDog can switch to other models for task execution — multiple AIs working together within a single conversation.
 
+### 📥 External Agent Session Migration
+
+Sessions accumulated in other AI tools don't need to be restarted. Taishen reads and migrates sessions from **17+ external agents** — Claude Code/Cowork, Codex, Cursor, ChatGPT, Gemini, Qoder, Kimi, WorkBuddy, DSH, and more.
+
+Locate sessions by external session ID or title keyword to read past conversations; promote a session into Taishen's main database on demand and continue right where you left off. The two-layer buffered migration never stresses the main database. Switch tools without losing history — your assets follow you.
+
 ### 🔌 Multi-Provider & Extension Ecosystem
 
 **Multi AI Provider** — Freely switch between DeepSeek, OpenAI, Mimo, and more. Reasoning intensity and context window parameters are per-model, allowing fine-tuning for each model individually.
 
 **Skill System** — Compatible with the [agentskills.io](https://agentskills.io) open standard (used by Claude Code, Cursor, GitHub Copilot, and 35+ other tools). Create custom Skills, search and install community Skills from GitHub/Gitee, or let AI autonomously create new Skills. Supports group/subgroup two-level organization.
 
-**MCP Protocol** — Supports Streamable HTTP / SSE / stdio transport. Connect external capabilities like web search, browsers, and academic databases to the AI. Since v1.4.5, five built-in MCPs come ready out of the box: anysearch (search, anonymous mode supported), firecrawl (deep search), TDX (market data), codegraph (code graph), and chrome-devtools (browser control). Built-in MCPs never conflict with user-level configuration — your own MCP takes precedence.
+**MCP Protocol** — Supports Streamable HTTP / SSE / stdio transport. Connect external capabilities like web search, browsers, and academic databases to the AI. Five built-in MCPs pre-installed: anysearch (search, anonymous mode supported), firecrawl (deep search), TDX (market data), codegraph (code graph), and chrome-devtools (browser control). Built-in MCPs never conflict with user-level configuration — your own MCP takes precedence.
+
+**MCP On-Demand Loading** — MCP tool descriptions no longer occupy system prompt space. Keep frequently-used MCPs enabled and disable low-frequency ones; when needed, Taishen enables one automatically within the session (session-level only, global defaults untouched). MCP hot-reload: toggling takes effect on the very next message — no session restart required.
 
 **Plugins + Self-Creating Tools** — Drop plugins in to load instantly; AI can write new tools (TypeScript) on demand — no manual coding required.
 
@@ -130,6 +140,7 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 - **1M Token Context** — Full DeepSeek V4 window support; long papers and large projects without pressure
 - **Proactive Pop-Up Guidance** — Can't write prompts? Just say one sentence. Vague requirements? AI pops up to confirm — clicking is 100× faster than guessing wrong and redoing
 - **99% Prefix Cache Hit Rate** — Prompt structure deeply optimized for DeepSeek's cache mechanism. Per-round cost constant even in 200M+ token sessions
+- **Slimmed System Prompt** — v1.6.0 deeply optimized the prompt structure for lower token consumption, compounding savings with prefix caching
 - **Built-in Screenshot Tool** — Taishen screenshots itself. With Myeyes, fully automated image recognition, annotation, and editing
 - **Voice Interaction** — Speech-to-text (STT) voice input and text-to-speech (TTS) voice output, three modes freely switchable
 - **Headless CLI** — Run in pure command-line mode (`--headless`) for script integration and server scenarios
@@ -145,9 +156,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 ### Installation
 
-- **taishen_setup_1.4.9.exe** — Windows installer (recommended)
-- **taishen_1.4.9.zip** — Windows portable, extract and run
-- **taishen_1.4.9_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
+- **taishen_setup_1.6.0.exe** — Windows installer (recommended)
+- **taishen_1.6.0.zip** — Windows portable, extract and run
+- **taishen_1.6.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
 
 > 📥 **Download:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — Go to the latest version and download from "Assets".
 
@@ -169,9 +180,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 | File | SHA256 |
 |------|--------|
-| taishen_setup_1.4.9.exe | `C4941E605172E0CCA5379C802A09ED5CD0884CCDED6652E59C52F13BA6F1844F` |
-| taishen_1.4.9.zip | `B715EF6B01712575D20682B74816DD97671C2C03F447BD431B01C0D1BAE77B6F` |
-| taishen_1.4.9_macOS_arm64.dmg | `33AE9AA0B6C9289BF464DB783BDB5DF017F557D40A710DEBB1C9FB74ED7D93FB` |
+| taishen_setup_1.6.0.exe | `798399CB89F47C2CF68D3BF25C13C4608E9AB75C9241CE66CF7A882D8422BE31` |
+| taishen_1.6.0.zip | `F398775262CF7D26FB4B4A4B948F4D1591C7A407AA0B02A6A29DC333B08C0A89` |
+| taishen_1.6.0_macOS_arm64.dmg | `7BDDE3FC3F2A66AC359495EFB014CA5C45E38A50B887230E4FDF031F68471EF0` |
 
 ---
 
