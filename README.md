@@ -2,7 +2,7 @@
 
 [English](README_EN.md) | 中文
 
-**二班的Eric作品** | v1.4.9 | 2026
+**二班的Eric作品** | v1.6.0 | 2026
 
 ---
 
@@ -59,6 +59,8 @@
 
 **tool_creator** — 当 Skill 不够用时，AI 编写真正的 TypeScript 工具。编译、注册、下次会话生效。
 
+**他化自在法（DSH 插件迁移）** — 你在其他工具里积累的插件能力，可以整体平移进泰深：简单插件自动转为用户级工具，复杂插件转为组合包（工具 + Skill + 脚本）注册，无需重写。
+
 你的泰深会越用越懂你的工作流，逐渐长出独一无二的能力形态。
 
 ### 📱 IM 远程接入
@@ -90,13 +92,21 @@
 
 **跨模型协作** — 配置了多个 AI 供应商后，Myeyes 可在后台调用视觉模型识图，FlexDog 可切换到其他模型执行任务，同一段对话内多 AI 共同作业。
 
+### 📥 外部 Agent 会话迁移
+
+在其他 AI 工具里积累的会话，不用重开。泰深支持读取并迁移 **17+ 种外部 Agent** 的会话——Claude Code/Cowork、Codex、Cursor、ChatGPT、Gemini、Qoder、Kimi、WorkBuddy、DSH 等。
+
+按外部会话 ID 或标题关键字搜索定位，即可阅读历史对话；需要时一键将指定会话转正进泰深主库，直接继承续聊。迁移采用双层缓冲设计，不冲击主库性能。换工具不换历史，资产跟着你走。
+
 ### 🔌 多供应商 & 扩展体系
 
 **多 AI 供应商** — 支持 DeepSeek、OpenAI、Mimo 等多家供应商自由切换。推理强度、上下文窗口等参数下沉到 per-model 级别，不同模型各自微调。
 
 **Skill 技能系统** — 兼容 [agentskills.io](https://agentskills.io) 开放标准（Claude Code、Cursor、GitHub Copilot 等 35+ 工具通用）。自建 Skill、从 GitHub/Gitee 搜索安装社区 Skill、AI 自主创建新 Skill。支持 group/subgroup 二级分组管理。
 
-**MCP 协议** — 支持 Streamable HTTP / SSE / stdio 三源接入，给 AI 接入网页搜索、浏览器、学术数据库等外部能力。v1.4.5 起内置五大 MCP 开箱即用：anysearch（搜索，支持匿名）、firecrawl（深度搜索）、通达信（行情数据）、codegraph（代码图谱）、chrome-devtools（浏览器控制）。内置 MCP 不挤占用户级配置——你自行配置的相同 MCP 优先。
+**MCP 协议** — 支持 Streamable HTTP / SSE / stdio 三源接入，给 AI 接入网页搜索、浏览器、学术数据库等外部能力。内置五大 MCP 预置：anysearch（搜索，支持匿名）、firecrawl（深度搜索）、通达信（行情数据）、codegraph（代码图谱）、chrome-devtools（浏览器控制）。内置 MCP 不挤占用户级配置——你自行配置的相同 MCP 优先。
+
+**MCP 按需加载** — 工具说明不再挤占系统提示词空间。常用的 MCP 保持开启、低频的关掉；会话里泰深需要时自动一键启用（会话级生效，不动全局设置）。MCP 支持热加载——会话内启停，下一条消息立即生效，无需重启会话。
 
 **插件 + 工具自主创建** — 插件丢入即加载；AI 可根据需求自行编写新工具（TypeScript），无需你动手。
 
@@ -130,6 +140,7 @@
 - **1M Token 上下文** — DeepSeek V4 全窗口支持，长论文、大项目无压力
 - **主动弹窗引导** — 不会写 Prompt？说一句话就行。需求模糊？AI 弹窗确认，点一下比猜错重做快一百倍
 - **前缀缓存 99% 命中率** — 针对 DeepSeek 缓存命中机制深度优化的 Prompt 结构，两亿 token 级会话每轮成本恒定，不随会话增长
+- **系统提示词瘦身** — v1.6.0 深度优化提示词结构，token 消耗更低，与前缀缓存配合成本更省
 - **内置截图工具** — 泰深可自我截图，配合 Myeyes 实现全自动识图、标注、修改流程
 - **语音交互** — 语音输入（STT）转文字，语音输出（TTS）朗读回复，三种模式自由切换
 - **Headless CLI** — 纯命令行运行（`--headless`），适合脚本集成与服务器场景
@@ -145,9 +156,9 @@
 
 ### 安装
 
-- **taishen_setup_1.4.9.exe** — Windows 安装包（推荐）
-- **taishen_1.4.9.zip** — Windows 解压即用免安装版
-- **taishen_1.4.9_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.6.0.exe** — Windows 安装包（推荐）
+- **taishen_1.6.0.zip** — Windows 解压即用免安装版
+- **taishen_1.6.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载。
 
@@ -169,9 +180,9 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.4.9.exe | `C4941E605172E0CCA5379C802A09ED5CD0884CCDED6652E59C52F13BA6F1844F` |
-| taishen_1.4.9.zip | `B715EF6B01712575D20682B74816DD97671C2C03F447BD431B01C0D1BAE77B6F` |
-| taishen_1.4.9_macOS_arm64.dmg | `33AE9AA0B6C9289BF464DB783BDB5DF017F557D40A710DEBB1C9FB74ED7D93FB` |
+| taishen_setup_1.6.0.exe | `798399CB89F47C2CF68D3BF25C13C4608E9AB75C9241CE66CF7A882D8422BE31` |
+| taishen_1.6.0.zip | `F398775262CF7D26FB4B4A4B948F4D1591C7A407AA0B02A6A29DC333B08C0A89` |
+| taishen_1.6.0_macOS_arm64.dmg | `7BDDE3FC3F2A66AC359495EFB014CA5C45E38A50B887230E4FDF031F68471EF0` |
 
 ---
 
