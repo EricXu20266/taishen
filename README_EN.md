@@ -1,8 +1,8 @@
-﻿# taishen
+# taishen
 
 [中文](README.md) | English
 
-**Eric Xu** | v1.6.1 | 2026
+**Eric Xu** | v1.6.2 | 2026
 
 ---
 
@@ -156,9 +156,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 ### Installation
 
-- **taishen_setup_1.6.1.exe** — Windows installer (recommended)
-- **taishen_1.6.1.zip** — Windows portable, extract and run
-- **taishen_1.6.1_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
+- **taishen_setup_1.6.2.exe** — Windows installer (recommended)
+- **taishen_1.6.2.zip** — Windows portable, extract and run
+- **taishen_1.6.2_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
 
 > 📥 **Download:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — Go to the latest version and download from "Assets".
 
@@ -180,9 +180,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 | File | SHA256 |
 |------|--------|
-| taishen_setup_1.6.1.exe | `6718C96AFC845E0CE4F36F4A536A22F8022FB7CBA89B607496FB1D2E2DF0D92C` |
-| taishen_1.6.1.zip | `6778416789CA3851549C3C2649DD782F659149BAF425735D2C7EDBA8A2B2EB7F` |
-| taishen_1.6.1_macOS_arm64.dmg | `D457D71BA79F0C2C16EDB72AF3476E90248CC83C0EC5518CF4A02D5608522840` |
+| taishen_setup_1.6.2.exe | `959B9E43D848F5B0DED6B3CCCAA5D94D2C66EE9E381CB56575DFAF20342BE8D4` |
+| taishen_1.6.2.zip | `4E26BEFF51E08BB6B24894E3B6BE8B9CDB1732F6CE9DA97E9AF0E82A54952DF8` |
+| taishen_1.6.2_macOS_arm64.dmg | `DAF0BDFA600F45123BCFB7883D2257F2B5AA86D685FCB858780279241BAE4A41` |
 
 ---
 
