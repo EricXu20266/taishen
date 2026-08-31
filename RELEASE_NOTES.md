@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.6.1 正式发布
+## 🚀 泰深 v1.6.2 正式发布
 
-泰案画布新添 Design + Beads 两大成员。
+拼豆画布新增 SVG 彩色转换通道，多项体验修复。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -24,29 +24,17 @@
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
 
-###v1.6.1
+###v1.6.2
 
-- 重大更新，泰案画布家族喜迎两大新成员——Design 设计画布 + Beads 拼豆画布！
-  - Design 设计画布：泰深现在能帮你画矢量设计稿了。登录页、移动屏、UI 稿、banner、logo，用自然语言描述，AI 写 JSX 直接生成。带图层面板、属性面板，支持图层混合模式、多页面、SVG 导入、模板库、富文本等等。让我想想...内置了一个用于AI使用的Openpencil！！！！！！！！！！！
-  - Beads 拼豆画布：拼豆党的福音！网格编辑、图片转图纸、色卡组、用量统计一条龙，AI 还会逐颗落子动画，看它一颗颗把图纸填满，解压指数拉满。
-- 泰案画布全面补齐：AI 批注（多选+右键）移植到 Design/Beads，图片转图纸对齐 pindou，新建画布显示名称和图标补齐。
-- 新增内置 Skill「ui-design-lingo」——UI 设计语言速查。以后你说"我要高级感"，泰深能听懂你到底要什么，不再一头雾水。
-- 工具升级：db_query 能探查自身数据库结构；svg_to_grid 内置化支持多格式 + 留边参数；工具 Token 预算显示；bash 高危递归卡死修复。
-- 新增内置 code-auditor 独立代码审计员子代理——泰深做完大改动后会派个"挑剔的检查员"独立复查一遍，帮你挡住自检盲区。
-- UI 去 emoji 化：所有 Skill/MCP/插件/工具的图标告别 emoji，统一换成 lucide 图标体系，界面干净多了。
-- 安全加固：命令规则持久化 + AI 预审 + 包装器递归检测，Windows 后台任务、Defender 受控文件夹假死、Target 模式预算死循环、Whisper 语音等一批顽疾修复。
-- 一堆零零散散的小修复。
+- 为拼豆画布添加了SVG彩色转换通道，现在可与彩色图片直接转换。
+- 修复泰案画布打开会黑屏问题。
+- 修复 DiffView 文件名解析：含空格路径的文件不再显示错名字，顺带给 LUA 文件加了徽章。
+- 修复了一些文件夹访问是虚拟路径解析失败的问题。
 
-- Major Update: The Tai An canvas family has two new members — the Design canvas and the Beads canvas!
-  - Design canvas: Taishen can now help you create vector design drafts. Login pages, mobile screens, UI mockups, banners, logos — describe them in plain language and the AI generates them directly via JSX. It comes with a layer panel and properties panel, and supports layer blend modes, multiple pages, SVG import, template library, rich text, and more. Wait, let me think... it's like an Openpencil built in for the AI to use!
-  - Beads canvas: A godsend for bead-craft fans! Grid editing, image-to-pattern, color card groups, and usage stats all in one — plus the AI places beads one by one with an animation, and you can watch it fill the pattern in. So satisfying.
-- Tai An canvas caught up across the board: AI annotation (multi-select + right-click) ported to Design/Beads, image-to-pattern aligned with pindou, and new canvas display names and icons completed.
-- New built-in Skill "ui-design-lingo" — a UI design language quick reference. Next time you say "I want it to feel premium," Taishen actually knows what you mean instead of drawing a blank.
-- Tool upgrades: db_query can now probe its own database schema; svg_to_grid is built in with multi-format support + contain parameter; tool token budget is visible; bash high-risk recursion hang fixed.
-- New built-in code-auditor subagent — after a big change, Taishen sends in a "picky inspector" to independently review it, helping you catch the blind spots in self-checks.
-- UI emoji removal: all Skill/MCP/plugin/tool icons say goodbye to emoji and adopt the unified lucide icon system — the interface looks a lot cleaner.
-- Security hardening: command-rule persistence + AI pre-check + wrapper recursion detection, plus a batch of stubborn bugs fixed — Windows background tasks, Defender controlled-folder freezes, Target-mode budget infinite loops, Whisper voice, and more.
-- A bunch of miscellaneous small fixes.
+- Added an SVG color conversion channel to the Perler beads canvas — it can now convert directly with color images.
+- Fixed the black screen issue when opening the Tai'an canvas.
+- Fixed DiffView filename parsing: files with spaces in their paths no longer display wrong names, and LUA files now get a badge.
+- Fixed virtual path resolution failures when accessing certain folders.
 
 ###v1.4.9
 
@@ -182,16 +170,16 @@
 
 
 ### 安装
-- **taishen_setup_1.6.1.exe** — Windows 安装包（推荐）
-- **taishen_1.6.1.zip** — 解压即用免安装版
-- **taishen_1.6.1_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.6.2.exe** — Windows 安装包（推荐）
+- **taishen_1.6.2.zip** — 解压即用免安装版
+- **taishen_1.6.2_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.6.1.exe | `6718C96AFC845E0CE4F36F4A536A22F8022FB7CBA89B607496FB1D2E2DF0D92C` |
-| taishen_1.6.1.zip | `6778416789CA3851549C3C2649DD782F659149BAF425735D2C7EDBA8A2B2EB7F` |
-| taishen_1.6.1_macOS_arm64.dmg | `D457D71BA79F0C2C16EDB72AF3476E90248CC83C0EC5518CF4A02D5608522840` |
+| taishen_setup_1.6.2.exe | `959B9E43D848F5B0DED6B3CCCAA5D94D2C66EE9E381CB56575DFAF20342BE8D4` |
+| taishen_1.6.2.zip | `4E26BEFF51E08BB6B24894E3B6BE8B9CDB1732F6CE9DA97E9AF0E82A54952DF8` |
+| taishen_1.6.2_macOS_arm64.dmg | `DAF0BDFA600F45123BCFB7883D2257F2B5AA86D685FCB858780279241BAE4A41` |
 
 ---
 
