@@ -1,9 +1,9 @@
-## 🚀 泰深 v1.6.0 正式发布
+﻿## 🚀 泰深 v1.6.1 正式发布
 
-提示词瘦身，MCP 按需加载，外部 Agent 会话导入上线。
+泰案画布新添 Design + Beads 两大成员。
 
 ### 核心功能
-- DeepSeek V4 全模型支持（V4-Pro / V4-Flash），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
+- DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
 - 主动弹窗引导 — 不会写 Prompt 也能用，AI 主动确认需求
 - Commander 形态 — AI 自主规划、调度、验证一条龙
 - 泰案画布系统 — 八种流式画布（写作/代码/HTML/终端/数据/图片/A-Stocks/Flow），双向编辑，历史版本追踪
@@ -24,54 +24,28 @@
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
 
-###v1.6.0
+###v1.6.1
 
-- 重大更新，系统提示词瘦身工程完成：内置功能与工具增加导致提示词膨胀，本次深度瘦身降低 token 消耗。
-  - Skill 介绍的 when_to_use 截断，调整 SKILL 隐式激活逻辑弥补隐式调用。
-  - MCP 按需加载上线：工具说明不再挤占系统提示词空间，会话内可一键启用，会话级生效不影响全局默认设置。
-  - 内置 firecrawl、tdx-finance 两大 MCP 出厂默认禁用（工具说明过大，压缩会影响精度）。
-  - MCP 热加载模式：会话内开启关闭，下轮消息直接感知，无需新会话；设计上考虑 DeepSeek 缓存命中，影响最小化。
-  - 泰深现在可以自主开启和关闭 MCP（字面意思）。
-  - 系统提示词细节调整，异步任务与异常处理有所改观。
-- 重大更新，外部 Agent 会话读取与导入系统上线：
-  - 新增 import_session 内置工具，支持 17+ 种外部 Agent 会话（Claude Code/Cowork、Codex、Cursor、ChatGPT、Gemini、Qoder、Kimi、WorkBuddy、DSH 等）读取与迁移。
-  - 支持按外部会话 ID 或标题关键字搜索定位、会话阅读。
-  - 双层设计：先导入外置挂载库（缓冲层），再按需转正到主库（UI 面板可见），避免迁移冲击主库。
-- 重大更新，DSH 插件迁移能力（他化自在法）上线：
-  - 内置 DSH 插件迁移 Skill，可将其他工具积累的能力平移进泰深。
-  - 平移前自动判断是否需要、是否满足条件（不能基于 DSH 封装核心或某些 UI 调整）。
-  - 两种模式：简单插件转为用户级工具注册进工具列表；复杂插件以组合包（tools + skill + scripts）注册为泰深插件（参考内置 deepresearch）。
-- 数据库读取降噪器（NoisyFilter）：三个内置读取工具默认过滤工具调用噪音，只留对话内容，查历史更清爽。
-- 经验封装系统闭环完成：新增 encapsulation_mark_done 工具，使用追踪接入 PostToolUse，pilot 转正机制跑通，好习惯能被固化。
-- 浏览器稳定性大幅修复：导航/截图/快照失败返回真实错误信息，禁用 backgroundThrottling 根治截图空图，调整 taishen_screenshot 逻辑。
-- 修复 tool_creator 假死根因（buildSync 同步 API 阻塞主进程），创建工具不再卡死。
-- 修复用户工具返回 JSON 字符串导致会话崩溃的问题，工具返回对象标准化。
-- 后台子代理输出目录改用运行时目录，不再污染项目根目录。
-- 安全加固：新增「用户与宿主机安全」确认+预检流程，安装外部程序前先查一遍。
+- 重大更新，泰案画布家族喜迎两大新成员——Design 设计画布 + Beads 拼豆画布！
+  - Design 设计画布：泰深现在能帮你画矢量设计稿了。登录页、移动屏、UI 稿、banner、logo，用自然语言描述，AI 写 JSX 直接生成。带图层面板、属性面板，支持图层混合模式、多页面、SVG 导入、模板库、富文本等等。让我想想...内置了一个用于AI使用的Openpencil！！！！！！！！！！！
+  - Beads 拼豆画布：拼豆党的福音！网格编辑、图片转图纸、色卡组、用量统计一条龙，AI 还会逐颗落子动画，看它一颗颗把图纸填满，解压指数拉满。
+- 泰案画布全面补齐：AI 批注（多选+右键）移植到 Design/Beads，图片转图纸对齐 pindou，新建画布显示名称和图标补齐。
+- 新增内置 Skill「ui-design-lingo」——UI 设计语言速查。以后你说"我要高级感"，泰深能听懂你到底要什么，不再一头雾水。
+- 工具升级：db_query 能探查自身数据库结构；svg_to_grid 内置化支持多格式 + 留边参数；工具 Token 预算显示；bash 高危递归卡死修复。
+- 新增内置 code-auditor 独立代码审计员子代理——泰深做完大改动后会派个"挑剔的检查员"独立复查一遍，帮你挡住自检盲区。
+- UI 去 emoji 化：所有 Skill/MCP/插件/工具的图标告别 emoji，统一换成 lucide 图标体系，界面干净多了。
+- 安全加固：命令规则持久化 + AI 预审 + 包装器递归检测，Windows 后台任务、Defender 受控文件夹假死、Target 模式预算死循环、Whisper 语音等一批顽疾修复。
 - 一堆零零散散的小修复。
 
-- **Major update — system prompt slimming completed**: as built-in features and tools grew, the prompt began to bloat; this update deep-slims it to cut token consumption.
-  - Skill `when_to_use` descriptions truncated; SKILL implicit activation logic adjusted to compensate.
-  - MCP on-demand loading is live: tool descriptions no longer occupy prompt space; one-click session-level enable, global defaults untouched.
-  - Built-in firecrawl & tdx-finance MCPs disabled by default out of the box (tool descriptions too large to compress without hurting accuracy).
-  - MCP hot-reload: toggling takes effect on the very next message, no new session needed; designed around DeepSeek cache hits to minimize impact.
-  - Taishen can now enable and disable MCPs autonomously (literally).
-  - Fine-grained prompt adjustments — async task handling and error handling improved.
-- **Major update — external Agent session import system is live**:
-  - New built-in `import_session` tool supports reading and migrating sessions from 17+ external agents (Claude Code/Cowork, Codex, Cursor, ChatGPT, Gemini, Qoder, Kimi, WorkBuddy, DSH, etc.).
-  - Locate and read sessions by external session ID or title keyword.
-  - Two-layer design: sessions import into a separate mount library (buffer layer), then promote to the main database on demand (visible in the UI) — no stress on the main DB during migration.
-- **Major update — DSH plugin migration ("Ability Transfer") is live**:
-  - Built-in DSH plugin migration Skill — transfer capabilities accumulated in other tools into Taishen.
-  - The transfer evaluates whether a capability is needed and feasible (cannot be based on DSH core packaging or certain UI adjustments).
-  - Two modes: simple plugins become user-level tools in the tool list; complex plugins register as Taishen plugin packages (tools + skill + scripts), see built-in deepresearch.
-- Database read noise suppressor (NoisyFilter): three built-in read tools filter out tool-call noise by default, leaving only conversation content.
-- Experience encapsulation loop completed: new `encapsulation_mark_done` tool, usage tracking wired into PostToolUse, pilot-to-stable promotion live — good habits can finally be solidified.
-- Major browser stability fixes: real error messages on navigation/screenshot/snapshot failure; backgroundThrottling disabled to root-cause blank screenshots; taishen_screenshot logic adjusted.
-- Fixed the root cause of tool_creator freezes (buildSync synchronous API blocking the main process).
-- Fixed a session crash from user tools returning JSON strings; tool returns standardized as objects.
-- Background subagent output now goes to the runtime directory instead of polluting the project root.
-- Security hardening: "User & Host Security" confirmation + pre-check flow — external programs are vetted before installation.
+- Major Update: The Tai An canvas family has two new members — the Design canvas and the Beads canvas!
+  - Design canvas: Taishen can now help you create vector design drafts. Login pages, mobile screens, UI mockups, banners, logos — describe them in plain language and the AI generates them directly via JSX. It comes with a layer panel and properties panel, and supports layer blend modes, multiple pages, SVG import, template library, rich text, and more. Wait, let me think... it's like an Openpencil built in for the AI to use!
+  - Beads canvas: A godsend for bead-craft fans! Grid editing, image-to-pattern, color card groups, and usage stats all in one — plus the AI places beads one by one with an animation, and you can watch it fill the pattern in. So satisfying.
+- Tai An canvas caught up across the board: AI annotation (multi-select + right-click) ported to Design/Beads, image-to-pattern aligned with pindou, and new canvas display names and icons completed.
+- New built-in Skill "ui-design-lingo" — a UI design language quick reference. Next time you say "I want it to feel premium," Taishen actually knows what you mean instead of drawing a blank.
+- Tool upgrades: db_query can now probe its own database schema; svg_to_grid is built in with multi-format support + contain parameter; tool token budget is visible; bash high-risk recursion hang fixed.
+- New built-in code-auditor subagent — after a big change, Taishen sends in a "picky inspector" to independently review it, helping you catch the blind spots in self-checks.
+- UI emoji removal: all Skill/MCP/plugin/tool icons say goodbye to emoji and adopt the unified lucide icon system — the interface looks a lot cleaner.
+- Security hardening: command-rule persistence + AI pre-check + wrapper recursion detection, plus a batch of stubborn bugs fixed — Windows background tasks, Defender controlled-folder freezes, Target-mode budget infinite loops, Whisper voice, and more.
 - A bunch of miscellaneous small fixes.
 
 ###v1.4.9
@@ -208,16 +182,16 @@
 
 
 ### 安装
-- **taishen_setup_1.6.0.exe** — Windows 安装包（推荐）
-- **taishen_1.6.0.zip** — 解压即用免安装版
-- **taishen_1.6.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.6.1.exe** — Windows 安装包（推荐）
+- **taishen_1.6.1.zip** — 解压即用免安装版
+- **taishen_1.6.1_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.6.0.exe | `798399CB89F47C2CF68D3BF25C13C4608E9AB75C9241CE66CF7A882D8422BE31` |
-| taishen_1.6.0.zip | `F398775262CF7D26FB4B4A4B948F4D1591C7A407AA0B02A6A29DC333B08C0A89` |
-| taishen_1.6.0_macOS_arm64.dmg | `7BDDE3FC3F2A66AC359495EFB014CA5C45E38A50B887230E4FDF031F68471EF0` |
+| taishen_setup_1.6.1.exe | `6718C96AFC845E0CE4F36F4A536A22F8022FB7CBA89B607496FB1D2E2DF0D92C` |
+| taishen_1.6.1.zip | `6778416789CA3851549C3C2649DD782F659149BAF425735D2C7EDBA8A2B2EB7F` |
+| taishen_1.6.1_macOS_arm64.dmg | `D457D71BA79F0C2C16EDB72AF3476E90248CC83C0EC5518CF4A02D5608522840` |
 
 ---
 
