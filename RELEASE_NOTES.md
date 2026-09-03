@@ -1,6 +1,6 @@
-## 🚀 泰深 v1.6.2 正式发布
+## 🚀 泰深 v1.6.3 正式发布
 
-拼豆画布新增 SVG 彩色转换通道，多项体验修复。
+调色画布正式出道，AI 也能动手调色了。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -24,17 +24,39 @@
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
 
-###v1.6.2
+###v1.6.3
 
-- 为拼豆画布添加了SVG彩色转换通道，现在可与彩色图片直接转换。
-- 修复泰案画布打开会黑屏问题。
-- 修复 DiffView 文件名解析：含空格路径的文件不再显示错名字，顺带给 LUA 文件加了徽章。
-- 修复了一些文件夹访问是虚拟路径解析失败的问题。
+- 重大更新，调色画布（Color）正式出道——泰深内置的图片调色工具：一个「AI 使用的弱化版 Lightroom」，主要用于图片调色。不给你堆满专业按钮，而是让 AI 直接听懂你的话、动手调色。它本质上是为 AI 使用而设计的工具（AI-First）——AI 是调色师，你是导演。
+  - 怎么调（AI-First 概念）：你不用自己拖滑块，两种驱动方式任选——
+    - ① 会话内对话：直接说「这张图太灰了不通透」「帮我把天空调蓝、山别动」「脸上发黄救一下」，泰深把话翻译成专业调整链执行；
+    - ② 画布批注：在画布上圈选区域（矩形/圆形/梯形/套索）或吸管点色，附一句说明，泰深收到批注即动手。
+    - 无论哪种方式，泰深都会先给照片做一次数值「体检」（直方图、通道、白平衡，绝不空口说"看到了"），再按专业顺序——先白平衡、再影调、后色彩——开方调整，边调边告诉你改了什么、为什么。
+  - 调什么：人像肤色、山水风光、夜景霓虹、阴天废片都能上手——你说的「通透点 / 太灰 / 偏蓝 / 调肤色」，背后是 21 个专业算子（白平衡 / 影调 / 对比 / 清晰度 / 去雾 / 分区色调等）+ 各场景套路配方 + 「去灰 / 胶片 / 清冷」等风格预设。
+  - 区域精修（蒙版级局部调色）：只调天空不动山、只调肤色不动背景？圈个空间选区、或吸管点一下同色区域，AI 挂局部调整链——区外原样保护、自带羽化过渡；框都不想画，AI 还能调用视觉识别能力自动认出画面主体，分区分着调。
+  - 交付：一键导出成品图（PNG）；还能导出蒙版分层 PSD——每个调整区域独立成层、自带蒙版，丢进 Photoshop 还能接着精修。
+  - 顺手的地方：撤销/重做（含区域级）、选区自由变换手柄（PS 语义）、前后对比视图、实时直方图与刷新；GPU 渲染加速，六千像素宽的航拍大图调整缩放不卡顿。
+- 调色画布细节打磨：自定义风格库保存/套用、Lightroom 预设（XMP）一键导入、连续圈选多区域统一调整、批量多图导入分页、区域序号角标（"区域 2 调亮"按号报位）……几十处交互修复，把它从「能用」磨到「顺手」。
+- 子代理大升级（攒了一整轮）：后台派活真正异步，不再卡住主对话；任务超 3 分钟自动转后台，随时查进度、继续等或主动叫停；跑偏了能优雅按停，结果落盘不再丢。
+- Windows 细节修复：任务栏右键菜单、固定图标、通知气泡不再空图标；开始菜单快捷方式改为按需创建，更少被安全软件误报。
+- 安全与稳定性：历史消息里的毒 JSON 不再诱发会话死锁；粘贴附件预览与右键粘贴恢复正常；DeepSeek 内置定价表同步 9 月最新价，成本估算更准。
+- 泰案画布家族统一工程收尾：工具栏、图标、面板、快捷键全面对齐，多画布操作手感一致。
+- 一堆零零散散的小修复。
 
-- Added an SVG color conversion channel to the Perler beads canvas — it can now convert directly with color images.
-- Fixed the black screen issue when opening the Tai'an canvas.
-- Fixed DiffView filename parsing: files with spaces in their paths no longer display wrong names, and LUA files now get a badge.
-- Fixed virtual path resolution failures when accessing certain folders.
+- Major Update: The Color Grading canvas officially debuts — Taishen's built-in photo grading tool, best described as an "AI-driven lite Lightroom" for picture color grading. Instead of burying you in pro buttons, it lets the AI understand your words and do the grading for you. It's built AI-First — a tool designed for the AI to use: the AI is the colorist, you're the director.
+  - How it works (AI-First concept): no slider-dragging needed. Two ways to drive it —
+    - ① Chat in the session: just say "this photo is too gray and dull", "make the sky bluer without touching the mountains", "fix the yellowish skin" — Taishen translates your words into a professional adjustment chain and executes it.
+    - ② Annotate on canvas: circle a region (rect / ellipse / trapezoid / lasso) or eyedrop a color, add a note, and Taishen acts on the annotation.
+    - Either way, Taishen first runs a numerical "checkup" on the photo (histogram, channels, white balance — it never pretends to "see" things), then follows the pro order — white balance first, then tone, then color — explaining what it changed and why.
+  - What it grades: portraits & skin tones, landscapes, neon nights, and overcast "discarded" photos — your plain words like "more clarity", "too gray", "too blue", "fix skin tone" map to 21 pro-grade operators (white balance / tone / contrast / clarity / dehaze / split-toning, etc.) plus scene recipes and presets such as "de-haze", "film" and "cool tone".
+  - Region-level (masked) grading: want only the sky bluer or only the skin retouched? Select a spatial region, or eyedrop a color range, and the AI applies a local adjustment chain — everything outside stays protected, with feathered transitions. Don't want to draw at all? The AI can invoke vision recognition to identify the subjects and split regions for you.
+  - Delivery: one-click export of the finished image (PNG), plus layered PSD export — each adjustment region becomes its own layer with a mask, ready for further refinement in Photoshop.
+  - Nice touches: undo/redo (region-level too), free-transform selection handles (Photoshop semantics), before/after comparison, live histogram and refresh; GPU-accelerated rendering keeps 6000px-wide aerial shots fluid while adjusting and zooming.
+- Detail polish on the Color canvas: custom style library save/apply, one-click Lightroom XMP preset import, continuous multi-region selection with batch adjustment, multi-image import across tabs, region number badges ("make region 2 brighter" by number)... dozens of interaction fixes that took it from "usable" to "pleasant".
+- Subagent overhaul (a full round of upgrades): background spawns are truly async and no longer block the session; tasks running past 3 minutes auto-convert to background — check progress, keep waiting, or actively stop them anytime; graceful cancellation with reliable result persistence.
+- Windows detail fixes: taskbar right-click / pinned icons / notification toasts no longer show blank icons; Start menu shortcuts are now created on demand, reducing false positives from security software.
+- Security & stability: poisoned JSON in message history can no longer deadlock the session; paste-attachment preview and right-click paste fixed; the built-in DeepSeek pricing table is synced to the latest September rates for more accurate cost estimates.
+- Tai'an canvas family unification wrapped up: toolbars, icons, panels and shortcuts are now consistent across all canvases.
+- A bunch of miscellaneous small fixes.
 
 ###v1.4.9
 
@@ -170,16 +192,16 @@
 
 
 ### 安装
-- **taishen_setup_1.6.2.exe** — Windows 安装包（推荐）
-- **taishen_1.6.2.zip** — 解压即用免安装版
-- **taishen_1.6.2_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.6.3.exe** — Windows 安装包（推荐）
+- **taishen_1.6.3.zip** — 解压即用免安装版
+- **taishen_1.6.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.6.2.exe | `959B9E43D848F5B0DED6B3CCCAA5D94D2C66EE9E381CB56575DFAF20342BE8D4` |
-| taishen_1.6.2.zip | `4E26BEFF51E08BB6B24894E3B6BE8B9CDB1732F6CE9DA97E9AF0E82A54952DF8` |
-| taishen_1.6.2_macOS_arm64.dmg | `DAF0BDFA600F45123BCFB7883D2257F2B5AA86D685FCB858780279241BAE4A41` |
+| taishen_setup_1.6.3.exe | `01B58EC370D4ECCF973A76A0987B5FE52F5D64C60E8CD69625FB4CA58885A51D` |
+| taishen_1.6.3.zip | `6C4D52B18108D976190CF4CC5B42789A8658B3982867DE5F31204A2285931780` |
+| taishen_1.6.3_macOS_arm64.dmg | `E4AA965CBF1ECBE37340C97005FB7CD986B971F79396C6D94FE2B586CB0D2FB2` |
 
 ---
 
