@@ -2,7 +2,7 @@
 
 [English](README_EN.md) | 中文
 
-**二班的Eric作品** | v1.6.2 | 2026
+**二班的Eric作品** | v1.6.3 | 2026
 
 ---
 
@@ -30,7 +30,7 @@
 
 泰深内置的流式内容工作空间——AI 在上面边写边呈现，你实时看到内容成型。
 
-八种画布覆盖全场景：
+九种画布覆盖全场景：
 
 | 画布 | 能力 |
 |------|------|
@@ -40,6 +40,7 @@
 | 终端 | 命令执行全程可见，随时叫停 |
 | 数据分析 | 表格 + 四种图表，拖入 CSV 直接出图 |
 | 图片 | 展示 + 标注 + 对比 |
+| 调色 | AI 听懂话直接调色：白平衡/影调/色彩分区精修，圈选区域蒙版，一键导出 PSD |
 | Flow | 结构化思维可视化，节点连线布局，9 种 ECharts 图表 |
 | 股票 | 行情管线 + 策略系统构建，AI 画线标注，智能盯盘 |
 
@@ -156,9 +157,9 @@
 
 ### 安装
 
-- **taishen_setup_1.6.2.exe** — Windows 安装包（推荐）
-- **taishen_1.6.2.zip** — Windows 解压即用免安装版
-- **taishen_1.6.2_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.6.3.exe** — Windows 安装包（推荐）
+- **taishen_1.6.3.zip** — Windows 解压即用免安装版
+- **taishen_1.6.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载。
 
@@ -180,9 +181,9 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.6.2.exe | `959B9E43D848F5B0DED6B3CCCAA5D94D2C66EE9E381CB56575DFAF20342BE8D4` |
-| taishen_1.6.2.zip | `4E26BEFF51E08BB6B24894E3B6BE8B9CDB1732F6CE9DA97E9AF0E82A54952DF8` |
-| taishen_1.6.2_macOS_arm64.dmg | `DAF0BDFA600F45123BCFB7883D2257F2B5AA86D685FCB858780279241BAE4A41` |
+| taishen_setup_1.6.3.exe | `01B58EC370D4ECCF973A76A0987B5FE52F5D64C60E8CD69625FB4CA58885A51D` |
+| taishen_1.6.3.zip | `6C4D52B18108D976190CF4CC5B42789A8658B3982867DE5F31204A2285931780` |
+| taishen_1.6.3_macOS_arm64.dmg | `E4AA965CBF1ECBE37340C97005FB7CD986B971F79396C6D94FE2B586CB0D2FB2` |
 
 ---
 
