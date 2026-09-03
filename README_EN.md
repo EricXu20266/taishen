@@ -2,7 +2,7 @@
 
 [中文](README.md) | English
 
-**Eric Xu** | v1.6.2 | 2026
+**Eric Xu** | v1.6.3 | 2026
 
 ---
 
@@ -30,7 +30,7 @@ Taishen is not a "Q&A bot" — it's a Commander-mode agent that autonomously pla
 
 Taishen's built-in streaming content workspace — AI writes in real time as you watch.
 
-Eight canvas types for every scenario:
+Nine canvas types for every scenario:
 
 | Canvas | Capability |
 |------|------|
@@ -40,6 +40,7 @@ Eight canvas types for every scenario:
 | Terminal | Fully visible command execution, stop anytime |
 | Data | Tables + four chart types, drag CSV to visualize |
 | Image | Display + annotation + comparison |
+| Color | AI-driven photo grading via chat or region selection — WB/tone/color, region masks, one-click PSD export |
 | Flow | Structured thinking visualization, node-edge layouts, 9 ECharts chart types |
 | Stock | Market data pipeline + strategy construction, AI line drawing, smart monitoring |
 
@@ -156,9 +157,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 ### Installation
 
-- **taishen_setup_1.6.2.exe** — Windows installer (recommended)
-- **taishen_1.6.2.zip** — Windows portable, extract and run
-- **taishen_1.6.2_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
+- **taishen_setup_1.6.3.exe** — Windows installer (recommended)
+- **taishen_1.6.3.zip** — Windows portable, extract and run
+- **taishen_1.6.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
 
 > 📥 **Download:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — Go to the latest version and download from "Assets".
 
@@ -180,9 +181,9 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 | File | SHA256 |
 |------|--------|
-| taishen_setup_1.6.2.exe | `959B9E43D848F5B0DED6B3CCCAA5D94D2C66EE9E381CB56575DFAF20342BE8D4` |
-| taishen_1.6.2.zip | `4E26BEFF51E08BB6B24894E3B6BE8B9CDB1732F6CE9DA97E9AF0E82A54952DF8` |
-| taishen_1.6.2_macOS_arm64.dmg | `DAF0BDFA600F45123BCFB7883D2257F2B5AA86D685FCB858780279241BAE4A41` |
+| taishen_setup_1.6.3.exe | `01B58EC370D4ECCF973A76A0987B5FE52F5D64C60E8CD69625FB4CA58885A51D` |
+| taishen_1.6.3.zip | `6C4D52B18108D976190CF4CC5B42789A8658B3982867DE5F31204A2285931780` |
+| taishen_1.6.3_macOS_arm64.dmg | `E4AA965CBF1ECBE37340C97005FB7CD986B971F79396C6D94FE2B586CB0D2FB2` |
 
 ---
 
