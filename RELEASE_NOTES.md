@@ -1,12 +1,12 @@
-## 🚀 泰深 v1.6.3 正式发布
+## 🚀 泰深 v1.6.4 正式发布
 
-调色画布正式出道，AI 也能动手调色了。
+PPT 画布正式出道，泰深原生改写 PPT。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
 - 主动弹窗引导 — 不会写 Prompt 也能用，AI 主动确认需求
 - Commander 形态 — AI 自主规划、调度、验证一条龙
-- 泰案画布系统 — 八种流式画布（写作/代码/HTML/终端/数据/图片/A-Stocks/Flow），双向编辑，历史版本追踪
+- 泰案画布系统 — 九种流式画布（写作/代码/HTML/终端/数据/图片/调色/Flow/股票），双向编辑，历史版本追踪
 - HTML 高级预览器 + 内置浏览器独立窗口 — 所见即所得，多标签、收藏夹、Chrome 扩展
 - 内置截图工具 — 泰深自我截图，配合 Myeyes 全自动识图标注
 - 经验封装系统 — skillCreator / tool_creator / skillPatcher，AI 自主创造工具；pilot 转正机制闭环，好习惯固化
@@ -23,6 +23,56 @@
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.6.4
+
+- 重大更新，PPT 画布正式出道——泰深现在能把你的 .pptx 直接打开、看懂、改好、再还给你。注意，这里说的是原生不是截图式的「预览」，是真的逐元素解析：文字、形状、图片、表格、图表、组合、母版主题……都能在画布上还原，改完导出回标准 .pptx，PowerPoint 打开原样可编辑。
+  - 打开即全解析：文本样式（字号/字色/字重/行距/段距/项目符号/悬挂缩进）、形状几何与渐变、图片裁剪与阴影、表格真表、原生图表、组合嵌套、深色主题——按官方渲染逐项对齐，连「渐变背景页一旦重写就褪成纯色」这种暗坑都补了。
+  - 改起来是所见即所得：拖拽/缩放/旋转元素，双击改文字，表格单元格直接编辑（行列/底色/四向边框/文字样式），图表改数据改配色（系列色/单点色/图例/网格线/数据标签/堆积），右侧面板调外观与文字（行距/段间距/斜体/下划线/删除线/字间距）；撤销链按字节精确比对，拉伸一下也撤得回来。
+  - 从零造一页：插入菜单不再只是占位——形状、表格、图表都能插了，插入即可编辑；新建的图表还能导出成 PowerPoint 里可继续改数据的原生图表。
+  - 让 AI 看懂你的 PPT：AI 打开 deck 先拿到「版式地图」（有几种版式、各含哪些页、代表页是哪几页）和页级标签（封面/目录/章节/图表页……），不用逐页通读；需要看画面时，一键把代表页渲染成 PNG 交给它对照真实设计（配色/字体/logo 位置），AI 还能自己翻到指定页对着看。
+  - 导出更靠谱：缺图不再打断导出（占位 + 降级清单如实告知），导出前先校验源包与媒体完整性，未改动的页面保持原样不动——只重写你真正改过的那几页。
+- 拼豆画布从「格子填色」进化成「纸上做作品」——九种材质 + 四种豆形 + 六种入场编排，图纸和成品终于不再长得像一回事了。
+  - 豆子有形状：方形 / 圆角 / 圆形 / 平行四边形「斜片」，倾斜度和圆角都能单独调。
+  - 豆子有材质（九种）：浮纸、瓷片、原生拼豆（能看到中心孔）、糖衣豆，加上树脂、磨砂玻璃、珐琅、织物、像素积木——统一光源、真实高光与接触阴影，切换材质会自动推荐搭配的形状和动作。
+  - 有动效了：斜推 / 逐行 / 随机 / 中心扩散 / 轮廓入内 / 分色成形六种编排，配轻落、翻面、浮浪、微倾、浮雕五种单颗动作，强度三档可调；换色是淡出淡入、删格是退场，改图不再「啪」一下跳变。
+  - 导出分两路：「图纸」保留网格/分片/水印用来照着拼，「作品」按材质重绘成成品图可以直接晒；颜色清单点一行就高亮该颜色的所有豆子。
+- ChatGPT 订阅额度直接接入——用你的 ChatGPT 订阅来跑泰深，不必再单独烧 API 额度；登录一次、token 自动刷新，接入前有两道风险提示（非官方通道、可能失效），说清楚了再决定。
+  - 此项登录使用Codex鉴权，你需要先使用Codex登录验证过
+  - 在泰深设置-大模型配置页面，点击codex provider页面，选择登录GPT。
+- 调色画布补上「按颜色换色」和「批量调色」：色桶算子能在不碰其他颜色的前提下把红裙换成蓝裙（跨色相 1:1 换色）；批量调色工具一次处理整批图，三种模式（统一调整链 / 逐图自适应校偏 / 按文件名或主色条件分组），输出带前后数值对照的清单。
+- 子代理现在跨协议工作：Codex / OpenAI Responses 协议的子代理能正常跑、正确压缩、正确恢复；一批「恢复执行后工具全失效」「并发配额串了会话」「压缩摘要为空」的暗病一并清掉。
+- 模型设置更可信：模型偏好按 Provider 记忆（会话级优先、全局兜底，重启不丢）；Provider 图标换成官方图并适配明暗主题；GPT 系支持用量统计与推理强度档位；协议下拉多了 OpenAI Responses 选项。
+- 适配了deepseek v4.1 flash，包含内置价格更新，默认视觉能力。
+- 长会话更稳：压缩触发改看 token 水位（不再把轮数当唯一闸门），压缩模型恒定跟随当前会话；空响应与上游 HTTP 错误不再被静默吞掉；会话恢复不再重复投递同一条消息。
+- 安全与网络加固：会话级授权补上会话维度（堵住跨会话越权窗口）、SSRF 校验补齐 IPv6 字面量写法、代理开启后 LLM 与语音链路都走得通。
+- Windows 命令环境：反引号雷区检测 + 引导改写文件执行，node 运行时统一解析——AI 少踩 PowerShell 语法坑，你少看几次莫名其妙的失败。
+- 修复一批：代理开启后语音识别恒 400、CSP 缺 blob: 导致音频处理加载失败、代理探测失败导致启动白屏、glob 扫不到文件夹、macOS 左上角红绿灯与按钮重叠、Provider 按钮描边与暗色图标显示、内置模型删不掉、重启后不恢复上次模型……
+- 一堆零零散散的小修复。
+
+- Major Update: The PPT canvas officially debuts — Taishen can now open your .pptx directly, understand it, edit it, and hand it back. Note that this is native parsing, not a screenshot-style "preview": text, shapes, pictures, tables, charts, groups and master themes are all parsed element by element and rendered on canvas — and the result exports back to a standard .pptx that PowerPoint opens and edits as usual.
+  - Full-fidelity decoding: text styling (size / color / weight / line & paragraph spacing / bullets / hanging indent), shape geometry and gradients, picture cropping and shadows, real tables, native charts, nested groups and dark themes are all aligned to the official rendering — down to fixing traps like "a gradient background fading to a solid color after a page rewrite".
+  - WYSIWYG editing: drag / resize / rotate elements, double-click to edit text, edit table cells directly (rows & columns, fill, four-way borders, text style), edit chart data and colors (series colors, per-point colors, legend, gridlines, data labels, stacking), and tune appearance & text from the right panel (line spacing, paragraph spacing, italic, underline, strikethrough, letter spacing). Undo is byte-exact — even after a resize.
+  - Build a slide from scratch: the insert menu is no longer a placeholder — shapes, tables and charts can all be inserted and immediately edited; newly created charts even export as native, data-editable PowerPoint charts.
+  - Let the AI read your deck: on open, the AI first gets a "layout map" (how many layouts, which slides belong to each, which slides are the representatives) plus per-slide semantic tags (cover / agenda / section / chart …) instead of reading every page; when it needs the visuals, one call renders representative slides to PNG (colors, typeface, logo placement), and it can jump to any slide to inspect it.
+  - Reliable export: missing images no longer block the export (placeholder + an honest degradation list); source package and media integrity are checked beforehand; untouched slides stay untouched — only the pages you actually edited get rewritten.
+- The Beads canvas evolves from "coloring cells" to "crafting a piece" — nine materials, four bead shapes and six entry choreographies, so a pattern and a finished piece no longer look like the same thing.
+  - Shaped beads: square / rounded / circle / parallelogram "paper slivers", with independent tilt and corner radius.
+  - Nine materials: paper, porcelain tile, native perler (center hole visible), candy-coat, plus resin, frosted glass, enamel, fabric and pixel-brick — one light source, real highlights and contact shadows; switching material recommends a matching shape and motion.
+  - Motion: six choreographies (diagonal sweep / row by row / random / center-out / outline-in / color-formed) with five per-bead actions (drop, flip, wave, tilt, emboss) and three intensity levels; recoloring fades out-in and deletions exit gracefully instead of snapping.
+  - Two export flavors: "pattern" keeps the grid / tiles / watermark for actually building it; "artwork" re-renders with materials into a shareable piece — and clicking a row in the color list highlights every bead of that color.
+- ChatGPT subscription quota is now supported — drive Taishen with your ChatGPT subscription instead of burning a separate API budget. Sign in once, tokens refresh automatically, and two risk notices appear beforehand (unofficial channel, may break) so you decide with eyes open.
+  - This sign-in uses Codex authentication — you need to have signed in with Codex first.
+  - In Taishen Settings → Model Configuration, open the Codex provider page and click "Sign in with GPT".
+- The Color canvas gains "change a color, keep everything else" plus batch grading: the hue-bucket operator turns a red dress blue without touching other hues (1:1 cross-hue swap); the batch tool processes a whole folder in three modes (one chain for all / per-image auto white balance / rule-based routing by filename or dominant hue), and reports a before/after numeric manifest.
+- Subagents now work across protocols: Codex / OpenAI Responses subagents run, compact and resume correctly; a batch of latent issues (tools failing after resume, quota buckets crossing sessions, empty compaction summaries) got cleaned up.
+- More trustworthy model settings: model preference is remembered per Provider (session-level first, global fallback — survives a restart); official Provider icons with light/dark adaptation; the GPT family gains usage stats and reasoning-effort levels; OpenAI Responses joins the protocol dropdown.
+- DeepSeek v4.1 Flash is now supported — built-in pricing updated and vision enabled by default.
+- Long sessions are steadier: compaction is now driven by token level (turn count is no longer the sole gate) and always follows the current session's model; empty responses and upstream HTTP errors are no longer silently swallowed; session resume no longer double-delivers a message.
+- Security & network hardening: session-level authorization now carries a session dimension (closing a cross-session privilege window), SSRF checks cover IPv6 literals, and both LLM and voice paths work with a proxy enabled.
+- Windows shell: backtick landmine detection + guidance to write a script file instead, unified node runtime resolution — fewer PowerShell syntax traps for the AI, fewer inexplicable failures for you.
+- Fixes: voice recognition always returning 400 with a proxy on, CSP missing blob: breaking audio processing, blank screen on startup when proxy probing failed, glob failing to match folders, macOS traffic lights overlapping the buttons, Provider button borders and dark-theme icons, built-in models that could not be deleted, model selection not restored after restart…
+- A bunch of miscellaneous small fixes.
 
 ###v1.6.3
 
@@ -192,16 +242,16 @@
 
 
 ### 安装
-- **taishen_setup_1.6.3.exe** — Windows 安装包（推荐）
-- **taishen_1.6.3.zip** — 解压即用免安装版
-- **taishen_1.6.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.6.4.exe** — Windows 安装包（推荐）
+- **taishen_1.6.4.zip** — 解压即用免安装版
+- **taishen_1.6.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.6.3.exe | `01B58EC370D4ECCF973A76A0987B5FE52F5D64C60E8CD69625FB4CA58885A51D` |
-| taishen_1.6.3.zip | `6C4D52B18108D976190CF4CC5B42789A8658B3982867DE5F31204A2285931780` |
-| taishen_1.6.3_macOS_arm64.dmg | `E4AA965CBF1ECBE37340C97005FB7CD986B971F79396C6D94FE2B586CB0D2FB2` |
+| taishen_setup_1.6.4.exe | `A53B04D8C81F2FF8F2180D72DFEFF2887F973BA70AC7C336A62F5903AF7557AF` |
+| taishen_1.6.4.zip | `64E05507EBD9EFAA804C1C4D2572E5CC33D777C6B452D1B73563F30E5B3A56C6` |
+| taishen_1.6.4_macOS_arm64.dmg | `C5895E074FE28BA5033AF48B1ACDCBEFA18F83B8281DCCB1D88710C5B7FB1FF0` |
 
 ---
 
