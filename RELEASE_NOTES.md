@@ -1,6 +1,6 @@
-## 🚀 泰深 v1.6.4 正式发布
+﻿## 🚀 泰深 v1.6.7 正式发布
 
-PPT 画布正式出道，泰深原生改写 PPT。
+PPT 效果全家桶，改完导回仍是原生可编辑。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,42 @@ PPT 画布正式出道，泰深原生改写 PPT。
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.6.7
+
+- PPT 画布从「改得动」升级到「改得好看」——文字渐变、发光、描边、倒影、高亮，形状与页面的渐变填充，还有主题色引用，整套效果器从解码到导出全链打通。改完导回 PowerPoint，还是能继续编辑的原生效果，不是烧成一张图。
+  - 渐变：形状和文字都能上渐变（线性 / 径向 / 矩形，多停靠点 + 角度），页面背景也能渐变。顺带修掉「渐变背景页一改就褪成纯色」的老毛病。
+  - 文字效果：发光（元素级 + 文本级，半径 / 颜色 / 强度可调）、轮廓描边、倒影。
+  - 文字高亮修好一个 round-trip 破口：以前打开带高亮的 deck，高亮会整类消失；现在读得回、改得动、导得出。
+  - 字符级修饰补齐：斜体 / 下划线 / 删除线 / 字间距，面板直接调，AI 读元素摘要时也能看到。
+  - 主题色联动：色板可引用主题色槽位，改主题会把引用它的地方一起带走；导出的 XML 里是真正的主题色引用，不是写死的色值。
+- PPT 有了「设计说明书 + 教科书模板」，AI 动手前先想清楚要做什么：内置模板库除了一份 7 页的设计基准 deck，这次又添三套通用风格模板——商务报告、编辑故事、技术分享，打开即用；《PPT 设计基准》把画布基准、版式网格、字号阶梯、配色、八种页面范式、元素能力边界逐条对齐到代码；AI 打开材料先判断你给的是哪种（旧 PPT 配新数据 / 参考稿配新主题 / 只有材料 / 只有一句话），对应不同做法，而不是拿到文件就一通乱改。
+- PPT 打开更准：页面级自定义背景不再丢（深色章节页不会褪成白底白字看不见）；XML 实体不再被二次转义；占位符的垂直居中正确继承（以前画布上顶对齐、PowerPoint 里居中）。
+- 针对deepseek v4.1 flash的发散思考，优化了系统提示词。当然此次优化并不能抗衡LLM的底层逻辑，测试中可以一定程度的做到：act more,decide less。
+- 修复会话内图片解析的两个bug。
+- 修复了一个剪贴板无法使用的bug。
+- 修复了1.64版本内因为内置模型名称变化导致历史会话会提示会话内模型不可用的bug。
+- 为泰深设置也内配置网络代理做了兜底，同时提醒如果需要使用泰深连接GPT模型（使用codex账号验证）必须为泰深配置代理。
+- 修复了一个可能引起QA弹窗无法弹出的bug。
+- 修复了edit_file工具编辑文件时丢弃 UTF-8 BOM的bug
+- 日志系统再做了一轮降噪：泰深自查日志时不再被心跳噪音淹没——读取侧默认只看异常、内建心跳黑名单、支持时间窗与按模式聚合下钻；写入侧把纯心跳降到 debug，异常照旧留痕。这是泰深给自己看的账本，现在干净多了。
+
+- The PPT canvas levels up from "editable" to "good-looking" — text gradients, glow, outline, reflection, highlight, gradient fills for shapes and slides, and theme-color references. The whole effect stack is wired end-to-end from decoding to export, and what you get back is still native, editable PowerPoint content — not a flattened image.
+  - Gradients: shapes and text can take linear / radial / rectangular gradients with multiple stops and an angle; slide backgrounds too. Also fixed "a gradient background page fades to a solid color the moment you edit it".
+  - Text effects: glow (element-level and text-level, with radius / color / strength), outline stroke, and reflection.
+  - Text highlight: fixed a round-trip hole where opening a deck with highlights dropped them all; they now read back, edit and export correctly.
+  - Character-level decor: italic / underline / strikethrough / letter spacing, adjustable from the panel and visible to the AI in element summaries.
+  - Theme colors: the palette can reference theme slots — change the theme and every reference follows; the exported XML carries real theme references instead of baked-in values.
+- The PPT canvas now ships a design guide plus textbook templates, so the AI thinks before it edits: beyond the 7-page baseline deck, the built-in template library adds three general-purpose styles — business report, editorial story and tech sharing, ready to use; the new "PPT Design Baseline" lines up canvas metrics, layout grid, type scale, palette, eight page archetypes and element capability boundaries against the code; and on opening your material the AI first figures out which case it is (old deck + new data / reference deck + new topic / only material / only one sentence) instead of blindly rewriting.
+- More accurate PPT opening: slide-level custom backgrounds are no longer lost (dark section pages no longer fade to white-on-white); XML entities are no longer double-escaped; placeholder vertical centering is inherited correctly (it used to render top-aligned on canvas but centered in PowerPoint).
+- Tuned the system prompt against DeepSeek v4.1 Flash's tendency to over-deliberate. Honestly, no prompt can out-argue a model's own nature — but in testing this nudges it one step closer to: act more, decide less.
+- Fixed two bugs in in-session image parsing.
+- Fixed a bug where the clipboard could stop working.
+- Fixed a bug introduced in 1.6.4 where renamed built-in models made past sessions report their model as unavailable.
+- Added a fallback for configuring a network proxy in Taishen's settings, with a clear reminder: to use GPT models via a Codex account, you must configure a proxy for Taishen.
+- Fixed a bug that could prevent the Q&A pop-up from appearing.
+- Fixed edit_file dropping the UTF-8 BOM when editing files.
+- The logging system got another noise-reduction pass: Taishen's self-diagnosis no longer drowns in heartbeat spam — the read side defaults to warnings only, ships a heartbeat blacklist, and supports time windows plus grouped drill-down; the write side drops pure heartbeats to debug while real anomalies are still recorded. It is the ledger Taishen keeps for itself, and it is finally clean.
 
 ###v1.6.4
 
@@ -242,16 +278,16 @@ PPT 画布正式出道，泰深原生改写 PPT。
 
 
 ### 安装
-- **taishen_setup_1.6.4.exe** — Windows 安装包（推荐）
-- **taishen_1.6.4.zip** — 解压即用免安装版
-- **taishen_1.6.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.6.7.exe** — Windows 安装包（推荐）
+- **taishen_1.6.7.zip** — 解压即用免安装版
+- **taishen_1.6.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.6.4.exe | `A53B04D8C81F2FF8F2180D72DFEFF2887F973BA70AC7C336A62F5903AF7557AF` |
-| taishen_1.6.4.zip | `64E05507EBD9EFAA804C1C4D2572E5CC33D777C6B452D1B73563F30E5B3A56C6` |
-| taishen_1.6.4_macOS_arm64.dmg | `C5895E074FE28BA5033AF48B1ACDCBEFA18F83B8281DCCB1D88710C5B7FB1FF0` |
+| taishen_setup_1.6.7.exe | `2F7EE0D3392745241104E97CD2A54BDC53A35B726B6D0430C82EA2545D171653` |
+| taishen_1.6.7.zip | `F9811DFDF71BF12DE5A0899A901FBF3C8C8C7728682809F7393D6C6E1DB7A146` |
+| taishen_1.6.7_macOS_arm64.dmg | `29FA4BB8D0219CC220E7E1692D83E66FDD59439DB3C2839542A87D906E70AC32` |
 
 ---
 
