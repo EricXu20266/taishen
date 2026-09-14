@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.6.7 正式发布
+﻿## 🚀 泰深 v1.6.8 正式发布
 
-PPT 效果全家桶，改完导回仍是原生可编辑。
+画布上你能做的操作，泰深也能做了。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,42 @@ PPT 效果全家桶，改完导回仍是原生可编辑。
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.6.8
+
+- 增加了泰案画布对泰深的透明度，现在画布上所有的用户UI的操作，泰深均能完成。
+- 添加了超长工具输出的「观测存档」。
+  - 更新前泰深是按照默认设置3000tken（可调节和自定义工具）来进行输入截断，超出部分默认抛弃。
+  - 更新后，超长输出会落盘到会话目录，保存成可召回的句柄，AI 要细节时按游标翻页取回。
+  - 此项功能可以在设置-通用设置进行开启\关闭，默认是开启状态。
+- 添加了Action Fusion功能，用于抵抗AI输出的一步一停。
+  - 此功能目前应用于edit和write file两个最常用工具，可以让泰深在编辑后直接进行后续命令运行，例如edit file-typecheck-biome-testing-commit，这一整套连贯动作，泰深可以利用此功能在一轮修改自动执行，以抵抗一步一停。
+  - 当前功能使用的是内置提示词引导，属于软约束，当前泰深会根据记忆里的用户习惯进行任务触发，用户也可以在全局宪法或是项目宪法里配置符合自我使用习惯的连贯步骤，来让泰深自我匹配。
+  - 此项功能可以在设置-通用设置进行开启\关闭，默认是开启状态。
+- 提示队列排队时长可观测了——「AI 正忙」时到底排了多久，≥1 秒记 info、≥30 秒记 warn，事后有账可查。
+- 优化了用户将文件拖进泰案画布时的分析引导提示词，按画布分派，并统一走弹窗确认。
+- IM 远程会话里，工具执行状态会镜像到聊天回复，手机上看得到进度。
+- 修复子代理在后台运行时，可能无法激活主会话的BUG。
+- 修复了备份设置无法正常起作用的bug。
+  - 现在会正确的按照前台设置页的备份文件夹来存储备份，以及依照备份保持时间来清理存储。
+  - 为此bug特地添加了一个备份迁移工具，在你设置了新的备份文件夹后，可以使用此工具一键将历史备份迁移
+
+- Tai An canvases are now transparent to Taishen: every UI action you can perform on a canvas, Taishen can now perform too.
+- Added an "observation archive" for oversized tool output.
+  - Before: Taishen truncated input at a default of 3000 tokens (adjustable, and configurable per tool) and discarded everything beyond that.
+  - Now: oversized output is written to the session directory behind a recallable handle, and the AI pages through it by cursor whenever it needs the details.
+  - You can turn it on or off in Settings → General; it is on by default.
+- Added Action Fusion, built to fight the AI's "one step at a time" habit.
+  - It currently applies to the two most-used tools, edit_file and write_file: Taishen can run follow-up commands right after an edit — a chain like edit_file → typecheck → biome → test → commit can now run continuously within a single turn, instead of tick-tock, tick-tock.
+  - It works through built-in prompt guidance, i.e. a soft constraint: Taishen triggers it based on your remembered habits, and you can lay out your own preferred command chains in the global or project constitution for Taishen to match.
+  - You can turn it on or off in Settings → General; it is on by default.
+- Prompt queue wait time is now observable — when the AI is busy, how long you waited is recorded (info at 1s or more, warn at 30s or more).
+- Improved the analysis guidance prompt for files dragged into a Tai An canvas: it now routes by canvas type and consistently confirms through a dialog.
+- In remote IM sessions, tool execution status is mirrored into the chat reply so you can follow progress on your phone.
+- Fixed a bug where a subagent running in the background might fail to wake the main session.
+- Fixed a bug where backup settings did not actually take effect.
+  - Taishen now correctly stores backups in the backup folder set in Settings, and prunes them according to your retention setting.
+  - A backup migration tool was added specifically for this bug: once you point Taishen at a new backup folder, one click moves your existing backups over.
 
 ###v1.6.7
 
@@ -278,16 +314,16 @@ PPT 效果全家桶，改完导回仍是原生可编辑。
 
 
 ### 安装
-- **taishen_setup_1.6.7.exe** — Windows 安装包（推荐）
-- **taishen_1.6.7.zip** — 解压即用免安装版
-- **taishen_1.6.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.6.8.exe** — Windows 安装包（推荐）
+- **taishen_1.6.8.zip** — 解压即用免安装版
+- **taishen_1.6.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.6.7.exe | `2F7EE0D3392745241104E97CD2A54BDC53A35B726B6D0430C82EA2545D171653` |
-| taishen_1.6.7.zip | `F9811DFDF71BF12DE5A0899A901FBF3C8C8C7728682809F7393D6C6E1DB7A146` |
-| taishen_1.6.7_macOS_arm64.dmg | `29FA4BB8D0219CC220E7E1692D83E66FDD59439DB3C2839542A87D906E70AC32` |
+| taishen_setup_1.6.8.exe | `384C3A8DF1CB843CAC3FBB2757295B777FAA7B78E30239234C771980F462B1A3` |
+| taishen_1.6.8.zip | `D5402A6D2593E7B45281F9CE6ACC710E528BDAF7DAE3F82C86D429DE80FAE8E1` |
+| taishen_1.6.8_macOS_arm64.dmg | `5B16E2B7C2028AC7F026405059E053B3AEC01A7D0BD096C01EEE758FB91F5B88` |
 
 ---
 
