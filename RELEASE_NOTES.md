@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.6.8 正式发布
+﻿## 🚀 泰深 v1.6.9 正式发布
 
-画布上你能做的操作，泰深也能做了。
+设计画布能拖拽搭建了，泰深自带项目地图。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,56 @@
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.6.9
+
+- 增加了泰案设计画布的「元素库」，内置 62 项预制物料。
+  - 更新前：画布上的图形、按钮、卡片、导航栏都要从零手搭，或者由泰深逐条写出来。
+  - 更新后：画布左侧新增资源轨道，点开是分类元素库——7 项基础图形、8 项表单控件、12 项界面组件、32 个图标、3 套整页模板。点一下即可插入画布，也可以直接拖进去；拖动时会实时高亮落点容器、显示插入位置，靠近对齐位置自动吸附。
+  - 元素样式是自包含的：插入后可在右侧属性面板直接改圆角、阴影、内边距、配色，泰深也能读到并修改这些属性。
+- 增加了「设备预览框」——把设计稿放进真实设备外框里预览。
+  - 覆盖 3 个平台共 8 种机型（手机 / 平板 / 显示器）。选定设备后画板按该机型尺寸生成，超出屏幕范围的元素会被自动裁断。
+  - 导出新增弹窗：可选「含设备外框」（默认含）和「含设备名标签」（默认不含），弹窗内给出成品尺寸预览。
+  - 拖拽新增对齐辅助线：画板三线、其他根级元素三线、设备机身三线都能吸附，按住 Ctrl 可临时关闭。
+  - 泰深也获得了导出能力，可以直接把设计稿导出为 PNG / SVG / JSON / HTML 文件。
+- 增加了设计画布的视图控制：打开、切页、套用模板或改变窗口大小时自动适应并居中（小画板保持 1:1 不放大）；滚轮以光标为锚点缩放（0.05–8 倍）；空格加左键或中键拖动平移；工具栏新增「适应视图」按钮。
+- 增加了素材库「我的元素」——把调好的元素组合或当前整页版式保存成素材，之后可拖入任何新稿复用，配色变量自动适配。
+  - 保存入口在画布工具栏，元素库面板的「我的元素」分组内可右键删除。
+- 增加了「项目地图」——泰深为每个项目自动生成一张地图，记录目录结构、技术栈、关键入口和常用命令。
+  - 更新前：每次新会话泰深都要重新探索一遍项目文件，开局几轮都在重复找路。
+  - 更新后：新会话直接读地图定位，只重探有变化的部分；项目详情页可查看或删除这张地图。
+- 优化了设计画布的拖拽手感：吸附对齐线时改为柔和飘入 / 飘回，不再硬跳；不吸附时保持像素级跟手。
+- Windows 托盘图标支持左键单击直接唤起主窗口（右键仍弹出菜单）。
+- 修复了语音输入的粘字问题。
+  - 更新前：语音按静音分段转写，段尾没有标点时两段文字直接粘连（「你好今天天气不错」）。
+  - 更新后：段尾自动补标点（中文补句号，英文补句点），已有标点不重复补，中英混说也不再粘连。
+- 修复了后台任务完成通知可能重复投递的问题，避免泰深对已经处理过的通知再查一次。
+- 修复了自学技能命名不规范的问题（此前会出现 patch-0e770635 这类无意义名字），现在按功能语义命名，并统一归入「泰深自学」合集。
+  - 此点修复不会覆盖历史的 patch-xxx 命名技能，终端用户需要泰深做下自我检查更新。
+
+- Added an element library to the Tai An design canvas, with 62 built-in assets.
+  - Before: every shape, button, card and navbar on the canvas had to be built by hand, or written out by Taishen one by one.
+  - Now: a resource rail on the left of the canvas opens a categorized library — 7 basic shapes, 8 form controls, 12 UI components, 32 icons and 3 full-page templates. Click to insert, or drag it in; while dragging, the target container is highlighted, the insertion position is shown, and nearby alignment positions snap automatically.
+  - Element styles are self-contained: once inserted, you can edit radius, shadow, padding and colors directly in the right-hand property panel, and Taishen can read and modify them too.
+- Added a "device preview frame" — preview your design inside a real device frame.
+  - Covers 3 platforms and 8 device models (phone / tablet / monitor). After picking a device, the board takes that model's dimensions, and elements outside the screen are clipped automatically.
+  - Export now opens a dialog: choose "include device frame" (on by default) and "include device name label" (off by default), with a preview of the output size.
+  - Dragging now shows alignment guides: the board's three lines, those of other root-level elements and the device frame's three lines all snap; hold Ctrl to turn snapping off temporarily.
+  - Taishen also gained export: it can export a design as PNG / SVG / JSON / HTML files on its own.
+- Added view controls to the design canvas: opening, switching pages, applying a template or resizing the window fits and centers automatically (small boards stay at 1:1 instead of zooming in); the scroll wheel zooms anchored at the cursor (0.05–8x); space plus left button, or the middle button, pans; a "fit view" button was added to the toolbar.
+- Added "My Elements" to the asset library — save a tuned element group or the current page as an asset, then drag it into any new draft; color variables adapt automatically.
+  - The save entry sits in the canvas toolbar, and entries can be deleted by right-clicking inside the "My Elements" group of the library panel.
+- Added the "project map" — Taishen generates a map for each project, covering directory structure, tech stack, key entry points and common commands.
+  - Before: every new session re-explored the project files, spending its first few turns finding its way again.
+  - Now: a new session reads the map to locate things and only re-explores what changed; the project details page lets you view or delete the map.
+- Improved drag feel on the design canvas: snapping to an alignment line now eases in and out smoothly instead of jumping, while staying pixel-accurate under the cursor when not snapping.
+- The Windows tray icon now opens the main window on a left click (right click still shows the menu).
+- Fixed word sticking in voice input.
+  - Before: voice was transcribed in silence-separated segments, and when a segment ended without punctuation the two texts ran together (e.g. "hello" + "how are you" came out as "hellohow are you").
+  - Now: a missing punctuation mark is added at the end of each segment (a period in Chinese, a period in English); existing punctuation is not duplicated, and mixed Chinese/English no longer sticks together.
+- Fixed background task completion notices possibly being delivered twice, so Taishen no longer re-checks a notice it has already handled.
+- Fixed self-learned skills being named without meaning (names like patch-0e770635 used to show up); they are now named by what they do and grouped under "Taishen Self-Learning".
+  - This fix does not rename skills already created with patch-xxx names; end users will need to have Taishen run a self-check update.
 
 ###v1.6.8
 
@@ -314,16 +364,16 @@
 
 
 ### 安装
-- **taishen_setup_1.6.8.exe** — Windows 安装包（推荐）
-- **taishen_1.6.8.zip** — 解压即用免安装版
-- **taishen_1.6.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.6.9.exe** — Windows 安装包（推荐）
+- **taishen_1.6.9.zip** — 解压即用免安装版
+- **taishen_1.6.9_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.6.8.exe | `384C3A8DF1CB843CAC3FBB2757295B777FAA7B78E30239234C771980F462B1A3` |
-| taishen_1.6.8.zip | `D5402A6D2593E7B45281F9CE6ACC710E528BDAF7DAE3F82C86D429DE80FAE8E1` |
-| taishen_1.6.8_macOS_arm64.dmg | `5B16E2B7C2028AC7F026405059E053B3AEC01A7D0BD096C01EEE758FB91F5B88` |
+| taishen_setup_1.6.9.exe | `66D02A9814541A683B03758A054C9B0020472D085FD58092C7F81605966B16CB` |
+| taishen_1.6.9.zip | `BCACA917159270B687C1423D15E14E7005642BE5D8DAECDCF369F57F544C57FA` |
+| taishen_1.6.9_macOS_arm64.dmg | `BD516BE96640B0990DBE7BE436E8A0F9372810A9EDD450890E0B816287D25725` |
 
 ---
 
