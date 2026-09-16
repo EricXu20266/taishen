@@ -49,6 +49,10 @@
 - 修复了后台任务完成通知可能重复投递的问题，避免泰深对已经处理过的通知再查一次。
 - 修复了自学技能命名不规范的问题（此前会出现 patch-0e770635 这类无意义名字），现在按功能语义命名，并统一归入「泰深自学」合集。
   - 此点修复不会覆盖历史的 patch-xxx 命名技能，终端用户需要泰深做下自我检查更新。
+- 修复了画布工具栏「存为我的元素 / 存为我的模板」两个按钮不显示图标、直接显示英文名称的问题。
+- 优化了设备预览框机身在暗色主题下的辨识度。
+  - 更新前：机身固定用一个深色，暗色主题（默认 / 深海）下与画布背景糊在一起看不清边界；而且切换主题后机身颜色不会更新，要重开画布才生效。
+  - 更新后：机身颜色跟随主题（暗色主题用浅灰机身、浅色主题保持深色机身）并加了描边勾勒轮廓，切换主题即时生效。
 
 - Added an element library to the Tai An design canvas, with 62 built-in assets.
   - Before: every shape, button, card and navbar on the canvas had to be built by hand, or written out by Taishen one by one.
@@ -73,7 +77,10 @@
 - Fixed background task completion notices possibly being delivered twice, so Taishen no longer re-checks a notice it has already handled.
 - Fixed self-learned skills being named without meaning (names like patch-0e770635 used to show up); they are now named by what they do and grouped under "Taishen Self-Learning".
   - This fix does not rename skills already created with patch-xxx names; end users will need to have Taishen run a self-check update.
-
+- Fixed the two canvas toolbar buttons "save as my element" / "save as my template" showing their English names instead of icons.
+- Improved how visible the device preview frame's body is in dark themes.
+  - Before: the body used one fixed dark color, so in dark themes (default / deep sea) it blended into the canvas background and its outline was hard to see; switching themes also did not update the body color until the canvas was reopened.
+  - Now: the body color follows the theme (a light gray body in dark themes, a dark body in light themes) with an outline stroke, and it updates instantly when you switch themes.
 ###v1.6.8
 
 - 增加了泰案画布对泰深的透明度，现在画布上所有的用户UI的操作，泰深均能完成。
@@ -371,9 +378,9 @@
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.6.9.exe | `66D02A9814541A683B03758A054C9B0020472D085FD58092C7F81605966B16CB` |
-| taishen_1.6.9.zip | `BCACA917159270B687C1423D15E14E7005642BE5D8DAECDCF369F57F544C57FA` |
-| taishen_1.6.9_macOS_arm64.dmg | `BD516BE96640B0990DBE7BE436E8A0F9372810A9EDD450890E0B816287D25725` |
+| taishen_setup_1.6.9.exe | `46807F2497AAB4831D382D097BFAD2E368EEE4899F461E4200F0E363C26CEA72` |
+| taishen_1.6.9.zip | `74C2F95A4D476C9208F2F11E47D9BFC065577F99096426316492BA84EAC39304` |
+| taishen_1.6.9_macOS_arm64.dmg | `748A71A7206B4A624D776286D024CF9288453DC7C579634CA5DA33857D910CCC` |
 
 ---
 
