@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.6.9 正式发布
+﻿## 🚀 泰深 v1.7.0 正式发布
 
-设计画布能拖拽搭建了，泰深自带项目地图。
+泰深能看你的屏幕，也能在授权处动手了。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,78 @@
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.7.0
+
+- 重大更新，增加了「桌面自动化」——泰深可以看你的屏幕，并在你授权的范围里操作其他应用，此项暂时属于实验性更新。
+  - 更新前：泰深只能在自己的窗口和文件里活动。要在微信、浏览器这类软件里做的事，它只能一步步告诉你点哪。
+  - 更新后：在泰案里打开「桌面画布」，选中一个窗口后泰深可以持续观察它；画面有变化时自动醒来分析，也可以按你的要求写草稿、滚动、切换会话。
+  - 三层授权彼此独立：监控区（泰深能看哪一块）、上传授权（哪些画面可以交给模型）、操作授权（能落在哪里）。没有授权的区域，泰深既看不到也动不了。
+  - 入口：泰案 → 桌面画布。首次使用需选窗口、框出监控区、在授权面板圈出输入框/列表/内容区并保存权限。
+  - 桌面画布的区域管理：
+    - 预览上的区域框带序号，授权面板按同一套序号授权，两边口径一致。
+    - 按应用记住监控范围：对同一个应用再次启动观察时直接套用上次的区域，仍可随时调整。
+    - 窗口缩放或移动后，监控区与授权区自动跟随（保持四周边距），不再失效重画。
+    - 区域可单独暂停/恢复，暂停中的区域在框内显示徽标，期间不产生画面事件。
+  - 「AI 提议区域」：泰深取一张窗口画面，给出建议的监控区与授权区，由你在画布上确认后生效。
+   - 取帧每分钟最多 3 次，且需要你在画布上先开启「AI 提议取帧」许可（默认关闭）。
+  - 桌面动作扩展为六种：写草稿、发送消息、滚动、切换会话、关闭弹层、请求用户介入。
+    - 多个动作可以在一次调用里串起来执行（如「滚动找到某人 → 切过去 → 写草稿」）。
+    - 发送消息属于提交类动作，默认逐次确认；未获批准时泰深不会写入任何输入。
+  - 桌面操作的安全护栏：
+    - 每个动作都要带上它依据的那一帧画面与区域；画面或窗口几何在之后变化过，动作直接被拒并要求重新观察。
+    - 授权区域与规则由你确认后才生效，泰深不能给自己授权。
+    - 画布上有紧急停止入口；动作进行中你在目标窗口使用键鼠，观察会自动暂停。
+    - 出站文本先过本地敏感信息扫描：私钥、凭据类直接拒绝，账号密码、卡号类强制回到人工确认。
+- 泰深系统提示词的行为引导再次加强。
+ - 增加了「上下文校准」：泰深在长任务中会根据对话内容自我校准方向，减少越走越偏。
+ - 加固了「编排」概念：处理复杂需求前，泰深会先做一次自我编排（形态、处境、编排、风险、验收），方向性选择仍会弹窗和你确认。
+- 优化了 MCP 连接：改为并行建连，消除会话冷启动时约 8 秒的前台无响应。
+- 优化了长命令的等待与超时：
+  - timeout 参数此前未真正生效，现在生效；静默超时会明确终止并给出可操作的参数建议。
+  - 后台等待改为事件驱动（此前「最多等 N 秒」被实现成「固定等满 N 秒」）。
+  - 失败回显补上命令输出，退出码语义修正。
+  - 后台任务支持跨重启恢复。
+- 优化了项目地图的注入容量：单次上限从 1850 字符提升到 3000，并按「整节装入 → 节内截断 → 整节丢弃」三级降级，大型项目也能完整装入。
+- 修复了交互式弹窗与浮层的位置：现在锚定会话区，折叠侧栏后不再相对聊天框偏右，遮罩圆角跟随会话卡片。
+- 修复了子代理报告的读取：报告预算放宽到 20000 token，完整的报告不再被误判为「疑似截断」而让泰深多读一轮。
+- 修复了数据库查询与 MCP 的稳定性问题：查询守卫加固（避免全表聚合冻结界面）、MCP 连接重入保护。
+- 修复了带桌面观察来源标记的内容进入长期记忆的问题——这类内容不再写入长期记忆。
+
+- Major update: added "desktop automation" — Taishen can see your screen and operate other applications within the scope you authorize. This feature is currently experimental.
+  - Before: Taishen could only move within its own windows and files. For anything that had to be done in apps like WeChat or a browser, it could only tell you, step by step, where to click.
+  - Now: open the "desktop canvas" in Tai An and pick a window, and Taishen watches it continuously; when the picture changes it wakes up on its own to analyze it, and it can also write drafts, scroll and switch chats on your request.
+  - The three authorizations are independent of each other: monitoring area (which part Taishen can see), upload authorization (which areas may be handed to the model), and operation authorization (where it may land). Without authorization, Taishen can neither see nor touch an area.
+  - Entry: Tai An → desktop canvas. On first use, pick a window, frame the monitoring area, circle the input box / list / content area in the authorization panel, and save the permissions.
+  - Area management on the desktop canvas:
+    - Area boxes on the preview carry numbers, and the authorization panel grants by the same numbers — one consistent numbering on both sides.
+    - Monitoring ranges are remembered per application: starting observation on the same app again applies the previous areas directly, and you can still adjust them at any time.
+    - When a window is resized or moved, the monitoring and authorization areas follow automatically (keeping their margins), instead of going invalid and having to be redrawn.
+    - Areas can be paused / resumed individually; a paused area shows a badge inside its box and produces no screen events while paused.
+  - "AI-proposed areas": Taishen takes one picture of the window and proposes a monitoring area and authorization areas, which take effect only after you confirm them on the canvas.
+   - Capturing a frame is limited to 3 times per minute, and requires that you first turn on the "AI proposal capture" permission on the canvas (off by default).
+  - Desktop actions expanded to six: write draft, send message, scroll, switch chat, dismiss overlay, and request user help.
+    - Several actions can be chained within a single call (for example, "scroll to find someone → switch to them → write a draft").
+    - Sending a message counts as a submitting action and is confirmed each time by default; until it is approved, Taishen writes no input at all.
+  - Safety guardrails for desktop operations:
+    - Every action must carry the frame and area it is based on; if the picture or the window geometry changed afterwards, the action is rejected outright and observation has to be redone.
+    - Authorization areas and rules take effect only after you confirm them — Taishen cannot authorize itself.
+    - The canvas has an emergency stop entry; if you use the keyboard or mouse in the target window while an action is running, observation pauses automatically.
+    - Outbound text is first scanned locally for sensitive information: private keys and credentials are rejected outright, while passwords and card numbers force a return to manual confirmation.
+- Taishen's system-prompt behavioral guidance has been strengthened again.
+ - Added "context calibration": during long tasks, Taishen calibrates its own direction from the conversation, so it drifts off course less often.
+ - Reinforced the "orchestration" concept: before handling a complex request, Taishen first runs a self-orchestration pass (form, situation, orchestration, risk, acceptance), while directional choices still come to you as a confirmation dialog.
+- Improved MCP connections: they are now established in parallel, removing about 8 seconds of unresponsive foreground during session cold start.
+- Improved waiting and timeouts for long commands:
+  - The timeout parameter did not actually take effect before and now does; a silent timeout is terminated explicitly with actionable parameter suggestions.
+  - Background waiting is now event-driven (it used to implement "wait at most N seconds" as "wait the full N seconds").
+  - Failure output now includes the command's output, and the exit-code semantics were corrected.
+  - Background tasks now survive a restart.
+- Improved the injection capacity of the project map: the per-turn limit went from 1850 to 3000 characters, with a three-level fallback (whole section → truncate within section → drop the section), so maps of large projects fit in completely.
+- Fixed the position of interactive dialogs and floating layers: they now anchor to the session area, no longer sit to the right of the chat box after the sidebar is collapsed, and their mask corners follow the session card.
+- Fixed reading of subagent reports: the report budget was raised to 20,000 tokens, so a complete report is no longer misjudged as "possibly truncated" and read an extra round.
+- Fixed stability issues in database queries and MCP: the query guard was hardened (so a full-table aggregate no longer freezes the UI) and a re-entry guard was added for MCP connectAll.
+- Fixed content carrying a desktop-observation source marker entering long-term memory — such content is no longer written to long-term memory.
 
 ###v1.6.9
 
@@ -371,16 +443,16 @@
 
 
 ### 安装
-- **taishen_setup_1.6.9.exe** — Windows 安装包（推荐）
-- **taishen_1.6.9.zip** — 解压即用免安装版
-- **taishen_1.6.9_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.7.0.exe** — Windows 安装包（推荐）
+- **taishen_1.7.0.zip** — 解压即用免安装版
+- **taishen_1.7.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.6.9.exe | `46807F2497AAB4831D382D097BFAD2E368EEE4899F461E4200F0E363C26CEA72` |
-| taishen_1.6.9.zip | `74C2F95A4D476C9208F2F11E47D9BFC065577F99096426316492BA84EAC39304` |
-| taishen_1.6.9_macOS_arm64.dmg | `748A71A7206B4A624D776286D024CF9288453DC7C579634CA5DA33857D910CCC` |
+| taishen_setup_1.7.0.exe | `F492ECD9EC326BD579FA45DC8CE7A2BEF173A28A1D506934333B333D47DF60EF` |
+| taishen_1.7.0.zip | `4C67074177DD6A9BE68A666949D1C3A743CD3A1631AA511063325321ABE40CC4` |
+| taishen_1.7.0_macOS_arm64.dmg | `C848AC428BC79B764FE1A8D4D8BEFE0257899A8B2D3FE9EDD52B3C5E265936F6` |
 
 ---
 
