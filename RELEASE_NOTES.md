@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.7.0 正式发布
+﻿## 🚀 泰深 v1.7.1 正式发布
 
-泰深能看你的屏幕，也能在授权处动手了。
+Codex 加速与额度卡上线，设计外框可自建。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,44 @@
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.7.1
+
+- 增加了 Codex 的「Fast 加速」开关，开启后泰深按 priority 档位请求。
+  - 设置页按模型配置默认值，聊天框的开关只覆盖当前会话；仅 Codex 模型显示。
+  - 开关亮起代表「已请求 Fast」，不代表服务端已经采纳。
+- 增加了 Codex 订阅额度卡片，显示剩余额度窗口和重置时间。
+  - 仅在 Codex 会话显示，此时隐藏本地会话预算卡。
+  - 取数失败安静降级，不阻塞对话、不弹窗。
+- 「设计」画布的外框升级为可加载的外框库。
+  - 更新前：外框是内置封闭的几种，只能在那几个里选。
+  - 更新后：外框可保存、套用、删除，支持参数化、节点树、SVG 素材三种做法。
+  - 支持导入导出分享文件，同名不覆盖已有；泰深也能直接调用。
+- 优化了会话页性能：输入不再触发整页重渲染，历史消息不再每秒重渲染，会话状态上限从 50 提到 150。
+- 优化了后台任务与子代理的通知：完成通知改走队列，不再多一轮；子代理结果不再返回两次；重启后遗留任务改为被动入队。
+- 校正了「上下文窗口 256K」档位为 262144（256×1024），存量配置自动归一化。
+- 修复了推理强度不跟随模型的问题：换模型时按目标模型的配置重取，全局偏好不再压住设置页配置。
+- 修复了「设计」画布 SVG 外框不渲染的问题，外框面板打开时会刷新库。
+- 修复了 PPT 图表改数据后导出被降级成图片、文本框被强制裁切的问题。
+- 修复了命令工具中后台任务状态查询静默失效的问题。
+
+- Added a "Fast" toggle for Codex; when on, Taishen requests the priority service tier.
+  - The settings page sets the default per model, while the toggle in the chat box only overrides the current session; shown for Codex models only.
+  - A lit toggle means the request was sent as Fast — it does not mean the server accepted it.
+- Added a Codex subscription quota card showing the remaining quota windows and their reset times.
+  - Shown only in Codex sessions, where the local session budget card is hidden instead.
+  - If the fetch fails it degrades quietly, without blocking the conversation or popping an error.
+- Upgraded the design canvas frame from a few built-in shapes to a loadable frame library.
+  - Before: frames were a closed built-in set, and you could only pick among those.
+  - Now: frames can be saved, applied and deleted, in three forms — parametric, node tree, and SVG asset.
+  - Import and export are supported through a shareable file; same-name frames do not overwrite existing ones, and Taishen can call the same import/export directly.
+- Improved session page performance: typing no longer re-renders the whole page, history rows no longer re-render every second, and the session state limit went from 50 to 150.
+- Improved background task and subagent notifications: completion notices now go through a queue without an extra round, subagent results are no longer returned twice, and leftover tasks after a restart are enqueued passively.
+- Corrected the "256K context window" preset to 262144 (256×1024), with existing settings normalized automatically.
+- Fixed the reasoning effort not following the model: switching models now re-reads the setting from the target model, and the global preference no longer overrides the settings page.
+- Fixed the design canvas not rendering SVG frames, and the frame panel now refreshes the library when opened.
+- Fixed PPT charts being downgraded to images on export after editing their data, and text boxes being force-clipped.
+- Fixed a silent failure in background task status queries in the command tool.
 
 ###v1.7.0
 
@@ -443,16 +481,16 @@
 
 
 ### 安装
-- **taishen_setup_1.7.0.exe** — Windows 安装包（推荐）
-- **taishen_1.7.0.zip** — 解压即用免安装版
-- **taishen_1.7.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.7.1.exe** — Windows 安装包（推荐）
+- **taishen_1.7.1.zip** — 解压即用免安装版
+- **taishen_1.7.1_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.7.0.exe | `F492ECD9EC326BD579FA45DC8CE7A2BEF173A28A1D506934333B333D47DF60EF` |
-| taishen_1.7.0.zip | `4C67074177DD6A9BE68A666949D1C3A743CD3A1631AA511063325321ABE40CC4` |
-| taishen_1.7.0_macOS_arm64.dmg | `C848AC428BC79B764FE1A8D4D8BEFE0257899A8B2D3FE9EDD52B3C5E265936F6` |
+| taishen_setup_1.7.1.exe | `0ED0CA5C1CB4A25A3F444B27573C56B1DECF6E545E2E3D5002C203BD545D80A6` |
+| taishen_1.7.1.zip | `A4D8264366E8543CD01CD142ACCFA8BCEFF99E9474FAD3ED9291CA5D28007551` |
+| taishen_1.7.1_macOS_arm64.dmg | `5C6206F4E7A116FC4A2466DC8F1CB9C793837EB694BC65E87E1EB0248AD750C8` |
 
 ---
 
