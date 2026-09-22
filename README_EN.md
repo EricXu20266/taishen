@@ -30,7 +30,7 @@ Taishen is not a "Q&A bot" — it's a Commander-mode agent that autonomously pla
 
 Taishen's built-in streaming content workspace — AI writes in real time as you watch.
 
-Nine canvas types for every scenario:
+Eleven canvas types for every scenario:
 
 | Canvas | Capability |
 |------|------|
@@ -39,12 +39,28 @@ Nine canvas types for every scenario:
 | HTML | WYSIWYG preview, click-to-annotate elements |
 | Terminal | Fully visible command execution, stop anytime |
 | Data | Tables + four chart types, drag CSV to visualize |
-| Image | Display + annotation + comparison |
 | Color | AI-driven photo grading via chat or region selection — WB/tone/color, region masks, one-click PSD export |
-| Flow | Structured thinking visualization, node-edge layouts, 9 ECharts chart types |
+| Design | Vector design boards: landing pages / mobile screens / UI / banners / logos — element-level editing plus a loadable frame library |
+| PPT | Build and edit slides page by page; open an existing .pptx to revise its layout; export .pptx |
+| Beads | Perler bead patterns: grid drawing, image-to-pattern conversion, color sets, bead count |
 | Stock | Market data pipeline + strategy construction, AI line drawing, smart monitoring |
+| Desktop | Live window preview + authorized on-device actions (observe / write draft / send / scroll) |
+
+The **Flow analysis canvas** is the `mode="flow"` mode of the HTML canvas: structured thinking visualization, node-edge layouts, 9 ECharts chart types.
 
 All canvases are **bidirectional** — AI writes, you edit directly. Version history tracks every change for instant rollback. When AI's work process shifts from black box to visible, you don't need to "trust AI will get it right" — you watch it happen.
+
+### 🖥️ Desktop Automation
+
+Taishen can see your screen and operate other applications within the scope you authorize (experimental).
+
+The three authorizations are independent: **monitoring area** (what it can see), **upload authorization** (which areas may be handed to the model), and **operation authorization** (where actions may land). Without authorization, Taishen can neither see nor touch an area.
+
+Available actions: write draft, send message, scroll, switch chat, dismiss overlay, request user help. Sending counts as a submitting action and is confirmed each time by default; until approved, no input is written at all.
+
+Entry: Tai An → desktop canvas. On first use, pick a window, frame the monitoring area, circle the input box / list / content area, and save the permissions.
+
+Safety guardrails: every action must carry the frame and area it is based on — if the picture or window geometry changed afterwards, the action is rejected outright. The canvas provides an emergency stop, and outbound text first passes a local sensitive-information scan (private keys / credentials are rejected outright).
 
 ### 🧩 Parallel Agents
 
@@ -56,7 +72,7 @@ Taishen doesn't just use tools — it **creates** them.
 
 **skillCreator** — Package a successful workflow into a Skill (Markdown template, agentskills.io open standard), effective immediately.
 
-**skillPatcher** — Skills evolve. AI appends or replaces content as it discovers optimizations during use. Skills get more precise with every use.
+**Skill Self-Iteration** — Skills evolve. When the AI finds an optimization during use, it rewrites the SKILL.md body directly. Skills get more precise with every use.
 
 **tool_creator** — When Skills aren't enough, AI writes real TypeScript tools. Compile, register, effective next session.
 
@@ -101,7 +117,9 @@ Locate sessions by external session ID or title keyword to read past conversatio
 
 ### 🔌 Multi-Provider & Extension Ecosystem
 
-**Multi AI Provider** — Freely switch between DeepSeek, OpenAI, Mimo, and more. Reasoning intensity and context window parameters are per-model, allowing fine-tuning for each model individually.
+**Multi AI Provider** — Freely switch between DeepSeek, OpenAI, Mimo, Codex, and more. Reasoning intensity and context window parameters are per-model, allowing fine-tuning for each model individually.
+
+**Codex Subscription Integration** — Toggle **Fast mode** (requests the priority service tier; the settings page sets a default per model while the chat toggle only overrides the current session; shown for Codex models only). The session card dock also shows a **subscription quota card** (remaining quota windows and their reset times, shown only in Codex sessions, where the local session budget card is hidden).
 
 **Skill System** — Compatible with the [agentskills.io](https://agentskills.io) open standard (used by Claude Code, Cursor, GitHub Copilot, and 35+ other tools). Create custom Skills, search and install community Skills from GitHub/Gitee, or let AI autonomously create new Skills. Supports group/subgroup two-level organization.
 
@@ -135,7 +153,7 @@ Taishen has a built-in structured logging system (6 levels × 9 categories). The
 
 ### 🎨 Experience Highlights
 
-- **6 Themes** — Deep Ocean Amber (default) / Minimalist B&W / Soft Eye-Care / Follow System
+- **6 Themes** — Deep Ocean Amber (default) / Minimalist B&W / Soft Eye-Care / Chroma Orange / Native macOS / Follow System
 - **AI Completion Sound** — Plays a chime when the AI finishes responding; toggleable (on by default)
 - **Context-Aware Memory** — Remembers your preferences, work style, and frequently used tools across sessions
 - **1M Token Context** — Full DeepSeek V4 window support; long papers and large projects without pressure
