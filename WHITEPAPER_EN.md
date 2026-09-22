@@ -38,7 +38,7 @@ Every line of code backing this whitepaper began with those three digits and a s
 
 ## II. The Present: An AI Delivery Platform
 
-taishen current version v1.4.5 is a full desktop application (Windows / macOS), deeply optimized for the DeepSeek V4 model family.
+taishen current version v1.7.1 is a full desktop application (Windows / macOS), deeply optimized for the DeepSeek V4 model family.
 
 Among the 23 tools officially listed on awesome-deepseek-agent, 15 are terminal CLI tools, 3 are VS Code extensions. The vast majority target developers — typing commands, writing code, calling APIs. taishen is one of only two GUI desktop applications on that list. But its positioning differs fundamentally from the other GUI app (Cherry Studio): Cherry Studio is a "multi-model chat client"; taishen is an "Agent workbench." Chat is the means; delivery is the end.
 
@@ -128,7 +128,7 @@ Everything up to this point has been about how AI interacts, stays secure, and h
 
 Traditional AI conversations are a black box — you send a request, AI returns a result. What happens in between, you don't know. Tai An (泰案) changes that. It's taishen's built-in streaming content workspace — a canvas shared between AI and you. The AI writes on it in real time as you watch — not waiting for a final deliverable, but watching it being crafted.
 
-Eight canvas types cover the full spectrum:
+Eleven canvas types cover the full spectrum:
 
 **Writing Canvas**: AI writes character by character; you read character by character. Perfect for long-form content, reports, copywriting — any creative scenario where you want to course-correct as it forms. Not "AI finishes, then you edit" — it's "you can intervene while AI writes."
 
@@ -140,11 +140,19 @@ Eight canvas types cover the full spectrum:
 
 **Data Canvas**: Tables + four chart types. Drag in a CSV and get charts instantly. AI helps clean data and choose visualizations.
 
-**Image Canvas**: Display AI-generated images and screenshots, with annotation and comparison support.
+**Color Canvas**: Image display plus non-destructive adjustment-chain grading — white balance, tone, color-zone refinement, and HSL-bucket hue shifting; region masks and a color-range eyedropper for local edits; reference-image color matching; batch grading across a whole folder. Here the AI judges a photo by its histogram and color statistics — it reads the data rather than "looking at the picture."
 
-**A-Stocks Canvas**: New in v1.4.5, the eighth member of the Tai An family. A strategy-system workbench for stock investors — a built-in market data pipeline delivers one-click access to market panorama, watchlist intraday/K-line charts, 5-level order book, and limit-up board data. More crucially, it focuses on **strategy construction**: tell Taishen your experience or strategies in plain language, and the AI turns them into conditional strategies right on the canvas. A built-in condition engine + strategy executor + decision timeline wakes the AI for deep analysis when a strategy triggers, forming an intelligent monitoring system. Multiple strategies can run in mixed mode, and any successful strategy can be solidified — Taishen's experience-encapsulation framework applied to finance. The data layer has three tiers: L1 free sources (Tencent Finance, Baidu, Eastmoney), L2 paid MCP interfaces (TDX, Eastmoney, Futu, Tonghuashun, etc. — requires user approval), and L3 custom hybrid (Taishen autonomously writes data-fetching templates running on the built-in Node.js runtime). AI chart drawing lets Taishen annotate K-line/intraday charts with five line styles (trendline, horizontal line, box, etc.).
+**A-Stocks Canvas**: A strategy-system workbench for stock investors — a built-in market data pipeline delivers one-click access to market panorama, watchlist intraday/K-line charts, 5-level order book, and limit-up board data. More crucially, it focuses on **strategy construction**: tell Taishen your experience or strategies in plain language, and the AI turns them into conditional strategies right on the canvas. A built-in condition engine + strategy executor + decision timeline wakes the AI for deep analysis when a strategy triggers, forming an intelligent monitoring system. Multiple strategies can run in mixed mode, and any successful strategy can be solidified — Taishen's experience-encapsulation framework applied to finance. The data layer has three tiers: L1 free sources (Tencent Finance, Baidu, Eastmoney), L2 paid MCP interfaces (TDX, Eastmoney, Futu, Tonghuashun, etc. — requires user approval), and L3 custom hybrid (Taishen autonomously writes data-fetching templates running on the built-in Node.js runtime). AI chart drawing lets Taishen annotate K-line/intraday charts with five line styles (trendline, horizontal line, box, etc.).
 
-**Flow Canvas**: New in v1.4.0, the latest addition to the Tai An family. A structured thinking visualization tool — AI no longer just writes text; it helps you clarify relationships, compare options, derive and validate, restructure, brainstorm, and review outcomes — all on a canvas. Supports six node types (code blocks, Mermaid diagrams, images, tables, file cards, and ECharts charts — 9 chart types from scatter to gauge), multiple node shapes (circle, diamond, hexagon, capsule, parallelogram, rounded rectangle), and three edge modes (straight, stepped, loopback with Bézier curves and tri-color arrows). Three interaction primitives — drag to arrange, anchor to connect, right-click to annotate — you are the director; AI weaves the tangled threads in your mind into silk. Three layout engines (tree, timeline, matrix) + entrance animations + Ctrl+E one-click PNG export.
+**Flow Canvas**: A structured thinking visualization tool — AI no longer just writes text; it helps you clarify relationships, compare options, derive and validate, restructure, brainstorm, and review outcomes — all on a canvas. Supports six node types (code blocks, Mermaid diagrams, images, tables, file cards, and ECharts charts — 9 chart types from scatter to gauge), multiple node shapes (circle, diamond, hexagon, capsule, parallelogram, rounded rectangle), and three edge modes (straight, stepped, loopback with Bézier curves and tri-color arrows). Three interaction primitives — drag to arrange, anchor to connect, right-click to annotate — you are the director; AI weaves the tangled threads in your mind into silk. Three layout engines (tree, timeline, matrix) + entrance animations + Ctrl+E one-click PNG export.
+
+**Design Canvas**: AI-native vector design. Describe what you need in natural language and the AI produces an editable vector board — landing pages, mobile screens, UI mockups, banners, logos. Every element can be selected, restyled and re-layered; what you get is not "an image." The frame system has grown from a few built-in geometric presets into a loadable frame library — parametric templates, node trees and SVG assets — and a frame can be saved, applied, or exported as a self-contained file that others import to get the same frame.
+
+**PPT Canvas**: Slide-by-slide authoring and editing. The AI and the user drive the same operation path — edit text, adjust layering, change layouts, edit chart data, add or remove pages; it can also open an existing .pptx as an editable document and export it back. Before export it reports quality checks (overlapping or out-of-bounds elements) and a degradation list.
+
+**Beads Canvas**: A workbench for perler bead patterns — pixel grid, color sets and bead-count statistics. Image-to-pattern conversion runs locally without going through the model, so it costs zero tokens and handles large patterns directly.
+
+**Desktop Canvas**: The landing surface for desktop automation (see 2.11) — live window preview, framing of monitoring and authorization areas, an event timeline, an emergency stop, and human confirmation of AI-proposed regions.
 
 The key design decision: all canvases are **bidirectional** — AI can write on them, and you can edit directly. Version history tracking precisely records every change, allowing rollback to any point. You never lose content because "AI changed a version I didn't like."
 
@@ -172,6 +180,20 @@ More importantly, each parallel worker can use a different model. taishen native
 
 This isn't a gimmick. When you need to research the same company across three platforms, analyze five competitor reports at once, or write code while checking documentation while running tests — parallel agents upgrade AI from "single-threaded" to "multi-threaded." Users don't need to understand the scheduling underneath. They just need to know: **give it multiple tasks, and they all move forward simultaneously.**
 
+### 2.11 Desktop Automation: From Inside the Screen to Outside It
+
+Everything so far happens inside taishen's own windows — canvases, documents, code. But real work often has to happen inside other applications: sending a message to a contact, walking through a signup flow in a browser, filling in a form in an internal system.
+
+The traditional approach is for the AI to tell you where to click, step by step, while you act as its hands. Since v1.7.0, taishen can do it itself — it has **desktop automation** (experimental).
+
+It sees your screen and operates other applications within the scope you authorize. The three authorizations are independent: the **monitoring area** decides which pixels it can see, **upload authorization** decides which pictures may be handed to the model, and **operation authorization** decides where actions may land. Without authorization, it can neither see nor touch an area.
+
+There are six available actions: write draft, send message, scroll, switch chat, dismiss overlay, and request user help. Sending counts as a submitting action and is confirmed each time by default — until approved, it writes no input at all.
+
+The guardrails follow the same "deny by default" instinct: every action must carry the frame and area it is based on, and if the picture or window geometry changed afterwards the action is rejected outright and observation must be redone; the canvas offers an emergency stop; if you use your keyboard or mouse in the target window, observation pauses automatically; and outbound text first passes a local sensitive-information scan — private keys and credentials are rejected outright.
+
+What matters here is not "the AI can operate other software," but the **granularity of authorization**: you don't hand over the whole screen — you grant it area by area and action by action. The greater the capability, the more visible the boundary must be; that has been taishen's way throughout.
+
 ---
 
 ## III. Realized: From Tool User to Experience Encapsulator
@@ -184,7 +206,7 @@ But taishen has taken a decisive step across that boundary. In v1.3.5, the Exper
 
 **skillCreator** — AI can encapsulate a successful workflow into a Skill. A Skill is a Markdown workflow template, compliant with the agentskills.io open standard, effective immediately upon creation. It's light enough to be nearly zero-cost — when AI notices the pattern "search papers → extract abstracts → generate literature review" recurring, it can package it into a Skill in minutes. Next time, the user triggers it with a single sentence.
 
-**skillPatcher** — Skills aren't one-and-done. When AI discovers a step that can be optimized during use, or needs to cover a new edge case, it directly calls skillPatcher to append or replace Skill content. This is a self-improvement loop — Skills get more precise with use.
+**Skill Self-Iteration** — Skills aren't one-and-done. When the AI discovers a step that can be optimized during use, or needs to cover a new edge case, it rewrites the SKILL.md body directly. This is a self-improvement loop — Skills get more precise with use.
 
 **tool_creator** — When Skills aren't enough, AI can write real TypeScript tools. Compile, register, effective in the next session. Suitable for scenarios requiring external API calls, npm package imports, or specific computation logic.
 
@@ -228,7 +250,7 @@ Every user's taishen will gradually develop a different capability profile. Not 
 
 An academic researcher's Agent will first encapsulate a literature search Skill; if that's not enough (needs a specific database SDK), then create a TypeScript tool. A content creator's Agent will encapsulate "Markdown → multi-platform formatting" as a Skill; when Bilibili needs a specific upload API, add a tool.
 
-More importantly, skillPatcher keeps these encapsulations alive. Next month when the user switches submission platforms, AI can update the platform rules in the Skill itself. Tools grow alongside the user.
+More importantly, the Skill's self-iteration keeps these encapsulations alive. Next month when the user switches submission platforms, AI can update the platform rules in the Skill itself. Tools grow alongside the user.
 
 AI no longer merely "answers your questions" — it actively senses where your workflow has resistance, then eliminates that resistance in the lightest way possible.
 
@@ -268,4 +290,4 @@ This is a reasonable choice for commercial software — much like Photoshop isn'
 
 ---
 
-*This whitepaper was updated during a taishen v1.4.5 session. taishen now features the Tai An canvas system — eight streaming canvases (including the all-new Flow canvas in v1.4.0 and the A-Stocks canvas in v1.4.5), bidirectional editing, version history tracking, voice interaction, standalone browser window, Headless CLI, and ready-out-of-the-box built-in MCPs. From "delivering results" to "encapsulating experience" to "visualizing process" — three steps, complete.*
+*This whitepaper was updated during a taishen v1.7.1 session. taishen now features the Tai An canvas system — eleven streaming canvases (including the AI design canvas, PPT canvas, beads canvas and the A-Stocks canvas), bidirectional editing, version history tracking, desktop automation (screen observation plus authorized operation of other applications), voice interaction, standalone browser window, Headless CLI, and ready-out-of-the-box built-in MCPs. From "delivering results" to "encapsulating experience" to "visualizing process" to "acting beyond the screen" — four steps, complete.*
