@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.7.1 正式发布
+﻿## 🚀 泰深 v1.7.2 正式发布
 
-Codex 加速与额度卡上线，设计外框可自建。
+Google 订阅接入，Codex 额度预警上线。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,46 @@ Codex 加速与额度卡上线，设计外框可自建。
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.7.2
+
+- 增加了 Google Gemini（Antigravity）订阅的接入，可以用 Google AI Pro / Ultra 订阅额度跑泰深会话。此功能目前为实验性。
+  - 与 Codex 不同：泰深是通过调用 antigravity CLI（agy）实现的，使用前需要你先自行安装好 AGY CLI 并完成登录。
+  - 订阅验证完全走 AGY CLI 自己的流程（即 Google 的验证服务），泰深不接触你的登录凭证；请自备网络环境。
+  - 设置页新增一处开关：开启后泰深强制 agy 遵循泰深约束、使用泰深工具箱（推理走订阅额度，历史、落盘、工具执行都留在泰深这一侧）；关闭则完全还原 agy 原状。实测 agy 仍会自主使用自己的工具或命令——thinking 与工具调用执行可能是黑箱。
+  - agy 的工具动作会显示在会话页（工具卡片 + 改动 diff；agy 只给路径、不给正文，所以 diff 呈全文新增）。
+  - 模型列表按族折叠：同一模型的低 / 中 / 高推理强度合成一条，推理强度在聊天框选择。
+  - 给 agy 发图片时，泰深会把图片落盘到工作目录并告知路径，由 agy 自己读取。
+  - 备注：此实验性功能使用有一丢丢技术经验要求，非专业人士建议谨慎尝试。
+- 增加了 Codex 额度预警与停手交接。
+  - 更新前：订阅额度耗尽直接撞墙，跑一半的长任务就断在那里。
+  - 更新后：额度接近用尽时给泰深一条软提示——可以继续推进当前任务，但不要开新的长链条，并优先把进度写成交接（写进回复正文或落成文件）。
+  - 两级提醒（预警 / 紧急），设置页 Codex 模型行可开关、调阈值、恢复默认。
+  - 这是软提示不是硬刹车，泰深不会被强制中断。
+- 优化了冷启动首轮开销：系统提示词里三处随运行状态漂移的内容（MCP 连接状态段、记忆索引的时间戳行、经验封装待办队列）移出或删除，重启后第一次请求不再整段重算。
+- 优化了仪表盘时钟的渲染开销：拖尾分档批量绘制，空闲时不挂动画帧。
+- 修复了 /status 显示全局默认模型而不是当前会话模型，顺带修掉表头乱码。
+- 修复了通知重复投递：monitor 通知统一为「队列正文 + 敲门」，后台子代理失败通知去重，完成通知的去重粒度从「会话终身」收回到「一轮」。
+- 修复了内置浏览器在单页应用站点内跳转后，地址栏 URL 停在旧地址。
+
+- Added Google Gemini (Antigravity) subscription support: Taishen sessions can run on your Google AI Pro / Ultra subscription. This feature is experimental for now.
+  - Unlike Codex, Taishen drives it by calling the antigravity CLI (agy), so you need to install AGY CLI and sign in yourself first.
+  - The subscription verification runs entirely through AGY CLI's own flow (that is, Google's verification service), and Taishen never touches your credentials. Please prepare your own network environment.
+  - A new toggle on the settings page: when it is on, Taishen requires agy to follow Taishen's constraints and use Taishen's toolbox (inference runs on the subscription while history, file writes and tool execution stay on Taishen's side); when it is off, agy is fully restored to its previous behavior. In practice agy still uses its own tools or commands at times — its thinking and tool execution can be a black box.
+  - agy's tool actions are shown on the session page (tool cards plus change diffs; agy only provides paths, not content, so a diff appears as an all-new file).
+  - Models are folded by family: the low / medium / high reasoning variants of the same model become one entry, and the level is picked in the chat box.
+  - When you send an image to agy, Taishen saves it to the working directory and tells agy the path, so agy can read it itself.
+  - Note: this experimental feature takes a bit of technical experience; non-technical users are advised to proceed with caution.
+- Added quota warnings and hand-off for Codex.
+  - Before: running out of subscription quota hit a hard wall, and a long task died halfway.
+  - Now: when the quota gets low, Taishen receives a soft nudge — it may keep pushing the current task, but should not start new long chains, and should hand off progress first (in the reply or as a file).
+  - Two levels of alerts (warning / urgent); the Codex model row on the settings page has a toggle, thresholds, and a reset to defaults.
+  - It is a soft reminder, not a hard brake — Taishen is never force-stopped.
+- Improved the first-request cost after a cold start: three pieces of system-prompt content that drifted with runtime state (the MCP connection-status section, the timestamp line of the memory index, and the pending experience-encapsulation queue) were moved out or removed, so the first request after a restart no longer recomputes the whole prefix.
+- Improved the rendering cost of the dashboard clock: batched trail drawing by grade, and no animation frame is scheduled while idle.
+- Fixed /status showing the global default model instead of the session model, along with garbled table headers.
+- Fixed duplicate notifications: monitor notices now go through "queue body + knock", failed background-subagent notices are deduplicated, and the dedup window for completion notices was narrowed from "lifetime of the session" back to "one round".
+- Fixed the built-in browser's address bar keeping a stale URL after in-page navigation on single-page sites.
 
 ###v1.7.1
 
@@ -481,16 +521,16 @@ Codex 加速与额度卡上线，设计外框可自建。
 
 
 ### 安装
-- **taishen_setup_1.7.1.exe** — Windows 安装包（推荐）
-- **taishen_1.7.1.zip** — 解压即用免安装版
-- **taishen_1.7.1_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.7.2.exe** — Windows 安装包（推荐）
+- **taishen_1.7.2.zip** — 解压即用免安装版
+- **taishen_1.7.2_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.7.1.exe | `0ED0CA5C1CB4A25A3F444B27573C56B1DECF6E545E2E3D5002C203BD545D80A6` |
-| taishen_1.7.1.zip | `A4D8264366E8543CD01CD142ACCFA8BCEFF99E9474FAD3ED9291CA5D28007551` |
-| taishen_1.7.1_macOS_arm64.dmg | `5C6206F4E7A116FC4A2466DC8F1CB9C793837EB694BC65E87E1EB0248AD750C8` |
+| taishen_setup_1.7.2.exe | `A7B871ABC1C5FA1EC1899B6B0551091783EAC1CC92460063F6246E6E7C21985B` |
+| taishen_1.7.2.zip | `FA03BC48828DE2B9CA171E68E3AE0807538D7BB136CD7619AAE97125B8DA7A30` |
+| taishen_1.7.2_macOS_arm64.dmg | `3CD679939BF899E6150DDAF126CFC4B28467054C2E3A2CC7BCF448F3A2419803` |
 
 ---
 
