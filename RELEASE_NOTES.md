@@ -6,7 +6,7 @@ Google 订阅接入，Codex 额度预警上线。
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
 - 主动弹窗引导 — 不会写 Prompt 也能用，AI 主动确认需求
 - Commander 形态 — AI 自主规划、调度、验证一条龙
-- 泰案画布系统 — 九种流式画布（写作/代码/HTML/终端/数据/图片/调色/Flow/股票），双向编辑，历史版本追踪
+- 泰案画布系统 — 十一种流式画布（写作/代码/HTML/终端/数据分析/调色/设计/PPT/拼豆/股票/桌面），双向编辑，历史版本追踪
 - HTML 高级预览器 + 内置浏览器独立窗口 — 所见即所得，多标签、收藏夹、Chrome 扩展
 - 内置截图工具 — 泰深自我截图，配合 Myeyes 全自动识图标注
 - 经验封装系统 — skillCreator / tool_creator / skillPatcher，AI 自主创造工具；pilot 转正机制闭环，好习惯固化
