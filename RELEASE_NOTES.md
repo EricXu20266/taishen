@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.7.2 正式发布
+﻿## 🚀 泰深 v1.7.3 正式发布
 
-Google 订阅接入，Codex 额度预警上线。
+PPT 转场动画上线，调色 v2 蒙版引擎。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -9,7 +9,7 @@ Google 订阅接入，Codex 额度预警上线。
 - 泰案画布系统 — 十一种流式画布（写作/代码/HTML/终端/数据分析/调色/设计/PPT/拼豆/股票/桌面），双向编辑，历史版本追踪
 - HTML 高级预览器 + 内置浏览器独立窗口 — 所见即所得，多标签、收藏夹、Chrome 扩展
 - 内置截图工具 — 泰深自我截图，配合 Myeyes 全自动识图标注
-- 经验封装系统 — skillCreator / tool_creator / skillPatcher，AI 自主创造工具；pilot 转正机制闭环，好习惯固化
+- 经验封装系统 — skillCreator / tool_creator / subagentCreator，AI 自主创造 Skill、工具与子代理；pilot 转正机制闭环，好习惯固化
 - 他化自在法（DSH 插件迁移）— 其他工具积累的插件能力整体平移进泰深，无需重写
 - 视觉代理 Myeyes — 模型不支持多模态也能"看图"，IM 渠道全面打通
 - FlexDog 动态模型引擎 — 对话中随时切换模型
@@ -23,6 +23,104 @@ Google 订阅接入，Codex 额度预警上线。
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.7.3
+
+- 重大更新，PPT 画布支持原生转场与动画，同时补齐了一大批形状、效果与图表能力。
+  - 转场与动画：打开已有的 PPT，转场和动画会被原样识别，可在画布上编辑并跟着导出。右侧新增动画面板，转场与元素动画按页列出，可增删、调顺序、改时长与触发方式；支持预览放映（含进入页转场、失焦自动暂停、自动换页与点击换页开关）。
+    - 更新前：动画是看不见也改不了的盲区，动过内容的页面导出后效果可能丢失。
+    - 更新后：导出按「保持 / 补丁 / 重写」分别处理，无法保真的页面会明确提示，而不是静默丢弃。
+    - 支持范围：转场 cut / cover / pull、遮罩族（blinds / checker / comb / diamond / split / wheel）、几何变换（zoom / doors）、window / conveyor；元素动画支持路径位移、缩放、颜色 / 字体 / 字号与复合。逐字逐段构建与 Morph 未开放。
+  - 形状与文本效果：预设形状开放面从 30 种扩到 178 种；新增三维格式（旋转与厚度）、柔化边缘、完整轮廓（虚线 / 端点 / 连接 / 箭头）；渐变支持变体与路径族（线性 / 径向 / 矩形 / 形状），新增 54 种图案填充，图片支持拉伸 / 平铺两种填充方式。
+  - 艺术字：39 种文字包络预设，属性面板逐项标注「可预览 / 近似 / 需导出后查看」，不隐藏也不误导。图片艺术效果链（模糊 / 纹理化等）能读取并在面板展示，改效果链仍需在 PowerPoint 完成。
+  - 图表：可插入类型扩到 13 种（雷达 / 散点 / 气泡 / 曲面 / 组合图 + 次坐标轴等），多系列图可在面板直接「加系列」；改动数据后导出保持原生图表（可在 PowerPoint 里继续改数据），不再降级成图片；支持瀑布图 / 漏斗图（chartEx）的解析、渲染与回写。
+  - 编辑交互：连接线端点可拖拽吸附到形状连接点（拖到空白处解绑）、对象对齐分布工具条、元素级与文本级超链接、多级段落编号与缩进、把本页图片一键设为页面背景。
+
+- 重大更新，调色画布升级到 v2 蒙版引擎——区域选区从单一形状变成可组合的复合蒙版，并新增曲线调色。
+  - 更新前：一个区域批注只能是一种形状，想做「框选后挖掉一角」没有入口。
+  - 更新后：一个区域可叠加多个形状（并集 / 相减 / 相交），画布上按住 Alt 拖动即可挖空；侧栏可查看每个形状、单独改羽化；叠加预览支持黑白灰度与过渡带轮廓两种显示。
+  - 新增曲线调色：全局曲线 + 每个区域的独立曲线，控制点拖动实时预览。
+  - 新增全局效果强度滑杆与「原图比例」叠加对比（第 4 种对比模式）。
+  - 新建调色文档直接产出 v2，旧文档可在画布内一键升级，升级失败会给出具体原因。
+  - GPU 加速覆盖组合蒙版 / 曲线 / 局部光；GPU 不可用时自动回落 CPU 并在界面说明。
+  - 泰深侧通道同步补齐：可自建 / 删除选区、撤销与重做、导入图片、导出 PNG / PSD；批量调色也支持全局曲线。
+
+- 增加了 A-Stocks 市场全景页的实时消息区。
+  - 更新前：市场消息要靠对话里主动拉取，盘中即时性丢失。
+  - 更新后：全景页内嵌消息流，60 分钟窗口持续滚动，重复消息按指纹去重，条目可点击「问 AI」。
+  - 采集源为财联社 / 东财 / 腾讯三路；泰深可自行启停采集，并写入关心的订阅条件。
+
+- 增加了泰深内置的 Python 与 uv 运行时——打包版自带，开箱即可跑 Python 系 MCP。
+  - 更新前：uvx 托管的 MCP 和 Python 脚本依赖用户自己装环境，没装就用不了。
+  - 更新后：安装包自带 uv 与 Python 3.12，MCP 的 uv / uvx / python 命令自动改写为内置绝对路径，首次冷启动有超时预算与提示。
+  - 用户自己的环境优先，内置只作兜底：不写 PATH、不设环境变量，终端画布零注入。
+
+- 增加了定时任务的批量管理与泰深自主清理。
+  - 定时任务页新增「进行中 / 全部 / 已完成」三个页签，一次性任务执行完自动归档；批量模式可多选删除。
+  - 泰深可通过 purge 清理已完成的定时任务，支持先预演清单再删除。
+
+- 增加了 Google Gemini 原生协议支持（直接走 Gemini API，修复工具调用回喂 400）。
+
+- 增加了 AI 约定文件的用户级全局来源：除项目根目录外，`~/.claude` 与 `~/.codex` 下的约定文件也会作为最低优先级上下文注入。
+
+- 优化了图片载荷：超大图片进入对话前先压缩，超出预算的会话图片会被裁剪，遇到 413 按会话恢复而不是整轮失败。
+- 优化了悬浮时钟的高峰 / 低谷判断，改为跟随设置里的配置，周末不再算作高峰。
+
+- 修复了界面里 70 处占位符原样显示的问题（回收站时间 / 条数等）。
+- 修复了 monitor 在 Windows 下带引号的命令可能失败或静默错执行。
+- 修复了设置页删除模型后聊天框里仍显示的问题。
+- 修复了经验封装任务每轮重复生成、后台唤醒完成通知重复推送。
+- 修复了定时任务页「已完成」页签恒空、MCP 详情页禁用状态显示原始占位符。
+- 修复了调色画布 GPU 开关关闭再打开后永久退回 CPU。
+- 修复了滚动条鼠标靠近变粗时的内容重排抖动。
+
+- Major update: the PPT canvas now supports native transitions and animations, along with a large batch of new shape, effect and chart capabilities.
+  - Transitions and animations: transitions and animations in existing decks are recognized as-is, editable on the canvas, and preserved on export. A new animation panel on the right lists transitions and per-slide element animations, where you can add, remove, reorder, and change duration and trigger; preview playback is supported (including the entry transition, auto-pause on focus loss, and auto-advance / click-to-advance toggles).
+    - Before: animations were an invisible, uneditable blind spot, and pages whose content you edited could lose their effects on export.
+    - Now: export handles each page as keep / patch / rewrite, and pages that cannot be preserved faithfully are reported explicitly instead of being silently dropped.
+    - Supported: transitions cut / cover / pull, mask family (blinds / checker / comb / diamond / split / wheel), geometric transforms (zoom / doors), window / conveyor; element animations include path motion, scaling, color / font / font-size, and combinations. Per-character / per-paragraph build and Morph are not open.
+  - Shapes and text effects: the open set of preset shapes grew from 30 to 178; added 3D format (rotation and depth), soft edges, and full outlines (dash / caps / joins / arrowheads); gradients support variants and path families (linear / radial / rectangular / shape), 54 pattern fills are available, and pictures support both stretch and tile fills.
+  - WordArt: 39 text-warp presets, each labeled in the properties panel as "previewable / approximate / visible after export" — nothing hidden and nothing misleading. Picture artistic-effect chains (blur / texturize and others) can be read and shown in the panel; editing the chain still happens in PowerPoint.
+  - Charts: insertable chart types expanded to 13 (radar / scatter / bubble / surface / combo with secondary axis, and more), and multi-series charts can add a series directly in the panel; after editing data the export stays a native chart (still editable in PowerPoint) instead of degrading to an image; waterfall and funnel (chartEx) are parsed, rendered and written back.
+  - Editing: connection lines can be dragged to snap onto shape connection sites (drag to empty space to unbind), an align-and-distribute toolbar, element-level and text-level hyperlinks, multi-level paragraph numbering and indentation, and one-click "set this page's picture as the page background".
+
+- Major update: the color canvas moves to a v2 mask engine — a region goes from a single shape to a composable composite mask — and adds curve grading.
+  - Before: a region annotation could only be one shape, and there was no way to "select an area and carve a corner out of it".
+  - Now: one region can stack multiple shapes (union / subtract / intersect); hold Alt and drag on the canvas to carve a hole; the sidebar lists each shape and lets you adjust its feather individually; the mask overlay previews in monochrome grayscale or transition contours.
+  - New curve grading: a global curve plus an independent curve per region, with live preview while dragging control points.
+  - New global effect-strength slider and an "original opacity" overlay compare (the 4th compare mode).
+  - New color documents are created as v2 directly; existing documents can be upgraded in one click inside the canvas, and a failed upgrade states the specific reason.
+  - GPU acceleration now covers composite masks / curves / local light; when the GPU is unavailable it falls back to CPU and says so in the UI.
+  - The Taishen-side channels are filled in as well: create / delete selections, undo and redo, import an image, export PNG / PSD; batch color also supports global curves.
+
+- Added a live news feed to the A-Stocks market panorama page.
+  - Before: market news had to be pulled on demand from the conversation, losing intraday immediacy.
+  - Now: the panorama page embeds a message stream with a rolling 60-minute window, duplicates removed by fingerprint, and entries clickable to "ask AI".
+  - Sources are CLS / Eastmoney / Tencent; Taishen can start and stop collection on its own and record the conditions you care about.
+
+- Added bundled Python and uv runtimes — the packaged app ships with them, so Python-based MCP servers work out of the box.
+  - Before: uvx-hosted MCP servers and Python scripts depended on your own environment; without one they simply did not run.
+  - Now: the installer bundles uv and Python 3.12; the uv / uvx / python commands used by MCP are rewritten to the bundled absolute paths, with a timeout budget and a notice on the first cold start.
+  - Your own environment takes priority and the bundled one is only a fallback: no PATH writes, no environment variables, and zero injection in the terminal canvas.
+
+- Added batch management and self-cleanup for scheduled tasks.
+  - The scheduled-tasks page now has "Active / All / Completed" tabs, one-off tasks are archived automatically after they run, and batch mode lets you delete several at once.
+  - Taishen can clean up completed scheduled tasks through purge, with a dry-run listing before deletion.
+
+- Added native Google Gemini protocol support (calling the Gemini API directly, fixing the 400 error when tool results are fed back).
+
+- Added a user-level global source for AI convention files: besides the project root, convention files under `~/.claude` and `~/.codex` are injected as the lowest-priority context.
+
+- Improved image payloads: oversized images are compressed before entering a conversation, images beyond the session budget are cropped, and a 413 is recovered per session instead of failing the whole turn.
+- Improved the floating clock's peak / off-peak judgement to follow the settings, and weekends no longer count as peak.
+
+- Fixed 70 places in the UI where raw placeholders were displayed instead of values (recycle-bin times, counts, and more).
+- Fixed monitor commands with quotes possibly failing or being silently mis-executed on Windows.
+- Fixed models deleted on the settings page still showing up in the chat box.
+- Fixed experience-encapsulation tasks being regenerated every round, and duplicate wake-up completion notices.
+- Fixed the scheduled-tasks "Completed" tab always being empty, and the MCP details page showing raw placeholders for disabled states.
+- Fixed the color canvas permanently falling back to CPU after turning the GPU toggle off and on again.
+- Fixed content reflow jitter when the scrollbar thickens as the mouse approaches.
 
 ###v1.7.2
 
@@ -521,16 +619,16 @@ Google 订阅接入，Codex 额度预警上线。
 
 
 ### 安装
-- **taishen_setup_1.7.2.exe** — Windows 安装包（推荐）
-- **taishen_1.7.2.zip** — 解压即用免安装版
-- **taishen_1.7.2_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.7.3.exe** — Windows 安装包（推荐）
+- **taishen_1.7.3.zip** — 解压即用免安装版
+- **taishen_1.7.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.7.2.exe | `A7B871ABC1C5FA1EC1899B6B0551091783EAC1CC92460063F6246E6E7C21985B` |
-| taishen_1.7.2.zip | `FA03BC48828DE2B9CA171E68E3AE0807538D7BB136CD7619AAE97125B8DA7A30` |
-| taishen_1.7.2_macOS_arm64.dmg | `3CD679939BF899E6150DDAF126CFC4B28467054C2E3A2CC7BCF448F3A2419803` |
+| taishen_setup_1.7.3.exe | `13322C4B913C7E87C3B4C6771B0FBD7DC4DEADEF1E8BFCF47E8F939FDC7CAFA3` |
+| taishen_1.7.3.zip | `C9E3BF05EA68AA46AEA022D1F10A4AA8491255011AD25EBAE1572716BF88979D` |
+| taishen_1.7.3_macOS_arm64.dmg | `03BCB87104EF76EFAA6CCF52129A5A351AD4FE19F196CBCE5CDB45402BB49213` |
 
 ---
 
