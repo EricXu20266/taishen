@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.7.3 正式发布
+﻿## 🚀 泰深 v1.7.4 正式发布
 
-PPT 转场动画上线，调色 v2 蒙版引擎。
+调色混合模式上线，PPT 三套内置模板。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,36 @@ PPT 转场动画上线，调色 v2 蒙版引擎。
 - AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.7.4
+
+- 增加了调色画布的图层混合模式与曲线端点自由拖动。
+  - 混合模式：全局调整与每个区域调整都能单独设置，可选 正常 / 柔光 / 叠加 / 正片叠底 / 滤色 / 强光；侧栏下拉选择，效果强度滑杆对混合模式同样生效；区域之间互不影响；导出 PSD 时保留混合模式，可在 Photoshop 里继续调整。
+  - 曲线端点：黑白场端点支持横纵拖动、方向键微调与输入/输出数值编辑；图表留白保证四角端点完整可见，端点拖出输入范围时保持对应输出值、不外推。
+  - 泰深侧同步打通：可通过 set-blend 设置全局或区域混合模式。
+
+- 增加了 PPT 画布三套能力展示型内置模板（打开即改、导出沿用自身骨架）。
+  - motion-keynote.pptx：25 条原生元素动画 + 8 个转场，覆盖位移 / 淡入 / 擦除 / 旋转 / 缩放与路径位移。
+  - data-narrative.pptx：5 张原生图表——柱 + 折线次坐标轴组合图、堆积柱、雷达、散点、气泡。
+  - visual-lab.pptx：178 形状取样、三维格式与柔化边缘、完整轮廓、渐变与图案填充、39 种艺术字取样、图片圆形 / 六边形裁剪。
+
+- 增加了会话页对自建工具文件改动的 diff 展示。
+  - 更新前：只有内置的 write_file / edit_file 会在会话页显示 diff，自建工具改了文件看不到变化。
+  - 更新后：编辑类自建工具也会显示 diff 块；超大的 diff 有展示防线，不阻塞会话。
+
+- Added layer blend modes and free-draggable curve endpoints to the color canvas.
+  - Blend modes: global adjustments and each region adjustment can set their own mode — normal / soft light / overlay / multiply / screen / hard light; picked from a dropdown in the sidebar, the effect-strength slider applies to blend modes as well, regions do not affect each other, and the mode is preserved on PSD export so it can be adjusted further in Photoshop.
+  - Curve endpoints: the black and white point endpoints support horizontal and vertical dragging, arrow-key nudging, and input/output value editing; chart padding keeps all four corner endpoints fully visible, and an endpoint dragged outside the input range holds the matching output value instead of extrapolating.
+  - The Taishen side is wired up too: blend modes for global or region scope can be set via set-blend.
+
+- Added three capability-showcase built-in templates to the PPT canvas (open and edit directly; export keeps the template’s own skeleton).
+  - motion-keynote.pptx: 25 native element animations + 8 transitions, covering motion, fade, wipe, spin, scale and path movement.
+  - data-narrative.pptx: 5 native charts — bar + line combo with a secondary axis, stacked bar, radar, scatter and bubble.
+  - visual-lab.pptx: 178 shape samples, 3D format and soft edges, full outlines, gradients and pattern fills, 39 WordArt samples, and circular / hexagonal picture cropping.
+
+- Added diff display for file changes made by custom tools on the session page.
+  - Before: only the built-in write_file / edit_file showed diffs on the session page, so file changes made by custom tools were invisible.
+  - Now: editing-type custom tools show diff blocks as well; oversized diffs have a display guard so they do not block the session.
 
 ###v1.7.3
 
@@ -619,16 +649,16 @@ PPT 转场动画上线，调色 v2 蒙版引擎。
 
 
 ### 安装
-- **taishen_setup_1.7.3.exe** — Windows 安装包（推荐）
-- **taishen_1.7.3.zip** — 解压即用免安装版
-- **taishen_1.7.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.7.4.exe** — Windows 安装包（推荐）
+- **taishen_1.7.4.zip** — 解压即用免安装版
+- **taishen_1.7.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.7.3.exe | `13322C4B913C7E87C3B4C6771B0FBD7DC4DEADEF1E8BFCF47E8F939FDC7CAFA3` |
-| taishen_1.7.3.zip | `C9E3BF05EA68AA46AEA022D1F10A4AA8491255011AD25EBAE1572716BF88979D` |
-| taishen_1.7.3_macOS_arm64.dmg | `03BCB87104EF76EFAA6CCF52129A5A351AD4FE19F196CBCE5CDB45402BB49213` |
+| taishen_setup_1.7.4.exe | `32D0AFE57F95FFDFEE0E7057CDA7820A16FB442983C2D29E08AD37F23A793060` |
+| taishen_1.7.4.zip | `C091DC0487ABD674C6CD7A36AB508B2DF10075A6F2BA2CCEE972435E1EFC0BAB` |
+| taishen_1.7.4_macOS_arm64.dmg | `A2DA87C0358A50B48F21979BCE6239DE059D02DF56573A80CBFE87CCB4C292D4` |
 
 ---
 
