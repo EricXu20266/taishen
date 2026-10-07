@@ -20,7 +20,7 @@
 - 外部 Agent 会话迁移 — 17+ 种外部 Agent（Claude Code/Cowork、Codex、Cursor、ChatGPT、Gemini、Qoder、Kimi、WorkBuddy、DSH 等）会话读取迁移，继承续聊
 - IM 远程接入（飞书 / QQ / 微信 / Slack），全面支持图片与文件发送
 - 四层安全防线 — PathGuard → 沙箱 → 网络守卫 → 门控防重试
-- AI 自诊断 — 6 级 × 9 分类日志，AI 自己查错、自己修复
+- AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
 
