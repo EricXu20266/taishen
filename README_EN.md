@@ -173,6 +173,26 @@ Search by session ID or keywords, review past discussions, and promote them into
 
 ---
 
+## Ecosystem: Skills & MCP
+
+**Skill System** — Compatible with the [agentskills.io](https://agentskills.io) open standard (shared across Claude Code, Cursor, GitHub Copilot and 35+ other tools). Create your own skills, search and install community skills from GitHub / Gitee, or let the AI author new ones. Two-level grouping via group / subgroup.
+
+**MCP Protocol** — Streamable HTTP / SSE / stdio transports bring in web search, browser control, academic databases, market data and more. Five built-ins ship in the box: anysearch (search, anonymous-capable), firecrawl (deep crawling), TDX (market data), codegraph (code graph), chrome-devtools (browser control). Built-ins never crowd out your own setup — a same-named MCP you configure takes priority.
+
+**On-Demand Loading** — Tool descriptions no longer occupy system prompt space. Keep the frequently used ones on and the low-frequency ones off; taishen can enable one on the spot when a session needs it (session-scoped, global settings untouched). Hot reload: toggling takes effect on the next message, no session restart.
+
+**Plugins & Self-Built Tools** — Drop a plugin in and it loads; the AI can author new TypeScript tools on demand, no coding on your part.
+
+---
+
+## Document Workflow
+
+* Drag in Word (.docx), PowerPoint (.pptx), PDF or Excel (.xlsx) files for parsing; scanned PDFs go through OCR.
+* After analysis, generate a Word report, a PowerPoint deck, an Excel sheet or a PDF in one step.
+* HTML advanced preview: pages the AI writes render inside taishen — select any element to leave revision notes. WYSIWYG.
+
+---
+
 ## Four-Layer Security Architecture
 
 1. **Path Access Control (PathGuard + PathResolver)** — Strict sandboxing to mounted workspaces. Sensitive system folders and symlink escapes are hard-blocked.
@@ -193,6 +213,26 @@ From *"user helps AI debug"* to *"AI inspects, fixes, and reports back."*
 
 ---
 
+## Highlights
+
+* **Six themes** — Deep Sea Amber (default) / Minimal Black & White / Soft Eye-Care / Code Orange / Native macOS / Follow System
+* **~99% prefix cache hit** — prompt structure tuned for DeepSeek's caching; per-turn cost stays flat even in 200M-token sessions
+* **32K to 1M context, five tiers** — give a DeepSeek-class model the full 1M window, or give a small local Qwen model a fitting 32K / 64K / 128K / 256K tier. The model and the window are yours to choose.
+* **Smart compaction** — history compacts automatically near the window limit, key decisions preserved; re-entering a cold session injects a summary so work picks up where it left off
+* **Cross-session memory** — remembers your preferences, working style and frequently used tools
+* **Three-layer constitution** — give the AI rules in plain language: L1 global / L2 project / L3 session, merged by priority
+* **Project map** — every project gets an auto-generated map (structure / stack / key entries / commands), so new sessions locate things without re-exploring
+* **Voice interaction** — speech-to-text input, text-to-speech playback, three modes
+* **Scheduled tasks** — interval / daily / weekly / cron / one-shot; the AI can create and manage them, with batch cleanup and dry-run
+* **Process monitoring** — long-running command output streams into the session live, with automatic alerts on error keywords
+* **Headless CLI** — pure command-line mode (`--headless`) for scripting and server scenarios
+* **Bundled runtimes** — packaged builds ship Node / Python / uv, so MCP servers and scripts work out of the box
+* **Session search** — natural-language full-text search across sessions; the AI can revisit past discussions on its own
+* **Clickable file paths** — project-relative and backticked paths render as clickable links
+* **Card dock** — task, cost, file and context cards in one collapsible, draggable dock
+
+---
+
 ## Quick Start
 
 ### Installation
@@ -208,6 +248,63 @@ From *"user helps AI debug"* to *"AI inspects, fixes, and reports back."*
 1. Launch taishen and enter your DeepSeek API Key in Settings.
 2. (Optional) Enable needed MCP services or skills in the Plugins tab.
 3. Start talking — describe your goal or drop in your files.
+
+### Recommended Models
+
+* **DeepSeek V4 Pro** (default) — full capability; best for deep research, paper writing and code development
+* **DeepSeek V4 Flash** — fast responses; best for everyday Q&A and light tasks
+
+---
+
+## File Verification (SHA256)
+
+| File | SHA256 |
+|------|--------|
+| taishen_setup_1.7.4.exe | `32D0AFE57F95FFDFEE0E7057CDA7820A16FB442983C2D29E08AD37F23A793060` |
+| taishen_1.7.4.zip | `C091DC0487ABD674C6CD7A36AB508B2DF10075A6F2BA2CCEE972435E1EFC0BAB` |
+| taishen_1.7.4_macOS_arm64.dmg | `A2DA87C0358A50B48F21979BCE6239DE059D02DF56573A80CBFE87CCB4C292D4` |
+
+---
+
+## System Requirements
+
+| Item | Minimum |
+|------|---------|
+| OS | Windows 10+ / macOS 12+ |
+| Memory | 8 GB |
+| Disk space | 500 MB |
+| Network | DeepSeek API access required |
+
+---
+
+## FAQ
+
+**Q: Do I need to deploy a model myself?**
+No. taishen connects to DeepSeek's cloud models through the API — you only need an API Key.
+
+**Q: How is taishen different from "an AI with a pile of tools bolted on"?**
+A tool list is just raw material. The difference is orchestration and self-construction: taishen composes skills, sub-agents, external services and built-in tools into a plan for the problem at hand; when that isn't enough, it writes its own tools and packages its own experience. The former is a one-off call; the latter accumulates.
+
+**Q: Can I really grow its capabilities without writing code?**
+Yes. Say "package this workflow for me" and taishen writes the Skill or the TypeScript tool, compiles and registers it for the next session. You just nod when it shows you the result.
+
+**Q: Does it support other models?**
+The client supports OpenAI-compatible endpoints and can connect Codex, Google Gemini and other providers, but only DeepSeek is fully tested. The FlexDog sub-agent can compare models inside one session.
+
+**Q: Is my data safe?**
+Everything is stored locally (conversations, user profile, file backups) and never uploaded to a taishen server. API keys are stored with OS-level encryption (Windows DPAPI / macOS Keychain).
+
+**Q: Can I use it on my phone?**
+Yes. Connect through Feishu, QQ, WeChat or Slack and your phone becomes a taishen terminal — streaming replies, file transfer and approval modals all work.
+
+**Q: What's the difference between a Skill and an MCP?**
+A Skill is a working mode ("how to think"): a Markdown file that changes the AI's behavior once activated. MCP is an external tool ("what to use"): it plugs in web search, browsers and other capabilities. They stack.
+
+**Q: Can I migrate my Windows data to Mac?**
+Yes. Copy the `.taishen` folder from your Windows user directory to `~/.taishen` on macOS. API keys must be reconfigured (the two platforms encrypt differently).
+
+**Q: Do sub-agents consume tokens?**
+Yes. Sub-agent token usage counts against the session budget, and the cost ledger is fully transparent.
 
 ---
 
