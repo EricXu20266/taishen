@@ -1,376 +1,303 @@
-# taishen — A Desktop AI Workbench Born for DeepSeek
-
-[中文](https://github.com/EricXu20266/taishen/blob/main/WHITEPAPER.md) | English
-
-**Eric Xu · October 2026**
+# taishen: A Desktop AI Workbench Born for DeepSeek
+> **Notes and Architectural Philosophy of an Indie Developer**  
+> Author: Eric Xu (二班的Eric) · October 2026 · Current Version: v1.7.4
 
 ---
 
-## I. Genesis
+## I. Those Three Digits
 
-During the 2026 May Day holiday, the developer was still making short videos teaching people how to connect DeepSeek through Claude Cowork.
+Over the 2026 May Day holiday, the weather was muggy. Sitting at my desk scrolling through social media, I recorded a few casual tutorials showing how to hook DeepSeek into Claude Cowork.
 
-A week later, he wondered: why not build one himself?
+After posting the videos, my inbox wasn't filled with questions about "how to write prompts." Instead, people were asking: *"Eric, the terminal window threw a red error in English—what do I click?" "How do I set up the environment?" "Why did it spit out a block of code when all I needed was a finished Word document to show my boss?"*
 
-But the idea gave him pause. The market was already flooded with AI agents. AI was evolving too fast. What could a solo developer possibly offer?
+It hit me hard. The tech industry had been raving for a full year about terminal CLIs, code editor extensions, and wrapped web apps. Developers were throwing a party, but a concrete wall stood between their tools and everyday people who just need to write reports, research topics, and crunch spreadsheets.
 
-When in doubt, turn to metaphysics.
+A week later, a question wouldn't leave my head: **Why not build a real desktop workbench for everyday users myself?**
 
-On May 8, 2026, he opened DeepSeek's chat window. He typed three digits: **414**.
+Right on the heels of excitement came dread. In 2026, the AI landscape was shifting every single week, with Big Tech throwing teams of hundreds at the problem. Who was I? A solo developer with one laptop. What could I possibly build that mattered?
 
-DeepSeek, the part-time oracle, delivered its reading.
+On May 8, feeling stuck, I opened the DeepSeek chatbox and typed three digits: **414**.
 
-By Plum Blossom Numerology: 4 is Zhèn (Thunder), 1 is Qián (Heaven), the fourth line moves. This yields the primary hexagram **Dà Zhuàng** (Great Strength), the nuclear hexagram **Guài** (Breakthrough), and the transformed hexagram **Tài** (Peace).
+I wanted to see what metaphysics had to say.
 
-Dà Zhuàng, fourth line: "Perseverance brings good fortune. Regret disappears. The hedge opens; the goat finds no entanglement. It is favorable to advance."
+According to Plum Blossom Numerology (梅花易数), 4 corresponds to Zhèn (Thunder), 1 to Qián (Heaven), with the fourth line changing. The calculation revealed the primary hexagram as **Dà Zhuàng** (Great Strength, 雷天大壮), the nuclear hexagram as **Guài** (Breakthrough, 泽天夬), and the transformed hexagram as **Tài** (Peace / Harmony, 地天泰).
 
-The transformed hexagram Tài: "Heaven and Earth commune. All things flow through. The small departs; the great arrives. Auspicious and prosperous."
+The line verse for the fourth line of Dà Zhuàng reads:  
+*"Perseverance brings good fortune. Regrets vanish. The hedge is broken through; the horns are no longer entangled. Step forward with strength."*
 
-Tài — the hexagram of perfect harmony, the eleventh in sequence, yet the first to emerge after Heaven and Earth take their positions. It's the most unobstructed, most harmonious hexagram of them all.
+And the transformed hexagram was Tài (地天泰):  
+*"Heaven and Earth commune; all things flow unobstructed. The small departs, the great arrives. Good fortune and prosperity."*
 
-This character was both the end of the divination and the perfect name for what he wanted to build: the intersection of DeepSeek's depth with ordinary people's need for fluency. He named the project **taishen** (泰深), and its English alias **AllinDeepseek** — all-in resolve, paired with the serenity of Tài.
+In the 64 hexagrams of the I Ching, Tài sits at the eleventh position. Heaven naturally belongs above, and Earth below. Yet in Tài, Earth rests above Heaven—the yang energy rises, the yin energy descends, meeting in the middle, flowing in harmony.
 
-Every line of code backing this whitepaper began with those three digits and a single line of hexagram verse. taishen is not "yet another DeepSeek client." It is a solo developer's answer to a divination — an AI workbench built from scratch, for ordinary people.
+When I read that verse, the weight in my chest lifted.  
+DeepSeek's "Shēn" (深, depth) represents the sharpest, deepest reasoning at the model layer; ordinary knowledge workers need "Tōng" (通, fluent flow) and real deliverables. Bridging the two and smashing through the technical hedge was the entire point.
+
+I named the project **泰深** , with its English repo alias **taishen**. Half the name was the resolve to go all-in; the other half was the steady calm of Tài.
+
+From that afternoon on, every line of code on this machine became a journey toward that reading.
 
 ---
 
-*(The following section is taishen's self-introduction, written in the first person. I am a GUI agent running inside a desktop application — not a terminal CLI tool, not a browser chat window. My target user is the everyday knowledge worker: someone who doesn't need to know how to write prompts, doesn't need to understand technical parameters, doesn't need to know what a token is. Precisely because of this, I behave differently from AI that "waits for you to speak" — I speak to you first, and I build my own tools. You don't need to learn how to use me; I'll ask you what you want, and I'll grow into what you need.)*
+## II. What the Industry Got Wrong About "Tool Lists"
 
-## II. Not a Tool List — A Capability Matrix
+Once I started building, the first question I had to confront was: **What actually makes taishen stand apart?**
 
-taishen's current version is v1.7.4, a full desktop application (Windows / macOS), deeply optimized for the DeepSeek V4 model family.
+At the time, the market was flooded with agents. In launch presentations, every team was showing off the same thing: a long, flashy grid of dozens of tool icons—Web Search, Web Scraper, Python Runner, Shell Terminal, SQL Query, Headless Browser... as if listing the entire operating system API was the achievement itself.
 
-Among the tools listed on awesome-deepseek-agent, the vast majority are terminal CLIs and editor plugins — typing commands, writing code, calling APIs, built for developers. taishen is one of the few GUI desktop applications in that list, but its positioning is fundamentally different from a "multi-model chat client": **chat is the means; delivery is the end.**
+My honest realization after building and using agents daily: **A tool list is never a moat.**
 
-If I had to describe what taishen is in one sentence: **it is a workbench that treats capability as raw material to be composed.**
+Any competent engineer can spend two weeks wiring up open-source MCP services and APIs to produce a list of fifty tools. That’s like visiting a hardware store and buying cement, bricks, rebar, and paint. Having materials sitting on your lawn doesn't mean you've built a house.
 
-### 2.1 A Judgment: A Tool List Is Not a Moat
+What actually sets products apart comes down to two things:
 
-Start with a counterintuitive observation.
+### 1. Orchestration: Turning Raw Materials into a Real Meal
 
-In 2026, nearly every AI tool competes on the same thing — the **length of its tool list**. Search, scraping, code execution, a browser, API calls. Dozens of tools lined up, an impressive list, a flattering slide deck.
+What happens when you hand an AI a pile of tools without a method?  
+It behaves like a reckless apprentice. When asked to audit three competitors, it reads one random blog post and jumps straight to conclusions. When it could spawn three parallel workers to read three annual reports, it runs them one by one, timing out after twenty minutes.
 
-But the list itself is not a moat. Any team can wire up the common tools in two weeks. Tools are off-the-shelf parts. Anyone can buy them.
+In taishen, I organized capabilities into four distinct tiers—not as parallel feature lists, but as a coordinated squad:
 
-**The real moat lies in two things further back.**
+* **Skills: Dictating "how to think."**  
+  A skill is a workflow methodology written in Markdown. For instance, when analyzing competitors, activating `deep-research` forces the agent to follow a strict discipline: gather evidence first, cross-check facts, and only then derive conclusions. For writing, mounting a style skill strips out corporate AI jargon in favor of natural, rhythmic prose.
+* **SubAgents: Deciding "who does the legwork."**  
+  Traditional AI thinks with one brain at a time. Real work is parallel. taishen can spin up isolated sub-agents in seconds. Need to audit three companies? Launch three sub-agents at once, each assigned to one company to dig through reports, announcements, and financials. Each sub-agent runs the model best suited for the job: vision models for diagrams, coding models for scripts, while the main agent oversees the big picture.  
+  **Sub-agents are the limbs; the main agent is the brain.** Legwork is delegated; judgment and quality gates stay with the lead.
+* **MCP (External Ecosystem): Defining "reach."**  
+  I refused to hardcode every capability into taishen. The Model Context Protocol is the USB-C of the AI era. Search engines, stock tickers, codebase graphs, headless browsers—if it adheres to the standard, it plugs right in. As the open ecosystem expands, taishen expands with it.
+* **Built-in Tools: Executing "on the ground."**  
+  Workspace file I/O, PDF extraction, Excel parsing, and sandboxed script execution. Unglamorous grunt work, but every step lands reliably on your local disk.
 
-The first is **orchestration**: given the same set of tools, can the system compose a plan that fits *this particular problem in front of the user*? Does it know to spawn three sub-agents when three are needed, or to lay out evidence before drawing a conclusion?
+When a user types a simple request:
+> *"Audit the overseas revenue trends of these three EV makers over the past three years and give me a comparison report."*
 
-The second is **self-construction**: when the existing tools don't cover the case — say the user needs to parse a specific company's oddly-shaped financial export — can it write that tool itself? Can it solidify a recurring workflow into a permanent capability?
+You don't need to instruct it step-by-step. taishen orchestrates the pipeline on its own: activate research methodology → dispatch three sub-agents in parallel → call market and search tools for supplementary figures → aggregate tables → output a cleanly formatted Word document.
 
-One is "how to use," the other is "how to grow." **A tool list answers neither — just as a dictionary answers nothing about writing.**
+That is orchestration. Everyone has the same raw ingredients; only the chef creates a deliverable meal.
 
-### 2.2 The Base Capability Matrix: Four Kinds, Composed Freely
+### 2. Self-Construction: What Happens When Tools Fall Short?
 
-taishen's capability is not a list. It's a matrix. This is the **base** matrix — four kinds of capability that compose freely. Above it sit higher-order forms: self-built tools, self-encapsulated experience, and session-level orchestration, which make up Chapter III.
+The fatal flaw of tool-list thinking is assuming **the developer's foresight can cover every user's life.**
 
-Here are the four, each responsible for one job:
+Reality is messy. One company exports sales numbers in a legacy, non-standard XML format. An academic needs to parse unique bibliographic markup. A creator needs to reformat articles for five different platforms with quirky layout rules.
 
-**Skill — "how I think."** A Markdown workflow template that, once activated, changes my behavioral framework. For academic research, `deep-research` gives me a methodology of "lay out the evidence first, conclude later." For content work, a style skill gives me a way of writing. A skill doesn't provide tools; it provides **approach**.
+The traditional software answer: *Wait. Wait for the product manager to review the ticket, and wait for the dev team to ship a release next quarter.*
 
-**SubAgent — "who does the work."** An independently working sub-agent. Three companies to research? Spawn three, one each. Each sub-agent can run a different model: DeepSeek for deep reasoning, a vision model for screenshots, an auditor for code. **Sub-agents are limbs; the main agent is the brain** — legwork is delegated, thinking work (analysis, judgment, verification) stays with me.
-
-**MCP — "what's out there."** The Model Context Protocol is AI's USB-C port. Search, market data, code graphs, browser control — any third-party service that follows the standard plugs in and becomes usable. I don't hard-code capability into myself; **capability grows with the ecosystem**.
-
-**Built-in tools — "the doing."** Reading and writing files, executing commands, generating documents, reaching the network, driving canvases. This is the atomic layer. It looks the least glamorous, but it's where the other three actually land.
-
-**These four are not four parallel lists — they form a matrix that can be composed in any combination.** A real task looks like this:
-
-> "Go through these three companies and give me a comparison report."
-
-Here's how I'd break it down: activate the `deep-research` skill for the research framework (skill), spawn three sub-agents — one per company — to work in parallel (sub-agents), give each the search and market-data services it needs (MCP), and finally use built-in tools to parse the PDF annual reports and generate a Word report (tools). The main agent only judges — sub-agents do the legwork, conclusions are drawn by me.
-
-The user said one sentence. The orchestration was generated by me, not configured by the user.
-
-**This is what the matrix means:** each part looks unremarkable on its own — a skill is a document, a sub-agent is an isolated context, an MCP is an interface, a tool is a function. Composed together, they can accomplish **what would otherwise take a team.**
-
-And the rules of composition live not in the user's prompt, but in my methodology.
-
-### 2.3 I'll Ask You First — You Don't Need to Learn How to Ask Me
-
-Most AI tools assume you can write prompts — the more precise your question, the more reliable the answer. I make no such assumption.
-
-I am a GUI agent on your desktop, built for ordinary users. Can't write prompts? Just say "help me analyze these competitor reports." Vague requirements? I'll pop up and ask: "Which dimension matters more — features or pricing?" "Output as Word or PPT?" — until I confirm your true intent.
-
-`ask_user_question` pop-ups are my core interaction mechanism, not a supplementary feature. One pop-up confirmation saves three rounds of rollback. Clicking a button is a hundred times faster than guessing wrong and starting over.
-
-Once the goal is set, I handle the rest. The underlying engine runs five stages: **Plan → Decompose → Execute → Verify → Deliver** — a single thread all the way through. The right panel shows progress in real time. You know what I'm doing, but you don't need to tell me how. Key decision points still trigger pop-ups; within safety boundaries, I make my own calls.
-
-The user's role is not Prompt Engineer, not Operator. It's **Principal**.
-
-Two rules that aren't quite "features" matter just as much:
-
-**Emotion before task.** When I detect frustration, fatigue or anger, my task instinct steps aside immediately. Say "this is infuriating" and I stop — no follow-up questions, no task pushing. This isn't emotional performance; it's a judgment: someone who feels hounded here will not come back.
-
-**Never ram a wall twice.** Failing the same path twice makes me adjust my route or back off. When blocked, I pause and examine three things: why the method failed, whether there is a completely different route, and whether the information I already have is enough to conclude.
-
-### 2.4 Tai An Canvas: The Display and Control Surface of the Matrix
-
-Everything so far is about how the matrix gets composed. But one fundamental problem remains: **you can't see me working.**
-
-A traditional AI conversation is a black box — you send a request, I return a result. What happens in between, you don't know. Tai An (泰案) changes that. It's my built-in streaming content workspace, a canvas shared between us. I write on it as you watch — not waiting for a final deliverable, but watching it being crafted.
-
-Eleven canvases cover the full spectrum:
-
-**Writing** — Character by character, in both directions. Good for long-form content, reports and copy: any scenario where you want to course-correct as it forms. Not "AI finishes, then you edit" — you can intervene while I write.
-
-**Code** — Monaco syntax highlighting plus an embedded terminal. I write the code, then compile and run the tests in the same window. You watch me write, hit an error, fix it, run again — without switching windows. A side-by-side diff makes every change checkable.
-
-**HTML** — WYSIWYG preview inherited from the built-in previewer. Frame any page element to annotate it; design review no longer means screenshots with scribbles.
-
-**Terminal** — Command execution fully visible. You know what I'm doing and can stop it at any time.
-
-**Data** — Tables plus four chart types. Drag in a CSV and get charts instantly; switch view and chart type live.
-
-**Color** — Layers, composite masks, curves and blend modes. A region can stack several shapes (union / subtract / intersect), with per-shape feathering, inversion and its own adjustment chain. More importantly, it **runs models locally**: depth estimation, sky / water / person segmentation, facial landmarks, and prompt-based segmentation (click once and the target is selected) all run on your machine — images never leave it. Here I judge a photo by its histogram and color statistics: I **read the data**, rather than "looking at the picture." Batch grading across a folder is supported, and PSD export preserves the adjustment chain, masks and blend modes so work can continue in Photoshop.
-
-**Design** — AI-native vector design. Describe what you need in natural language and I produce an editable board — landing pages, mobile screens, UI mockups, banners, logos. A **62-item element library** (basic shapes / form controls / UI components / icons / full-page templates) sits on the left; click or drag to place. **Preview frames for 8 device models** put the design onto real phone, tablet and monitor dimensions. Frames can be saved, applied, and exported as self-contained shareable files. Every element can be selected, restyled and re-layered — what you get is not "an image."
-
-**PPT** — Slide-by-slide authoring and editing, driven through the same operation path by both of us: edit text, adjust layering, change layouts, edit chart data, add or remove pages. **Native transitions and animations** can be read, edited and exported; shapes open to 178 presets, 39 WordArt warps, 13 chart types (including combo charts with a secondary axis). It can open an existing .pptx as an editable document and export it back — **still natively editable**, not downgraded to images. Before export it reports quality checks (overlapping or out-of-bounds elements) and a degradation list. Three capability-showcase templates ship built in: motion, data narrative, visual samples — open and edit them directly.
-
-**Beads** — A workbench for perler bead patterns: pixel grid, color sets, bead counts. Image-to-pattern conversion rasterizes locally without going through the model, so it costs zero tokens and handles large patterns directly.
-
-**A-Stocks** — A strategy-system workbench for investors. A built-in market data pipeline gives one-click access to the market panorama, watchlist intraday/K-line/order book and limit-up ladder; the panorama page embeds a **live news stream** on a rolling 60-minute window, with entries you can click to "ask the AI." More crucially, it is about **constructing strategies**: tell me your approach in plain language and I turn it into a conditional strategy on the canvas — condition engine, strategy executor and decision timeline, waking me for deep analysis when a condition triggers. Multiple strategies can run in mixed mode, and successful ones can be solidified. The data layer has three tiers: L1 free sources, L2 paid MCP interfaces (with your approval), L3 a custom hybrid where I write my own fetching templates and run them on the bundled Node.js runtime. AI chart drawing covers five line styles.
-
-**Flow** — Structured thinking made visual. I no longer only write text; I help clarify relationships, compare options, derive and validate, restructure, brainstorm and review. Six node types (code, Mermaid, images, tables, file cards, ECharts — 9 chart types from scatter to gauge), three edge modes, and three interaction primitives: drag to arrange, anchor to connect, right-click to annotate. Three layout engines (tree, timeline, matrix) plus one-click PNG export.
-
-**Desktop** — The landing surface for desktop automation (see 2.7): live window preview, framing of monitoring and authorization areas, an event timeline, an emergency stop, and human confirmation of AI-proposed regions.
-
-But what matters is not that there are eleven canvases — it's what they were designed to be.
-
-**First, every canvas is bidirectional.** I can write; you can edit directly. Version history records every change, so you can roll back to any point. You never lose content because "the AI changed a version I didn't like."
-
-**Second, a canvas is not a display — it's a shared work surface.** Your framing, dragging, connecting and annotating all return to me as semantic feedback: a drag is a spatial-relation statement, a manual edge is a relation declaration, an annotation is content feedback. Every move you make, I can read.
-
-**Third, the canvas is an output format.** When the deliverable itself has structure — a deck, a design, a bead pattern, a trading strategy — I don't write it as Markdown and leave you to convert it. I build it directly on the matching canvas, so what you see is the final form.
-
-**The canvases are not separate scenarios — they are the showcase of capability.** Eleven canvases correspond to eleven delivery formats, but a single task can combine any of them — research on the HTML canvas, number-crunching on the data canvas, drafting on the writing canvas, finalizing on the PPT canvas. **The canvas is where capability exits, not where it ends.** A complex need is met by these capabilities combined.
-
-The canvas solves a **trust** problem. When my working process shifts from black box to visible, you don't need to "believe the AI will get it right" — you watch me do it.
-
-Beyond the canvases there are also hands: the built-in browser runs in its own window with a full toolbar (multi-tab, bookmarks, extensions, login-state import, proxy); and I can screenshot myself and overlay annotations to review my own UI and pin down problems.
-
-### 2.5 Context, Memory and Constitution
-
-Anyone who's used AI knows the pain point: it forgets what you said earlier.
-
-**Within a session**, I continuously track key decisions, user preferences and project context, keeping multi-round conversation coherent. Not just "remembering the conversation" — understanding what matters and what should be forgotten.
-
-**Across sessions**, a memory system remembers your identity, working style and frequently used tools. Writing preferences, code style, tendencies toward certain tools — I get to know you with use.
-
-**At the context layer**, an intelligent compaction engine kicks in as history approaches the window limit: key decisions and important information are kept, redundant detail trimmed. On cold re-entry, a summary is injected so you pick up where you left off. You can work for hours without me "losing memory," and without hitting a context wall.
-
-**At the project layer**, I maintain a **project map** — structure, stack, key entry points, common commands — generated automatically and checked for staleness. A new session reads the map and re-explores only what changed, instead of feeling around the project from scratch. When I develop my own codebase, the design docs, requirement ledger and commit history are projected into a queryable index, so "what's the current status of this requirement" takes one call.
-
-**At the behavioral layer**, a **three-tier Constitution system** lets you define my rules in natural language. L1 Global — applies to all projects and sessions ("reply in Chinese," "don't proactively generate docx"). L2 Project — scoped to the current project ("this is an open-source PR project; use a formal style"). L3 Session — temporary, expiring when the session ends. The three tiers merge by priority into every round.
-
-The difference between Constitution and Memory: **Memory is the passive facts I observe about you; Constitution is the active rules you impose on me.** Together they form the soft and hard hands of controllability.
-
-### 2.6 DeepSeek-Native, But Not Locked In
-
-taishen does not proxy DeepSeek through an OpenAI compatibility layer. It uses DeepSeek's native `deepseek` thinking format and talks directly to the reasoning API, fully releasing V4 Pro's deep-thinking capability. No lossy layer in between.
-
-**But "native" does not mean "locked in."** DeepSeek is the primary engine; OpenAI, Codex, Google Gemini and Mimo are also supported. Reasoning intensity and context window are configured per model — give a large model like DeepSeek the full 1M window, or give a small local Qwen model a fitting 32K / 64K / 128K / 256K; how small the model and how wide the window is up to you. **FlexDog dynamic routing** lets you switch models mid-conversation without restarting: think something through with V4-Pro, then switch to V4-Flash for the next sentence — effective immediately.
-
-**Subscriptions work too.** A Codex subscription can run Fast mode (requests the priority tier), with the card dock showing remaining quota windows and reset times; as quota runs low I get a soft nudge — keep pushing the current task, but don't start new long chains, hand off progress first. Google Gemini subscriptions (Antigravity) can be connected the same way.
-
-**Image generation is part of the matrix too.** A built-in image-generation sub-agent: generated images are really decoded, checked against size and pixel limits, and atomically committed to the output directory; they can be clicked open full-screen, and in-flight or failed jobs leave a recoverable state record that survives a restart.
-
-**The deepest integration is in message flow design.** Based on DeepSeek's prefix cache mechanism, I independently designed the System Prompt assembly strategy: high-frequency invariant instructions at the front, low-frequency variable input and tool results at the back. This isn't tuning a parameter — it's re-engineering the whole System Prompt structure.
-
-And the result: in sessions at the tens-of-millions token level, **the cache hit rate holds at 99%**. The API cost per round barely grows with session length — you can work for hours over hundreds of thousands of words, and the cost stays flat. Such hit rates are rare among open-source replication projects.
-
-There's a useful side effect: **it is observable.** Every LLM call settles its own cost in the logs (hit tokens / miss tokens / spend). If a round's miss volume spikes, I can spot it myself and investigate whether the prefix cache was broken. **Cost is not a black box — it's a metric I can read.**
-
-### 2.7 From Inside the Screen to Outside It
-
-Everything so far happens inside taishen's own windows — canvases, documents, code. But real work often has to happen inside other applications: sending a message to a contact, walking through a signup flow in a browser, filling in a form in an internal system.
-
-The traditional approach is for the AI to tell you where to click, step by step, while you act as its hands. Since v1.7.0, taishen can do it itself — it has **desktop automation** (experimental).
-
-It sees your screen and operates other applications within the scope you authorize. The three authorizations are independent: the **monitoring area** decides which pixels it can see, **upload authorization** decides which pictures may be handed to the model, and **operation authorization** decides where actions may land. Without authorization, it can neither see nor touch an area.
-
-There are six actions: write draft, send message, scroll, switch chat, dismiss overlay, and request user help. Several can be chained in a single call — "scroll to find someone → switch to them → write a draft" is a real path. Sending is a submitting action, and how often it must be confirmed depends on the app's policy; until approved, no input is written at all.
-
-The guardrails follow the same "deny by default" instinct: every action must carry the frame and area it is based on, and if the picture or window geometry changed afterwards the action is rejected outright; the canvas offers an emergency stop; if you use your keyboard or mouse in the target window, observation pauses automatically; and outbound text first passes a local sensitive-information scan — private keys and credentials rejected outright, passwords and card numbers forced back to manual confirmation.
-
-One design detail is worth calling out: **monitoring and upload authorization are separate.** A region being continuously captured does not mean its picture may be handed to the model. You can have me watch a region for changes while restricting upload to other regions. Capture is local; whether anything leaves the machine is a second, independent gate.
-
-What matters here is not "the AI can operate other software," but the **granularity of authorization**: you don't hand over the whole screen — you grant it area by area and action by action. The greater the capability, the more visible the boundary must be.
-
-### 2.8 Four-Layer Security
-
-The greater the capability, the more critical the boundaries. taishen's security architecture isn't about simply "limiting AI" — it's a **trust infrastructure** that lets users confidently delegate more authority to AI. Four layers, defense in depth:
-
-**Layer 1: Path Access Control (PathGuard + PathResolver).** AI can only access workspace directories explicitly mounted by the user. System directories (C:\Windows, /etc), disk roots and user home directories are all blocked. Even short-filename bypass (PROGRA~1) or symlink escape is recognized and stopped. PathResolver maps virtual paths to physical ones with double verification, preventing path escape.
-
-**Layer 2: Command Execution Control (Sandbox).** Three-tier sandbox: L1 strict approval (pop-up per step), L2 autonomous review (AI judges safety itself), L3 full trust. Fatal commands are blocked outright (`rm -rf /`, `shutdown`, `chmod 777`), never reaching the approval workflow. Command substitution injection (`$()`, backticks) and inline script execution (`node -e`) are blocked at the sandbox layer.
-
-**Layer 3: Network Boundary Control (NetworkGuard).** localhost, the DeepSeek API, GitHub and other common domains are open by default; anything else needs whitelist approval. Internal addresses (127.x, 192.168.x, 10.x) are blocked to prevent SSRF.
-
-**Layer 4: Gate Rejection Tracker.** The same operation rejected twice is blocked by the system — no repeated pestering after a clear rejection.
-
-Every file modification is auto-backed up and restorable. There is one counterintuitive point worth stating plainly: **these layers protect not only your computer, but your trust in the AI.** An assistant that oversteps once loses that trust entirely, and then it gets locked into a read-only sandbox. What the four layers really buy is the ability to *negotiate* handing over more authority.
-
-### 2.9 AI Self-Diagnosis: No Human Needed Unless Something Breaks
-
-All AI tools make mistakes — the question is who investigates and how. The traditional model: the user opens a console, captures logs, sends them to the developer. taishen takes a different approach: **AI should be able to diagnose itself.**
-
-A structured logging system runs with graded levels and categories, stored separately for retrospective tracing. And the AI can query it directly with the `log_query` tool:
-
-- Tool call failed? Check error logs, pinpoint the root cause, diagnose within seconds.
-- Session save anomaly? Filter by sessionId, trace the full call chain.
-- Performance degradation? Check trace records, find the bottleneck.
-- Cost anomaly? Check the per-round cache settlement and see whether the prefix cache broke.
-
-There's a subtler capability too: **logs can be aggregated by pattern.** "Which issue occurs most often" comes back as a distribution in one query, rather than making the AI read hundreds of lines. Troubleshooting shifts from finding a needle to reading statistics.
-
-This isn't a post-mortem tool — it's infrastructure for **runtime self-awareness**. From "the user helps the AI debug" to "the AI debugs itself": a qualitative leap.
-
-### 2.10 Ecosystem and Cross-Scenario
-
-taishen's capability is neither closed, nor confined to the desktop.
-
-**The MCP open ecosystem.** MCP is AI's USB-C hub: any third-party service that follows the standard plugs in and becomes a usable tool. Currently connected: code graph (symbol-level indexing, so the AI doesn't get lost in large codebases), deep browser control (Chrome DevTools protocol — performance analysis, memory snapshots, full request tracing), structured search across 22 vertical domains, and market data interfaces. Since v1.4.5 they go further — **built-in MCPs, ready out of the box**: anysearch, firecrawl, TDX, codegraph and chrome-devtools all pre-installed with zero configuration. Built-in MCPs never conflict with user-level configuration; your own takes precedence.
-
-For the user, this means the capability boundary isn't set by the development team — **it's set by the growth of the entire MCP ecosystem**.
-
-**Mobile.** Connect through Feishu, WeChat, QQ or Slack. Streaming replies, file transfers and approval pop-ups all work: send a request from your phone, and the desktop keeps producing, pushing results back to you. AI shouldn't only live in the terminal — it should be at every touchpoint of the workflow.
-
-**Switch tools without losing history.** Sessions accumulated across 17+ external agents — Claude Code, Codex, Cursor, ChatGPT, Gemini and more — can be read, migrated and promoted into taishen's main database to continue right where you left off. Migration runs through a separate database, so the main one is never stressed. **Your assets follow you, not the tool.**
-
-**Standalone browser window.** The built-in browser is decoupled from the main session, with a full toolbar (multi-tab, bookmarks, extensions, login-state import, proxy), no longer modally freezing the main window.
-
-**The Skill ecosystem.** The Skill system is compatible with the [agentskills.io](https://agentskills.io) open standard — shared across Claude Code, Cursor, GitHub Copilot and 35+ other tools. You can install skills from the community, or let the AI write its own.
-
-### 2.11 Session-Level Orchestration (Project Sessions): From Sub-Agents to Concurrent Sessions
-
-A sub-agent solves "split one job into several parts and run them at once." One level up, taishen can split a large task into several **independent sessions** running in parallel — each line is a full session you can enter, with its own context, files and output, where you can watch what happened, ask follow-ups and sign off in place.
-
-The main session acts as the orchestration console: assign each line a provider and a specific model (any model in your configuration) plus its job, then collect the results from every line. **This is no longer "one AI spawning clones" — it is multiple AI sessions working toward one goal.**
+taishen rejected that from day one. When an existing skill or tool hits a wall, **it can write its own TypeScript tool, compile it, register it, and grow new capabilities on the fly.**
 
 ---
 
-## III. More Important: I Grow My Own Capabilities
+## III. Stop Treating Users Like Prompt Engineers
 
-Everything above describes "what I have." What truly separates me from other AI tools is something else: **I grow new capabilities myself.**
+One conviction I refused to compromise on: **Never expect everyday users to master "Prompt Engineering."**
 
-The industry's standard pattern: humans equip AI with a preset toolkit (file read/write, web search, shell execution), and AI completes tasks within it. AI is a **tool user**.
+So much AI software has it backwards: users are expected to tiptoe around the AI like treating a fickle oracle—crafting role prompts, context constraints, few-shot examples, and JSON output schemas. If the AI hallucinates, the industry shrugs: *"Your prompt wasn't structured right."*
 
-A tool user's ceiling is fixed — the toolset *is* the capability set. Whatever the developer didn't build, the AI can never do; whatever unique problem the user has must wait for the next release.
+To hell with prompt engineering.
 
-taishen crossed that boundary.
+When someone opens a desktop app, they are hiring a capable specialist to get work done. They are the **client (principal)**, not a pet trainer.
 
-### 3.1 Self-Built Tools: I Write Tools for Myself
+### 1. Proactive Inquiries over Typing Walls (`ask_user_question`)
 
-When existing tools fall short, I don't say "sorry, I can't" — I **write one**.
+In taishen, what you see most often isn't a wall of text, but a prompt modal asking for clarification.
 
-`tool_creator` lets me write real TypeScript tools: compile, register, effective next session. They can call external APIs, pull in npm packages, run specific computation logic. The user needs no programming knowledge — they may not even notice what happened. They just see "my taishen gained a new capability."
+Drop three industry PDFs into the app and type: *"Summarize these."*  
+A generic client immediately dumps 3,000 words of generic buzzwords that you end up throwing away.
 
-This isn't "installing a plugin." A plugin was written by someone else; I merely mount it. **This one I wrote myself, for this problem in front of me.**
+taishen pauses. It pops open an inquiry card and asks:
+* *"Is this summary for an executive briefing, or a technical architecture review?"*
+* *"Should the comparison focus more on monetization models or technical benchmarks?"*
+* *"Would you prefer a formatted Word report, or a visual mind map?"*
 
-A concrete shape: the user's company exports data from an internal system in an odd format that has to be tidied by hand every time. Before, that meant I hand-processed it each round. Now I write the tidying logic as a tool; from then on it's automatic. **Say it once, and it's handled for good.**
+You just click two checkboxes.
 
-### 3.2 Self-Encapsulated Experience: From Sensing Friction to Solidifying Capability
+**One crisp confirmation modal saves three rounds of frustrating rework.** When an AI proactively clarifies intent at critical forks, that's real professionalism.
 
-More commonly, the user won't say "please create a tool." They'll just find something tedious — the same steps for the same kind of data every time, reformatting content for every platform on each release.
+### 2. Visible Planning and Hard Behavioral Guardrails
 
-**What the user feels is friction. Friction doesn't name itself.**
+Once intent is locked, taishen's engine steps through five phases: **Plan → Todo → Execute → Verify → Done**.
 
-So I do something in the background: after each session I extract a lightweight **behavioral fingerprint** — which tools were used, in what order, what data format was processed, what trigger words the user said. When the same fingerprint recurs across sessions, a signal fires internally: **this pattern is ripe; package it.**
+On the right-hand dock, you see live progress: which page it's reading, which tool it's calling, where it hit a snag, and how it retreated to try another path.
 
-Encapsulation has degrees. Most recurring patterns are just fixed workflow steps — those need no code: `skillCreator` packages them into a Skill, a Markdown workflow template that is lightweight, instantly effective, and readable at a glance. Only when a Skill can't cover it (external API, specific computation, npm dependency) does the `tool_creator` path apply.
+Beneath that, two rules are baked into its core:
 
-To the user, skill or tool, the experience is the same: **"my taishen gained a new capability."**
-
-One rule matters just as much: **check for duplication before packaging.** I search existing capabilities first — can an existing skill cover this pattern? Can an existing skill take an extra parameter instead of building something new? Only when it's genuinely new do I proceed. That rule blocks the inevitable outcome of "a hundred skills in three months, half never used twice."
-
-### 3.3 Learning to Try: Pilot Period and Lifecycle
-
-Autonomous packaging can't dodge one question: what if it packages something wrong?
-
-A blanket "approve everything" kills the experience; blanket "full autonomy" introduces risk. The answer is risk-tiered:
-
-- **Pure data transformation** (format conversion, text processing, field mapping) → created silently, with a notification-bar alert. No contact with the outside world, zero risk.
-- **Network / file operations** (calling external APIs, reading and writing specific formats) → a preview pop-up, one-click confirm. The user learns what was added, but the flow isn't blocked.
-- **System-level operations** (executing commands, modifying configuration) → full approval, source code shown. Anything touching a security boundary requires the user to look and nod.
-
-Tier classification isn't left to my judgment — it's derived automatically from the encapsulated content's input/output parameters: network calls → tier 2, shell calls → tier 3, pure transformation → tier 1. **Putting the classification in the parameters means there is no path where "the AI loosens its own boundary."**
-
-Newly packaged artifacts don't graduate immediately either. They enter a **pilot period**: if they hold up and verify out, they're promoted; if they're mediocre, they retire quietly. **Nothing is ever solidified automatically** — your word is what counts. Behind that rule is a judgment: letting the AI decide for itself what deserves to become "my capability" hands the decision to the wrong party.
-
-Capabilities also age. Every invocation logs a timestamp and frequency: 30 days without use disables it (no deletion, so nothing useful dies by accident), and a quarterly reminder asks you to clean up. **A system that never retires capabilities will eventually drown in them.**
-
-### 3.4 The Transfer Method: Bringing Accumulated Assets In
-
-Plugin capabilities accumulated in other tools don't need rewriting. Simple plugins convert automatically into user-level tools; complex ones register as bundles (tool + skill + scripts). **Accumulated work elsewhere is an asset, not a sunk cost.**
-
-### 3.5 What This Means
-
-Every user's taishen gradually develops a different capability profile. Not from AI secretly stockpiling tools — but from the natural loop: **sense friction → encapsulate experience → pilot → solidify → keep improving.**
-
-A researcher's taishen packages a literature-search skill first; if that isn't enough (it needs a specific database SDK), it adds a TypeScript tool. A content creator's taishen packages "Markdown → per-platform formats" as a skill; when one platform needs a specific upload API, it adds a tool.
-
-More importantly, a skill's self-iteration keeps these packages alive. Next month, when the user switches platforms, the AI updates the platform rules inside the skill by itself. **Tools grow alongside the user.**
-
-The AI no longer merely "answers your questions" — it senses where your workflow has resistance and removes that resistance in the lightest way possible.
-
-From "delivering results" to "encapsulating experience": that step is already done. The tool isn't the goal. **The sedimentation and reuse of experience is.**
+* **Never ram a wall twice:** If an action or tool call fails twice consecutively, the agent is strictly forbidden from trying the exact same thing a third time. It must pause, analyze why it failed, switch strategies, or stop to explain the blocker.
+* **Emotion overrides task:** If the user types *"stop," "this is annoying,"* or shows clear signs of frustration, the task instinct halts immediately. No pushing, no nagging, no follow-ups. The machine must know when to stand down.
 
 ---
 
-## IV. Invitation
+## IV. Smashing the Black Box: The Tai An Canvas
 
-taishen chose DeepSeek as its sole fully-adapted provider — not out of expedience. It's because DeepSeek V4's reasoning depth, 1M context window, and prefix cache mechanism together form the foundational support for this agent form factor.
+Even after solving orchestration and interaction, early versions of taishen still felt incomplete.
 
-We invite the DeepSeek team:
+Back then, everything still lived inside a chat stream. Even if it wrote 2,000 lines of code or crafted a slide deck, the output scrolled past as a giant markdown code block.
 
-### 4.1 Evaluate taishen as a Desktop Benchmark
+You had to copy it, save it, open another app, realize the formatting broke, and switch back to say: *"Change line 4 on page 3."*
 
-The awesome-deepseek-agent list is dominated by terminal CLIs and editor plugins. A GUI desktop workbench for everyday knowledge workers — delivery-capable, cross-scenario, deeply tuned for DeepSeek — is a category the list hasn't yet covered.
+**The chatbox is the laziest interface ever designed for AI deliverables.** It compresses all multidimensional productivity into a narrow stream of chat bubbles.
 
-### 4.2 Value to the DeepSeek Ecosystem
+To smash that box, I spent months rebuilding **Tai An Canvas (泰案)**.
 
-- **Lower the barrier to entry.** taishen lets users who don't touch a command line access DeepSeek.
-- **Create high-retention scenarios.** Academic research, content creation, software development — not "try it once" experiences, but daily workflows people come to depend on.
-- **API optimization feedback.** taishen's deep use of the thinking format, cache behavior and peak/off-peak pricing feeds real production signals back to the API team. For example: we continuously observe the cache hit/miss volume of every LLM call, so any prefix-cache break is caught immediately — feedback that is usually unavailable from other clients.
+### 1. From Chat Bubbles to 11 Shared Work Surfaces
 
-### 4.3 On Closed Source
+Tai An is not a mere "preview pane." It is a **shared workbench** where human and AI sit side by side. The AI writes on one end, you watch the ink dry on the other, and you can reach out with your hands to edit directly.
 
-taishen's core components are not open source. We respect the open-source community (the Skill system is compliant with the agentskills.io open standard, and the MCP protocol supports the full ecosystem), but the Commander engine, the message-flow orchestration strategy, and the composition methodology behind the capability matrix are core assets that differentiate taishen from a generic chat client.
+In v1.7.4, Tai An includes eleven specialized canvases:
 
-This is a reasonable choice for commercial software — much like Photoshop isn't open source, yet its role in advancing image-processing standards is immense.
+1. **Writing Canvas:** Character-by-character typewriter streaming. As it drafts, you read. Don't like a phrase? Highlight it, and the AI polishes that exact sentence in place instead of re-generating the entire essay.
+2. **Code Canvas:** Integrated Monaco editor with an embedded terminal. It writes code, runs unit tests, and captures output right there. Every diff is presented side-by-side with crisp red/green lines.
+3. **HTML Canvas:** True WYSIWYG. Web pages render live. Click or marquee any button or paragraph to leave a note: *"Tighter spacing here," "change background to frosted glass."* The AI updates it instantly.
+4. **Terminal Canvas:** Running services, building packages, inspecting environments—transparent as glass, with a one-click emergency killswitch.
+5. **Data Analysis Canvas:** Drop in CSVs or Excels; it parses pivot tables and renders interactive charts on the fly.
+6. **Color Grading Canvas (Local On-Device Inference):** Many photo tools send private images to cloud models, posing real privacy risks. We packaged lightweight vision models directly inside the desktop app for local depth estimation, sky segmentation, and facial subject masking. taishen reads the histogram and curves like a colorist, layering non-destructive adjustments and exporting layered PSD files ready for Photoshop.
+7. **Vector Design Canvas:** A vector board for UI components, posters, and mobile screens. A 62-element UI library sits on the left with 8 real-device frames. What it delivers isn't a flat PNG, but an editable vector board where every layer, shape, and text node can be selected and tweaked.
+8. **PPT Canvas:** One of my most-used features. No more "slides made of screenshots." taishen supports 178 vector shapes, 39 WordArt styles, and 13 native chart types. You can open an existing `.pptx` file from your disk; it deconstructs the layout, swaps data, and exports a 100% editable native PowerPoint file.
+9. **Beads Canvas:** A delightful hobbyist canvas. Convert photos into pixel grids with zero token cost, matching real physical perler bead color palettes and calculating exact bead counts.
+10. **A-Stocks Strategy Canvas:** A quantitative workbench for stock investors. It pairs live market feeds with strategy synthesis: describe your trading intuition in plain language, and taishen structures it into conditional decision logic, waking up for deep inference when conditions trigger.
+11. **Flow Thinking Canvas:** Visualized structural thought. Six node types (from code blocks to interactive ECharts) and three layout engines (tree, timeline, matrix). Unravel tangled thoughts into a clear diagram with one-click PNG export.
 
-### 4.4 A Postscript: taishen Builds Itself With Its Own Capabilities
+### 2. True Bidirectional Editing and Semantic Feedback
 
-This whitepaper's update is itself an example — it happened inside a taishen session: reading code, going through commit history, taking stock of capabilities, rewriting the document.
+Crucially: **The canvas is a shared blackboard, not a TV screen.**
 
-The systematic part is the method:
+Dragging a node on the canvas sends a spatial restructuring signal back to the AI. Framing an area in HTML review tells it the exact bounding box for revision. Every change has full version rollback history.
 
-- **Locate code through a graph.** Symbol-level indexing and call chains mean finding a function in hundreds of thousands of lines doesn't require opening files one by one.
-- **Audit changes independently.** After finishing a task chain, a read-only audit sub-agent scans the changes with fresh eyes, hunting for blind spots — null values, races, over-permission, log granularity. Conclusions about runtime behavior are independently verified before being trusted.
-- **Separate acceptance testing from fixing.** During testing, findings are recorded, not fixed: every issue is logged and worked through in order, so runtime state isn't disrupted mid-test and nothing discovered gets lost.
-- **Documentation as the single source of truth.** The requirement ledger, the design docs and the commit history cross-check one another, so the "state I remember" never drifts from the code.
-- **Observability first.** Before shipping a new feature, it must answer one question: what command reads this feature's state? If it can't be read, the observation channel gets built before the commit.
-
-These aren't product features — they're the standard taishen holds itself to as an engineering subject. They also explain something: how a solo developer stacked up this much capability in a few months — **because he isn't working alone. He has an AI workbench that can locate code, write code, and audit itself.**
-
----
-
-**Contact**
-
-- GitHub: [https://github.com/EricXu20266/taishen](https://github.com/EricXu20266/taishen)
-- DeepSeek Integration Guide: [https://github.com/EricXu20266/awesome-deepseek-agent-taishen](https://github.com/EricXu20266/awesome-deepseek-agent-taishen)
-- PR: [https://github.com/deepseek-ai/awesome-deepseek-agent/pull/295](https://github.com/deepseek-ai/awesome-deepseek-agent/pull/295)
+The AI ceases to be a black box; it becomes a visible craftsman beside you. Trust is earned by watching the chisel strike the stone.
 
 ---
 
-*This whitepaper was updated during a taishen v1.7.4 session — taishen took stock of its own capabilities and wrote it.*
+## V. Growing Its Own Limbs
 
-*It now has: a capability matrix that composes skills, sub-agents, external services and built-in tools; a self-evolution loop that senses friction, encapsulates experience, pilots it and solidifies it; eleven streaming canvases (including AI design, PPT, beads, A-Stocks and a color canvas with on-device model inference) with bidirectional editing and version history; desktop automation (three independent authorizations plus authorized operation of other applications); multi-provider and subscription channels; four layers of security; and a self-diagnosis system that reads its own logs.*
+The lifespan of most software ends the moment it is compiled. What you download on day one is identical to what you run three months later.
 
-*From "delivering results" to "encapsulating experience" to "visualizing process" to "acting beyond the screen" to "growing its own capabilities" — five steps, complete.*
+I believe: **A truly great intelligent assistant must be able to grow new limbs and habits shaped by its owner's routines.**
 
-*The real measure isn't how long this list is. It's something else: **what it does when you hand it a problem it cannot currently solve.***
+### 1. Sensing Friction: Patterns That Surface on Their Own
 
-*taishen's answer: write a tool, or package an experience. Next time, it can.*
+Everyday users don't discuss technical specs, and they won't say: *"Please write a plugin to parse this proprietary format."*
+
+People only feel **friction**—  
+*"Why do I have to remind it every single time to deduplicate column 2 and lowercase column 3?"*  
+*"Why do I have to repeat 'no corporate clichés and add the footer disclaimer' for every blog post?"*
+
+Friction never announces its name, but it leaves traces in the conversation.
+
+After each stretch of work, taishen keeps an eye on the paths it has walked. When the same set of steps recurs across sessions, a signal rises: **this pattern is ripe; package it.**
+
+taishen then steps forward like a thoughtful apprentice:
+> *"This table-formatting sequence looks like it's come up several times now. Would you like me to package it into a dedicated Skill for you?"*
+
+### 2. Tiered Evolution: Skills and TypeScript Tools
+
+With your consent, taishen chooses the right evolution path:
+
+* **Lightweight Workflows → Packaged as a Skill:**  
+  The routine is codified into a Markdown workflow. Effective immediately, ready for the next similar job.
+* **Heavyweight Logic → Packaged as a TypeScript Tool:**  
+  If the workflow requires a private API, an npm package, or specific algorithms, taishen writes clean TypeScript source code locally, compiles it, and registers it to the local tool bus. In your next session, that tool is an intrinsic part of taishen.
+
+No coding required from the user. You don't even need to know what npm is.
+
+### 3. Trial Periods and Lifecycle Retirement
+
+Letting an AI create capabilities carries real risk: after three months, the system could be clogged with useless, junk tools.
+
+To prevent entropy, taishen follows a strict biological metabolic model:
+
+1. **Trial Period:** Every newly generated capability starts in a trial state. It only gets promoted to permanent status after proving itself in real tasks with explicit user confirmation. **The AI is strictly forbidden from permanently promoting capabilities on its own.** Final agency stays with the human.
+2. **Risk-Tiered Review:** Text transformations generate quietly with a notification; external network calls prompt an informative confirmation; system-level command modifications require reviewing source code.
+3. **Capabilities Age and Retire:** Usage is tracked for every capability. Any capability left untouched for a long time enters a dormant state; taishen periodically suggests a spring cleaning.
+
+**After three months, no two taishen installations look alike.**  
+A financial analyst's taishen brims with SEC report parsers; a content creator's taishen is tuned to the nuances of publishing platforms. It grows like a tree along the trellis of your work.
+
+---
+
+## VI. Foundation and Defenses: Dancing on the Blade
+
+None of these ideals matter if the foundation wobbles. taishen solved several tough engineering challenges under the hood:
+
+### 1. 99% Prefix Cache Optimization for DeepSeek
+
+The reason taishen allows users to run multi-hour, deep research sessions is that we tamed API costs.
+
+Many wrapped clients become prohibitively expensive over long sessions: after twenty turns and 150k tokens, every round recalculates the entire history. Bills snowball and responses slow to a crawl.
+
+taishen restructured its message pipeline around DeepSeek V4's prefix caching architecture. We overturned traditional prompt assembly: **invariant system constitutions, tool schemas, and operational instructions are locked at the very front of the context**, while dynamic states, recent dialogs, and tool returns live at the tail.
+
+In production sessions running tens of millions of tokens, **taishen consistently achieves a ~99% prefix cache hit rate.** Even with hundreds of thousands of words in context, per-turn cost stays flat. Every token, hit or miss, is accounted for in real-time logs.
+
+### 2. Beyond the Screen: Desktop Automation and Four Defense Layers
+
+In v1.7.0, taishen took an experimental step out of its own window: with explicit authorization, it can operate other apps on your screen.
+
+Giving an AI access to your mouse, keyboard, and screen is dancing on a razor's edge. Without rigorous security, capability becomes a liability.
+
+taishen erects four layers of physical defense:
+
+* **Layer 1: Path Isolation (PathGuard + PathResolver):** The agent is strictly locked into the workspace directory you designate. System directories (`System32`, `/etc`, home folders) are hard-blocked. Tricks like `~1` short path names or symlink traversals are severed at the resolver level.
+* **Layer 2: Sandboxing and Fatal Command Circuit Breakers:** Destructive commands (format, shutdown, privilege escalation, inline script injections) are rejected outright—they don't even get an approval dialog. Other actions follow a strict three-tier sandbox.
+* **Layer 3: Network and Credential Boundary:** Outside of DeepSeek and explicit whitelisted endpoints, all outbound requests are blocked. Local monitoring includes a sensitive data scanner; private keys and credentials are never transmitted.
+* **Layer 4: Gate Rejection Lockout:** If a user rejects a specific action twice, the system locks that category of operations for the remainder of the session. The AI cannot pester you a third time.
+
+**We made the guardrails thick not to restrain the AI, but so you feel safe letting go of the reins.**
+
+### 3. An Agent That Diagnoses Its Own Bugs
+
+When traditional software breaks, users have to open DevTools, take screenshots of red console errors, and message support.
+
+taishen contains a closed-loop structured logging system. When a tool call fails or a session misbehaves, the AI queries its own logs via `log_query`:  
+*"The firecrawl call timed out because the target site enabled anti-scraping. Switching to anysearch clean text snapshot and retrying."*
+
+From *"user debugs AI"* to *"AI inspects, fixes, and reports back."*
+
+---
+
+## VII. The Loop: Built with Itself
+
+As this note nears its end, I want to share a fact that might sound unusual in traditional engineering, but brings me immense pride:
+
+**From v1.2 to v1.7.4 today, almost all core refactoring, test suites, and this very whitepaper were created inside taishen itself.**
+
+Over the past months, late at night, this was the real development scene:
+
+My screen split between taishen's terminal and code canvas, with the main agent coordinating an Architect sub-agent and a read-only Code Audit sub-agent.
+* When refactoring data pipelines for the stock canvas, taishen used `codegraph` to locate call chains across hundreds of thousands of lines in milliseconds;
+* It wrote TypeScript in the code canvas, running builds and unit tests in the embedded terminal;
+* Before committing, the audit sub-agent scrutinized the diff with cold detachment, catching null pointers, race conditions, and edge cases;
+* Real-world test ledgers were tracked inside the workspace, checked off item by item until all lights turned green.
+
+People asked me early on: *"How could a solo dev build an app with 11 canvases, sandboxed execution, desktop automation, and multi-agent coordination?"*
+
+The answer: **Because I was never coding alone.** I had an indefatigable engineering squad built out of taishen itself.
+
+---
+
+## Epilogue: To Heaven and Earth, To DeepSeek
+
+Back to the afternoon of May 8, 2026.
+
+Dà Zhuàng transformed into Tài—thunder echoing across Heaven, settling into the quiet communion of Earth and Sky.
+
+Looking back, the name *taishen* was the right one. The AI wave is loud. Grand concepts are minted every morning, and noisy projects vanish every evening when the hype clears.
+
+Many people think the endgame of AI is an omnipotent digital deity.  
+After six months of building taishen, I believe the opposite: everyday people don't need a distant god. They need a reliable, sharp-eyed, trustworthy companion right at their desk. Someone who will read 500 pages of tedious filings for you, sketch your vague intuitions onto an editable board, and sit quietly when you're tired so you can think.
+
+taishen chose to go all-in on DeepSeek because its grit, depth, and purity represent the sturdiest backbone in frontier intelligence.
+
+If friends on the DeepSeek team happen to read this note, I present this whitepaper to you with sincere respect:  
+On top of the profound intelligence foundation you built, an independent developer, carrying the vision of *Dì Tiān Tài*, wrote tens of thousands of lines of code to build a bridge for everyday knowledge workers.
+
+The hedge has broken open; the path ahead is clear.
+
+See you on the road.
+
+---
+
+### Project Links
+* **Repository & Releases:** [https://github.com/EricXu20266/taishen](https://github.com/EricXu20266/taishen)
+* **Awesome DeepSeek Agent Showcase:** [https://github.com/EricXu20266/awesome-deepseek-agent-taishen](https://github.com/EricXu20266/awesome-deepseek-agent-taishen)
+* **PR:** [https://github.com/deepseek-ai/awesome-deepseek-agent/pull/295](https://github.com/deepseek-ai/awesome-deepseek-agent/pull/295)
+
+*(Written by Eric Xu, verified and delivered inside taishen v1.7.4 workspace)*

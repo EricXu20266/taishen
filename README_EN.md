@@ -1,250 +1,195 @@
-﻿# taishen
+# taishen
 
 [中文](README.md) | English
 
-**Eric Xu** | v1.7.4 | 2026
+**By Eric Xu (二班的Eric)** | v1.7.4 | 2026
 
 ---
 
-An AI agent desktop client for everyone. Born for DeepSeek — turn your materials and ideas directly into deliverable structured output, not just chat.
+A desktop AI agent client built for everyday knowledge workers. Born for DeepSeek — turning your files, research, and ideas directly into finished deliverables, not just chat bubbles.
 
-> 📖 For a deep dive into Taishen's design philosophy and technical architecture, read the [Whitepaper](WHITEPAPER_EN.md).
+> 📖 To understand taishen's design philosophy and architecture journey, read the [Whitepaper](WHITEPAPER_EN.md).
 
-> ⚠️ Taishen can connect to other LLMs, but only DeepSeek has been fully tested. Other models are not guaranteed to work as expected.
+> ⚠️ While you can connect other LLMs, only DeepSeek has been rigorously tested. Optimal results are not guaranteed with other models.
 
 ---
 
-## Where Taishen stands out: tools are raw material, composition is capability
+## Where taishen Stands Out: Tools are Raw Materials; Composition is Capability
 
-Most AI tools compete on the length of their tool list — search, scraping, code execution, a browser. Dozens of tools lined up, an impressive list.
+Most AI tools compete on who has the **longest tool list** — search, web scrapers, code execution, headless browsers... dozens of icons lined up in an impressive presentation grid.
 
-Taishen takes a different view: **anyone can list tools. Capability lives in composition.**
+taishen sees it differently: **Anyone can assemble a parts list. Real capability lives in composition.**
 
-Two things matter more than the list:
+Having dozens of built-in tools is nothing extraordinary. What really matters are two things:
 
-**First, orchestration.** How those tools — together with skills, external services and sub-agents — get organized into a capability combination for *this specific problem you have right now*. The same raw material, arranged differently, produces wildly different results.
+**First, Orchestration.** How those tools — combined with workflow skills, external MCP services, and parallel sub-agents — are coordinated into a tailored plan for *the exact problem in front of you*. The same raw ingredients, arranged differently, yield completely different outcomes.
 
-**Second, self-construction.** When the available combination is not enough, Taishen writes its own tools, packages its own experience, and grows new capabilities — without you writing code, and without waiting for a release.
+**Second, Self-Construction.** When existing tools fall short, taishen writes its own tools, codifies its own experience, and grows new capabilities — without you touching code or waiting for another release.
 
-That is the real line between an "AI workspace" and a "chat client".
+That is the true dividing line between an "AI workbench" and a "chat client."
 
-### The base capability matrix: four kinds of capability, composed freely
+### Base Capability Matrix: Four Tiers, Composed Freely
 
-This is taishen's **base** capability matrix — four kinds of capability that compose freely. Above it sit higher-order forms: self-built tools, self-encapsulated experience, and session-level orchestration (covered below).
+This is taishen's **base capability matrix** — four tiers that compose together seamlessly. Higher-order evolutions (autonomous tool development, workflow encapsulation, session orchestration) build directly on top of this.
 
-| Kind | What it is | When it is used |
+| Category | What It Is | When It Is Used |
 |------|-----------|-----------------|
-| **Skill** | A working mode (a Markdown workflow template) | To change *how* it thinks |
-| **SubAgent** | An independent sub-agent, each with its own model | Several independent tasks at once |
-| **MCP service** | An external tool service (search / market data / code graph…) | When you need "what is out there" |
-| **Built-in tool** | Atomic operations (read / write / execute / network / documents…) | To actually do the work |
+| **Skill** | A working methodology (Markdown template) | Shifts *how* it thinks — providing a structured framework |
+| **SubAgent** | Independent sub-agents with dedicated models | Pushing multiple independent tasks concurrently |
+| **MCP Service** | External services (search / stocks / code graph...) | Tapping into *what exists outside* |
+| **Built-in Tool** | Atomic operations (I/O, execution, network, docs) | Doing the heavy lifting on your disk |
 
-These four are not four parallel lists — they form a matrix that can be **combined freely and used together**. A real task looks like this:
+These four are not parallel lists; they form an active matrix. A real-world assignment looks like this:
 
-> "Go through these three companies and give me a comparison report."
+> *"Audit the financials of these three EV makers over the last three years and draft a comparison report."*
 
-Taishen breaks it down like this:
+taishen breaks it down automatically:
 
-1. Activate the **deep-research skill** — it gets a research framework ("lay out the evidence first, conclude later")
-2. Spawn **three sub-agents** in parallel — one per company, each reading annual reports, scanning news and checking financials
-3. Call **MCP services** — anysearch for public information, firecrawl for deep pages, TDX for market data
-4. Use **built-in tools** — parse the PDF annual reports, pull the Excel financials, and finally generate a Word report
-5. The **main agent only judges** — sub-agents do the legwork; the conclusions are drawn by the main agent itself
+1. Activates the **deep-research skill** — adopting a "gather evidence first, conclude later" methodology.
+2. Launches **three sub-agents** in parallel — each auditing one company's annual filings, news, and balance sheets.
+3. Calls **MCP services** — anysearch for public filings, firecrawl for deep company sites, and TDX for market charts.
+4. Uses **built-in tools** — parses PDF reports, extracts Excel spreadsheets, and formats the final Word document.
+5. Throughout, the **main agent serves as the judge** — sub-agents do the legwork, while final conclusions are drawn by the lead agent.
 
-You said one sentence. The orchestration was generated by Taishen, not configured by you.
+You typed one single sentence. The orchestration was synthesized by taishen, not configured by you.
 
-### Self-evolution: Taishen grows its own capabilities
+### Self-Evolution: taishen Grows Its Own Limbs
 
-This is where Taishen stops behaving like "a tool".
+This is where taishen stops feeling like traditional software.
 
-**Self-built tools** — When a skill is not enough, Taishen writes itself a real TypeScript tool. It compiles, registers, and takes effect in the next session. It can call external APIs, pull in npm packages, run custom logic — **you do not need to program.**
+**Self-Built Tools** — When a workflow template isn't enough, taishen writes clean TypeScript tools on the fly, compiling and registering them for your next session. It can invoke private APIs, pull npm packages, and run custom logic — **no coding required on your part.**
 
-**Self-encapsulated experience** — After each session, a set of behavioral fingerprints is extracted: which tools were used, in what order, on what kind of data, triggered by what words. When the same pattern repeats, an internal signal fires: this workflow is ripe, package it.
+**Self-Encapsulated Experience** — Recurring workflows, taishen picks up on its own: when the same few steps are walked again and again, it takes note. This isn't a rule you configured — it read it out of everyday collaboration.
 
-So Taishen comes to you: "I've done this four times now — want me to package it as a skill?"
+taishen will proactively ask: *"This workflow seems to have repeated several times now — want me to package it as a skill?"*
 
-**Trial, then solidify** — A newly packaged skill enters a pilot period. If it works well and verifies out, it is promoted; if not, it retires quietly. **Nothing is ever solidified automatically** — your word is what counts.
+**Trial, Then Solidify** — A newly packaged skill enters a trial state. If it works well and verifies out, it is promoted; if not, it retires quietly. **Nothing is ever solidified automatically** — your word is what counts.
 
-**Capabilities age, and get retired** — Every packaged artifact records call timestamps and frequency. Thirty days without use disables it automatically (no deletion, so a useful one is never killed by accident), and a quarterly reminder asks you to clean up. Before packaging anything, Taishen checks first: can an existing capability cover this? Can an existing skill take a parameter instead of building something new?
+**Capabilities Age and Retire** — Usage is tracked for every capability; ones that go unused for a long time are retired — disabled, never deleted, so nothing useful dies by accident. Before packaging anything, taishen checks first: can an existing capability cover this? Can an existing skill take a parameter instead of building something new?
 
-So what does this mean? **Three months in, every user's Taishen looks different.** A researcher grows a literature-search skill; a content creator grows a per-platform formatting workflow. It grows along with your way of working.
+What does this mean? **Three months in, every user's taishen looks completely different.** An academic's client develops deep citation tools; a marketer's client builds cross-platform publishing pipelines. It grows along the grain of your daily work.
 
 ---
 
 ## Commander Agent Engine
 
-Taishen is not a "Q&A bot" — it's a Commander-mode agent that autonomously plans, orchestrates tools, and verifies results.
+taishen is not a Q&A chatbot. It is a Commander-class agent that plans, schedules, and verifies results autonomously.
 
-**Five-Stage Workflow** — Plan → Todo → Execute → Verify → Done. Every step is visible in real time on the right panel. The AI independently breaks down complex tasks, orchestrates the toolchain, and verifies output quality — you only need to confirm key decisions.
+**Five-Stage Workflow** — Plan → Todo → Execute → Verify → Done. Live progress updates on the right dock. The AI decomposes complex assignments and verifies deliverables, consulting you only on pivotal decisions.
 
-**Proactive Pop-Up Guidance** — This is Taishen's core interaction, not a side feature. Can't write prompts? One sentence — "analyze these competitor reports for me" — is enough. Vague requirements? It pops up and asks: "Do you care more about features or pricing in the comparison?" "Word or PPT for the output?" — until your real intent is pinned down. One click beats guessing wrong and redoing a hundred times. You are not a prompt engineer; you are the **client**.
+**Proactive Clarification Modals** — This is taishen's core interaction paradigm, not a side gimmick. Don't know how to write prompts? Just say *"analyze these competitor PDFs."* If the request is ambiguous, taishen pops open an inquiry modal: *"Do you prioritize feature parity or pricing models?" "Should the deliverable be a Word brief or a visual mind map?"* Clicking a button is 100x faster than rolling back a hallucinated response. You are the **client**, not a prompt engineer.
 
-**Root-Cause Diagnosis** — Diagnose first, prescribe second. It distinguishes a symptom fix from a root-cause fix, and never passes off a workaround as a solution.
+**Root-Cause Diagnosis** — Diagnoses the underlying issue before prescribing fixes. Never sweeps errors under the rug with fragile workarounds.
 
-**Closed-Loop Accountability** — The complete chain from plan to delivery: it questions fuzzy requirements, states its assumptions when uncertain, and self-verifies on completion.
+**Responsible Delivery** — Clarifies ambiguous goals upfront, states assumptions explicitly when uncertain, and self-checks before sign-off.
 
-**Emotion Before Task** — When it detects frustration, fatigue or anger, its task instinct steps aside immediately. Say "this is infuriating" and it stops — no follow-up questions, no task pushing.
+**Emotion Overrides Task** — If it senses frustration or fatigue (e.g., *"stop," "this is annoying"*), its task instinct yields immediately without nagging or pushing.
 
-**It Doesn't Ram a Wall Twice** — Failure on the same path twice makes it adjust its route or back off. When blocked, it pauses to think: why did this fail, is there another route, is the information I already have enough to conclude?
+**Never Ram a Wall Twice** — If an approach fails twice consecutively, it changes course or pauses to explain the blocker instead of stubbornly repeating the same mistake.
 
 ---
 
 ## Tai An Canvas System
 
-Taishen's built-in streaming content workspace — the AI writes on it and you watch the content take shape.
+A built-in streaming content workspace — the AI crafts content in real time as you watch it take shape.
 
-Eleven canvas types cover the full range:
+Eleven specialized canvases cover every deliverable:
 
 | Canvas | Capability |
 |------|------|
-| **Writing** | Character-by-character streaming output; select a passage and let the AI revise it |
-| **Code** | Monaco syntax highlighting + embedded terminal — write code, then run the tests in the same window; side-by-side diff |
-| **HTML** | WYSIWYG preview; frame any page element to annotate, so design review no longer means screenshots with circles drawn on them |
-| **Terminal** | Command execution fully visible, stoppable at any time; signal control and output capture |
-| **Data** | Tables + four chart types, drag in a CSV to visualize; switch view and chart type live |
-| **Color** | Layers, composite masks, curves and blend modes; on-device models for depth / sky / face / subject segmentation; batch grading; PSD export that keeps the adjustment chain and masks |
-| **Design** | AI-native vector boards — a 62-item element library, 8-device preview frames, a loadable frame library, your own saved elements; export PNG/SVG/JSON/HTML |
-| **PPT** | Native transitions and animations + 178 shapes + 39 WordArt presets + 13 chart types; open an existing .pptx to revise its layout and export it still natively editable |
-| **Beads** | Grid drawing + image-to-pattern conversion (local, offline rasterization at zero token cost) + color sets + bead counts |
-| **Stock** | Natural language to strategy + a condition engine + a live news feed + AI-drawn lines + smart monitoring |
-| **Desktop** | Live window preview + three independent authorizations + six actions (observe / write draft / send / scroll / switch chat / dismiss overlay) |
+| **Writing** | Character-by-character typewriter streaming; highlight any passage to polish in place |
+| **Code** | Monaco editor + embedded terminal; write code, run tests, and inspect side-by-side diffs in one view |
+| **HTML** | True WYSIWYG preview; select page elements to leave direct revision notes |
+| **Terminal** | Transparent command execution with live output and instant killswitches |
+| **Data Analysis** | Tables + interactive charts; drop in CSVs to generate pivot views and trends |
+| **Color Grading** | Layers, composite masks, curves; runs lightweight on-device models for depth, sky, and facial segmentation; exports layered PSDs |
+| **Vector Design** | AI-native vector artboard — 62-item UI library + 8 real device preview frames; exports SVG/PNG/JSON |
+| **PPT** | Native transitions and animations + 178 shapes + 39 WordArt styles + 13 chart types; imports existing `.pptx` and preserves native editability |
+| **Beads** | Offline rasterization of images into perler bead grid patterns with color matching and bead counts |
+| **A-Stocks** | Plain-language strategy builder + condition engine + live news tickers + chart markups |
+| **Desktop** | Real-time window preview + three independent permission tiers + six automated screen actions |
 
-The **Flow canvas** is the `mode="flow"` mode of the HTML canvas — structured thinking made visual: six node types (including 9 ECharts chart types), three edge styles, three interaction primitives (drag-to-arrange, anchor-to-connect, right-click to annotate), and three layout engines (tree / timeline / matrix), with one-click PNG export.
+**Flow Thinking Canvas** (`mode="flow"` on HTML canvas) — Visualized structural thinking: 6 node types (including 9 ECharts charts), 3 layout engines (tree, timeline, matrix), and one-click PNG export.
 
-**Every canvas is bidirectional** — the AI can write, and you can edit directly. Version history records each change for instant rollback. When the AI's working process shifts from black box to visible, you no longer need to "trust that it got it right" — you watch it happen.
+**Bidirectional Editing** — The AI writes, and you can edit directly. Comprehensive version history lets you roll back anytime. AI work shifts from a mysterious black box to a transparent workbench.
 
-**A canvas is a shared work surface, not a display** — your framing, dragging, connecting and annotating all return to the AI as semantic feedback: a drag is a spatial-relation statement, a manual edge is a relation declaration, an annotation is content feedback. Every move you make on the canvas, the AI can read.
-
-**The canvases are not separate scenarios — they are the showcase of taishen's capability.** Eleven canvases correspond to eleven delivery formats, but taishen can combine any of them within a single task — research on the HTML canvas, number-crunching on the data canvas, drafting on the writing canvas, finalizing on the PPT canvas. **The canvas is where capability exits, not where it ends.** Your complex needs are met by these capabilities combined.
-
-**And beyond the canvas, there are hands** — the built-in browser runs in its own window with a full toolbar (multi-tab, bookmarks, extensions, login-state import); Taishen can screenshot itself and overlay annotations (boxes / arrows / highlights / blur / numbering) to review its own UI and pin down problems.
+**Canvases are Work surfaces, Not Screens** — Dragging elements or framing regions feeds spatial and semantic signals right back to the AI.
 
 ---
 
 ## Desktop Automation
 
-Taishen can see your screen and operate other applications within the scope you authorize (experimental).
+With your permission, taishen can inspect your screen and operate external applications (Experimental).
 
-The three authorizations are independent: **monitoring area** (what it can see), **upload authorization** (which areas may be handed to the model), and **operation authorization** (where actions may land). Without authorization, Taishen can neither see nor touch an area.
+Three independent permission boundaries: **Monitoring Area** (what it can view), **Upload Authorization** (which frames reach the cloud model), and **Operation Authorization** (where clicks and keys may land). It cannot see or touch areas outside your authorization.
 
-Six actions: write draft, send message, scroll, switch chat, dismiss overlay, request user help. Several can be chained in a single call (scroll to find someone → switch to them → write a draft). Sending counts as a submitting action and is confirmed each time by default; until approved, no input is written at all.
+Six atomic actions: write draft, send message, scroll, switch dialog, dismiss modal, request human intervention.
 
-Safety guardrails: every action must carry the frame and area it is based on — if the picture or window geometry changed afterwards, the action is rejected outright. The canvas provides an emergency stop; if you use keyboard or mouse in the target window, observation pauses automatically; outbound text first passes a local sensitive-information scan (private keys and credentials are rejected outright).
-
-Entry: Tai An → desktop canvas. On first use, pick a window, frame the monitoring area, circle the input box / list / content area, and save the permissions. When the window moves or resizes, the areas follow automatically; monitoring ranges are remembered per application and applied next time.
+Safety guardrails: Every action is tethered to the exact captured frame; if the window geometry changes, the action is rejected. Observation pauses when user input is detected. Outbound text is scanned locally to prevent credential leakage.
 
 ---
 
 ## Parallel SubAgents
 
-Traditional AI does one thing at a time. Taishen can dispatch several independent tasks to several sub-agents at once — checking financial reports while reading industry analysis while crunching numbers — and collect the results when each finishes.
+Traditional AI handles one task at a time. taishen can distribute independent work to multiple specialized sub-agents at once.
 
-**Each sub-agent can run a different model.** DeepSeek does the deep reasoning, vision tasks go to a vision model, image generation goes down its own channel, and code audit goes to a dedicated auditor. Just say "analyze these reports" — Taishen splits the work and routes each piece to the right worker.
+**Tailored Models per SubAgent** — DeepSeek for deep reasoning, vision models for diagrams, and code models for unit tests. Simply describe your goal, and taishen delegates appropriately.
 
-**Sub-agents are limbs; the main agent is the brain.** Taishen draws that line deliberately — legwork (bulk operations, parallel searches, large file reads) is delegated; thinking work (content analysis, design decisions, result verification) stays with the main agent. Reports coming back from a sub-agent are treated as clues, not conclusions: the main agent runs type checks, reads the diff, and spot-checks key changes.
+**13 Built-in Specialists** — General Tasks, Code Exploration, Task Planning, Architecture Design, DevOps, AI Engineering, DevRel, Content Writing, Vision OCR, Image Generation, Dynamic Routing, Bulk Refactoring, and Independent Code Audit.
 
-**13 built-in specialists**: general-purpose / code exploration / task planning / architecture design / infrastructure operations / AI engineering / developer advocacy / content creation / visual recognition / image generation / dynamic model routing / bulk code modification / independent code audit — and you can define your own.
-
-**From sub-agents to session-level orchestration (Project Sessions).** A sub-agent solves "split one job into several parts and run them at once." One level up, taishen can split a large task into several **independent sessions** running in parallel — each line is a full session you can enter, with its own context, files and output, where you can watch what happened, ask follow-ups and sign off in place. The main session acts as the orchestration console: assign each line a provider and a specific model (any model in your configuration) plus its job, then collect the results. This is no longer "one AI spawning clones" — it is **multiple AI sessions working toward one goal.**
+**Project Sessions** — Orchestrate complex projects across multiple isolated, persistent sessions running in parallel.
 
 ---
 
 ## IM Remote Access
 
-Out and about without your computer? Feishu, QQ, WeChat, and Slack on your phone become your Taishen terminal.
+Away from your desk? Chat apps on your phone become your mobile taishen terminal.
 
-| Platform | Connection | Capabilities |
-|------|---------|------|
-| Feishu | Enterprise self-built app | DM + group chat @bot, file sending |
-| QQ | QQ Open Platform Bot | DM + group chat + QQ Channel, file sending in DM |
-| WeChat | iLink ClawBot | DM, file sending |
-| Slack | Slack API | DM + group chat @bot, rich text and file sending |
+| Platform | Integration | Capabilities |
+|------|-------------|--------------|
+| Feishu (Lark) | Custom Enterprise App | Direct message + group chat @bot, file transfer |
+| QQ | QQ Open Platform Bot | Direct message + group chat + channel, file transfer |
+| WeChat | iLink ClawBot | Direct message, file transfer |
+| Slack | Slack API | Direct message + group chat @bot, rich text & files |
 
-All four channels support streaming replies, file transfer, and remote approval popups. AI-generated documents, spreadsheets and presentations can be pushed straight to your phone. Configuration: Settings → IM Access panel.
+Streaming replies, document delivery, and confirmation modals are fully routed to your phone.
 
 ---
 
 ## External Agent Session Migration
 
-Sessions accumulated in other AI tools don't need to be restarted. Taishen reads and migrates sessions from **17+ external agents** — Claude Code / Cowork, Codex, Cursor, ChatGPT, Gemini, Qoder, Kimi, WorkBuddy, DSH, and more.
+Don't abandon chats accumulated in other tools. taishen can ingest and migrate history from **17+ external agents** — including Claude Code / Cowork, Codex, Cursor, ChatGPT, Gemini, Qoder, Kimi, and WorkBuddy.
 
-Locate a session by its external ID or a title keyword, read the past conversation, and promote it into Taishen's main database on demand to continue right where you left off. Migration runs through a separate database, so the main one is never stressed. **Switch tools without losing history — your assets follow you.**
+Search by session ID or keywords, review past discussions, and promote them into taishen's active database to continue right where you left off.
 
 ---
 
 ## Multi-Provider & Models
 
-**Free switching** — DeepSeek, OpenAI, Codex, Google Gemini, Mimo and more. Reasoning intensity and context window are configured per model, so each can be tuned individually.
-
-**Subscriptions work too** — A Codex subscription can run in Fast mode (priority service tier), with the card dock showing remaining quota windows and reset times; as quota runs low, Taishen gets a soft nudge: keep pushing the current task, but don't start new long chains — hand off progress first. Google Gemini subscriptions (Antigravity) can be connected the same way.
-
-**Image generation** — A built-in image-generation sub-agent: generated images are really decoded, checked against size limits, and atomically committed to the output directory; they can be clicked open full-screen, and failed or in-flight jobs leave a recoverable state record.
-
-**FlexDog dynamic routing** — Switch models and providers mid-session with no restart. Think a problem through with a deep model, then switch to a fast one on the next sentence — effective immediately.
-
-**Peak/off-peak pricing** — Costs are computed and displayed per provider by peak / off-peak window, so the numbers stay clear.
+* **Seamless Switching** — DeepSeek, OpenAI, Codex, Google Gemini, Mimo, and local endpoints. Context windows and reasoning effort can be tuned per model.
+* **Subscription Quotas** — Connect Codex or Gemini subscriptions directly; monitor remaining quotas in the card dock.
+* **FlexDog Dynamic Routing** — Switch between heavy reasoning models and lightning-fast models mid-turn without restarting.
+* **Peak & Off-Peak Pricing** — Real-time cost ledger adjusted for provider pricing tiers.
 
 ---
 
-## Ecosystem: Skills & MCP
+## Four-Layer Security Architecture
 
-**Skill System** — Compatible with the [agentskills.io](https://agentskills.io) open standard (used by Claude Code, Cursor, GitHub Copilot and 35+ other tools). Create custom skills, search and install community skills from GitHub/Gitee, or let the AI create new ones autonomously. Supports group/subgroup two-level organization.
-
-**MCP Protocol** — Streamable HTTP / SSE / stdio transports, bringing in web search, browser control, academic databases, market data and other external capabilities. Five built-ins ship pre-configured: anysearch (search, anonymous mode supported), firecrawl (deep crawling), TDX (market data), codegraph (code graph), and chrome-devtools (browser control). Built-in MCPs never conflict with user-level configuration — your own MCP takes precedence.
-
-**On-demand loading** — MCP tool descriptions no longer eat into the prompt budget. Keep the ones you use enabled and the rest off; Taishen enables one on demand inside a session (session-level only — global defaults untouched). Hot reload means toggling takes effect on the very next message, with no session restart.
-
-**Plugins + self-created tools** — Drop a plugin in and it loads; the AI can write new tools (TypeScript) on demand, with no manual coding required.
-
----
-
-## Full Document Workflow
-
-- Drag and drop Word (.docx), PPT (.pptx), PDF and Excel (.xlsx) files for parsing; scanned PDFs go through OCR
-- The AI analyzes and generates Word reports, PPT presentations, Excel spreadsheets and PDF documents in one click
-- HTML Advanced Previewer: preview AI-written web pages inside Taishen and select elements to annotate revision notes — WYSIWYG
-
----
-
-## Four-Layer Security
-
-**Path Access Control** — The AI only accesses workspaces you designate. System directories, disk roots and home directories are auto-blocked; short-filename bypass and symlink escape are recognized and blocked too.
-
-**Command Execution Control** — Three-tier sandbox: L1 step-by-step approval → L2 AI autonomous review → L3 full trust. Fatal commands are blocked outright (`rm -rf /`, `shutdown`, …), and command injection and inline script execution are stopped at the sandbox layer.
-
-**Network Boundary Control** — DeepSeek API, GitHub and other common domains are open by default; any other domain needs whitelist approval. Internal addresses (127.x, 192.168.x, 10.x) are blocked to prevent SSRF.
-
-**Gate Rejection Tracker** — The same operation rejected twice is blocked by the system. The AI won't pester you after a clear rejection.
-
-Every file modification is backed up locally and can be restored at any time. The recycle bin keeps accidentally deleted sessions, skills and sub-agents recoverable forever. **It is precisely these four layers that let you confidently delegate more authority to the AI.**
+1. **Path Access Control (PathGuard + PathResolver)** — Strict sandboxing to mounted workspaces. Sensitive system folders and symlink escapes are hard-blocked.
+2. **Command Sandbox** — L1 step-by-step approval, L2 autonomous review, L3 full trust. Destructive commands (`rm -rf /`, `shutdown`) and shell script injections are terminated immediately.
+3. **Network Boundary** — DeepSeek API and GitHub are open by default; unexpected external domains require explicit whitelist approval. Internal IP spaces (SSRF protection) are blocked.
+4. **Gate Rejection Lockout** — Rejecting an action twice locks that operation category from bothering you again.
 
 ---
 
 ## AI Self-Diagnosis
 
-Taishen has a built-in structured logging system with graded levels and categories. The AI can query its own runtime logs: tool failure → locate the root cause; session anomaly → trace the full call chain; cost anomaly → check cache-hit rates for the bottleneck.
+taishen features a structured internal logging system. The AI queries its own runtime logs via `log_query`:
+* Tool call failed? Pinpoint root cause within seconds.
+* Context anomalies? Trace full call chains.
+* Token spikes? Inspect cache hit rates directly.
 
-From "user helps AI debug" to "AI debugs itself" — no technical knowledge needed, no log diving required.
-
----
-
-## Experience Highlights
-
-- **6 themes** — Deep Ocean Amber (default) / Minimalist B&W / Soft Eye-Care / Chroma Orange / Native macOS / Follow System
-- **~99% prefix cache hit** — Prompt structure deeply optimized for DeepSeek's caching; per-round cost stays constant even in 200M+ token sessions
-- **32K to 1M context, five presets** — Give a large model like DeepSeek the full 1M window, or give a small local Qwen model a fitting 32K / 64K / 128K / 256K. How small the model and how wide the window is up to you
-- **Smart compaction** — History is compacted automatically near the window limit, keeping key decisions; on cold re-entry a summary is injected so you pick up right where you left off
-- **Cross-session memory** — Remembers your preferences, working style and frequently used tools, and gets to know you better with use
-- **Three-layer constitution** — Give the AI rules in plain language: L1 global / L2 project / L3 session-scoped, merged by priority
-- **Project map** — Every project gets an auto-generated map (structure / stack / key entry points / common commands), so a new session locates things immediately instead of re-exploring
-- **Voice interaction** — Speech-to-text input and text-to-speech output, three modes freely switchable
-- **Scheduled tasks** — Interval / daily / weekly / cron / one-shot; the AI can create and manage them itself, with batch cleanup and dry-run
-- **Process monitoring** — Streams a long-running command's output into the session and alerts on error keywords
-- **Headless CLI** — Run in pure command-line mode (`--headless`) for script integration and server scenarios
-- **Bundled runtimes** — Node / Python / uv ship with the app, so MCP servers and scripts work out of the box without depending on your machine's environment
-- **Conversation search** — Natural-language cross-session full-text search; the AI can also reference past discussions on its own
-- **Clickable file paths** — Project-relative paths and backtick-wrapped paths render as clickable links
-- **Card dock** — Task, cost, file and context cards in one place, collapsible and draggable
+From *"user helps AI debug"* to *"AI inspects, fixes, and reports back."*
 
 ---
 
@@ -252,78 +197,20 @@ From "user helps AI debug" to "AI debugs itself" — no technical knowledge need
 
 ### Installation
 
-- **taishen_setup_1.7.4.exe** — Windows installer (recommended)
-- **taishen_1.7.4.zip** — Windows portable, extract and run
-- **taishen_1.7.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) installer
+* **taishen_setup_1.7.4.exe** — Windows Installer (Recommended)
+* **taishen_1.7.4.zip** — Windows Portable Archive
+* **taishen_1.7.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4)
 
-> 📥 **Download:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — Go to the latest version and download from "Assets".
+> 📥 **Downloads:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases)
 
-### Configuration
+### Setup
 
-1. Launch Taishen, enter your DeepSeek API Key in Settings
-2. (Optional) Enable desired MCP services in the Tools & Plugins page
-3. (Optional) Enable professional Skills in the Skill Management page
-4. Start a conversation — describe your needs, drag in files, and you're set
-
-### Recommended Models
-
-- **DeepSeek V4 Pro** (default) — Full-featured, ideal for deep research, paper writing, and code development
-- **DeepSeek V4 Flash** — Fast response, suitable for daily Q&A and lightweight tasks
-
----
-
-## File Verification (SHA256)
-
-| File | SHA256 |
-|------|--------|
-| taishen_setup_1.7.4.exe | `32D0AFE57F95FFDFEE0E7057CDA7820A16FB442983C2D29E08AD37F23A793060` |
-| taishen_1.7.4.zip | `C091DC0487ABD674C6CD7A36AB508B2DF10075A6F2BA2CCEE972435E1EFC0BAB` |
-| taishen_1.7.4_macOS_arm64.dmg | `A2DA87C0358A50B48F21979BCE6239DE059D02DF56573A80CBFE87CCB4C292D4` |
-
----
-
-## System Requirements
-
-| Item | Minimum |
-|------|---------|
-| OS | Windows 10+ / macOS 12+ |
-| RAM | 8 GB |
-| Disk | 500 MB |
-| Network | DeepSeek API access required |
-
----
-
-## FAQ
-
-**Q: Do I need to deploy my own model?**
-No. Taishen connects to DeepSeek's cloud models via API. You only need an API Key.
-
-**Q: How is Taishen different from "an AI with a pile of tools bolted on"?**
-A tool list is raw material. The difference is orchestration and self-construction: Taishen composes skills, sub-agents, external services and built-in tools into a plan for the problem at hand — and when the available combination falls short, it writes its own tools and packages its own experience. One is a one-off call; the other accumulates.
-
-**Q: Can it really grow new capabilities without me writing code?**
-Yes. Say "package this workflow for me" and Taishen writes the Skill or the TypeScript tool itself, compiles and registers it, and it's live from the next session. All you do is nod when it shows you the result.
-
-**Q: Are other models supported?**
-The client supports OpenAI-compatible endpoints and can also connect Codex, Google Gemini and others, but only DeepSeek has been fully tested. You can compare models within the same conversation via the FlexDog sub-agent.
-
-**Q: Is my data secure?**
-All data is stored locally (conversation history, user profile, file backups) and is never uploaded to Taishen servers. API Keys are stored using system-level encryption (Windows DPAPI / macOS Keychain).
-
-**Q: Can I use it on my phone?**
-Yes. Connect through Feishu, QQ, WeChat or Slack, and your phone becomes your Taishen terminal — streaming replies, file transfers, and approval popups all work seamlessly.
-
-**Q: What's the difference between Skill and MCP?**
-Skill = the AI's working mode ("how to think") — a Markdown file that changes its behavior style when activated. MCP = the AI's external tools ("what to use") — connecting web search, browsers and other capabilities. The two stack.
-
-**Q: Can I migrate data from Windows to Mac?**
-Yes. Copy the `.taishen` folder from your Windows user directory to your macOS user directory (`~/.taishen`). Note that API Keys need to be re-configured (different encryption methods per platform).
-
-**Q: Do SubAgents consume tokens?**
-Yes. SubAgent token consumption is accumulated in the session budget, with complete and transparent cost tracking.
+1. Launch taishen and enter your DeepSeek API Key in Settings.
+2. (Optional) Enable needed MCP services or skills in the Plugins tab.
+3. Start talking — describe your goal or drop in your files.
 
 ---
 
 ## License
 
-Copyright (c) 2026 Eric Xu. All Rights Reserved.
+Copyright (c) 2026 Eric Xu (二班的Eric). All Rights Reserved.
