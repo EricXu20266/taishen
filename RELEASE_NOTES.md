@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.7.4 正式发布
+﻿## 🚀 泰深 v1.7.6 正式发布
 
-调色混合模式上线，PPT 三套内置模板。
+调色 V3 图层体系上线，AI 生图能力落地。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,92 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.7.6
+
+- 重大更新，调色画布升级到 V3 版本。
+  - 图层体系：更新前调整是一条全局链加若干区域批注，区域之间不能独立成层，也不能单独开关或调顺序；更新后采用图层栈，每层可有自己的调整链、曲线、蒙版、不透明度与混合模式，层可启用/停用、可调顺序，原图成为最底层可直接调色。
+  - 图层蒙版：用矩形、椭圆、套索等形状建立，支持多部件加/减/交运算、反选、形状手柄拖动与旋转；层行显示蒙版缩略图，选中层可编辑蒙版形状、羽化或移除。
+  - 本地视觉模型：新增提示分割（框选或点选目标出候选）、天空/水体/人像分割、相对深度分层、人脸检测与人脸关键点；模型输出的选区可直接转为图层蒙版。
+  - 模型按需下载：模型不随安装包分发，首次使用按需下载，支持多源镜像、断点续传与字节级进度；下载后离线可用，图片不出本机。
+  - 智能选取面板：在图上框选或点选 → 出候选（带缩略图与「没圈住」评分）→ 选定后建蒙版。
+  - 旧文档升级：v1/v2 文档可一键升级到 v3，原有调整链与区域批注迁移为对应图层；关闭画布后可从 outputs 目录的 .color.json 重新打开。
+  - 泰深侧同步打通：读写都走 v3 图层语义，区域调色改为新建带蒙版的层。
+
+- 重大更新，新增 AI 生图能力与图片消息链路。
+  - 新增 img_creator 生图子代理与 generate_image 工具，泰深可直接按描述出图。
+  - 生成结果落盘到会话 outputs，在会话流里以缩略图展示，点击可在右侧面板全屏放大。
+  - 支持两条订阅通道：Google（gemini-3.1-flash-image）与 Codex（gpt-image-2），都走订阅额度，不需要额外 API Key。
+  - 设置页新增「生图专员」配置：选择 provider 会自动联动预设协议与模型。
+  - 图片跨重启保留。
+
+- 新增 Google 订阅 Provider，用 Google 账号订阅额度直连。
+  - 该通道使用 Antigravity 的鉴权与额度接口，订阅账号需先通过 Antigravity 验证才能使用。
+  - 泰深自持 OAuth 登录 Google 账号，不用 API Key；登录可取消、可重试。
+  - 模型按账号可用清单展示，Gemini 系与 Claude 系分别显示图标，只提供实际存在的强度档位。
+  - 额度卡显示 5 小时与 7 天两个池子的用量，临近阈值提醒。
+
+- 新增内置浏览器登录态导入，并修复登录被拒问题。
+  - 新增 browser_import_cookies：把系统浏览器的 cookie 导入内置浏览器，绕开嵌入式浏览器登录被站点拒绝的问题；支持多种导出格式自动归一化，可先 dry-run 确认。
+  - 修复内置浏览器被 Google 判定为「不安全浏览器」而无法登录（补齐 UA-CH 品牌与 window.chrome 对象）。
+  - 内置浏览器增加主路径广告拦截。
+  - 新增内置技能 browser-login-fallback，登录被拒时给出处置路径。
+
+- 优化了设置页的界面布局与视觉细节（表单行排版重排、控件宽度收敛、关闭入口统一为 X 与 ESC）。
+
+- 优化了会话页的工具执行提示（执行中显示具体动作，如「阅读文件中：xxx」）。
+
+- 优化了 Fork 子代理的上下文接力（携带完整历史与占位工具结果，避免提示词前缀缓存断裂；修正用量统计虚高）。
+
+- 修复了以下问题。
+  - Claude 通道工具调用返回 400。
+  - 设置页定价与悬浮时钟的 provider 不一致。
+  - 调色画布换图时若扩展名相同不刷新（v2 文档同样存在）。
+  - 调色画布反选后无法取消，只能撤销。
+  - 自建工具产出的文件没被收录进会话文件卡片。
+  - 跨会话写文件落到错误目录。
+
+- Major update: the color canvas is upgraded to V3.
+  - Layer system: previously adjustments were one global chain plus several region annotations — regions could not be layers of their own, and could not be toggled or reordered individually. Now it uses a layer stack: each layer has its own adjustment chain, curves, mask, opacity and blend mode; layers can be enabled/disabled and reordered, and the source image is the bottom layer that can be adjusted directly.
+  - Layer masks: built from rectangle, ellipse, lasso and other shapes, supporting multi-part add/subtract/intersect operations, inversion, and shape-handle dragging and rotation; the layer row shows a mask thumbnail, and the selected layer lets you edit the mask shape, feather or remove it.
+  - Local vision models: added prompt segmentation (box or point on a target to get candidates), sky/water/person segmentation, relative depth layering, face detection and face landmarks; model output selections can be turned into layer masks directly.
+  - On-demand model download: models are not shipped in the installer, they download on first use with multi-source mirrors, resumable transfer and byte-level progress; after download they work offline and images never leave the machine.
+  - Smart selection panel: box or click on the image → candidates (with thumbnails and a "not captured" score) → pick one to create a mask.
+  - Document upgrade: v1/v2 documents upgrade to v3 in one click, with existing adjustment chains and region annotations migrated into layers; after closing the canvas you can reopen the .color.json from the outputs folder.
+  - Taishen side wired up: reads and writes both go through v3 layer semantics, and region color grading becomes creating a layer with a mask.
+
+- Major update: added AI image generation and the image message pipeline.
+  - Added the img_creator image-generation subagent and the generate_image tool — Taishen can generate images directly from a description.
+  - Results are saved to the session outputs and shown as thumbnails in the session stream; click to view full screen in the right panel.
+  - Two subscription channels are supported: Google (gemini-3.1-flash-image) and Codex (gpt-image-2), both using subscription quota with no extra API key.
+  - The settings page has a new "image creator" configuration: picking a provider automatically syncs the preset protocol and model.
+  - Images persist across restarts.
+
+- Added a Google subscription provider that connects directly with a Google account's subscription quota.
+  - This channel uses Antigravity's authentication and quota APIs; the subscription account must pass Antigravity verification first.
+  - Taishen runs its own OAuth login for the Google account, no API key needed; login can be cancelled and retried.
+  - Models are listed per what the account actually has available, with separate icons for the Gemini and Claude families, showing only the effort levels that really exist.
+  - The quota card shows both the 5-hour and 7-day pools, with near-threshold reminders.
+
+- Added browser login-state import for the built-in browser, and fixed login rejections.
+  - New browser_import_cookies: import cookies from your system browser into the built-in browser, working around sign-in rejection in the embedded browser; multiple export formats are normalized automatically, with a dry run available first.
+  - Fixed the built-in browser being flagged by Google as an "unsupported browser" that could not sign in (added UA-CH brands and the window.chrome object).
+  - Added main-path ad blocking to the built-in browser.
+  - Added the built-in browser-login-fallback skill, which lays out the diagnosis and handling path when sign-in is rejected.
+
+- Improved the settings page layout and visual details (reworked form row layout, tightened control widths, unified the close entry as X and ESC).
+
+- Improved tool execution hints on the session page (in-progress actions now show the specific operation, e.g. "Reading file: xxx").
+
+- Improved context hand-off for Fork subagents (carries full history plus placeholder tool results to avoid prompt prefix cache breaks; fixed inflated usage stats).
+
+- Fixed the following issues.
+  - Tool calls on the Claude channel returned 400.
+  - The provider shown in settings-page pricing and the floating clock did not match.
+  - The color canvas did not refresh when swapping to an image with the same file extension (same in v2 documents).
+  - Inversion in the color canvas could not be turned back off — only undo worked.
+  - Files produced by custom tools were not collected into the session file card.
+  - Files written across sessions landed in the wrong directory.
 
 ###v1.7.4
 
@@ -649,16 +735,16 @@
 
 
 ### 安装
-- **taishen_setup_1.7.4.exe** — Windows 安装包（推荐）
-- **taishen_1.7.4.zip** — 解压即用免安装版
-- **taishen_1.7.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.7.6.exe** — Windows 安装包（推荐）
+- **taishen_1.7.6.zip** — 解压即用免安装版
+- **taishen_1.7.6_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.7.4.exe | `32D0AFE57F95FFDFEE0E7057CDA7820A16FB442983C2D29E08AD37F23A793060` |
-| taishen_1.7.4.zip | `C091DC0487ABD674C6CD7A36AB508B2DF10075A6F2BA2CCEE972435E1EFC0BAB` |
-| taishen_1.7.4_macOS_arm64.dmg | `A2DA87C0358A50B48F21979BCE6239DE059D02DF56573A80CBFE87CCB4C292D4` |
+| taishen_setup_1.7.6.exe | `2A275C6E5B7D52FE2A07D9C0BCBD58898BA1FC4D147C86F03E6F89CC02029BCB` |
+| taishen_1.7.6.zip | `A77A786E28603F43F7B79A3A4F8B91907CB37283E87C009F28D93A112C432DD5` |
+| taishen_1.7.6_macOS_arm64.dmg | `70464180DD7B8DB6555EB309B0F4A0649837688DFF17BAC1654E29043073ACA1` |
 
 ---
 
