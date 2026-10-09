@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.7.6 正式发布
+﻿## 🚀 泰深 v1.7.7 正式发布
 
-调色 V3 图层体系上线，AI 生图能力落地。
+Google 多账号支持，Image Studio 画布上线。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,52 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.7.7
+
+- 重大更新，Google 订阅支持多账号管理与一键切换。
+  - 更新前：Google 订阅只能保持单个账号登录，额度用尽或切换账号需要先退出再重新登录。
+  - 更新后：支持多账号凭据存档与一键切换，切号即时生效无需重启；设置页提供卡片化账号列表，展示各账号的额度快照与批次进度，并支持单个账号移除。
+  - 入口位于「设置-模型配置-Google 订阅」。
+- 重大更新，泰案画布家族新增 Image Studio 图像创作工作台。
+  - 更新前：AI 生图主要依赖对话流中的文字与图片卡片交互，缺乏专门的生图操作与版本管理界面。
+  - 更新后：提供集参数配置、生成画布、参考图输入、历史版本对比于一体的三栏工作台；支持文生图与图生图参考图输入，生图任务全生命周期打通，结果跨重启持久化保存。
+  - 入口位于泰案画布「新建-生图画布」。
+- 重大更新，系统提示词与工具结构实施全量手册化减重。
+  - 更新前：大量工具使用规范与画布操作说明常驻在系统提示词与工具说明中，挤占上下文并增加每轮 Token 消耗。
+  - 更新后：建立核心工作手册体系，15 个领域专有工具与系统工具说明全面精简，转为精细化手册索引；首轮冷启动及后续每轮对话净节省约 15,000 tokens，提升了模型聚焦度与响应效率。
+- 新增内置技能「ai-video-preproduction」（AI 视频视听前期筹备）。
+  - 为 AI 视频与短片创作提供前期工作流底座，支持剧本节拍拆解、六层分镜设计、空间调度、资产审阅返修以及可重现的视听筹备包导出。
+- 优化了调色画布本地视觉模型的下载与管理。
+  - 模型管理浮层新增「打开模型目录」入口与离线放置说明，模型清单接入 GitHub Release 第三级镜像兜底源；重构了下载超时与任务排队保护，避免首次大模型下载被误杀中断。
+- 优化了部分界面主题的视觉质感。
+  - 调整了护眼绿（eyecare）与深海（deepsea）等主题的层级色彩，优化了亮色主题的高饱和度表现，提升长时间阅读舒适度。
+- 修复了第三方模型在工具调用返回后偶发中断停住（空 turn 假死）的问题。
+- 修复了 Windows 平台下文件搜索（glob）路径模式偶尔失效的问题。
+- 修复了冷启动与历史继承会话中偶发出现伪造工具调用格式文本的问题。
+- 修复了后台任务监控（monitor）在 Windows 环境下工作目录绑定异常的问题。
+
+- Major update: Google subscription now supports multi-account management with one-click switching.
+  - Before: Google subscription only allowed a single account sign-in; switching accounts or running out of quota required signing out and signing back in.
+  - Now: supports multi-account credential archiving and instant one-click switching without restarting; the settings page provides a card-based account list showing quota snapshots and batch progress, along with individual account removal.
+  - Located in Settings → Model Configuration → Google.
+- Major update: Tai An canvas welcomes a new member — Image Studio creative workspace.
+  - Before: AI image generation relied mainly on text and image cards in chat streams, lacking a dedicated creation and version management workspace.
+  - Now: provides a three-column workspace integrating parameter setup, generation canvas, reference image input, and version comparison; supports text-to-image and image-to-image reference routing with persistent cross-restart storage.
+  - Located in Tai An Canvas → New → Image Studio Canvas.
+- Major update: system prompt and tool schema slimming via comprehensive manual architecture.
+  - Before: extensive tool usage rules and canvas guidelines resided continuously in the system prompt and tool schemas, consuming context budget and increasing per-turn token usage.
+  - Now: established a core workspace manual system, condensing 15 domain and system tool schemas into fine-grained manual indexes; saves ~15,000 tokens across cold start and subsequent conversation turns, improving model focus and responsiveness.
+- Added built-in skill "ai-video-preproduction" (AI Video Audiovisual Pre-production).
+  - Provides a pre-production workflow foundation for AI video and short film creation, covering screenplay beat breakdown, six-layer storyboard design, spatial staging, asset review/repair, and reproducible audiovisual pre-production package export.
+- Improved local vision model downloading and management in the Color canvas.
+  - The model management modal adds an "Open model directory" button and offline placement guide, with model manifests connected to a third-tier GitHub Release mirror fallback; reworked download timeout and queue protection to prevent first-time large model downloads from being killed prematurely.
+- Improved visual quality across UI themes.
+  - Tuned hierarchical contrast for eyecare and deepsea themes, and smoothed high-saturation colors in light themes for enhanced long-term reading comfort.
+- Fixed an issue where third-party models occasionally stalled after tool calls (empty turn freeze).
+- Fixed an issue where file search (glob) path patterns occasionally failed on Windows.
+- Fixed occasional format poisoning of pseudo tool-call syntax during cold start and session inheritance.
+- Fixed working directory binding anomalies for background task monitoring (monitor) on Windows.
 
 ###v1.7.6
 
@@ -735,16 +781,16 @@
 
 
 ### 安装
-- **taishen_setup_1.7.6.exe** — Windows 安装包（推荐）
-- **taishen_1.7.6.zip** — 解压即用免安装版
-- **taishen_1.7.6_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.7.7.exe** — Windows 安装包（推荐）
+- **taishen_1.7.7.zip** — 解压即用免安装版
+- **taishen_1.7.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.7.6.exe | `2A275C6E5B7D52FE2A07D9C0BCBD58898BA1FC4D147C86F03E6F89CC02029BCB` |
-| taishen_1.7.6.zip | `A77A786E28603F43F7B79A3A4F8B91907CB37283E87C009F28D93A112C432DD5` |
-| taishen_1.7.6_macOS_arm64.dmg | `70464180DD7B8DB6555EB309B0F4A0649837688DFF17BAC1654E29043073ACA1` |
+| taishen_setup_1.7.7.exe | `3790EFD94D2B20C1A38F581DE493C283A137FAB99FD835E7633DCE3D1D24EED8` |
+| taishen_1.7.7.zip | `C4BEB1D4B90222709C27E865F57280D7157AB8D68A8828603D7DE908CF4F9DFE` |
+| taishen_1.7.7_macOS_arm64.dmg | `0995041711348071ADA6C46B954AAA756A74C65BA4930A53E1E097D9EB2DE5D0` |
 
 ---
 

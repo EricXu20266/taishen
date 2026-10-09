@@ -2,7 +2,7 @@
 
 [English](README_EN.md) | 中文
 
-**二班的Eric作品** | v1.7.6 | 2026
+**二班的Eric作品** | v1.7.7 | 2026
 
 ---
 
@@ -252,9 +252,9 @@
 
 ### 安装
 
-- **taishen_setup_1.7.6.exe** — Windows 安装包（推荐）
-- **taishen_1.7.6.zip** — Windows 解压即用免安装版
-- **taishen_1.7.6_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.7.7.exe** — Windows 安装包（推荐）
+- **taishen_1.7.7.zip** — Windows 解压即用免安装版
+- **taishen_1.7.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载。
 
@@ -276,9 +276,9 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.7.6.exe | `2A275C6E5B7D52FE2A07D9C0BCBD58898BA1FC4D147C86F03E6F89CC02029BCB` |
-| taishen_1.7.6.zip | `A77A786E28603F43F7B79A3A4F8B91907CB37283E87C009F28D93A112C432DD5` |
-| taishen_1.7.6_macOS_arm64.dmg | `70464180DD7B8DB6555EB309B0F4A0649837688DFF17BAC1654E29043073ACA1` |
+| taishen_setup_1.7.7.exe | `3790EFD94D2B20C1A38F581DE493C283A137FAB99FD835E7633DCE3D1D24EED8` |
+| taishen_1.7.7.zip | `C4BEB1D4B90222709C27E865F57280D7157AB8D68A8828603D7DE908CF4F9DFE` |
+| taishen_1.7.7_macOS_arm64.dmg | `0995041711348071ADA6C46B954AAA756A74C65BA4930A53E1E097D9EB2DE5D0` |
 
 ---
 
