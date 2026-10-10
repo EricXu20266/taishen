@@ -1,12 +1,12 @@
-﻿## 🚀 泰深 v1.7.7 正式发布
+﻿## 🚀 泰深 v1.7.8 正式发布
 
-Google 多账号支持，Image Studio 画布上线。
+泰案设计画布 V2 上线，记忆索引配额优化。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
 - 主动弹窗引导 — 不会写 Prompt 也能用，AI 主动确认需求
 - Commander 形态 — AI 自主规划、调度、验证一条龙
-- 泰案画布系统 — 十一种流式画布（写作/代码/HTML/终端/数据分析/调色/设计/PPT/拼豆/股票/桌面），双向编辑，历史版本追踪
+- 泰案画布系统 — 十二种流式画布（写作/代码/HTML/终端/数据分析/调色/设计/PPT/拼豆/股票/桌面/生图），双向编辑，历史版本追踪
 - HTML 高级预览器 + 内置浏览器独立窗口 — 所见即所得，多标签、收藏夹、Chrome 扩展
 - 内置截图工具 — 泰深自我截图，配合 Myeyes 全自动识图标注
 - 经验封装系统 — AI 自主创造 Skill、工具与子代理；重复的流程会被察觉并封装成能力，封不封装由你拍板，好习惯固化成资产
@@ -23,6 +23,34 @@ Google 多账号支持，Image Studio 画布上线。
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.7.8
+
+- 重大更新，泰案画布家族迎来自主升维的 Design 设计画布 V2（Design Studio V2）。
+  - 更新前：设计画布主要偏向轻量线框生成，缺少专业矢量图形表现力、布尔运算与工程交付能力。
+  - 更新后：全面升级为专业级矢量设计工作台。新增遮罩与蒙版系统、背景磨砂玻璃、内阴影与单边描边；支持矢量布尔运算（并集/减去/交集/排除）、智能参考线与 Alt 间距测距；引入三层类型化 Design Tokens 设计系统；支持导出真实矢量 SVG、Tailwind CSS 与 React JSX 代码，以及 Play Mode 原型交互演示；打通视口截帧多模态审美自检、原位主体一键抠图与截图逆向转译设计稿。
+  - 入口位于泰案画布「新建-设计画布」，交互与样式面板随画布默认启用。
+- 优化了记忆系统的配额管理与索引注入机制。
+  - 更新前：记忆索引缺少类型配额约束，条目增多后易被次要记录挤占，长索引偶发截断残缺。
+  - 更新后：记忆注入采用类型配额制，优先保障用户约定与核心身份信息，全面打通用户偏好（preference）注入链路；大幅放宽索引视图容量上限，彻底解决长索引截断；优化了中文分词与记忆检索排序。
+- 优化了用户自建工具的签名校验与防护。
+  - 更新前：用户自建工具若误用单参数签名，调用 ID 会被误认成参数，导致入参静默丢失且无报错。
+  - 更新后：加载工具时增加严格的签名校验，发现不合规的单参写法主动拦截并提示标准格式，消除静默失效隐患。
+- 优化了底层网络请求的长连接保活机制。
+  - 网络请求保活超时从 4 秒提升至 60 秒，显著降低高频请求与长任务交互时的重复建连开销。
+
+- Major update: Tai An canvas family welcomes the upgraded Design Studio V2.
+  - Before: The Design canvas focused primarily on lightweight wireframe generation, lacking professional vector graphic styling, boolean operations, and production code delivery.
+  - Now: Fully upgraded to a professional vector design studio. Added mask and clip path systems, background backdrop blur, inner shadow, and individual single-side strokes; supports vector boolean operations (union/subtract/intersect/exclude), smart guides, and Alt-distance measurement; introduces a three-tier typed Design Tokens system; supports exporting real vector SVG, Tailwind CSS, and React JSX code, alongside Play Mode prototype interaction previews; integrates viewport capture multimodal visual inspection, in-place subject matting, and vision-to-design screenshot reverse translation.
+  - Located in Tai An Canvas → New → Design Canvas; interaction and property panels are enabled by default with the canvas.
+- Improved quota management and index injection in the memory system.
+  - Before: Memory index injection lacked type quota constraints, easily becoming crowded by secondary records as items grew, with occasional truncation on long indexes.
+  - Now: Memory injection adopts a type quota system, prioritizing user conventions and core identity facts while fully connecting the user preference injection pipeline; significantly expands the index view capacity limit, resolving long index truncation; optimizes Chinese word segmentation and memory retrieval ranking.
+- Improved signature validation and protection for custom user tools.
+  - Before: If a custom tool mistakenly used a single-parameter signature, the runtime treated the tool call ID as the parameters object, causing arguments to be silently lost without errors.
+  - Now: Enforces strict signature validation when loading tools, actively intercepting non-compliant single-parameter signatures and displaying standard format hints to prevent silent parameter loss.
+- Improved keep-alive timeout for underlying network requests.
+  - Network request keep-alive timeout increased from 4 seconds to 60 seconds, significantly reducing connection handshake overhead and network jitter during high-frequency calls and long-running tasks.
 
 ###v1.7.7
 
@@ -781,16 +809,16 @@ Google 多账号支持，Image Studio 画布上线。
 
 
 ### 安装
-- **taishen_setup_1.7.7.exe** — Windows 安装包（推荐）
-- **taishen_1.7.7.zip** — 解压即用免安装版
-- **taishen_1.7.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.7.8.exe** — Windows 安装包（推荐）
+- **taishen_1.7.8.zip** — 解压即用免安装版
+- **taishen_1.7.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.7.7.exe | `3790EFD94D2B20C1A38F581DE493C283A137FAB99FD835E7633DCE3D1D24EED8` |
-| taishen_1.7.7.zip | `C4BEB1D4B90222709C27E865F57280D7157AB8D68A8828603D7DE908CF4F9DFE` |
-| taishen_1.7.7_macOS_arm64.dmg | `0995041711348071ADA6C46B954AAA756A74C65BA4930A53E1E097D9EB2DE5D0` |
+| taishen_setup_1.7.8.exe | `2B92B38C85FCF011B890BC7D02C1C31B3AA23DE9E4F5E9D1E930D092C0F96CFE` |
+| taishen_1.7.8.zip | `866EE57E7E8612BB0E5A26683D8A53218AD09BCAB0DBFB45C97FBC6513A4167C` |
+| taishen_1.7.8_macOS_arm64.dmg | `17C8F5EFA24C3208EB436954508586700E1DCB63754A1B8E8D27AD7106381148` |
 
 ---
 

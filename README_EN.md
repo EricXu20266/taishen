@@ -2,7 +2,7 @@
 
 [中文](README.md) | English
 
-**By Eric Xu (二班的Eric)** | v1.7.7 | 2026
+**By Eric Xu (二班的Eric)** | v1.7.8 | 2026
 
 ---
 
@@ -93,7 +93,7 @@ taishen is not a Q&A chatbot. It is a Commander-class agent that plans, schedule
 
 A built-in streaming content workspace — the AI crafts content in real time as you watch it take shape.
 
-Eleven specialized canvases cover every deliverable:
+Twelve specialized canvases cover every deliverable:
 
 | Canvas | Capability |
 |------|------|
@@ -103,11 +103,12 @@ Eleven specialized canvases cover every deliverable:
 | **Terminal** | Transparent command execution with live output and instant killswitches |
 | **Data Analysis** | Tables + interactive charts; drop in CSVs to generate pivot views and trends |
 | **Color Grading** | Layers, composite masks, curves; runs lightweight on-device models for depth, sky, and facial segmentation; exports layered PSDs |
-| **Vector Design** | AI-native vector artboard — 62-item UI library + 8 real device preview frames; exports SVG/PNG/JSON |
+| **Vector Design** | Professional vector studio — masks, boolean operations, smart guides, Design Tokens, SVG/Tailwind/JSX export and Play Mode interaction |
 | **PPT** | Native transitions and animations + 178 shapes + 39 WordArt styles + 13 chart types; imports existing `.pptx` and preserves native editability |
 | **Beads** | Offline rasterization of images into perler bead grid patterns with color matching and bead counts |
 | **A-Stocks** | Plain-language strategy builder + condition engine + live news tickers + chart markups |
 | **Desktop** | Real-time window preview + three independent permission tiers + six automated screen actions |
+| **Image Studio** | AI image studio: text-to-image, image-to-image, multi-model comparison, and sketch/in-painting markups |
 
 **Flow Thinking Canvas** (`mode="flow"` on HTML canvas) — Visualized structural thinking: 6 node types (including 9 ECharts charts), 3 layout engines (tree, timeline, matrix), and one-click PNG export.
 
@@ -237,9 +238,9 @@ From *"user helps AI debug"* to *"AI inspects, fixes, and reports back."*
 
 ### Installation
 
-* **taishen_setup_1.7.7.exe** — Windows Installer (Recommended)
-* **taishen_1.7.7.zip** — Windows Portable Archive
-* **taishen_1.7.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4)
+* **taishen_setup_1.7.8.exe** — Windows Installer (Recommended)
+* **taishen_1.7.8.zip** — Windows Portable Archive
+* **taishen_1.7.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4)
 
 > 📥 **Downloads:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases)
 
@@ -260,9 +261,9 @@ From *"user helps AI debug"* to *"AI inspects, fixes, and reports back."*
 
 | File | SHA256 |
 |------|--------|
-| taishen_setup_1.7.7.exe | `3790EFD94D2B20C1A38F581DE493C283A137FAB99FD835E7633DCE3D1D24EED8` |
-| taishen_1.7.7.zip | `C4BEB1D4B90222709C27E865F57280D7157AB8D68A8828603D7DE908CF4F9DFE` |
-| taishen_1.7.7_macOS_arm64.dmg | `0995041711348071ADA6C46B954AAA756A74C65BA4930A53E1E097D9EB2DE5D0` |
+| taishen_setup_1.7.8.exe | `2B92B38C85FCF011B890BC7D02C1C31B3AA23DE9E4F5E9D1E930D092C0F96CFE` |
+| taishen_1.7.8.zip | `866EE57E7E8612BB0E5A26683D8A53218AD09BCAB0DBFB45C97FBC6513A4167C` |
+| taishen_1.7.8_macOS_arm64.dmg | `17C8F5EFA24C3208EB436954508586700E1DCB63754A1B8E8D27AD7106381148` |
 
 ---
 
