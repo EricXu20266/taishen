@@ -4,3 +4,8 @@
 
 # 本地工作脚本（只在本机用，不发布到发布页）
 scripts/
+
+# 发布产物与版本日志（只在本机用，不发布到发布页）
+latest.yml
+latest-mac.yml
+updates.md
