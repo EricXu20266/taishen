@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.7.8 正式发布
+﻿## 🚀 泰深 v1.7.9 正式发布
 
-泰案设计画布 V2 上线，记忆索引配额优化。
+设计画布手机预览，浏览器下载管理上线。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,44 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.7.9
+
+- 新增设计画布「手机预览」。
+  - 更新前：设计画布原型只能在桌面窗口内查看，无法还原手机触屏的点按与滑动体验。
+  - 更新后：点击顶部操作栏「手机预览」生成二维码，手机连接同一 Wi-Fi 扫码即可打开原型，支持页面跳转、弹层与转场动画；预览服务仅监听局域网地址，非内网来源请求直接拒绝。
+  - 入口位于设计画布顶部操作栏。
+- 新增内置浏览器下载能力与保存位置设置。
+  - 更新前：网页下载缺少统一的保存流程与位置控制。
+  - 更新后：下载接入系统原生保存对话框，默认指向系统下载目录，文件名自动清洗，不自动打开或执行下载文件；浏览器工具栏新增下载设置按钮，可选择「每次询问 / 上次保存位置 / 指定文件夹」，设置跨重启保留。
+  - 首次默认每次询问；浏览器面板与画布窗口共用同一份配置。
+- 优化了设计画布素材库。
+  - 更新前：保存的素材与模板不携带 Design Tokens 依赖，跨文档复用会丢失主题级联；整页模板不记录设备外框。
+  - 更新后：保存时自动收集并打包引用的语义 Tokens 与设备预设/外框，复用后主题切换与设备外壳还原保持完整；用户素材在面板内置顶展示，并支持重命名。
+- 优化了上下文压缩机制。
+  - 更新前：/compact 以轮数作为门槛，工具调用密集的少轮会话即使已塞满上下文也会被拒绝压缩；设置页的压缩水位滑块不生效。
+  - 更新后：压缩判据改为按 token 水位判断，压缩触发线、字节线与阈值全部随当前模型的上下文窗口派生；设置页「全量压缩水位」滑块恢复生效，并移除了三项从不被读取的压缩参数控件。
+- 修复了泰深安装目录无法读写的问题。
+  - 更新前：安装目录下的内置技能、模板与资源被访问拦截，无法查看或落盘自定义内容。
+  - 更新后：安装目录读写整体放行；安装到 Program Files 时仍受系统写权限限制。
+
+- Added "Mobile Preview" to Design Studio.
+  - Before: Design prototypes could only be viewed within desktop windows, failing to replicate touch-screen tap and swipe experiences on mobile devices.
+  - Now: Click "Mobile Preview" on the top action bar to generate a QR code, connect your phone to the same Wi-Fi, and scan to open the prototype, supporting page transitions, overlays, and animations; the preview server listens only on local network addresses and rejects non-LAN requests.
+  - Located on the top action bar of Design Canvas.
+- Added native browser download handling and save location settings.
+  - Before: Web downloads lacked a unified save flow and location controls.
+  - Now: Downloads connect to the system native save dialog, defaulting to the system Downloads folder with sanitized filenames; does not automatically open or execute downloaded files; the browser toolbar adds a download settings menu with three modes: "Ask every time / Last used location / Specified folder", persisting across restarts.
+  - Defaults to "Ask every time" initially; browser panels and canvas windows share the same configuration.
+- Improved the Design Studio asset library.
+  - Before: Saved assets and templates did not package Design Tokens dependencies, losing theme cascades across documents; page templates did not preserve device frames.
+  - Now: Automatically collects and packages referenced semantic tokens and device presets/frames upon saving, keeping theme switching and device shells intact; user-created assets are pinned to the top of the panel and support renaming.
+- Improved the context compaction mechanism.
+  - Before: /compact used conversation round count as a prerequisite, rejecting compaction even when tool-heavy sessions filled the context window; the compaction watermark slider in settings had no effect.
+  - Now: Compaction decisions are based on token watermarks, with triggers, byte limits, and thresholds derived dynamically from the current model's context window; the "Full compaction watermark" slider in settings is functional again, and three unused compaction controls have been removed.
+- Fixed an issue where Taishen's installation directory could not be read or written.
+  - Before: Built-in skills, templates, and resources under the installation directory were intercepted by access guards, preventing users from viewing or persisting custom content.
+  - Now: Both read and write operations in Taishen's installation directory are allowed; installations in Program Files remain subject to operating system write permissions.
 
 ###v1.7.8
 
@@ -809,16 +847,16 @@
 
 
 ### 安装
-- **taishen_setup_1.7.8.exe** — Windows 安装包（推荐）
-- **taishen_1.7.8.zip** — 解压即用免安装版
-- **taishen_1.7.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.7.9.exe** — Windows 安装包（推荐）
+- **taishen_1.7.9.zip** — 解压即用免安装版
+- **taishen_1.7.9_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.7.8.exe | `2B92B38C85FCF011B890BC7D02C1C31B3AA23DE9E4F5E9D1E930D092C0F96CFE` |
-| taishen_1.7.8.zip | `866EE57E7E8612BB0E5A26683D8A53218AD09BCAB0DBFB45C97FBC6513A4167C` |
-| taishen_1.7.8_macOS_arm64.dmg | `17C8F5EFA24C3208EB436954508586700E1DCB63754A1B8E8D27AD7106381148` |
+| taishen_setup_1.7.9.exe | `F4D15575D5F1812E72E739300CE95BE5EB5419690A4BD2494ED695A4639081A8` |
+| taishen_1.7.9.zip | `7E46BC477F0B0B0A3A9C61BB5709CCE0DB5E1B19821E5CF3E4CB0C5C8F85DBB3` |
+| taishen_1.7.9_macOS_arm64.dmg | `DCDB15FA84D3F6E8A555C75989768483E01004B732FB474EFFA8851776CDBE12` |
 
 ---
 
