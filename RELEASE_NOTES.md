@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.7.9 正式发布
+﻿## 🚀 泰深 v1.8.0 正式发布
 
-设计画布手机预览，浏览器下载管理上线。
+设计画布三栏工作台，动效卡片资产上线。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,20 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.8.0
+
+- 升级了泰案设计画布的工作台架构与组件表现力。
+  - 重构为三栏工作台布局（左侧整合图层与资产库、中间画布舞台、右侧属性面板），优化顶部操作菜单，画板默认自适应匹配设备外框与质感边框。
+  - 新增动效卡片与现代交互组件资产系统，内置极光流光、微光呼吸、3D 视差等 8 款高保真现代动效卡片，支持真机扫码预览与动效参数可视化微调。
+- 修复了旧版本数据库升级后历史会话可能报错的问题。
+- 修复了会话搜索全文索引重建偶发中断导致搜索结果不全的问题。
+
+- Upgraded the workspace architecture and component expressiveness of the Tai An Design canvas.
+  - Restructured into a three-column studio layout (layers and asset library integrated on the left, canvas stage in the center, properties inspector on the right), optimized the top action menu, and made boards adaptively match device frames and styled borders by default.
+  - Added an animated card and modern interactive component asset system with 8 high-fidelity animated cards (aurora glow, subtle shimmer breathing, 3D parallax, etc.), supporting mobile QR scan preview and visual fine-tuning of motion parameters.
+- Fixed an issue where historical sessions could encounter errors after upgrading from legacy database versions.
+- Fixed an issue where occasional interruptions during full-text search index rebuilds caused incomplete search results.
 
 ###v1.7.9
 
@@ -847,16 +861,16 @@
 
 
 ### 安装
-- **taishen_setup_1.7.9.exe** — Windows 安装包（推荐）
-- **taishen_1.7.9.zip** — 解压即用免安装版
-- **taishen_1.7.9_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.8.0.exe** — Windows 安装包（推荐）
+- **taishen_1.8.0.zip** — 解压即用免安装版
+- **taishen_1.8.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.7.9.exe | `F4D15575D5F1812E72E739300CE95BE5EB5419690A4BD2494ED695A4639081A8` |
-| taishen_1.7.9.zip | `7E46BC477F0B0B0A3A9C61BB5709CCE0DB5E1B19821E5CF3E4CB0C5C8F85DBB3` |
-| taishen_1.7.9_macOS_arm64.dmg | `DCDB15FA84D3F6E8A555C75989768483E01004B732FB474EFFA8851776CDBE12` |
+| taishen_setup_1.8.0.exe | `8E3BD1B0217EBFA35D2CE55084224198A6E90A9D82DE513CD76127B0995A80A4` |
+| taishen_1.8.0.zip | `C85F9B57E34CD07292EB9B871AFC8B469DB5E7812241436BAFAB077ED68D3312` |
+| taishen_1.8.0_macOS_arm64.dmg | `30092B0882A286F92B7B3F80BCE2AEC21A6F188EDDE30C2CAF091D2CAE44E5B8` |
 
 ---
 
