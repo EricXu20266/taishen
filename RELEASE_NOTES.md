@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.8.0 正式发布
+﻿## 🚀 泰深 v1.8.1 正式发布
 
-设计画布三栏工作台，动效卡片资产上线。
+受限站点登录打通，界面动效上线。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,70 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.8.1
+
+- 重大更新，新增内置浏览器受限站点登录态导入与「认证中枢」。
+  - 更新前：Google、Microsoft 等网站判定内置浏览器不安全，直接拒绝登录，页面无法使用。
+  - 更新后：受限站点地址栏常驻「导入 Cookie 登录」按钮，点击即呼叫泰深协助导入；剪贴板已有 Cookie 时会自动附带。泰深也可从本机 Chrome 直接提取登录态完成导入，无需多轮对话。
+  - 导入的登录态经系统加密存入凭据保险箱，再次访问同站点自动恢复；失效时自动检测并呼叫泰深重新导入。
+  - 设置页新增「认证中枢」Tab，可查看已导入站点台账，支持只清除记录或连同 Cookie 一并注销。
+  - 跨浏览器复制登录态会触发 Google 的会话复制检测，导入时已自动过滤对应签名字段；本机 Chrome 存在多个配置且默认配置被占用时，会请求用户确认，不再静默改用其他账号的登录态。
+- 新增「界面动效与物理质感」设置。
+  - 弹窗（洞察卡片、提问弹窗）加入物理阻尼过冲与 3D 微视差；待办清单完成态加入路径勾勒与辉光；会话列表加入悬停平移与点击下陷；首页背景加入随鼠标移动的点阵微光。
+  - 开关位置：设置 - 通用设置 -「界面动效与物理质感」，三档可选「完整物理质感 / 柔和减弱 / 完全关闭」，默认完整物理质感；系统开启「减弱动态效果」时自动降档。
+- 新增生图参考图支持。
+  - 生图可附带 1-5 张参考图，用于锁定人物形象与场景风格；超出 5 张会被拒绝并在提示中说明原因。
+  - 用法：让泰深生图时提供参考图路径，或由「生图专员」按配置通道生成。
+- 升级了 AI 视频前期筹备能力。
+  - 分镜阶段按景别自动挑选参考图（特写 / 中近景 / 双人 / 道具 / 群像），并强制 5 张配额上限。
+  - 生成提示词自动消歧，避免多角色参考图互相串用。
+  - 支持导出 Visual DNA 交付包（含清单与 SHA-256 校验），可交付后续视频生成环节。
+- 新增用户工具安全防护。
+  - 创建用户工具时若使用同步子进程调用（execSync / execFileSync / spawnSync），创建会被拦截并给出异步改法，可强制跳过。
+  - 启动时体检已有用户工具，命中同一份内容只提示一次。
+- 优化了记忆搜索对中文查询的召回。
+  - 更新前：中文自然语句查询（如「为什么我提交代码把别人的改动带进去了」）按整串匹配，基本搜不到；短关键词也常漏召回。
+  - 更新后：中文查询补充降权切分兜底，并单独提取查询中的英文与数字词。实测 40 条真实查询首位命中从 17 条提升到 26 条，自然语句从 0/20 提升到 7/20。
+  - 另为超长查询增加词元上界，避免长文本查询变慢。
+- 优化了设计画布主题面板的 Token 引用展示，去掉多余的前缀符号。
+- 修复了部分功能执行时界面假死的问题。
+  - 更新前：Visio 绘图、性能监控、隧道管理、MCP、语音等功能的同步调用会锁死主进程，实测最长 400 秒界面无响应，且 30 秒超时兜底同时失效。
+  - 更新后：上述调用全部改为异步，长任务执行期间界面保持可操作。
+- 修复了 Google 额度看板分组缺失的问题。
+  - 更新前：额度汇总走 daily 沙盒端点，该端点已下线 Gemini 分组，看板只能显示部分数据。
+  - 更新后：改走生产端点，恢复 Gemini 与第三方完整两组数据；远端偶发缺组时自动用本地保留窗口补齐，不再闪烁或清空。
+
+- Major update: added sign-in state import for restricted sites in the built-in browser, plus an "Auth Hub".
+  - Before: Sites such as Google and Microsoft flagged the built-in browser as insecure and refused sign-in, leaving the page unusable.
+  - Now: A persistent "Import Cookies to sign in" button appears in the address bar on restricted sites; clicking it asks Taishen to import the sign-in state, and cookies already on the clipboard are attached automatically. Taishen can also extract the sign-in state directly from your local Chrome, without extra conversation.
+  - Imported sessions are encrypted and stored in the credential vault, and are restored automatically on the next visit to the same site; when they expire, verification runs automatically and Taishen is called to re-import.
+  - A new "Auth Hub" tab in Settings lists imported sites, and supports clearing only the record or logging out along with the cookies.
+  - Copying sessions across browsers triggers Google's session-copy detection; the related signature field is filtered out automatically on import. When multiple Chrome profiles exist and the default profile is in use, Taishen asks for confirmation instead of silently switching to another account's session.
+- Added "UI Motion & Dynamics" settings.
+  - Popups (insight cards, question dialogs) gain spring damping overshoot and subtle 3D parallax; the todo list gains stroke drawing and a glow on completion; the session list gains hover shift and press-down; the home background gains a dot-grid glow that follows the mouse.
+  - Location: Settings - General - "UI Motion & Dynamics", with three levels "Full physics / Reduced / Off", defaulting to Full physics; it steps down automatically when the system enables "reduce motion".
+- Added reference image support for image generation.
+  - Generation accepts 1-5 reference images to lock a character's look and scene style; more than 5 is rejected with the reason stated.
+  - Usage: provide reference image paths when asking Taishen to generate, or let the image specialist generate through its configured channel.
+- Upgraded AI video pre-production.
+  - The storyboard stage selects reference images automatically by shot type (close-up / medium close-up / two-shot / prop / crowd), enforcing a hard limit of 5.
+  - Prompts are disambiguated automatically so that reference images of multiple characters are not mixed up.
+  - Supports exporting a Visual DNA delivery package (with manifest and SHA-256 verification) for downstream video generation.
+- Added safety checks for user tools.
+  - Creating a user tool that uses synchronous subprocess calls (execSync / execFileSync / spawnSync) is blocked with an async alternative, and can be forced through.
+  - Existing user tools are checked at startup, and each unique finding is reported only once.
+- Improved memory search recall for Chinese queries.
+  - Before: Chinese natural-language queries (for example, "why did my commit include someone else's changes") were matched as a whole string and almost never returned results; short keywords were frequently missed as well.
+  - Now: Chinese queries fall back to weighted term splitting and separately extract English and numeric words. In a test of 40 real queries, top-1 hits rose from 17 to 26, and natural-language queries from 0/20 to 7/20.
+  - An upper bound on query terms was added to keep very long queries fast.
+- Improved the Token reference display in the Design canvas theme panel by removing redundant prefix symbols.
+- Fixed UI freezes while some features were running.
+  - Before: Synchronous calls in Visio drawing, performance monitoring, tunnel management, MCP and voice features locked the main process, leaving the UI unresponsive for up to 400 seconds in testing, while the 30-second timeout fallback also stopped working.
+  - Now: All those calls run asynchronously, and the UI stays responsive while long tasks execute.
+- Fixed missing groups in the Google quota dashboard.
+  - Before: Quota summaries used the daily sandbox endpoint, which has retired the Gemini group, so the dashboard showed only part of the data.
+  - Now: It uses the production endpoint and restores both the Gemini and third-party groups; when the remote side temporarily misses a group, locally retained windows fill in, so the dashboard no longer flickers or goes blank.
 
 ###v1.8.0
 
@@ -861,16 +925,16 @@
 
 
 ### 安装
-- **taishen_setup_1.8.0.exe** — Windows 安装包（推荐）
-- **taishen_1.8.0.zip** — 解压即用免安装版
-- **taishen_1.8.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.8.1.exe** — Windows 安装包（推荐）
+- **taishen_1.8.1.zip** — 解压即用免安装版
+- **taishen_1.8.1_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.8.0.exe | `8E3BD1B0217EBFA35D2CE55084224198A6E90A9D82DE513CD76127B0995A80A4` |
-| taishen_1.8.0.zip | `C85F9B57E34CD07292EB9B871AFC8B469DB5E7812241436BAFAB077ED68D3312` |
-| taishen_1.8.0_macOS_arm64.dmg | `30092B0882A286F92B7B3F80BCE2AEC21A6F188EDDE30C2CAF091D2CAE44E5B8` |
+| taishen_setup_1.8.1.exe | `2AD63DD9BABEDA7EC068F5CE38EE3C68E4FF476A9E4D879783062180580A42D3` |
+| taishen_1.8.1.zip | `56B830B83C2EEC2A4DF2EF75857BDD9F6E549CEDAA26AA1A5F8967A79B2CC7D3` |
+| taishen_1.8.1_macOS_arm64.dmg | `5CB097F43D704FB550303B65C3798FDC2012AB5322D2A9F267267F5428A50510` |
 
 ---
 

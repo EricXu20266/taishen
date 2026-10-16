@@ -2,7 +2,7 @@
 
 [中文](README.md) | English
 
-**By Eric Xu (二班的Eric)** | v1.8.0 | 2026
+**By Eric Xu (二班的Eric)** | v1.8.1 | 2026
 
 ---
 
@@ -238,9 +238,9 @@ From *"user helps AI debug"* to *"AI inspects, fixes, and reports back."*
 
 ### Installation
 
-* **taishen_setup_1.8.0.exe** — Windows Installer (Recommended)
-* **taishen_1.8.0.zip** — Windows Portable Archive
-* **taishen_1.8.0_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4)
+* **taishen_setup_1.8.1.exe** — Windows Installer (Recommended)
+* **taishen_1.8.1.zip** — Windows Portable Archive
+* **taishen_1.8.1_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4)
 
 > 📥 **Downloads:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases)
 
@@ -261,9 +261,9 @@ From *"user helps AI debug"* to *"AI inspects, fixes, and reports back."*
 
 | File | SHA256 |
 |------|--------|
-| taishen_setup_1.8.0.exe | `8E3BD1B0217EBFA35D2CE55084224198A6E90A9D82DE513CD76127B0995A80A4` |
-| taishen_1.8.0.zip | `C85F9B57E34CD07292EB9B871AFC8B469DB5E7812241436BAFAB077ED68D3312` |
-| taishen_1.8.0_macOS_arm64.dmg | `30092B0882A286F92B7B3F80BCE2AEC21A6F188EDDE30C2CAF091D2CAE44E5B8` |
+| taishen_setup_1.8.1.exe | `2AD63DD9BABEDA7EC068F5CE38EE3C68E4FF476A9E4D879783062180580A42D3` |
+| taishen_1.8.1.zip | `56B830B83C2EEC2A4DF2EF75857BDD9F6E549CEDAA26AA1A5F8967A79B2CC7D3` |
+| taishen_1.8.1_macOS_arm64.dmg | `5CB097F43D704FB550303B65C3798FDC2012AB5322D2A9F267267F5428A50510` |
 
 ---
 
