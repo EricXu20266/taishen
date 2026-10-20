@@ -69,7 +69,6 @@
 - Fixed long unresponsiveness when sending guidance during a conversation.
 - Fixed blank screenshots of the built-in browser and canvas windows.
 - Fixed web fetch returning body content for failed requests.
-
 ###v1.8.1
 
 - 重大更新，新增内置浏览器受限站点登录态导入与「认证中枢」。
@@ -978,9 +977,9 @@
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.8.2.exe | `3CD4DC8C4A00608A0D4EAA04F6A70C33E79F7F790B17CB86A01038FEB322AC69` |
-| taishen_1.8.2.zip | `324438D799B8C86E1E82A0093B1BE977A53FEAD860A5772DC63AD17F2260BF28` |
-| taishen_1.8.2_macOS_arm64.dmg | `50FB31F13E0A3BADAAC3B203A8EC97CE9BE7A8F814D487C0DCA6BC61AE0DDB19` |
+| taishen_setup_1.8.2.exe | `AD69030F04D2F48175AF89ECDCAA25C073A9430C73A522B96E464C1C98DE87F2` |
+| taishen_1.8.2.zip | `4B4B03A9551E87AFA7C14D9EC7DA9658CC9757A2F2A888C27221DC1E69BC83BA` |
+| taishen_1.8.2_macOS_arm64.dmg | `950525ADB79A9B9E0982B255E581A69ABBEA088ACD6D407DB60E53E682260C3C` |
 
 ---
 
