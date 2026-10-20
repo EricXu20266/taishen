@@ -1,12 +1,12 @@
-﻿## 🚀 泰深 v1.8.1 正式发布
+﻿## 🚀 泰深 v1.8.2 正式发布
 
-受限站点登录打通，界面动效上线。
+第 13 种画布：命理四术数上线。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
 - 主动弹窗引导 — 不会写 Prompt 也能用，AI 主动确认需求
 - Commander 形态 — AI 自主规划、调度、验证一条龙
-- 泰案画布系统 — 十二种流式画布（写作/代码/HTML/终端/数据分析/调色/设计/PPT/拼豆/股票/桌面/生图），双向编辑，历史版本追踪
+- 泰案画布系统 — 十三种流式画布（写作/代码/HTML/终端/数据分析/调色/设计/PPT/拼豆/股票/桌面/生图/命理），双向编辑，历史版本追踪
 - HTML 高级预览器 + 内置浏览器独立窗口 — 所见即所得，多标签、收藏夹、Chrome 扩展
 - 内置截图工具 — 泰深自我截图，配合 Myeyes 全自动识图标注
 - 经验封装系统 — AI 自主创造 Skill、工具与子代理；重复的流程会被察觉并封装成能力，封不封装由你拍板，好习惯固化成资产
@@ -23,6 +23,52 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.8.2
+
+- 重大更新，新增第 13 种泰案画布「命理画布」，四门术数在同一画布内起课、推演、断课与落档。
+  - 六爻：京房纳甲、八宫世应、六亲六神、动爻变卦、互错综、伏神；月建日辰旺衰、卦级六冲六合、三合局、归魂游魂、用神取舍与应期。
+  - 大六壬：天地盘、四课、九宗门、三传、课体与神煞，盘面关系网；提供 2D 经典神阁盘与 3D 浑天栻盘仪两种形态，舞台内可随时切换。
+  - 紫微斗数：十二宫安星、十四主星、四化、大限与流年，另有 3D 仰观星穹。
+  - 四柱八字：四柱藏干十神、纳音、十二长生、大运顺逆与起运；含全盘关系图谱（刑冲合害破）、流年推演、大运画像、从格专旺与调候用神。
+  - 亲手起卦演法：大衍筮法 3D 案上蓍草推演（五十蓍十八变，支持键盘操作、自动推演与进度提示），火珠林 3D 案上掷钱起卦。
+  - 聊天入口全流程编排：说「算个卦」「排个八字」即可起课，泰深负责打开画布、代填参数、推进演法；盘面由画布引擎确定性生成，泰深只做断语。
+  - 每门流派统一走「录入 → 仪轨 → 六步推演 → 断课」，断语与盘面双视图，落档导出 A4 竖版 PDF，卷末附免责声明。
+  - 三档主题（玄天 / 青碧 / 素壁），默认青碧，选择本地持久化。
+- 新增 DeepSeek Search / Fetch 按次计费登记与消费统计。
+  - 预算面板新增「按次调用」细分行，设置页可按次编辑单价表。
+- 新增文件预览的原生打印，PDF / HTML / Markdown 均可唤起系统打印对话框。
+- 新增代码变更预览与 HTML 预览的关键词搜索，支持高亮与上下跳，Ctrl+F 唤出。
+- 优化了泰案画布的启动速度：画布与面板改为按需加载，首屏模块从 234 降到 29。
+- 优化了画布窗口的默认尺寸：改为 1600×900，并按屏幕工作区 88% 自适应居中。
+- 优化了设计画布元素库，新增 8 个范式元素。
+- 修复了设置页侧边栏版本号固定显示 v1.7 的问题。
+- 修复了文本画布重启恢复后停在空屏的问题。
+- 修复了对话中发送引导时长时间无响应的问题。
+- 修复了内置浏览器与画布窗口截图空白的问题。
+- 修复了网页获取失败时仍返回正文的问题。
+
+- Major update: added the 13th Tai An canvas, the "Metaphysics canvas", bringing four divination systems into one canvas for casting, deriving, reading and archiving.
+  - Six Lines (Liu Yao): Jing Fang na-jia, eight-palace generation and response, six relations and six spirits, moving lines and changed hexagram, mutual and opposite hexagrams, hidden spirits; strength by month and day, hexagram-level six clashes and six harmonies, three-harmony formations, returning-soul and wandering-soul hexagrams, useful spirit selection and timing.
+  - Da Liu Ren: heaven and earth plates, four lessons, nine gates, three transmissions, lesson bodies and deities, plus relations on the board; provides a 2D classic shen-ge board and a 3D armillary board, switchable inside the stage at any time.
+  - Zi Wei Dou Shu: twelve palaces with star placement, fourteen major stars, four transformations, major limits and annual cycles, plus a 3D star dome view.
+  - Four Pillars (Ba Zi): four pillars with hidden stems and ten gods, na-yin, twelve life stages, forward and reverse major cycles with starting age; includes a full-chart relation map (clash, punishment, harmony, harm, break), annual-cycle derivation, major-cycle profile, dominant-pattern charts and climate-balancing useful gods.
+  - Hands-on casting: the Great Evolution yarrow-stalk method rendered in 3D on a desk (fifty stalks, eighteen changes, with keyboard control, automatic derivation and progress prompts), and the Huo Zhu Lin coin method cast in 3D on a desk.
+  - Full workflow from the chat entry: say "cast a hexagram" or "read my Ba Zi" to start; Taishen opens the canvas, fills in the parameters and advances the derivation, while the board is generated deterministically by the canvas engine and Taishen only provides the reading.
+  - Every system follows the same steps "enter data to ritual to six-step derivation to reading", with dual views for the reading and the board, export to A4 portrait PDF, and a disclaimer at the end of the reading.
+  - Three themes (Xuantian, Qingbi, Subi) with Qingbi as the default; the choice is persisted locally.
+- Added per-call billing registration and cost tracking for DeepSeek Search / Fetch.
+  - The budget panel gains a "per-call" breakdown line, and the unit price table is editable in Settings.
+- Added native printing in the file preview; PDF, HTML and Markdown can all invoke the system print dialog.
+- Added keyword search to the code-change preview and HTML preview, with highlighting, jump to the previous or next match and Ctrl+F.
+- Improved Tai An canvas startup speed: canvases and panels now load on demand, cutting first-screen modules from 234 to 29.
+- Improved the default canvas window size: now 1600x900, centered and scaled to 88% of the screen work area.
+- Improved the Design canvas element library with 8 new paradigm elements.
+- Fixed the Settings sidebar version label being stuck at v1.7.
+- Fixed text canvases being stuck on a blank screen after a restore on restart.
+- Fixed long unresponsiveness when sending guidance during a conversation.
+- Fixed blank screenshots of the built-in browser and canvas windows.
+- Fixed web fetch returning body content for failed requests.
 
 ###v1.8.1
 
@@ -925,16 +971,16 @@
 
 
 ### 安装
-- **taishen_setup_1.8.1.exe** — Windows 安装包（推荐）
-- **taishen_1.8.1.zip** — 解压即用免安装版
-- **taishen_1.8.1_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.8.2.exe** — Windows 安装包（推荐）
+- **taishen_1.8.2.zip** — 解压即用免安装版
+- **taishen_1.8.2_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.8.1.exe | `2AD63DD9BABEDA7EC068F5CE38EE3C68E4FF476A9E4D879783062180580A42D3` |
-| taishen_1.8.1.zip | `56B830B83C2EEC2A4DF2EF75857BDD9F6E549CEDAA26AA1A5F8967A79B2CC7D3` |
-| taishen_1.8.1_macOS_arm64.dmg | `5CB097F43D704FB550303B65C3798FDC2012AB5322D2A9F267267F5428A50510` |
+| taishen_setup_1.8.2.exe | `3CD4DC8C4A00608A0D4EAA04F6A70C33E79F7F790B17CB86A01038FEB322AC69` |
+| taishen_1.8.2.zip | `324438D799B8C86E1E82A0093B1BE977A53FEAD860A5772DC63AD17F2260BF28` |
+| taishen_1.8.2_macOS_arm64.dmg | `50FB31F13E0A3BADAAC3B203A8EC97CE9BE7A8F814D487C0DCA6BC61AE0DDB19` |
 
 ---
 

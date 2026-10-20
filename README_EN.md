@@ -2,7 +2,7 @@
 
 [中文](README.md) | English
 
-**By Eric Xu (二班的Eric)** | v1.8.1 | 2026
+**By Eric Xu (二班的Eric)** | v1.8.2 | 2026
 
 ---
 
@@ -93,7 +93,7 @@ taishen is not a Q&A chatbot. It is a Commander-class agent that plans, schedule
 
 A built-in streaming content workspace — the AI crafts content in real time as you watch it take shape.
 
-Twelve specialized canvases cover every deliverable:
+Thirteen specialized canvases cover every deliverable:
 
 | Canvas | Capability |
 |------|------|
@@ -109,6 +109,7 @@ Twelve specialized canvases cover every deliverable:
 | **A-Stocks** | Plain-language strategy builder + condition engine + live news tickers + chart markups |
 | **Desktop** | Real-time window preview + three independent permission tiers + six automated screen actions |
 | **Image Studio** | AI image studio: text-to-image, image-to-image, multi-model comparison, and sketch/in-painting markups |
+| **Metaphysics** | Four divination systems — Six Lines, Da Liu Ren, Zi Wei Dou Shu and Ba Zi; boards generated deterministically by the engine, with 2D classic boards plus a 3D armillary board and a 3D star dome; dual reading/board views and A4 PDF export |
 
 **Flow Thinking Canvas** (`mode="flow"` on HTML canvas) — Visualized structural thinking: 6 node types (including 9 ECharts charts), 3 layout engines (tree, timeline, matrix), and one-click PNG export.
 
@@ -238,9 +239,9 @@ From *"user helps AI debug"* to *"AI inspects, fixes, and reports back."*
 
 ### Installation
 
-* **taishen_setup_1.8.1.exe** — Windows Installer (Recommended)
-* **taishen_1.8.1.zip** — Windows Portable Archive
-* **taishen_1.8.1_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4)
+* **taishen_setup_1.8.2.exe** — Windows Installer (Recommended)
+* **taishen_1.8.2.zip** — Windows Portable Archive
+* **taishen_1.8.2_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4)
 
 > 📥 **Downloads:** [GitHub Releases](https://github.com/EricXu20266/taishen/releases)
 
@@ -261,9 +262,9 @@ From *"user helps AI debug"* to *"AI inspects, fixes, and reports back."*
 
 | File | SHA256 |
 |------|--------|
-| taishen_setup_1.8.1.exe | `2AD63DD9BABEDA7EC068F5CE38EE3C68E4FF476A9E4D879783062180580A42D3` |
-| taishen_1.8.1.zip | `56B830B83C2EEC2A4DF2EF75857BDD9F6E549CEDAA26AA1A5F8967A79B2CC7D3` |
-| taishen_1.8.1_macOS_arm64.dmg | `5CB097F43D704FB550303B65C3798FDC2012AB5322D2A9F267267F5428A50510` |
+| taishen_setup_1.8.2.exe | `3CD4DC8C4A00608A0D4EAA04F6A70C33E79F7F790B17CB86A01038FEB322AC69` |
+| taishen_1.8.2.zip | `324438D799B8C86E1E82A0093B1BE977A53FEAD860A5772DC63AD17F2260BF28` |
+| taishen_1.8.2_macOS_arm64.dmg | `50FB31F13E0A3BADAAC3B203A8EC97CE9BE7A8F814D487C0DCA6BC61AE0DDB19` |
 
 ---
 
