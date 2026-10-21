@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.8.2 正式发布
+﻿## 🚀 泰深 v1.8.3 正式发布
 
-第 13 种画布：命理四术数上线。
+八字神煞扩至 25 项，紫微增流月斗君。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,38 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.8.3
+
+- 增加了四柱八字神煞，从 7 项扩充到 25 项
+  - 每条神煞带起例、出处与经典标记；原文没有直接起例的标为另参，并写明分歧
+  - 原局、大运、流年都显示神煞，悬停封签可看出处
+- 增加了四柱八字的旺相休囚死、人元司令与自坐
+  - 旺相休囚死按当令者旺、令生者相、生令者休、克令者囚、令克者死五格显示
+  - 人元司令按月支三十日分三段定位，悬停显示所在段与已过天数
+- 增加了紫微斗数的流月斗君月限
+  - 断盘结果页提供 12 个月网格，点选可看斗君落宫、该宫原文断语、宫性与月干四化
+  - 月序按农历标注；宫性与月柱四化属另参，界面与脚注都标了来源
+- 增加了断法导航：AI 排盘后随盘面回执拿到应读的断法章节与红线，按手册对应章节断，不再凭印象
+- 优化了紫微生辰录入：公历与农历各三段并排一行，点任意一段弹出同一个日历弹层，农历保留闰月勾选
+- 优化了八字三合缺一的判定：含旺神的两支称半合，缺旺神的称拱合，并注明力弱一档
+- 修复了紫微 2D 模式下六步推演页文字与宫格看不清的问题
+- 修复了画布物化或快照写盘失败时整窗闪退的问题，失败时回落到用户数据目录
+
+- Added Bazi shensha, expanded from 7 to 25 entries
+  - Each entry carries its rule, source and classic flag; those without a direct rule in the classics are marked as supplementary with the discrepancy noted
+  - Shensha are shown for the natal chart, luck cycles and annual cycles; hover a tag to see its source
+- Added wang-xiang-xiu-qiu-si, renyuan siling and self-seat to the Four Pillars
+  - Wang-xiang-xiu-qiu-si is shown in five categories: the seasonal commander is wang, what it generates is xiang, what generates it is xiu, what controls it is qiu, what it controls is si
+  - Renyuan siling is located across the three ten-day segments of the month branch; hover to see the segment and the days elapsed
+- Added monthly doujun limits to Zi Wei Dou Shu
+  - The result page provides a 12-month grid; select a month to see the doujun palace, that palace's original verdict, palace nature and monthly-stem four transformations
+  - Month order is labeled by lunar month; palace nature and monthly-stem four transformations are supplementary, with sources marked in both the UI and footnotes
+- Added verdict navigation: after casting, the AI receives the verdict chapters and red lines to follow along with the chart payload, and reads the manual instead of relying on memory
+- Improved Ziwei birth input: solar and lunar dates are each shown as three fields in one row; clicking any field opens the same calendar popover, with leap-month selection kept for lunar
+- Improved Bazi three-combination handling when one branch is missing: two branches containing the dominant branch are called half-combination, those without it are called arch-combination and noted as one level weaker
+- Fixed unreadable text and palace cells on the six-step derivation page in Ziwei 2D mode
+- Fixed the whole window crashing when canvas materialization or snapshot writing failed; it now falls back to the user data directory
 
 ###v1.8.2
 
@@ -970,16 +1002,16 @@
 
 
 ### 安装
-- **taishen_setup_1.8.2.exe** — Windows 安装包（推荐）
-- **taishen_1.8.2.zip** — 解压即用免安装版
-- **taishen_1.8.2_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.8.3.exe** — Windows 安装包（推荐）
+- **taishen_1.8.3.zip** — 解压即用免安装版
+- **taishen_1.8.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.8.2.exe | `AD69030F04D2F48175AF89ECDCAA25C073A9430C73A522B96E464C1C98DE87F2` |
-| taishen_1.8.2.zip | `4B4B03A9551E87AFA7C14D9EC7DA9658CC9757A2F2A888C27221DC1E69BC83BA` |
-| taishen_1.8.2_macOS_arm64.dmg | `950525ADB79A9B9E0982B255E581A69ABBEA088ACD6D407DB60E53E682260C3C` |
+| taishen_setup_1.8.3.exe | `F717638E3C8DACA40B414F8A2BDAFD0B56931312DF6ED87A4BACB10FB4F44366` |
+| taishen_1.8.3.zip | `60E83DAC9C7C8ACC32F6568D8CF0357F0FBDCDC05B1DE97DB7B5B362A17EE325` |
+| taishen_1.8.3_macOS_arm64.dmg | `B366681C8858F7B5EC2C9C931A15C8A492CDE30B8A4B2214DB2811300E727902` |
 
 ---
 
