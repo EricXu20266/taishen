@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.8.3 正式发布
+﻿## 🚀 泰深 v1.8.4 正式发布
 
-八字神煞扩至 25 项，紫微增流月斗君。
+DSH 插件检索页与子代理隔离上线。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,74 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.8.4
+
+- 新增「DSH 插件检索」页，左侧栏进入
+  - 列出 DSH 生态里可迁移的插件，每个标注是否真插件、可迁移分级（高度可迁移、可部分迁移、迁移价值低、不可移植）与安全预检结论（安全、需复核、高风险）
+  - 支持 8 类分类筛选、中文关键词搜索（如「记忆」「通知」）与「只看真插件」；未完成判定的条目沉底标注「判定中」
+  - 卡片可「交给 AI 评估迁移」，把仓库信息、预检摘要与可移植度一并带入对话
+  - 可生成迁移施工图：先给出落点与工具、SKILL 草稿骨架，默认只预览，确认后才写入并自动登记
+  - 已迁移的插件显示徽章，上游有新提交时提示有更新
+  - 全页只做浏览与评估，不提供一键安装，也不出现「安装」字样
+- 新增每轮回复的性能指标
+  - 每轮回复末尾显示首字延迟与生成速率，历史轮次同样显示；速率只计算纯流式活跃时长，工具执行与停顿不计入
+- 新增生图「OpenAI 兼容」协议通道
+  - 更新前：生图只支持 Google 与 Codex 两条订阅通道
+  - 更新后：设置-生图专员可选「OpenAI 兼容」，填服务商、模型、端点与 Key，任何兼容 `/images/generations` 的服务都能接入
+  - 支持负向词、seed、步数、引导系数，以及厂商私有参数透传
+  - 同一服务商并发生图改为排队，第二张不再直接失败
+  - 内容安全拦截与 Key 失效分开提示，不再笼统报鉴权失败
+- 新增单会话生图额度，设置-生图专员可改，默认 20 张，0 为不限制
+- 新增 MCP 工具调用确认策略
+  - MCP 详情页「工具确认」可设三档：不确认（默认）、每个工具首次调用确认一次、每次调用都确认
+- 新增拒绝理由回填
+  - 在 L1 权限等需要你手动批准的确认场景下，拒绝时可填理由（最多 300 字），理由回传给 AI，AI 据此换方案
+  - 更新前：拒绝后 AI 不知道为什么，容易重复提出同样的操作
+  - 无人值守场景下，需要人工确认的操作直接拒绝，不会静默放行
+- 新增代码语法高亮与流式分段渲染
+  - 代码块、diff 行与右侧文件预览统一高亮，代码块进入视口才计算，长回复不卡
+  - 长回复按段渲染并平滑揭示，不再整屏重排
+- 新增子代理工作区隔离
+  - 多个子代理同时改同一批文件时，可让它们在独立副本里改，改动不落主工作区
+  - 结束后无改动自动清理；有改动保留并给出路径与分支，便于查看后再决定是否合并
+- 优化了冷启动与切换会话，泰深的响应变快了
+- 修复了卡片坞靠屏幕底部时右键菜单被截断
+- 修复了内置 MCP 配置修改后不生效、需要重启的问题
+- 修复了会话删除后 MCP 覆盖状态残留
+
+- Added a "DSH Plugin Search" page, opened from the left sidebar
+  - Lists plugins in the DSH ecosystem that can be ported, marking for each whether it is a real plugin, its portability grade (highly portable, partially portable, low migration value, not portable) and its safety pre-check result (safe, needs review, high risk)
+  - Supports filtering by 8 categories, Chinese keyword search (such as "记忆" and "通知") and "real plugins only"; entries not yet judged sink to the bottom with a "judging" label
+  - Cards offer "Ask AI to assess migration", bringing the repository info, pre-check summary and portability into the conversation
+  - Can generate a migration plan: it first gives the target location plus tool and SKILL draft skeletons, preview-only by default, and writes them with automatic registration only after confirmation
+  - Migrated plugins show a badge, and prompt when upstream has new commits
+  - The page is for browsing and assessment only; there is no one-click install and the word "install" does not appear
+- Added per-round response performance metrics
+  - Shows first-token latency and generation speed at the end of each round, and for historical rounds as well; speed counts only pure streaming active time, excluding tool execution and pauses
+- Added an "OpenAI compatible" image generation protocol channel
+  - Before: image generation only supported the Google and Codex subscription channels
+  - Now: Settings - Image Specialist offers "OpenAI compatible"; fill in provider, model, endpoint and key, and any service compatible with `/images/generations` can be used
+  - Supports negative prompt, seed, steps, guidance scale, and arbitrary vendor-specific parameter passthrough
+  - Concurrent image generation on the same provider is queued, so the second image no longer fails directly
+  - Content safety blocks and invalid keys are reported separately instead of a generic auth failure
+- Added a per-session image generation quota, editable in Settings - Image Specialist; default 20, 0 means unlimited
+- Added an MCP tool confirmation policy
+  - The "Tool confirmation" field on the MCP detail page offers three levels: no confirmation (default), confirm once per tool, and confirm every call
+- Added a denial reason field
+  - In confirmations that require your manual approval, such as L1 permissions, you can enter a reason when denying (up to 300 characters); the reason is passed back to the AI, which adjusts its plan accordingly
+  - Before: after a denial the AI did not know why and tended to repeat the same operation
+  - In unattended scenarios, operations that need human confirmation are denied directly instead of being silently approved
+- Added syntax highlighting and segmented streaming rendering
+  - Code blocks, diff lines and the file preview on the right share one highlighting scheme; code blocks are highlighted only when scrolled into view, so long replies stay responsive
+  - Long replies render by segment with a smooth reveal instead of reflowing the whole screen
+- Added subagent workspace isolation
+  - When several subagents edit the same set of files, each can work in its own copy, keeping changes out of the main workspace
+  - Copies with no changes are cleaned up automatically; copies with changes are kept and their path and branch reported, so you can review before merging
+- Improved cold start and session switching, so Taishen responds faster
+- Fixed the card dock context menu being cut off near the bottom of the screen
+- Fixed changes to built-in MCP configuration not taking effect until a restart
+- Fixed MCP override state lingering after a session was deleted
 
 ###v1.8.3
 
@@ -1002,16 +1070,16 @@
 
 
 ### 安装
-- **taishen_setup_1.8.3.exe** — Windows 安装包（推荐）
-- **taishen_1.8.3.zip** — 解压即用免安装版
-- **taishen_1.8.3_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.8.4.exe** — Windows 安装包（推荐）
+- **taishen_1.8.4.zip** — 解压即用免安装版
+- **taishen_1.8.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.8.3.exe | `F717638E3C8DACA40B414F8A2BDAFD0B56931312DF6ED87A4BACB10FB4F44366` |
-| taishen_1.8.3.zip | `60E83DAC9C7C8ACC32F6568D8CF0357F0FBDCDC05B1DE97DB7B5B362A17EE325` |
-| taishen_1.8.3_macOS_arm64.dmg | `B366681C8858F7B5EC2C9C931A15C8A492CDE30B8A4B2214DB2811300E727902` |
+| taishen_setup_1.8.4.exe | `D58CC7F5B3FBB26F49F71D9A87F0973AC626C2F6930FA8E1F9661A4424171994` |
+| taishen_1.8.4.zip | `6ECA1592D5D5AB968867C3E12A7E4642AD1BDBA96DA423EFC3112DBD5DCE7B54` |
+| taishen_1.8.4_macOS_arm64.dmg | `6B60E6AEE5CF3A3E03C19CEDD583CA5C2654EF59BE510DE894BBBD1FFACC7B2AD` |
 
 ---
 
