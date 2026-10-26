@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.8.4 正式发布
+﻿## 🚀 泰深 v1.8.6 正式发布
 
-DSH 插件检索页与子代理隔离上线。
+思考过程实时摘要与画布文字复制上线。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,66 @@ DSH 插件检索页与子代理隔离上线。
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.8.6
+
+- 新增思考过程折叠条的实时摘要
+  - 更新前：思考折叠后只显示内容开头的 80 字，流式过程中这一句不变，看不出 AI 当前在想什么
+  - 更新后：流式进行中随换行更新为最近一段已完成的内容，结束后显示开头摘要
+  - 摘要会剥掉 Markdown 符号，条带上不再出现裸反引号与星号
+- 新增应用内右键菜单与画布文字复制
+  - 更新前：聊天、写作、PPT 区域选中文字后右键没有任何菜单；design 与 PPT 画布由 canvas 绘制，文字无法选中复制
+  - 更新后：DOM 区域右键提供复制、剪切、粘贴、全选，链接可「在默认浏览器中打开」
+  - design 画布右键「复制文字」，Ctrl/Cmd+C 复制选中节点（含子树）文字
+  - PPT 画布右键「复制该元素文字 / 复制本页文字」，选中单个文本元素后 Ctrl/Cmd+C 直接复制
+- 优化了流式回复的自动跟随滚动
+  - 更新前：滚动容器有底部内边距，判定贴底的口径偏差，只要发生过一次滚动，跟随就永久关闭；只有思考块没有正文时页面不再滚动；切换会话后「一键到底」按钮残留
+  - 更新后：向上滚动超过一段才停止跟随，回到底部自动恢复；只有思考块时也会跟随
+  - 确认框与问答弹窗打开时暂停跟随，向上滚动立即停止，不会被自动跟随拉回去
+  - 「一键到底」改为强制生效；切换会话复位滚动状态
+  - 顺带修复消息行在窗口或侧栏宽度变化后错位十几像素
+- 优化了会话标题
+  - 更新前：标题容易写成句子、带标点，超长直接截断
+  - 更新后：AI 只生成名词短语，中文 12 字、英文 6 词以内，不带标点序号与 emoji
+  - AI 生成失败时取首句兜底，剥掉「请」「帮我」「我想」等开头，长句先在逗号处收口
+  - 历史遗留的兜底标题会被识别并自动升级
+- 修复了展开右侧预览面板后聊天输入草稿丢失
+- 修复了跨项目会话的提示词串项目
+  - 更新前：在项目 A 的窗口里运行项目 B 的会话时，系统提示词会带入 A 的项目宪法，重启后又变回来
+  - 更新后：按会话自身的项目加载宪法与项目约定，定时任务的临时工作区按实际目录解析
+- 修复了 AI 正忙时发送的引导消息
+  - 更新前：多条引导串行排队，前一条触发的任务没结束前，后面的十几秒没有任何反馈
+  - 更新后：引导的等待只覆盖投递阶段，后续不再互相阻塞
+  - 排队期间取消会话，消息不再被丢弃
+
+- Added a live summary to the collapsed thinking bar
+  - Before: when collapsed, it showed only the first 80 characters of the thinking content, and that line stayed the same while streaming, so you could not tell what the AI was thinking
+  - Now: while streaming it updates to the latest completed passage as new lines arrive, and shows the opening summary after the round ends
+  - The summary strips Markdown symbols, so bare backticks and asterisks no longer appear on the bar
+- Added in-app context menus and canvas text copying
+  - Before: right-clicking selected text in the chat, writing or PPT areas produced no menu; the design and PPT canvases are drawn on canvas, so their text could not be selected or copied
+  - Now: DOM areas offer copy, cut, paste and select all on right-click, and links can be opened in the default browser
+  - On the design canvas, right-click "Copy text", or press Ctrl/Cmd+C to copy the text of the selected node including its subtree
+  - On the PPT canvas, right-click "Copy this element's text / Copy this page's text"; with a single text element selected, Ctrl/Cmd+C copies it directly
+- Improved auto-follow scrolling during streaming replies
+  - Before: the scroll container has bottom padding and the at-bottom check was off, so a single scroll event turned following off for good; when only thinking blocks were present with no body text, the page stopped scrolling; the scroll-to-bottom button lingered after switching sessions
+  - Now: following stops only after you scroll up past a threshold and resumes when you return to the bottom; it also follows when only thinking blocks are present
+  - Following pauses while a dialog or Q&A popup is open, and scrolling up stops it immediately instead of being pulled back
+  - "Scroll to bottom" now always takes effect, and switching sessions resets the scroll state
+  - Also fixed message rows being offset by a dozen pixels after the window or sidebar width changed
+- Improved session titles
+  - Before: titles tended to read like sentences, carry punctuation, and get cut off when too long
+  - Now: the AI produces noun phrases only, within 12 Chinese characters or 6 English words, with no punctuation, numbering or emoji
+  - When AI title generation fails, it falls back to the first sentence, dropping openings such as "请", "帮我" and "我想", and cutting a long sentence at a comma
+  - Legacy fallback titles are recognized and upgraded
+- Fixed chat input drafts being lost after opening the right-hand preview panel
+- Fixed cross-project sessions pulling in the wrong project's prompt
+  - Before: running a session for project B inside project A's window injected project A's constitution into the system prompt, and it reverted to a different form after a restart
+  - Now: the constitution and project conventions load from the session's own project, and scheduled tasks resolve their working directory the same way
+- Fixed guidance messages sent while the AI is busy
+  - Before: multiple guidance messages queued in series, and until the task triggered by the previous one finished, the next had no feedback for over ten seconds
+  - Now: guidance only waits during delivery and no longer blocks the following ones
+  - Cancelling a session while a message is queued no longer drops it
 
 ###v1.8.4
 
@@ -1070,16 +1130,16 @@ DSH 插件检索页与子代理隔离上线。
 
 
 ### 安装
-- **taishen_setup_1.8.4.exe** — Windows 安装包（推荐）
-- **taishen_1.8.4.zip** — 解压即用免安装版
-- **taishen_1.8.4_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.8.6.exe** — Windows 安装包（推荐）
+- **taishen_1.8.6.zip** — 解压即用免安装版
+- **taishen_1.8.6_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.8.4.exe | `D58CC7F5B3FBB26F49F71D9A87F0973AC626C2F6930FA8E1F9661A4424171994` |
-| taishen_1.8.4.zip | `6ECA1592D5D5AB968867C3E12A7E4642AD1BDBA96DA423EFC3112DBD5DCE7B54` |
-| taishen_1.8.4_macOS_arm64.dmg | `6B60E6AEE5CF3A3E03C19CEDD583CA5C2654EF59BE510DE894BBBD1FFACC7B2AD` |
+| taishen_setup_1.8.6.exe | `49215328D6C34AC57E41516551241532E06D11BE4B746D754CB5D5B5D29A729C` |
+| taishen_1.8.6.zip | `99D9951221B94C130149899FD9139875F3D9144F099AC49C89AAF243F9027101` |
+| taishen_1.8.6_macOS_arm64.dmg | `（CI 构建后回填）` |
 
 ---
 
