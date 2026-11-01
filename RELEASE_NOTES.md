@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.8.6 正式发布
+﻿## 🚀 泰深 v1.8.7 正式发布
 
-思考过程实时摘要与画布文字复制上线。
+后台任务管理与 Gemini 4 Argon 模型上线。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,46 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.8.7
+
+- 重大更新，新增后台任务管理：长耗时命令自动转后台，会话页顶栏可查看和停止
+  - 更新前：安装依赖、下载、远程连接这类命令同步等待，跑满超时会被强杀
+  - 更新后：命中规则时自动转入后台执行，不再阻塞对话
+  - 转入前仍有 3 秒等待窗口，窗口内完成的任务直接返回完整结果
+  - 后台任务超过 10 分钟无输出，或运行超过 2 小时，会被看门狗自动终止
+  - 终止原因写入任务记录，完成通知里能看到
+  - 会话页顶栏新增后台任务入口，显示运行中的数量
+  - 点开可看命令、状态、耗时，运行中的任务可直接停止
+  - 任务结束后保留 1 分钟便于查看结果，随后自动隐藏
+- 新增 Google 订阅的 Gemini 4 Argon 模型
+  - 思考强度三档：低（1000）、中（4000）、高（不限），默认中
+  - 支持图片输入，上下文窗口 1M
+- 优化了设计画布的属性面板与演示模式
+  - 属性面板的按钮和表单项不再折行、不再撑破卡片
+  - 单边描边开关简化为上、右、下、左四项
+  - 演示模式下点击文字或图标也能触发按钮跳转
+  - 演示态按下有缩放反馈，悬停显示手型光标
+- 优化了多行标题的换行排布，各行的字数会自动均衡
+
+- Major update: added background task management — long-running commands move to the background automatically, and the session header lets you view and stop them
+  - Before: commands such as dependency installs, downloads and remote connections waited synchronously and were killed once they hit the timeout
+  - Now: matching commands move to the background automatically and no longer block the conversation
+  - There is still a 3-second waiting window before the move, and a task that finishes inside it returns its full result directly
+  - A background task with no output for over 10 minutes, or running longer than 2 hours, is terminated by a watchdog
+  - The termination reason is recorded on the task and shown in the completion notice
+  - The session header now has a background task entry showing the running count
+  - Open it to see the command, status and elapsed time, and stop a running task directly
+  - Finished tasks stay visible for 1 minute before hiding automatically
+- Added the Gemini 4 Argon model for Google subscriptions
+  - Three thinking levels: low (1000), medium (4000), high (unlimited), defaulting to medium
+  - Supports image input, with a 1M context window
+- Improved the design canvas property panel and presentation mode
+  - Buttons and form fields in the property panel no longer wrap or break out of their cards
+  - The single-side border switch is simplified to top, right, bottom and left
+  - In presentation mode, clicking text or icons also triggers button navigation
+  - Pressing in presentation mode gives a scale feedback, and hovering shows a pointer cursor
+- Improved line wrapping for multi-line headings, so lines are balanced automatically
 
 ###v1.8.6
 
@@ -1130,16 +1170,16 @@
 
 
 ### 安装
-- **taishen_setup_1.8.6.exe** — Windows 安装包（推荐）
-- **taishen_1.8.6.zip** — 解压即用免安装版
-- **taishen_1.8.6_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.8.7.exe** — Windows 安装包（推荐）
+- **taishen_1.8.7.zip** — 解压即用免安装版
+- **taishen_1.8.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.8.6.exe | `49215328D6C34AC57E41516551241532E06D11BE4B746D754CB5D5B5D29A729C` |
-| taishen_1.8.6.zip | `99D9951221B94C130149899FD9139875F3D9144F099AC49C89AAF243F9027101` |
-| taishen_1.8.6_macOS_arm64.dmg | `D5B6BC3E8EFDA94F79A81A9DE58DAA820EB7CD9282752D8642AF18054845CE8D` |
+| taishen_setup_1.8.7.exe | `A3EE088D90FEF5694BC291593AFAED86A34288E7FA68A2CBA22D92FDBA0E7572` |
+| taishen_1.8.7.zip | `EEEC2A243423E1F4BF766DFEAA186E41AD06B05640694CFA0892BD71B980993F` |
+| taishen_1.8.7_macOS_arm64.dmg | `712F60CD64A53ACE6A751431762D04BF4119D73B285E14ADE7FEFC6ACB3471DB` |
 
 ---
 
