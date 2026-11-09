@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.8.7 正式发布
+﻿## 🚀 泰深 v1.8.8 正式发布
 
-后台任务管理与 Gemini 4 Argon 模型上线。
+代理自动降级与轮次性能统计上线。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,64 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.8.8
+
+- 增加了代理自动降级，代理不可用时不再整机断网
+  - 更新前：勾选「启用代理」并填入代理地址后，若关闭代理软件或系统代理，模型请求、搜索、内置浏览器、MCP 会全部失败，且没有任何提示
+  - 更新后：代理无法连接时自动按「用户代理 → 系统代理 → 直连」逐级降级，每次降级记录原因
+  - 未启用代理时也会跟随系统代理，不再固定直连
+  - 代理地址留空且开启代理时，自动使用系统代理
+  - 设置 - 网络安全 页面显示当前实际生效的代理来源；发生降级时用黄色标注，严格模式失败时用红色标注
+  - 启动时先用已有配置生效，完成连通性探测后再纠正，避免窗口打开时网络未就绪
+
+- 增加了轮次性能徽标中的思考轮次与操作轮次统计
+  - 每条回复下方的性能徽标，在首字延迟与生成速率之后增加「思考 N · 操作 N」
+  - 思考轮次为本轮思考块的数量，操作轮次为本轮工具执行次数；两者都为 0 时不显示
+  - 历史轮次同样显示，旧记录没有该数据时保持原样
+
+- 优化了密钥输入框，统一为同一控件
+  - 覆盖 Provider API Key、MCP 密钥、Bing Key、Google 语音密钥、IM 密钥与首启向导
+  - 默认掩码显示，右侧眼睛图标可切换明文；粘贴后明文显示 3 秒便于核对
+  - 修复了假遮罩问题：此前 Provider 与语音密钥框内显示「••••••••」，直接输入会把遮罩字符写进密钥；Bing Key 改为空输入框加「已保存」提示
+
+- 修复了 A 股画布的涨停池与全景数据写入字段错位问题
+  - 更新前：相关数据写入后画布一直显示空状态
+  - 更新后：数据正常渲染
+
+- 修复了手动输入 /compact 命令时因父 Agent 未注册而静默失败的问题
+
+- 优化了 A 股任务的数据源提醒
+  - 无同花顺 Key 的用户完成 A 股任务后，一次性提示可接入同花顺免费数据源
+  - 提醒判定改为「同花顺 MCP 是否可用」，未配置与未生效分开说明
+
+- Added automatic proxy fallback, so an unavailable proxy no longer cuts off all network access
+  - Before: after enabling the proxy and filling in a proxy address, turning off the proxy software or the system proxy made model requests, search, the built-in browser and MCP all fail, with no notice
+  - Now: when the proxy is unreachable, it falls back step by step — user proxy → system proxy → direct connection — and records the reason for each fallback
+  - When the proxy is not enabled, the system proxy is followed instead of always connecting directly
+  - When the proxy is enabled with an empty address, the system proxy is used automatically
+  - Settings - Network Security shows the proxy source actually in effect; fallbacks are marked in amber and strict-mode failures in red
+  - At startup the existing configuration takes effect first, then connectivity probing corrects it, so the network is ready when the window opens
+
+- Added thinking rounds and action rounds to the turn performance badge
+  - Each reply's performance badge now shows "Thinking N · Actions N" after first-token latency and generation speed
+  - Thinking rounds are the number of thinking blocks in the turn; action rounds are the number of tool executions; neither is shown when both are 0
+  - Historical turns show the same data; older records without it remain unchanged
+
+- Improved secret inputs by unifying them into a single control
+  - Covers Provider API keys, MCP secrets, Bing key, Google voice key, IM secrets and the first-run wizard
+  - Masked by default, with an eye icon on the right to reveal the text; pasted content stays visible for 3 seconds for verification
+  - Fixed the fake mask issue: Provider and voice key fields used to show "••••••••", and typing directly wrote the mask characters into the key; the Bing key now uses an empty field with a "saved" hint
+
+- Fixed a field mapping mismatch when writing limit-up pool and panorama data in the A-Stocks canvas
+  - Before: the canvas stayed empty after the data was written
+  - Now: data renders correctly
+
+- Fixed the manual /compact command failing silently when the parent Agent was not registered
+
+- Improved A-Stocks data source reminders
+  - Users without a Tonghuashun key are reminded once, after completing an A-Stocks task, that a free Tonghuashun data source is available
+  - The reminder is now decided by whether the Tonghuashun MCP is available, separating "not configured" from "not taking effect"
 
 ###v1.8.7
 
@@ -1170,16 +1228,16 @@
 
 
 ### 安装
-- **taishen_setup_1.8.7.exe** — Windows 安装包（推荐）
-- **taishen_1.8.7.zip** — 解压即用免安装版
-- **taishen_1.8.7_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.8.8.exe** — Windows 安装包（推荐）
+- **taishen_1.8.8.zip** — 解压即用免安装版
+- **taishen_1.8.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.8.7.exe | `A3EE088D90FEF5694BC291593AFAED86A34288E7FA68A2CBA22D92FDBA0E7572` |
-| taishen_1.8.7.zip | `EEEC2A243423E1F4BF766DFEAA186E41AD06B05640694CFA0892BD71B980993F` |
-| taishen_1.8.7_macOS_arm64.dmg | `712F60CD64A53ACE6A751431762D04BF4119D73B285E14ADE7FEFC6ACB3471DB` |
+| taishen_setup_1.8.8.exe | `7D1A16B08B0613C0E90C101480F4477AAD6B68BBDE4C67BA1E644FC9E0AD97CF` |
+| taishen_1.8.8.zip | `53A454E3FDD85BCBB8E1C2F8D109D66199E24906FDB328338B50B0E8473D9DC6` |
+| taishen_1.8.8_macOS_arm64.dmg | `（CI 构建后回填）` |
 
 ---
 
