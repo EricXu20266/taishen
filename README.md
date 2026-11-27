@@ -2,7 +2,7 @@
 
 [English](README_EN.md) | 中文
 
-**二班的Eric作品** | v1.8.8 | 2026
+**二班的Eric作品** | v1.8.9 | 2026
 
 ---
 
@@ -254,9 +254,9 @@
 
 ### 安装
 
-- **taishen_setup_1.8.8.exe** — Windows 安装包（推荐）
-- **taishen_1.8.8.zip** — Windows 解压即用免安装版
-- **taishen_1.8.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.8.9.exe** — Windows 安装包（推荐）
+- **taishen_1.8.9.zip** — Windows 解压即用免安装版
+- **taishen_1.8.9_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 > 📥 **下载地址：** [GitHub Releases](https://github.com/EricXu20266/taishen/releases) — 进入页面后选择最新版本，在「Assets」中下载。
 
@@ -278,9 +278,9 @@
 
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.8.8.exe | `7D1A16B08B0613C0E90C101480F4477AAD6B68BBDE4C67BA1E644FC9E0AD97CF` |
-| taishen_1.8.8.zip | `53A454E3FDD85BCBB8E1C2F8D109D66199E24906FDB328338B50B0E8473D9DC6` |
-| taishen_1.8.8_macOS_arm64.dmg | `AC47DB33BE17E155FB55665E38608C2869129DB87FE80B5FEEF9BB6DA5C3745B` |
+| taishen_setup_1.8.9.exe | `03EC6A5C2FF47AB50788310FCA32026A50247F25F9DE2C8A9D12DB9422B01C43` |
+| taishen_1.8.9.zip | `D3BC3C41C45D4B01F724FA044BB5FE8890F8157C08D02535B22F4EFC4062B267` |
+| taishen_1.8.9_macOS_arm64.dmg | `（CI 构建后回填）` |
 
 ---
 

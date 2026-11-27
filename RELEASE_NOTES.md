@@ -1,6 +1,6 @@
-﻿## 🚀 泰深 v1.8.8 正式发布
+﻿## 🚀 泰深 v1.8.9 正式发布
 
-代理自动降级与轮次性能统计上线。
+Google 订阅接入改用 AGY ACP 通道。
 
 ### 核心功能
 - DeepSeek V4 全模型支持（V4-Pro / V4-Flash / V4-Flash-vision），前缀缓存命中率 ~99% + 系统提示词瘦身，长会话成本恒定
@@ -23,6 +23,68 @@
 - AI 自诊断 — 分级分类结构化日志，AI 自己查错、自己修复
 - 定时任务调度器 + 全局会话搜索 + 回收站系统
 - macOS 双架构正式支持（x64 + arm64）
+
+###v1.8.9
+
+- 重大更新，Google AI plan 订阅的接入方式改为通过 Antigravity CLI（agy）走 ACP 通道驱动，取代原先在泰深内直连 Google 订阅的做法。
+  - 更新前：每轮回复都重启一次 agy 进程，上下文全量重发，模型与强度只能在启动时传参，工具与权限依赖全局配置文件。
+  - 更新后：同一会话复用一条 agy 进程，连续追问不必每轮重启；模型与推理强度切换即时生效；本机工具按会话注册。
+  - 权限改为逐次裁决：只读工具按白名单自动放行，写入与执行类默认拒绝，需要你在泰深侧确认。
+  - 使用前提三条：① 已安装 Antigravity CLI（Google 官方产品，可让泰深为你安装）；② 具备 Antigravity 使用权限的 Google AI plan 订阅账号；③ 稳定可用的网络节点。
+  - 注意：Provider 列表中的「Google 订阅 (Gemini / Claude / GPT)」直连不再作为推荐选项，下个版本将退役，建议尽快切换到「Antigravity 订阅 (agy)」。
+
+- 增加了 Antigravity 订阅的模型目录与推理强度对齐。
+  - 27 个模型折叠为 11 个家族，聊天框先选家族再选强度。
+  - 推理强度支持四档（low / medium / high / xhigh），原先的 max 档收敛为 xhigh。
+  - 每档按模型真实支持范围收敛：Claude 系最多到 high，选 xhigh 会自动降到 high，不会替你升档多花订阅额度。
+  - 设置页的 Antigravity 选区新增家族选择器与对应图标。
+
+- 增加了额度卡片中的账号信息。
+  - 卡片显示当前 agy 登录的邮箱，悬停可看完整地址。
+  - 额度查询改走官方 agy /usage 命令，替代已失效的旧接口。
+
+- 优化了子代理回执的成本可见性。
+  - 回执显示本次子代理的上下文体积，以及当前会话子代理累计花费。
+  - 子代理花费跨 10 元、50 元档时提醒一次，仅提示不阻断。
+
+- 修复了手动 /compact 显示已压缩但上下文并未真正压缩的问题。
+  - 更新前：界面提示压缩完成，下一轮请求仍发送全量历史，直到自动压缩才真正变小。
+  - 更新后：压缩后会话立即重建，下一轮的注入轮数真实下降。
+  - /restore-history 的同类漏点一并修复。
+
+- 修复了等待你答复期间，系统提醒会打断当前轮次的问题。现在提问后静默等待。
+
+- 修复了 Antigravity 删除内置模型不记入隐藏清单、自定义模型合并读不到的问题。
+
+- Major: Google AI plan subscriptions now connect through the Antigravity CLI (agy) over the ACP channel, replacing the previous direct Google subscription connection inside Taishen.
+  - Before: every reply restarted an agy process, the full context was resent each turn, the model and effort could only be passed at startup, and tools and permissions relied on a global config file.
+  - Now: one agy process is reused across the session, so follow-up questions no longer restart it; model and effort switches take effect immediately; local tools are registered per session.
+  - Permissions are decided per call: read-only tools are auto-approved from a whitelist, while write and execute tools are denied by default and need your confirmation in Taishen.
+  - Three prerequisites: (1) Antigravity CLI installed (an official Google product; Taishen can install it for you); (2) a Google AI plan subscription account with Antigravity access; (3) a stable network node.
+  - Note: the "Google 订阅 (Gemini / Claude / GPT)" direct-connection provider is no longer the recommended option and will be retired in the next version. Please switch to "Antigravity 订阅 (agy)" as soon as possible.
+
+- Added model catalog and effort alignment for the Antigravity subscription.
+  - 27 models are folded into 11 families; pick a family in the chat box, then an effort.
+  - Four effort levels (low / medium / high / xhigh); the former max level now maps to xhigh.
+  - Each level is clamped to what the model actually supports: Claude tops out at high, so choosing xhigh silently drops to high instead of spending more subscription quota.
+  - The Antigravity section in Settings now has a family selector and its own icon.
+
+- Added account info to the quota card.
+  - The card shows the email currently logged in to agy; hover to see the full address.
+  - Quota lookup now uses the official agy /usage command instead of the deprecated endpoint.
+
+- Improved cost visibility in subagent receipts.
+  - The receipt shows the context size of this subagent and the session's cumulative subagent spend.
+  - A one-time notice is shown when subagent spend crosses 10 or 50 CNY; it only informs and never blocks.
+
+- Fixed manual /compact reporting success without actually compacting.
+  - Before: the UI said compaction was done, but the next request still sent the full history until automatic compaction kicked in.
+  - Now: the session is rebuilt right after compaction and the injected round count actually drops.
+  - Fixed the same gap in /restore-history.
+
+- Fixed system reminders interrupting the current turn while waiting for your answer. Taishen now waits silently after asking.
+
+- Fixed Antigravity deleting a built-in model without recording it in the hidden list, and custom model merging reading the wrong field.
 
 ###v1.8.8
 
@@ -1228,16 +1290,16 @@
 
 
 ### 安装
-- **taishen_setup_1.8.8.exe** — Windows 安装包（推荐）
-- **taishen_1.8.8.zip** — 解压即用免安装版
-- **taishen_1.8.8_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
+- **taishen_setup_1.8.9.exe** — Windows 安装包（推荐）
+- **taishen_1.8.9.zip** — 解压即用免安装版
+- **taishen_1.8.9_macOS_arm64.dmg** — macOS Apple Silicon (M1-M4) 安装包
 
 ### 文件校验（SHA256）
 | 文件 | SHA256 |
 |------|--------|
-| taishen_setup_1.8.8.exe | `7D1A16B08B0613C0E90C101480F4477AAD6B68BBDE4C67BA1E644FC9E0AD97CF` |
-| taishen_1.8.8.zip | `53A454E3FDD85BCBB8E1C2F8D109D66199E24906FDB328338B50B0E8473D9DC6` |
-| taishen_1.8.8_macOS_arm64.dmg | `AC47DB33BE17E155FB55665E38608C2869129DB87FE80B5FEEF9BB6DA5C3745B` |
+| taishen_setup_1.8.9.exe | `03EC6A5C2FF47AB50788310FCA32026A50247F25F9DE2C8A9D12DB9422B01C43` |
+| taishen_1.8.9.zip | `D3BC3C41C45D4B01F724FA044BB5FE8890F8157C08D02535B22F4EFC4062B267` |
+| taishen_1.8.9_macOS_arm64.dmg | `（CI 构建后回填）` |
 
 ---
 
