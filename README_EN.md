@@ -264,7 +264,7 @@ From *"user helps AI debug"* to *"AI inspects, fixes, and reports back."*
 |------|--------|
 | taishen_setup_1.8.9.exe | `03EC6A5C2FF47AB50788310FCA32026A50247F25F9DE2C8A9D12DB9422B01C43` |
 | taishen_1.8.9.zip | `D3BC3C41C45D4B01F724FA044BB5FE8890F8157C08D02535B22F4EFC4062B267` |
-| taishen_1.8.9_macOS_arm64.dmg | `（CI 构建后回填）` |
+| taishen_1.8.9_macOS_arm64.dmg | `0A7B1B16C80B2BBB6A4322687B3DC86BEF6C11AA57F9DA7CDEEF1D06E3B7D4F2` |
 
 ---
 
